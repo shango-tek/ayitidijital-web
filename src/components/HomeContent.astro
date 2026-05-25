@@ -222,7 +222,7 @@ const membership = localizedPath(locale, 'membership');
 <section id="mission" class="border-t border-line bg-white">
   <Container class="py-20 md:py-28 grid md:grid-cols-12 gap-12">
     <div class="md:col-span-4">
-      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4 accent-line pt-3">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4">
         {dict.mission.eyebrow}
       </p>
     </div>
@@ -312,7 +312,7 @@ const membership = localizedPath(locale, 'membership');
 <section id="soutenir" class="border-t border-line bg-surface">
   <Container class="py-20 md:py-28 grid md:grid-cols-12 gap-12">
     <div class="md:col-span-5">
-      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4 accent-line pt-3">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4">
         {dict.soutenir.eyebrow}
       </p>
       <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-primary tracking-tight leading-[1.05] mb-8">
@@ -327,18 +327,18 @@ const membership = localizedPath(locale, 'membership');
     <div class="md:col-span-7 bg-white border border-line rounded-2xl p-8 md:p-10">
       <h3 class="font-serif text-2xl font-medium text-primary mb-6">{dict.soutenir.card_title}</h3>
       <div class="space-y-7">
-        <div class="border-l-2 border-accent pl-6">
+        <div>
           <p class="font-medium text-primary mb-1">{dict.soutenir.sepa.title}</p>
           <p class="text-sm text-primary/60 mb-2">{dict.soutenir.sepa.subtitle}</p>
           <p class="font-mono text-sm text-primary">{dict.soutenir.sepa.iban}</p>
           <p class="font-mono text-xs text-primary/50 mt-1">{dict.soutenir.sepa.bic}</p>
         </div>
-        <div class="border-l-2 border-line pl-6">
+        <div class="border-t border-line pt-7">
           <p class="font-medium text-primary mb-1">{dict.soutenir.stripe.title}</p>
           <p class="text-sm text-primary/60 mb-3">{dict.soutenir.stripe.subtitle}</p>
           <Button href={support} variant="underline" arrow>{dict.soutenir.stripe.cta}</Button>
         </div>
-        <div class="border-l-2 border-line pl-6">
+        <div class="border-t border-line pt-7">
           <p class="font-medium text-primary mb-1">{dict.soutenir.membership.title}</p>
           <p class="text-sm text-primary/60 mb-3">{dict.soutenir.membership.subtitle}</p>
           <Button href={membership} variant="underline" arrow>{dict.soutenir.membership.cta}</Button>
@@ -354,7 +354,7 @@ const membership = localizedPath(locale, 'membership');
     <Container class="py-20 md:py-28">
       <div class="grid md:grid-cols-12 gap-12 mb-12 md:mb-16">
         <div class="md:col-span-4">
-          <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep">
             {dict.partners.eyebrow}
           </p>
         </div>

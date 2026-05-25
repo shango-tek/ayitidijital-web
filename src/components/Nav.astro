@@ -103,13 +103,33 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
     </div>
   </div>
 
-  <!-- Mobile menu panel -->
+  <!-- Mobile menu overlay -->
+  <div
+    data-mobile-overlay
+    class="md:hidden fixed inset-0 bg-primary/30 backdrop-blur-sm z-40 hidden opacity-0 transition-opacity duration-300"
+    aria-hidden="true"
+  ></div>
+
+  <!-- Mobile menu panel — slides in from right -->
   <div
     id="mobile-menu"
     data-mobile-menu
-    class="md:hidden hidden border-t border-line bg-surface"
+    class="md:hidden fixed top-0 right-0 h-full w-72 bg-surface border-l border-line z-50 translate-x-full transition-transform duration-300 ease-out"
   >
-    <div class="px-6 py-6 flex flex-col gap-5">
+    <div class="px-6 py-8 flex flex-col gap-5 h-full">
+      <div class="flex justify-end mb-4">
+        <button
+          type="button"
+          data-mobile-close
+          aria-label={dict.nav.close}
+          class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-line text-primary hover:bg-white transition"
+        >
+          <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.75" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
+          </svg>
+        </button>
+      </div>
+
       {navLinks.map((link) => (
         <a
           href={link.href}
@@ -119,7 +139,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
         </a>
       ))}
 
-      <div class="border-t border-line pt-5 flex items-center justify-between gap-4">
+      <div class="border-t border-line pt-5 mt-auto flex items-center justify-between gap-4">
         <LangSwitcher currentLocale={currentLocale} />
         <Button href={support} variant="primary" size="sm">
           {dict.nav.soutenir}
@@ -133,26 +153,44 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
   function initNav() {
     const trigger = document.querySelector<HTMLButtonElement>('[data-mobile-trigger]');
     const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+    const overlay = document.querySelector<HTMLElement>('[data-mobile-overlay]');
+    const closeBtn = document.querySelector<HTMLButtonElement>('[data-mobile-close]');
     const iconOpen = document.querySelector<HTMLElement>('[data-mobile-icon-open]');
     const iconClose = document.querySelector<HTMLElement>('[data-mobile-icon-close]');
-    if (!trigger || !menu || !iconOpen || !iconClose) return;
+    if (!trigger || !menu || !overlay || !iconOpen || !iconClose) return;
     if (trigger.dataset.navInit === '1') return;
     trigger.dataset.navInit = '1';
 
+    const openMenu = () => {
+      overlay.classList.remove('hidden');
+      requestAnimationFrame(() => {
+        overlay.classList.remove('opacity-0');
+        menu.classList.remove('translate-x-full');
+      });
+      document.body.style.overflow = 'hidden';
+      iconOpen.classList.add('hidden');
+      iconClose.classList.remove('hidden');
+      trigger.setAttribute('aria-expanded', 'true');
+    };
+
+    const closeMenu = () => {
+      overlay.classList.add('opacity-0');
+      menu.classList.add('translate-x-full');
+      document.body.style.overflow = '';
+      iconOpen.classList.remove('hidden');
+      iconClose.classList.add('hidden');
+      trigger.setAttribute('aria-expanded', 'false');
+      setTimeout(() => overlay.classList.add('hidden'), 300);
+    };
+
     trigger.addEventListener('click', () => {
-      const isOpen = !menu.classList.contains('hidden');
-      if (isOpen) {
-        menu.classList.add('hidden');
-        iconOpen.classList.remove('hidden');
-        iconClose.classList.add('hidden');
-        trigger.setAttribute('aria-expanded', 'false');
-      } else {
-        menu.classList.remove('hidden');
-        iconOpen.classList.add('hidden');
-        iconClose.classList.remove('hidden');
-        trigger.setAttribute('aria-expanded', 'true');
-      }
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      if (isOpen) closeMenu();
+      else openMenu();
     });
+
+    closeBtn?.addEventListener('click', closeMenu);
+    overlay.addEventListener('click', closeMenu);
 
     // Sticky nav shadow on scroll
     const nav = document.querySelector<HTMLElement>('[data-nav]');

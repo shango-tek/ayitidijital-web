@@ -92,6 +92,11 @@ const LABELS: Record<Locale, { name: string; code: string }> = {
         chevron?.style.setProperty('transform', 'rotate(0deg)');
       };
 
+      // Open on hover (desktop)
+      wrapper.addEventListener('mouseenter', () => open());
+      wrapper.addEventListener('mouseleave', () => close());
+
+      // Toggle on click (touch fallback)
       button.addEventListener('click', (e) => {
         e.stopPropagation();
         const isOpen = button.getAttribute('aria-expanded') === 'true';

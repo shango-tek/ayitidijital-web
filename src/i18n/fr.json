@@ -4,7 +4,7 @@
   "lang_code": "FR",
   "meta": {
     "site_name": "Ayiti Dijital",
-    "default_description": "Association à but non lucratif construisant les biens publics numériques d'Haïti — en commençant par le droit."
+    "default_description": "Association à but non lucratif construisant les biens publics numériques d'Haïti, en commençant par le droit."
   },
   "nav": {
     "accueil": "Accueil",
@@ -25,7 +25,7 @@
     "title_line_1": "L'infrastructure",
     "title_accent": "numérique publique",
     "title_line_3": "d'Haïti.",
-    "subtitle": "Nous construisons des biens publics numériques pour la République d'Haïti — accessibles, libres, durables. En commençant par le droit.",
+    "subtitle": "Nous construisons des biens publics numériques pour la République d'Haïti, accessibles, libres, durables. En commençant par le droit.",
     "cta_primary": "Découvrir nos projets",
     "cta_secondary": "Lire notre mission"
   },
@@ -33,8 +33,8 @@
     "eyebrow": "Notre mission",
     "headline_pre": "Haïti n'a pas besoin de plus de promesses. Elle a besoin ",
     "headline_accent": "d'infrastructures qui durent",
-    "headline_post": " — gratuites, en français et en kreyòl, citables, ouvertes au monde entier.",
-    "body": "Nous sommes une association à but non lucratif de droit allemand. Nous bâtissons et maintenons des plateformes numériques d'intérêt public — au service des Haïtiens, de la diaspora, des chercheurs et des institutions."
+    "headline_post": ", gratuites, en français et en kreyòl, citables, ouvertes au monde entier.",
+    "body": "Nous sommes une association à but non lucratif de droit allemand. Nous bâtissons et maintenons des plateformes numériques d'intérêt public, au service des Haïtiens, de la diaspora, des chercheurs et des institutions."
   },
   "projects_section": {
     "eyebrow": "Ce que nous construisons",
@@ -45,7 +45,7 @@
       "status": "En production",
       "year": "2025",
       "title": "LexHaïti Public",
-      "description": "Le corpus complet du droit haïtien — Constitution, codes, lois, décrets — gratuit, bilingue, citable.",
+      "description": "Le corpus complet du droit haïtien, Constitution, codes, lois, décrets, gratuit, bilingue, citable.",
       "url_label": "lexhaiti.org",
       "meta": "2 400+ articles"
     },
@@ -53,14 +53,14 @@
       "status": "En préparation",
       "year": "2026",
       "title": "Domaines .ht",
-      "description": "Rendre les domaines .ht accessibles et abordables — pour que chaque entrepreneur et organisation haïtienne puisse exister en ligne.",
+      "description": "Rendre les domaines .ht accessibles et abordables, pour que chaque entrepreneur et organisation haïtienne puisse exister en ligne.",
       "meta": "Bientôt"
     },
     "civic": {
       "status": "Concept",
       "year": "2026+",
       "title": "Données civiques ouvertes",
-      "description": "Une API publique pour les données administratives, démographiques et économiques d'Haïti — au service de la recherche et du journalisme.",
+      "description": "Une API publique pour les données administratives, démographiques et économiques d'Haïti, au service de la recherche et du journalisme.",
       "meta": "Concept"
     }
   },
@@ -68,7 +68,7 @@
     "eyebrow": "Impact mesurable",
     "stats": [
       { "value_main": "2 400", "value_accent": "+", "label": "Articles juridiques structurés" },
-      { "value_main": "2", "value_accent": "·", "value_suffix": "3", "label": "Langues — français · kreyòl" },
+      { "value_main": "2", "value_accent": "·", "value_suffix": "3", "label": "Langues, français · kreyòl" },
       { "value_main": "100", "value_accent": "%", "label": "Open source · gratuit" },
       { "value_main": "0", "value_accent": "€", "label": "Publicité · trackers" }
     ]
@@ -97,14 +97,14 @@
       "cta": "S'inscrire"
     },
     "page_title": "Soutenir",
-    "page_description": "Soutenez la mission d'Ayiti Dijital — don ponctuel, adhésion ou virement SEPA.",
+    "page_description": "Soutenez la mission d'Ayiti Dijital, don ponctuel, adhésion ou virement SEPA.",
     "why_eyebrow": "Pourquoi soutenir",
     "why_title": "Chaque euro finance un commun durable.",
     "why_intro": "Voici concrètement où va votre don.",
     "why_cards": [
-      { "number": "01", "title": "Hébergement et infrastructure", "body": "Serveurs européens, sauvegardes redondantes, certificats — pour que LexHaïti reste en ligne 24/7, sans coupure ni publicité." },
+      { "number": "01", "title": "Hébergement et infrastructure", "body": "Serveurs européens, sauvegardes redondantes, certificats, pour que LexHaïti reste en ligne 24/7, sans coupure ni publicité." },
       { "number": "02", "title": "Curation du droit haïtien", "body": "Veille législative, structuration article par article, vérification des sources officielles. Un travail d'éditeur lent et minutieux." },
-      { "number": "03", "title": "Traduction en kreyòl", "body": "Traduction progressive du corpus en kreyòl ayisyen, par des juristes et linguistes haïtiens — pour que le droit appartienne aux deux langues." },
+      { "number": "03", "title": "Traduction en kreyòl", "body": "Traduction progressive du corpus en kreyòl ayisyen, par des juristes et linguistes haïtiens, pour que le droit appartienne aux deux langues." },
       { "number": "04", "title": "Outils ouverts et durables", "body": "Code open source, API publique, exports gratuits. Tout ce que nous construisons reste réutilisable par d'autres." }
     ],
     "how_eyebrow": "Comment donner",
@@ -136,22 +136,22 @@
       }
     },
     "sepa_eyebrow": "Virement bancaire (SEPA)",
-    "sepa_intro": "Pour les dons plus importants ou les organisations, le virement SEPA reste l'option la plus simple — sans intermédiaire ni frais.",
+    "sepa_intro": "Pour les dons plus importants ou les organisations, le virement SEPA reste l'option la plus simple, sans intermédiaire ni frais.",
     "sepa_iban_label": "IBAN",
     "sepa_bic_label": "BIC",
     "sepa_holder_label": "Bénéficiaire",
     "sepa_holder_value": "Ayiti Dijital e.V.",
     "sepa_ref_label": "Référence",
-    "sepa_ref_value": "Don — votre nom",
+    "sepa_ref_value": "Don, votre nom",
     "donors_eyebrow": "Nos soutiens",
     "donors_title": "Ils nous soutiennent déjà.",
-    "donors_intro": "Avec leur accord — quelques visages parmi celles et ceux qui rendent cette mission possible.",
+    "donors_intro": "Avec leur accord, quelques visages parmi celles et ceux qui rendent cette mission possible.",
     "donors_list": [
       { "name": "Donateur anonyme", "location": "Munich" },
       { "name": "Famille D.", "location": "Port-au-Prince · diaspora" },
       { "name": "Fondation X", "location": "À confirmer · 2026" }
     ],
-    "donors_note": "Souhaitez-vous figurer ici — ou rester anonyme ? Vous choisissez au moment du don.",
+    "donors_note": "Souhaitez-vous figurer ici, ou rester anonyme ? Vous choisissez au moment du don.",
     "tax_eyebrow": "Déductibilité fiscale",
     "tax_title": "Reçu fiscal sur demande.",
     "tax_body": "Une fois la reconnaissance d'utilité publique (Gemeinnützigkeit) accordée par le fisc allemand, vos dons seront déductibles à hauteur de 20% du revenu imposable en Allemagne. La déductibilité s'étend à l'ensemble de l'Union européenne via l'article 110d EStG.",
@@ -159,17 +159,17 @@
     "faq_eyebrow": "Questions fréquentes",
     "faq_title": "Tout ce que vous voulez savoir.",
     "faq_items": [
-      { "q": "Mon don est-il déductible des impôts ?", "a": "Oui, dès que la reconnaissance d'utilité publique sera accordée par le Finanzamt München (procédure en cours). Pour les dons effectués avant, un reçu provisoire est fourni — la déductibilité rétroactive sera confirmée après reconnaissance officielle." },
+      { "q": "Mon don est-il déductible des impôts ?", "a": "Oui, dès que la reconnaissance d'utilité publique sera accordée par le Finanzamt München (procédure en cours). Pour les dons effectués avant, un reçu provisoire est fourni, la déductibilité rétroactive sera confirmée après reconnaissance officielle." },
       { "q": "Puis-je donner depuis un autre pays que l'Allemagne ?", "a": "Oui. Les dons SEPA fonctionnent dans toute la zone euro sans frais. Hors zone euro, utilisez Stripe (carte bancaire) ou écrivez-nous pour un virement international." },
-      { "q": "Comment l'argent est-il utilisé ?", "a": "Hébergement, curation juridique, traduction en kreyòl, infrastructure logicielle. Nous publierons un rapport financier annuel détaillé — premier rapport prévu début 2027." },
+      { "q": "Comment l'argent est-il utilisé ?", "a": "Hébergement, curation juridique, traduction en kreyòl, infrastructure logicielle. Nous publierons un rapport financier annuel détaillé, premier rapport prévu début 2027." },
       { "q": "Puis-je arrêter mon don mensuel à tout moment ?", "a": "Oui, sans condition. Un lien de désabonnement est inclus dans chaque e-mail de confirmation. Aucune justification n'est requise." },
-      { "q": "Et si je préfère donner en nature (temps, compétences) ?", "a": "Avec plaisir. Écrivez-nous à kontakt@ayitidijital.org — nous avons régulièrement besoin de relectures juridiques, traduction kreyòl, ou aide ponctuelle sur l'infrastructure." }
+      { "q": "Et si je préfère donner en nature (temps, compétences) ?", "a": "Avec plaisir. Écrivez-nous à kontakt@ayitidijital.org, nous avons régulièrement besoin de relectures juridiques, traduction kreyòl, ou aide ponctuelle sur l'infrastructure." }
     ]
   },
   "partners": {
     "eyebrow": "Nos partenaires",
     "title": "Ils nous accompagnent.",
-    "intro": "Institutions, fondations, organisations partenaires — ensemble nous bâtissons l'infrastructure numérique publique d'Haïti.",
+    "intro": "Institutions, fondations, organisations partenaires, ensemble nous bâtissons l'infrastructure numérique publique d'Haïti.",
     "placeholder_note": "Cette section apparaîtra dès qu'un premier partenariat officiel sera formalisé.",
     "slots": [],
     "cta_label": "Devenir partenaire",
@@ -198,7 +198,7 @@
       "privacy": "Confidentialité",
       "become_member": "Devenir membre"
     },
-    "copyright": "© 2026 Ayiti Dijital e.V. — CC BY-SA 4.0",
+    "copyright": "© 2026 Ayiti Dijital e.V. · CC BY-SA 4.0",
     "proverb": "« Men anpil chay pa lou »",
     "proverb_translation": "Beaucoup de mains rendent le fardeau léger"
   },
@@ -208,17 +208,17 @@
       "description": "Tous les projets d'infrastructure numérique publique construits par Ayiti Dijital.",
       "eyebrow": "Nos chantiers",
       "h1": "Projets.",
-      "intro": "Ce que nous construisons aujourd'hui — et ce que nous préparons pour demain.",
+      "intro": "Ce que nous construisons aujourd'hui, et ce que nous préparons pour demain.",
       "view_project": "Voir le projet"
     },
     "lexhaiti": {
       "title": "LexHaïti Public",
-      "description": "Le corpus complet du droit haïtien — gratuit, bilingue, citable.",
+      "description": "Le corpus complet du droit haïtien, gratuit, bilingue, citable.",
       "eyebrow": "Projet phare · 2025",
       "h1": "LexHaïti Public.",
-      "lead": "Le corpus complet du droit haïtien — Constitution, codes, lois, décrets — gratuit, bilingue, citable.",
+      "lead": "Le corpus complet du droit haïtien, Constitution, codes, lois, décrets, gratuit, bilingue, citable.",
       "what_title": "Ce que c'est",
-      "what_body": "Une plateforme web qui rend accessible l'intégralité du droit positif haïtien à toute personne disposant d'une connexion internet — sans inscription, sans publicité, sans suivi. Chaque texte est structuré article par article, citable de manière permanente, et progressivement traduit en kreyòl.",
+      "what_body": "Une plateforme web qui rend accessible l'intégralité du droit positif haïtien à toute personne disposant d'une connexion internet, sans inscription, sans publicité, sans suivi. Chaque texte est structuré article par article, citable de manière permanente, et progressivement traduit en kreyòl.",
       "why_title": "Pourquoi",
       "why_body": "Le droit d'un pays doit appartenir à ses citoyens. Aujourd'hui, accéder à un code haïtien à jour exige soit l'achat d'un volume papier coûteux, soit la navigation entre PDF dispersés. LexHaïti corrige ce manque structurel.",
       "for_title": "Pour qui",
@@ -233,14 +233,14 @@
     },
     "about": {
       "title": "Qui sommes-nous",
-      "description": "L'équipe et la vision derrière Ayiti Dijital — une association haïtienne au service du numérique public.",
+      "description": "L'équipe et la vision derrière Ayiti Dijital, une association haïtienne au service du numérique public.",
       "eyebrow": "Qui sommes-nous",
       "h1": "Une association haïtienne.",
       "intro": "Ayiti Dijital est une association à but non lucratif, en cours de fondation à Munich sous forme juridique d'e.V. (droit allemand). Notre mission : construire et maintenir des plateformes numériques d'intérêt public pour Haïti.",
       "mission_title": "Notre mission",
-      "mission_body": "Construire et maintenir l'infrastructure numérique publique d'Haïti — librement accessible, en français et en kreyòl, conçue pour durer au-delà des cycles politiques. Du droit aux noms de domaine, des données civiques aux outils ouverts.",
+      "mission_body": "Construire et maintenir l'infrastructure numérique publique d'Haïti, librement accessible, en français et en kreyòl, conçue pour durer au-delà des cycles politiques. Du droit aux noms de domaine, des données civiques aux outils ouverts.",
       "vision_title": "Notre vision",
-      "vision_body": "Une Haïti où l'infrastructure numérique de base — le droit, les noms de domaine, les données civiques — appartient au public, est librement accessible, et conçue pour durer au-delà des cycles politiques et économiques.",
+      "vision_body": "Une Haïti où l'infrastructure numérique de base, le droit, les noms de domaine, les données civiques, appartient au public, est librement accessible, et conçue pour durer au-delà des cycles politiques et économiques.",
       "structure_title": "Structure",
       "structure_intro": "Ayiti Dijital est une association à but non lucratif de droit allemand, portée par sa mission : bâtir et faire durer l'infrastructure numérique publique d'Haïti.",
       "structure_entities": [
@@ -254,7 +254,7 @@
       ],
       "principles_title": "Nos principes",
       "principles": [
-        { "title": "Le commun avant tout", "body": "Tout ce qui relève du bien public — le droit, les données civiques, le code source — reste gratuit et le restera. Pas de mur payant sur l'accès au droit." },
+        { "title": "Le commun avant tout", "body": "Tout ce qui relève du bien public, le droit, les données civiques, le code source, reste gratuit et le restera. Pas de mur payant sur l'accès au droit." },
         { "title": "Ouvert", "body": "Code open source, données réutilisables, standards ouverts. Les institutions doivent pouvoir reprendre nos travaux à tout moment." },
         { "title": "Bilingue", "body": "Tout est conçu pour le français et le kreyòl, sans hiérarchie entre les deux langues." },
         { "title": "Durable", "body": "Architecture frugale, dépendances réduites au minimum. Nos plateformes doivent fonctionner avec peu de moyens, longtemps." }
@@ -270,7 +270,7 @@
       "description": "Statuts, gouvernance et financement d'Ayiti Dijital e.V.",
       "eyebrow": "Transparence",
       "h1": "Tout ce que nous faisons est public.",
-      "intro": "Une association d'intérêt public doit être transparente sur ses statuts, sa gouvernance et son financement. Voici ce que nous publions — et ce que nous publierons.",
+      "intro": "Une association d'intérêt public doit être transparente sur ses statuts, sa gouvernance et son financement. Voici ce que nous publions, et ce que nous publierons.",
       "statutes_title": "Statuts",
       "statutes_body": "Les statuts d'Ayiti Dijital e.V. sont enregistrés auprès de l'Amtsgericht München. Une version publique en français, allemand et kreyòl sera disponible à la fondation officielle.",
       "statutes_status": "En préparation · publication prévue à l'enregistrement",
@@ -282,7 +282,7 @@
     },
     "membership": {
       "title": "Devenir membre",
-      "description": "Adhérez à Ayiti Dijital e.V. — soutenez la construction d'une infrastructure numérique publique pour Haïti.",
+      "description": "Adhérez à Ayiti Dijital e.V., soutenez la construction d'une infrastructure numérique publique pour Haïti.",
       "eyebrow": "Adhésion",
       "h1": "Devenir membre.",
       "intro": "L'adhésion est ouverte à toute personne physique soutenant notre mission. Une fois votre demande validée par le conseil, vous recevrez la confirmation par e-mail.",
@@ -305,7 +305,7 @@
         ],
         "process_title": "Processus d'adhésion",
         "process": [
-          { "step": "1", "title": "Soumettre", "body": "Remplissez ce formulaire — quelques minutes." },
+          { "step": "1", "title": "Soumettre", "body": "Remplissez ce formulaire, quelques minutes." },
           { "step": "2", "title": "Validation", "body": "Le Vorstand examine votre demande sous 7 jours ouvrés." },
           { "step": "3", "title": "Bienvenue", "body": "Vous recevez confirmation, statuts et coordonnées pour la cotisation." }
         ]
@@ -313,10 +313,10 @@
     },
     "contact": {
       "title": "Contact",
-      "description": "Contacter Ayiti Dijital — questions, presse, partenariats.",
+      "description": "Contacter Ayiti Dijital, questions, presse, partenariats.",
       "eyebrow": "Contact",
       "h1": "Écrivez-nous.",
-      "intro": "Question, presse, partenariat institutionnel — nous lisons tout et répondons sous quelques jours.",
+      "intro": "Question, presse, partenariat institutionnel, nous lisons tout et répondons sous quelques jours.",
       "direct_email": "Ou écrivez directement à"
     },
     "imprint": {
@@ -341,10 +341,10 @@
       },
       "representative_title": "Représentation légale",
       "representative_dl": {
-        "name_label": "Président du conseil",
-        "name_value": "Glory Pracht",
-        "role_label": "Fonction",
-        "role_value": "Représentant légal selon § 26 BGB"
+        "name_label": "1. Vorstand",
+        "name_value": "Glory Pierrette",
+        "role_label": "2. Vorstand",
+        "role_value": "Berlens Legagneur"
       },
       "contact_title": "Contact",
       "contact_dl": {
@@ -355,7 +355,7 @@
       },
       "responsible_title": "Responsable du contenu",
       "responsible_subtitle": "selon § 55 al. 2 RStV",
-      "responsible_body": "Glory Pracht — adresse postale identique à celle de l'association.",
+      "responsible_body": "Glory Pierrette (1. Vorstand), adresse postale identique à celle de l'association.",
       "liability_title": "Responsabilité",
       "liability_body": "Malgré un contrôle régulier, nous n'assumons aucune responsabilité pour le contenu des liens externes. Les exploitants des sites liés sont seuls responsables de leur contenu.",
       "copyright_title": "Droits d'auteur",
@@ -365,7 +365,7 @@
     },
     "privacy": {
       "title": "Confidentialité",
-      "description": "Politique de confidentialité d'Ayiti Dijital — RGPD.",
+      "description": "Politique de confidentialité d'Ayiti Dijital, RGPD.",
       "eyebrow": "Confidentialité",
       "h1": "Politique de confidentialité.",
       "intro": "Nous prenons la protection de vos données personnelles très au sérieux. Cette politique décrit quelles données nous collectons, pourquoi, et vos droits.",
@@ -380,13 +380,13 @@
         { "title": "Données d'adhésion sur consentement.", "body": "Nous ne stockons vos coordonnées que si vous remplissez volontairement un formulaire (adhésion, contact)." }
       ],
       "controller_title": "Responsable du traitement",
-      "controller_body": "Ayiti Dijital e.V., Munich, Allemagne — kontakt@ayitidijital.org",
+      "controller_body": "Ayiti Dijital e.V., Munich, Allemagne, kontakt@ayitidijital.org",
       "controller_dpo_label": "Contact pour la protection des données",
       "controller_dpo_value": "kontakt@ayitidijital.org",
       "data_title": "Données collectées",
       "data_body": "Ce site ne dépose aucun cookie de suivi. Nous ne collectons des données personnelles que lorsque vous nous les transmettez volontairement via un formulaire (adhésion, contact). Ces données sont stockées sur des serveurs européens et utilisées uniquement pour traiter votre demande.",
       "cookies_title": "Cookies et stockage local",
-      "cookies_intro": "Pour la transparence — voici tout ce que ce site stocke dans votre navigateur :",
+      "cookies_intro": "Pour la transparence, voici tout ce que ce site stocke dans votre navigateur :",
       "cookies_table_headers": {
         "name": "Nom",
         "purpose": "Finalité",
@@ -399,11 +399,11 @@
       ],
       "cookies_note": "Notre outil d'analyse, Plausible Analytics, ne dépose aucun cookie et n'utilise pas d'identifiant persistant.",
       "rights_title": "Vos droits (RGPD)",
-      "rights_intro": "Le RGPD vous garantit un ensemble de droits sur vos données personnelles. Pour les exercer, écrivez à kontakt@ayitidijital.org — nous répondons sous 30 jours.",
+      "rights_intro": "Le RGPD vous garantit un ensemble de droits sur vos données personnelles. Pour les exercer, écrivez à kontakt@ayitidijital.org, nous répondons sous 30 jours.",
       "rights_cards": [
         { "icon": "①", "title": "Droit d'accès", "body": "Obtenir copie des données vous concernant que nous détenons." },
         { "icon": "②", "title": "Droit de rectification", "body": "Corriger toute donnée inexacte ou incomplète." },
-        { "icon": "③", "title": "Droit à l'effacement", "body": "Demander la suppression de vos données — sauf obligation légale contraire." },
+        { "icon": "③", "title": "Droit à l'effacement", "body": "Demander la suppression de vos données, sauf obligation légale contraire." },
         { "icon": "④", "title": "Droit à la limitation", "body": "Restreindre le traitement de vos données dans certains cas." },
         { "icon": "⑤", "title": "Droit à la portabilité", "body": "Recevoir vos données dans un format structuré et réutilisable." },
         { "icon": "⑥", "title": "Droit d'opposition", "body": "Vous opposer au traitement de vos données à tout moment." }
@@ -412,7 +412,7 @@
       "hosting_title": "Hébergement",
       "hosting_body": "Ce site est hébergé sur une infrastructure située dans l'Union européenne. Aucun outil tiers d'analyse ou de publicité n'est utilisé.",
       "contact_title": "Contact protection des données",
-      "contact_body": "Pour toute question concernant la protection de vos données — exercice de vos droits, plainte, demande — écrivez-nous directement.",
+      "contact_body": "Pour toute question concernant la protection de vos données, exercice de vos droits, plainte, demande, écrivez-nous directement.",
       "contact_email": "kontakt@ayitidijital.org"
     }
   },
@@ -476,7 +476,7 @@
     "submit_note": "Réponse du Vorstand sous 7 jours ouvrés.",
     "required": "Champ requis",
     "success_title": "Demande envoyée.",
-    "success_body": "Merci — nous reviendrons vers vous sous quelques jours."
+    "success_body": "Merci, nous reviendrons vers vous sous quelques jours."
   },
   "contact_form": {
     "name": "Votre nom",
@@ -485,6 +485,6 @@
     "message": "Message",
     "submit": "Envoyer",
     "success_title": "Message envoyé.",
-    "success_body": "Merci — nous vous répondons sous quelques jours."
+    "success_body": "Merci, nous vous répondons sous quelques jours."
   }
 }

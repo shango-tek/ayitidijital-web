@@ -53,18 +53,7 @@ body {
     radial-gradient(circle at 80% 70%, rgba(197, 165, 114, 0.06) 0%, transparent 50%);
 }
 
-.accent-line {
-  position: relative;
-}
-.accent-line::before {
-  content: '';
-  position: absolute;
-  left: 0;
-  top: -8px;
-  width: 32px;
-  height: 1px;
-  background: var(--color-accent);
-}
+/* accent-line removed — section eyebrows stand alone */
 
 /* ============================================================
    Interactivity
