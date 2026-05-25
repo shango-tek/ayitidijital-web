@@ -242,7 +242,7 @@
       "vision_title": "Vizyon nou",
       "vision_body": "Yon Ayiti kote enfrastrikti dijital baz la — dwa, non domèn, done sivik — apatni a piblik la, ki aksesib libreman, e ki fèt pou dire pi lwen pase sik politik ak ekonomik yo.",
       "structure_title": "Estrikti",
-      "structure_intro": "Ayiti Dijital reyini de antite konplemantè anba yon misyon komen : bati epi fè dire enfrastrikti dijital piblik Ayiti a.",
+      "structure_intro": "Ayiti Dijital se yon asosyasyon san bi likratif anba lwa alman, ki pote misyon li : bati epi fè dire enfrastrikti dijital piblik Ayiti a.",
       "structure_entities": [
         {
           "name": "Ayiti Dijital e.V.",
@@ -250,25 +250,19 @@
           "status": "K ap fèt · 2026",
           "role": "Opere byen piblik yo (LexHaïti Public), resevwa sibvansyon, don ak kotizasyon, garanti pèmenans komen dijital la.",
           "location": "Minik · Amtsgericht München"
-        },
-        {
-          "name": "Ayiti Digital Labs GmbH",
-          "type": "Konpayi komèsyal",
-          "status": "Pou fonde apre",
-          "role": "Mèt mak LexHaïti®, opere pwodwi pwofesyonèl yo (LexHaïti Pro, sèvis .ht). Yon pati nan revni li ale nan asosyasyon an.",
-          "location": "Minik · pou fonde"
         }
       ],
       "principles_title": "Prensip nou yo",
       "principles": [
-        { "title": "Komen an anvan tout", "body": "Tout sa ki se byen piblik — dwa a, done sivik yo, kòd sous la — rete gratis epi l ap rete konsa. Pa gen mi peman sou aksè a dwa a. Sèvis pwofesyonèl peyan yo (LexHaïti Pro, domèn .ht), ki opere apa pa konpayi sè komèsyal nou an, finanse epi pwoteje komen sa a — yo pa janm ranplase l." },
+        { "title": "Komen an anvan tout", "body": "Tout sa ki se byen piblik — dwa a, done sivik yo, kòd sous la — rete gratis epi l ap rete konsa. Pa gen mi peman sou aksè a dwa a." },
         { "title": "Louvri", "body": "Kòd sous louvri, done ki ka reitilize, estanda louvri. Enstitisyon yo dwe ka pran travay nou yo nenpòt lè." },
         { "title": "Bileng", "body": "Tout bagay fèt pou franse ak kreyòl, san yerachi ant de lang yo." },
         { "title": "Dirab", "body": "Achitekti senp, depandans redwi nan minimòm. Platfòm nou yo dwe mache ak ti mwayen, pou lontan." }
       ],
-      "team_title": "Ekip fondatè",
+      "team_title": "Vorstand",
       "team": [
-        { "name": "Glory Pracht", "role": "Fondatè · Prezidan", "bio": "Fondatè HDDI e.V. ak Ayiti Dijital. Li baze Minik, e li pote misyon an depi 2025." }
+        { "name": "Glory Pierrette", "role": "1. Vorstand" },
+        { "name": "Berlens Legagneur", "role": "2. Vorstand" }
       ]
     },
     "transparency": {

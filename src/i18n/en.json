@@ -242,7 +242,7 @@
       "vision_title": "Our vision",
       "vision_body": "A Haiti where basic digital infrastructure — law, domain names, civic data — belongs to the public, is freely accessible, and is designed to last beyond political and economic cycles.",
       "structure_title": "Structure",
-      "structure_intro": "Ayiti Dijital brings together two complementary entities under one common mission: build and sustain Haiti's public digital infrastructure.",
+      "structure_intro": "Ayiti Dijital is a non-profit association under German law, driven by its mission: build and sustain Haiti's public digital infrastructure.",
       "structure_entities": [
         {
           "name": "Ayiti Dijital e.V.",
@@ -250,25 +250,19 @@
           "status": "In founding · 2026",
           "role": "Operates the public goods (LexHaïti Public), receives grants, donations and membership fees, safeguards the digital commons.",
           "location": "Munich · Amtsgericht München"
-        },
-        {
-          "name": "Ayiti Digital Labs GmbH",
-          "type": "Commercial company",
-          "status": "To be founded",
-          "role": "Holder of the LexHaïti® trademark, operates the professional products (LexHaïti Pro, .ht services). A share of its revenue flows back to the association.",
-          "location": "Munich · to be founded"
         }
       ],
       "principles_title": "Our principles",
       "principles": [
-        { "title": "The commons first", "body": "Everything that is a public good — the law, civic data, source code — stays free and will remain so. No paywall on access to the law. Paid professional services (LexHaïti Pro, .ht domains), operated separately by our commercial sister company, fund and protect this commons — they never replace it." },
+        { "title": "The commons first", "body": "Everything that is a public good — the law, civic data, source code — stays free and will remain so. No paywall on access to the law." },
         { "title": "Open", "body": "Open source code, reusable data, open standards. Institutions must be able to pick up our work at any time." },
         { "title": "Bilingual", "body": "Everything is designed for French and Kreyòl, with no hierarchy between the two languages." },
         { "title": "Durable", "body": "Frugal architecture, minimal dependencies. Our platforms must run with few resources, for a long time." }
       ],
-      "team_title": "Founding team",
+      "team_title": "Vorstand",
       "team": [
-        { "name": "Glory Pracht", "role": "Founder · President", "bio": "Founder of HDDI e.V. and Ayiti Dijital. Based in Munich, he has been leading the mission since 2025." }
+        { "name": "Glory Pierrette", "role": "1. Vorstand" },
+        { "name": "Berlens Legagneur", "role": "2. Vorstand" }
       ]
     },
     "transparency": {

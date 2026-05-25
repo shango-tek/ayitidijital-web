@@ -242,7 +242,7 @@
       "vision_title": "Notre vision",
       "vision_body": "Une Haïti où l'infrastructure numérique de base — le droit, les noms de domaine, les données civiques — appartient au public, est librement accessible, et conçue pour durer au-delà des cycles politiques et économiques.",
       "structure_title": "Structure",
-      "structure_intro": "Ayiti Dijital regroupe deux entités complémentaires sous une mission commune : bâtir et faire durer l'infrastructure numérique publique d'Haïti.",
+      "structure_intro": "Ayiti Dijital est une association à but non lucratif de droit allemand, portée par sa mission : bâtir et faire durer l'infrastructure numérique publique d'Haïti.",
       "structure_entities": [
         {
           "name": "Ayiti Dijital e.V.",
@@ -250,25 +250,19 @@
           "status": "En cours de fondation · 2026",
           "role": "Opère les biens publics (LexHaïti Public), reçoit les subventions, dons et cotisations, garantit la pérennité du commun numérique.",
           "location": "Munich · Amtsgericht München"
-        },
-        {
-          "name": "Ayiti Digital Labs GmbH",
-          "type": "Société commerciale",
-          "status": "À fonder ultérieurement",
-          "role": "Détentrice de la marque LexHaïti®, opère les produits professionnels (LexHaïti Pro, services .ht). Une part de ses revenus alimente l'association.",
-          "location": "Munich · à fonder"
         }
       ],
       "principles_title": "Nos principes",
       "principles": [
-        { "title": "Le commun avant tout", "body": "Tout ce qui relève du bien public — le droit, les données civiques, le code source — reste gratuit et le restera. Pas de mur payant sur l'accès au droit. Les services professionnels payants (LexHaïti Pro, domaines .ht), opérés séparément par notre société sœur commerciale, financent et protègent ce commun — ils ne le remplacent jamais." },
+        { "title": "Le commun avant tout", "body": "Tout ce qui relève du bien public — le droit, les données civiques, le code source — reste gratuit et le restera. Pas de mur payant sur l'accès au droit." },
         { "title": "Ouvert", "body": "Code open source, données réutilisables, standards ouverts. Les institutions doivent pouvoir reprendre nos travaux à tout moment." },
         { "title": "Bilingue", "body": "Tout est conçu pour le français et le kreyòl, sans hiérarchie entre les deux langues." },
         { "title": "Durable", "body": "Architecture frugale, dépendances réduites au minimum. Nos plateformes doivent fonctionner avec peu de moyens, longtemps." }
       ],
-      "team_title": "Équipe fondatrice",
+      "team_title": "Vorstand",
       "team": [
-        { "name": "Glory Pracht", "role": "Fondateur · Président", "bio": "Fondateur d'HDDI e.V. et d'Ayiti Dijital. Basé à Munich, il porte la mission depuis 2025." }
+        { "name": "Glory Pierrette", "role": "1. Vorstand" },
+        { "name": "Berlens Legagneur", "role": "2. Vorstand" }
       ]
     },
     "transparency": {

@@ -8,41 +8,39 @@ interface Props {
 const { currentLocale } = Astro.props;
 const dict = getDict(currentLocale);
 
-const linkClass = 'hover:text-primary transition-colors';
+const linkClass = 'hover:text-accent transition-colors';
 ---
 
-<footer class="border-t border-line bg-surface">
+<footer class="border-t border-primary/20 bg-primary text-surface">
   <div class="max-w-7xl mx-auto px-6 md:px-8 py-16 md:py-20">
     <div class="grid grid-cols-2 md:grid-cols-12 gap-y-10 gap-x-8">
       <div class="col-span-2 md:col-span-4">
-        <div class="font-serif text-2xl font-medium text-primary mb-4">
+        <div class="font-serif text-2xl font-medium text-surface mb-4">
           ayiti<span class="text-accent">·</span>dijital
         </div>
-        <p class="text-sm text-primary/60 leading-relaxed mb-6 max-w-sm">
+        <p class="text-sm text-surface/60 leading-relaxed mb-6 max-w-sm">
           {dict.footer.tagline}
         </p>
-        <p class="font-mono text-xs text-primary/50 leading-relaxed">
+        <p class="font-mono text-xs text-surface/45 leading-relaxed">
           {dict.footer.address_line_1}<br />
           {dict.footer.address_line_2}
         </p>
       </div>
 
       <div class="col-span-1 md:col-span-2">
-        <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-4">
+        <p class="font-mono text-xs uppercase tracking-wider text-accent mb-4">
           {dict.footer.h_projects}
         </p>
-        <ul class="space-y-2.5 text-sm text-primary/70">
+        <ul class="space-y-2.5 text-sm text-surface/70">
           <li><a href="https://lexhaiti.org" rel="noopener noreferrer" target="_blank" class={linkClass}>{dict.footer.links.lexhaiti}</a></li>
-          <li><a href={localizedPath(currentLocale, 'projects')} class={linkClass}>{dict.footer.links.domains}</a></li>
-          <li><a href={localizedPath(currentLocale, 'projects')} class={linkClass}>{dict.footer.links.civic}</a></li>
         </ul>
       </div>
 
       <div class="col-span-1 md:col-span-2">
-        <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-4">
+        <p class="font-mono text-xs uppercase tracking-wider text-accent mb-4">
           {dict.footer.h_association}
         </p>
-        <ul class="space-y-2.5 text-sm text-primary/70">
+        <ul class="space-y-2.5 text-sm text-surface/70">
           <li><a href={localizedPath(currentLocale, 'about')} class={linkClass}>{dict.footer.links.about}</a></li>
           <li><a href={localizedPath(currentLocale, 'transparency')} class={linkClass}>{dict.footer.links.transparency}</a></li>
           <li><a href={localizedPath(currentLocale, 'transparency')} class={linkClass}>{dict.footer.links.statutes}</a></li>
@@ -51,32 +49,32 @@ const linkClass = 'hover:text-primary transition-colors';
       </div>
 
       <div class="col-span-1 md:col-span-2">
-        <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-4">
+        <p class="font-mono text-xs uppercase tracking-wider text-accent mb-4">
           {dict.footer.h_contact}
         </p>
-        <ul class="space-y-2.5 text-sm text-primary/70">
+        <ul class="space-y-2.5 text-sm text-surface/70">
           <li><a href="mailto:kontakt@ayitidijital.org" class={linkClass}>{dict.footer.links.email}</a></li>
           <li><a href={localizedPath(currentLocale, 'contact')} class={linkClass}>{dict.footer.h_contact}</a></li>
         </ul>
       </div>
 
       <div class="col-span-1 md:col-span-2">
-        <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-4">
+        <p class="font-mono text-xs uppercase tracking-wider text-accent mb-4">
           {dict.footer.h_legal}
         </p>
-        <ul class="space-y-2.5 text-sm text-primary/70">
+        <ul class="space-y-2.5 text-sm text-surface/70">
           <li><a href={localizedPath(currentLocale, 'imprint')} class={linkClass}>{dict.footer.links.imprint}</a></li>
           <li><a href={localizedPath(currentLocale, 'privacy')} class={linkClass}>{dict.footer.links.privacy}</a></li>
         </ul>
       </div>
     </div>
 
-    <div class="border-t border-line mt-14 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-      <p class="font-mono text-xs text-primary/50">
+    <div class="border-t border-surface/15 mt-14 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+      <p class="font-mono text-xs text-surface/45">
         {dict.footer.copyright}
       </p>
       <p
-        class="text-xs text-primary/45 italic font-serif"
+        class="text-xs text-surface/40 italic font-serif"
         title={dict.footer.proverb_translation}
       >
         {dict.footer.proverb}
