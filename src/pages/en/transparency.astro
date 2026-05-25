@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import TransparencyPage from '../../components/TransparencyPage.astro';
+import { getDict } from '../../i18n';
+
+const locale = 'en' as const;
+const dict = getDict(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={dict.pages.transparency.title}
+  description={dict.pages.transparency.description}
+>
+  <TransparencyPage locale={locale} />
+</BaseLayout>

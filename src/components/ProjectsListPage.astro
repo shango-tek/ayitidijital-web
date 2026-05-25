@@ -1,0 +1,63 @@
+---
+import { type Locale, localizedPath, getDict } from '../i18n';
+import Container from './Container.astro';
+import SectionHeader from './SectionHeader.astro';
+import ProjectCard from './ProjectCard.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const lexhaiti = localizedPath(locale, 'lexhaiti');
+---
+
+<section class="hero-pattern">
+  <Container class="pt-20 md:pt-28 pb-12 md:pb-16">
+    <div class="max-w-3xl">
+      <SectionHeader
+        eyebrow={dict.pages.projects.eyebrow}
+        title={dict.pages.projects.h1}
+        level="h1"
+        size="xl"
+      />
+      <p class="mt-8 text-lg md:text-xl text-primary/75 font-light max-w-2xl leading-relaxed">
+        {dict.pages.projects.intro}
+      </p>
+    </div>
+  </Container>
+</section>
+
+<section class="border-t border-line bg-surface">
+  <Container class="py-16 md:py-24">
+    <div class="grid md:grid-cols-3 gap-5 md:gap-6">
+      <ProjectCard
+        status={dict.projects_section.lexhaiti.status}
+        statusKind="live"
+        year={dict.projects_section.lexhaiti.year}
+        title={dict.projects_section.lexhaiti.title}
+        description={dict.projects_section.lexhaiti.description}
+        href={lexhaiti}
+        urlLabel={dict.pages.projects.view_project}
+        meta={dict.projects_section.lexhaiti.meta}
+      />
+      <ProjectCard
+        status={dict.projects_section.domains.status}
+        statusKind="soon"
+        year={dict.projects_section.domains.year}
+        title={dict.projects_section.domains.title}
+        description={dict.projects_section.domains.description}
+        meta={dict.projects_section.domains.meta}
+      />
+      <ProjectCard
+        status={dict.projects_section.civic.status}
+        statusKind="concept"
+        year={dict.projects_section.civic.year}
+        title={dict.projects_section.civic.title}
+        description={dict.projects_section.civic.description}
+        meta={dict.projects_section.civic.meta}
+      />
+    </div>
+  </Container>
+</section>

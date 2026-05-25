@@ -1,0 +1,116 @@
+---
+import { type Locale, getDict } from '../i18n';
+import Container from './Container.astro';
+import MembershipForm from './MembershipForm.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const page = dict.pages.membership;
+const sidebar = page.sidebar;
+---
+
+<!-- Hero -->
+<section class="hero-pattern">
+  <Container class="pt-20 md:pt-28 pb-12 md:pb-16">
+    <div class="max-w-3xl">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-6 accent-line pt-3">
+        {page.eyebrow}
+      </p>
+      <h1 class="font-serif font-light text-primary tracking-tight leading-[1.05] text-5xl md:text-6xl">
+        {page.h1}
+      </h1>
+      <p class="mt-8 text-lg md:text-xl text-primary/75 font-light leading-relaxed">
+        {page.intro}
+      </p>
+    </div>
+  </Container>
+</section>
+
+<!-- Two-column body -->
+<section class="border-t border-line bg-white">
+  <Container class="py-14 md:py-20">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <!-- LEFT: form -->
+      <div class="lg:col-span-7 lg:order-1 order-2">
+        <MembershipForm locale={locale} />
+      </div>
+
+      <!-- RIGHT: sticky sidebar -->
+      <aside class="lg:col-span-5 lg:order-2 order-1">
+        <div class="lg:sticky lg:top-28 space-y-6">
+
+          <!-- Process steps -->
+          <div class="bg-primary text-surface rounded-2xl p-7 md:p-8">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-5">
+              {sidebar.process_title}
+            </p>
+            <ol class="space-y-5 list-none p-0">
+              {sidebar.process.map((step, idx) => (
+                <li class="flex items-start gap-4">
+                  <span class="font-serif text-2xl text-accent shrink-0 leading-none w-6 mt-1">
+                    {step.step}
+                  </span>
+                  <div>
+                    <p class="font-serif text-lg text-surface mb-1 leading-snug">{step.title}</p>
+                    <p class="text-sm text-surface/70 leading-relaxed">{step.body}</p>
+                  </div>
+                  {idx < sidebar.process.length - 1 && (
+                    <span class="hidden" aria-hidden="true"></span>
+                  )}
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          <!-- Member benefits -->
+          <div class="bg-surface/60 border border-line rounded-2xl p-7 md:p-8">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-5 accent-line pt-3">
+              {sidebar.benefits_title}
+            </p>
+            <ul class="space-y-3 list-none p-0">
+              {sidebar.benefits.map((b) => (
+                <li class="flex items-start gap-3 text-sm text-primary/80 leading-relaxed">
+                  <span class="text-accent-deep mt-1.5 leading-none" aria-hidden="true">→</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <!-- Dues breakdown -->
+          <div class="bg-white border border-line rounded-2xl p-7 md:p-8">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3 accent-line pt-3">
+              {sidebar.fees_title}
+            </p>
+            <p class="text-sm text-primary/65 mb-6 leading-relaxed">
+              {sidebar.fees_intro}
+            </p>
+            <ul class="space-y-3.5 list-none p-0">
+              {sidebar.fees.map((f) => (
+                <li>
+                  <div class="flex items-baseline justify-between gap-4 mb-1.5">
+                    <span class="text-sm text-primary/80 leading-snug">{f.label}</span>
+                    <span class="font-mono text-xs text-accent-deep shrink-0">{f.value}</span>
+                  </div>
+                  <div class="h-1 bg-line rounded-full overflow-hidden">
+                    <div
+                      class="h-full bg-accent rounded-full"
+                      style={`width:${f.value}`}
+                    ></div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+        </div>
+      </aside>
+
+    </div>
+  </Container>
+</section>

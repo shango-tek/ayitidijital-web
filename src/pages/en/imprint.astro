@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ImprintPage from '../../components/ImprintPage.astro';
+import { getDict } from '../../i18n';
+
+const locale = 'en' as const;
+const dict = getDict(locale);
+const p = dict.pages.imprint;
+---
+
+<BaseLayout
+  locale={locale}
+  title={p.title}
+  description={p.description}
+>
+  <ImprintPage locale={locale} />
+</BaseLayout>

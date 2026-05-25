@@ -1,0 +1,402 @@
+---
+import { type Locale, localizedPath, getDict } from '../i18n';
+import Container from './Container.astro';
+import SectionHeader from './SectionHeader.astro';
+import Button from './Button.astro';
+import ProjectCard from './ProjectCard.astro';
+import StatBlock from './StatBlock.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const projects = localizedPath(locale, 'projects');
+const lexhaiti = localizedPath(locale, 'lexhaiti');
+const about = localizedPath(locale, 'about');
+const support = localizedPath(locale, 'support');
+const membership = localizedPath(locale, 'membership');
+---
+
+<!-- HERO -->
+<section class="hero-pattern relative overflow-hidden">
+  <Container class="pt-20 md:pt-28 pb-24 md:pb-32">
+    <div class="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+      <!-- Left: Text -->
+      <div class="lg:col-span-7">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-8">
+          {dict.hero.eyebrow}
+        </p>
+        <h1 class="font-serif font-light leading-[0.95] tracking-tight text-primary mb-10 text-[3rem] sm:text-6xl md:text-7xl lg:text-[5.5rem]">
+          {dict.hero.title_line_1}<br />
+          <span class="italic font-normal text-accent-deep">{dict.hero.title_accent}</span><br />
+          {dict.hero.title_line_3}
+        </h1>
+        <p class="text-lg md:text-xl text-primary/75 font-light max-w-xl leading-relaxed">
+          {dict.hero.subtitle}
+        </p>
+
+        <div class="mt-12 md:mt-14 flex flex-wrap items-center gap-x-6 gap-y-4">
+          <Button href={projects} variant="primary" size="lg" arrow>
+            {dict.hero.cta_primary}
+          </Button>
+          <Button href="#mission" variant="underline" arrow>
+            {dict.hero.cta_secondary}
+          </Button>
+        </div>
+      </div>
+
+      <!-- Right: Digital Palm Tree — Haiti's symbol of liberty, rendered as digital infrastructure -->
+      <div class="lg:col-span-5 relative hidden lg:block">
+        <div class="relative aspect-[4/5] max-w-md ml-auto">
+          <!-- Subtle ambient glow behind tree -->
+          <div class="absolute inset-x-8 inset-y-12 bg-gradient-to-b from-accent/10 via-accent/5 to-transparent rounded-full blur-3xl"></div>
+
+          <svg
+            viewBox="0 0 400 500"
+            class="relative w-full h-full"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            role="img"
+            aria-label="Stylized palm tree — Haiti's tree of liberty, rendered as a digital network"
+          >
+            <!-- Background sun/aura concentric rings -->
+            <circle cx="200" cy="170" r="170" stroke="currentColor" stroke-width="1" stroke-dasharray="2 8" class="text-primary/8" />
+            <circle cx="200" cy="170" r="125" stroke="currentColor" stroke-width="1" class="text-primary/10" />
+            <circle cx="200" cy="170" r="80" stroke="currentColor" stroke-width="1" stroke-dasharray="1 4" class="text-primary/14" />
+
+            <!-- ─── FRONDS: 7 palm leaves radiating from crown ─── -->
+            <!-- Each frond: thin spine with dotted "leaflets" along its length -->
+            <g class="text-primary/55">
+              <!-- Top-center frond (vertical, slightly arched) -->
+              <path d="M 200 170 Q 200 80 195 30" stroke="currentColor" stroke-width="1.25" fill="none" />
+              <!-- Upper-left frond -->
+              <path d="M 200 170 Q 145 90 80 55" stroke="currentColor" stroke-width="1.25" fill="none" />
+              <!-- Upper-right frond -->
+              <path d="M 200 170 Q 255 90 320 55" stroke="currentColor" stroke-width="1.25" fill="none" />
+              <!-- Mid-left frond (more horizontal) -->
+              <path d="M 200 170 Q 120 145 30 130" stroke="currentColor" stroke-width="1.25" fill="none" />
+              <!-- Mid-right frond -->
+              <path d="M 200 170 Q 280 145 370 130" stroke="currentColor" stroke-width="1.25" fill="none" />
+              <!-- Lower-left frond (drooping) -->
+              <path d="M 200 170 Q 130 200 60 230" stroke="currentColor" stroke-width="1.25" fill="none" />
+              <!-- Lower-right frond (drooping) -->
+              <path d="M 200 170 Q 270 200 340 230" stroke="currentColor" stroke-width="1.25" fill="none" />
+            </g>
+
+            <!-- ─── LEAFLETS: dots arranged along each frond spine ─── -->
+            <g class="text-primary">
+              <!-- Top frond leaflets -->
+              <circle cx="200" cy="140" r="1.75" fill="currentColor" />
+              <circle cx="198" cy="110" r="1.75" fill="currentColor" />
+              <circle cx="196" cy="80" r="1.75" fill="currentColor" />
+              <circle cx="195" cy="50" r="1.75" fill="currentColor" />
+
+              <!-- Upper-left frond leaflets -->
+              <circle cx="175" cy="150" r="1.75" fill="currentColor" />
+              <circle cx="150" cy="125" r="1.75" fill="currentColor" />
+              <circle cx="125" cy="100" r="1.75" fill="currentColor" />
+              <circle cx="100" cy="80" r="1.75" fill="currentColor" />
+
+              <!-- Upper-right frond leaflets -->
+              <circle cx="225" cy="150" r="1.75" fill="currentColor" />
+              <circle cx="250" cy="125" r="1.75" fill="currentColor" />
+              <circle cx="275" cy="100" r="1.75" fill="currentColor" />
+              <circle cx="300" cy="80" r="1.75" fill="currentColor" />
+
+              <!-- Mid-left frond leaflets -->
+              <circle cx="170" cy="160" r="1.75" fill="currentColor" />
+              <circle cx="135" cy="150" r="1.75" fill="currentColor" />
+              <circle cx="100" cy="142" r="1.75" fill="currentColor" />
+              <circle cx="65" cy="135" r="1.75" fill="currentColor" />
+
+              <!-- Mid-right frond leaflets -->
+              <circle cx="230" cy="160" r="1.75" fill="currentColor" />
+              <circle cx="265" cy="150" r="1.75" fill="currentColor" />
+              <circle cx="300" cy="142" r="1.75" fill="currentColor" />
+              <circle cx="335" cy="135" r="1.75" fill="currentColor" />
+
+              <!-- Lower-left frond leaflets -->
+              <circle cx="175" cy="180" r="1.75" fill="currentColor" />
+              <circle cx="145" cy="195" r="1.75" fill="currentColor" />
+              <circle cx="115" cy="210" r="1.75" fill="currentColor" />
+              <circle cx="85" cy="222" r="1.75" fill="currentColor" />
+
+              <!-- Lower-right frond leaflets -->
+              <circle cx="225" cy="180" r="1.75" fill="currentColor" />
+              <circle cx="255" cy="195" r="1.75" fill="currentColor" />
+              <circle cx="285" cy="210" r="1.75" fill="currentColor" />
+              <circle cx="315" cy="222" r="1.75" fill="currentColor" />
+            </g>
+
+            <!-- ─── BRONZE ACCENT: frond tips (the "coconuts" / data outputs) ─── -->
+            <g class="text-accent">
+              <circle cx="195" cy="30" r="4" fill="currentColor" />
+              <circle cx="80" cy="55" r="4" fill="currentColor" />
+              <circle cx="320" cy="55" r="4" fill="currentColor" />
+              <circle cx="30" cy="130" r="3.5" fill="currentColor" />
+              <circle cx="370" cy="130" r="3.5" fill="currentColor" />
+              <circle cx="60" cy="230" r="3" fill="currentColor" />
+              <circle cx="340" cy="230" r="3" fill="currentColor" />
+
+              <!-- Bronze rings around top tips (subtle glow) -->
+              <circle cx="195" cy="30" r="8" stroke="currentColor" stroke-width="1" fill="none" opacity="0.5">
+                <animate attributeName="r" values="8;11;8" dur="3.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.5;0.15;0.5" dur="3.5s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="80" cy="55" r="7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4">
+                <animate attributeName="r" values="7;10;7" dur="4s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.4;0.1;0.4" dur="4s" repeatCount="indefinite" />
+              </circle>
+              <circle cx="320" cy="55" r="7" stroke="currentColor" stroke-width="1" fill="none" opacity="0.4">
+                <animate attributeName="r" values="7;10;7" dur="4.5s" repeatCount="indefinite" />
+                <animate attributeName="opacity" values="0.4;0.1;0.4" dur="4.5s" repeatCount="indefinite" />
+              </circle>
+            </g>
+
+            <!-- ─── TRUNK: vertical column with segmented rings (palm bark) ─── -->
+            <!-- Spine line -->
+            <line x1="200" y1="170" x2="200" y2="440" stroke="currentColor" stroke-width="1.5" class="text-primary/70" />
+
+            <!-- Bark segments (horizontal ticks) -->
+            <g class="text-primary/40" stroke="currentColor" stroke-width="1">
+              <line x1="192" y1="200" x2="208" y2="200" />
+              <line x1="190" y1="230" x2="210" y2="230" />
+              <line x1="188" y1="260" x2="212" y2="260" />
+              <line x1="187" y1="290" x2="213" y2="290" />
+              <line x1="186" y1="320" x2="214" y2="320" />
+              <line x1="185" y1="350" x2="215" y2="350" />
+              <line x1="184" y1="380" x2="216" y2="380" />
+              <line x1="183" y1="410" x2="217" y2="410" />
+            </g>
+
+            <!-- Trunk "data nodes" labelled with project slugs -->
+            <g class="text-accent-deep">
+              <circle cx="200" cy="230" r="3" fill="currentColor" />
+              <text x="220" y="234" font-size="8" font-family="JetBrains Mono, monospace" class="fill-current">lex</text>
+
+              <circle cx="200" cy="320" r="3" fill="currentColor" />
+              <text x="220" y="324" font-size="8" font-family="JetBrains Mono, monospace" class="fill-current">·ht</text>
+
+              <circle cx="200" cy="410" r="3" fill="currentColor" />
+              <text x="220" y="414" font-size="8" font-family="JetBrains Mono, monospace" class="fill-current">data</text>
+            </g>
+
+            <!-- ─── CROWN: where fronds meet trunk ─── -->
+            <circle cx="200" cy="170" r="6" fill="currentColor" class="text-primary" />
+            <circle cx="200" cy="170" r="12" stroke="currentColor" stroke-width="1.5" fill="none" class="text-accent" />
+
+            <!-- ─── GROUND: dotted horizon line ─── -->
+            <line x1="80" y1="455" x2="320" y2="455" stroke="currentColor" stroke-width="1" stroke-dasharray="2 4" class="text-primary/25" />
+
+            <!-- Roots: subtle downward dots -->
+            <g class="text-primary/30">
+              <circle cx="200" cy="445" r="2" fill="currentColor" />
+              <circle cx="180" cy="460" r="1.5" fill="currentColor" />
+              <circle cx="220" cy="460" r="1.5" fill="currentColor" />
+              <circle cx="165" cy="470" r="1" fill="currentColor" />
+              <circle cx="235" cy="470" r="1" fill="currentColor" />
+            </g>
+
+            <!-- Mono micro-labels (subtle) -->
+            <text x="195" y="490" text-anchor="middle" font-size="7" font-family="JetBrains Mono, monospace" class="fill-primary/40" letter-spacing="2">
+              FOUNDATION
+            </text>
+          </svg>
+
+          <!-- Caption beneath illustration -->
+          <div class="absolute -bottom-2 left-0 right-0 text-center">
+            <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-primary/40">
+              digital · public · infrastructure
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- MISSION -->
+<section id="mission" class="border-t border-line bg-white">
+  <Container class="py-20 md:py-28 grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-4">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4 accent-line pt-3">
+        {dict.mission.eyebrow}
+      </p>
+    </div>
+    <div class="md:col-span-8">
+      <p class="font-serif text-2xl md:text-3xl lg:text-4xl leading-snug text-primary font-light">
+        {dict.mission.headline_pre}<em class="font-normal not-italic text-accent-deep">{dict.mission.headline_accent}</em>{dict.mission.headline_post}
+      </p>
+      <p class="mt-8 text-base md:text-lg text-primary/70 leading-relaxed max-w-3xl">
+        {dict.mission.body}
+      </p>
+      <div class="mt-10">
+        <Button href={about} variant="underline" arrow>
+          {dict.nav.qui_sommes_nous}
+        </Button>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- PROJECTS -->
+<section id="projets" class="border-t border-line bg-surface">
+  <Container class="py-20 md:py-28">
+    <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-12 md:mb-16 gap-6">
+      <SectionHeader
+        eyebrow={dict.projects_section.eyebrow}
+        title={dict.projects_section.title}
+        size="lg"
+      />
+      <Button href={projects} variant="underline" arrow>
+        {dict.projects_section.all_link}
+      </Button>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-5 md:gap-6">
+      <ProjectCard
+        status={dict.projects_section.lexhaiti.status}
+        statusKind="live"
+        year={dict.projects_section.lexhaiti.year}
+        title={dict.projects_section.lexhaiti.title}
+        description={dict.projects_section.lexhaiti.description}
+        href={lexhaiti}
+        urlLabel={dict.projects_section.lexhaiti.url_label}
+        meta={dict.projects_section.lexhaiti.meta}
+      />
+      <ProjectCard
+        status={dict.projects_section.domains.status}
+        statusKind="soon"
+        year={dict.projects_section.domains.year}
+        title={dict.projects_section.domains.title}
+        description={dict.projects_section.domains.description}
+        meta={dict.projects_section.domains.meta}
+      />
+      <ProjectCard
+        status={dict.projects_section.civic.status}
+        statusKind="concept"
+        year={dict.projects_section.civic.year}
+        title={dict.projects_section.civic.title}
+        description={dict.projects_section.civic.description}
+        meta={dict.projects_section.civic.meta}
+      />
+    </div>
+  </Container>
+</section>
+
+<!-- STATS -->
+<section class="border-t border-line bg-primary text-surface">
+  <Container class="py-20 md:py-24">
+    <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent mb-12 md:mb-16">
+      {dict.impact.eyebrow}
+    </p>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-10 md:gap-12">
+      {dict.impact.stats.map((s) => (
+        <StatBlock
+          valueMain={s.value_main}
+          valueAccent={s.value_accent}
+          valueSuffix={'value_suffix' in s ? (s as any).value_suffix : undefined}
+          label={s.label}
+        />
+      ))}
+    </div>
+  </Container>
+</section>
+
+<!-- SOUTENIR -->
+<section id="soutenir" class="border-t border-line bg-surface">
+  <Container class="py-20 md:py-28 grid md:grid-cols-12 gap-12">
+    <div class="md:col-span-5">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4 accent-line pt-3">
+        {dict.soutenir.eyebrow}
+      </p>
+      <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-primary tracking-tight leading-[1.05] mb-8">
+        {dict.soutenir.headline_pre_line_1}<br />
+        {dict.soutenir.headline_pre_line_2}<br />
+        <em class="text-accent-deep">{dict.soutenir.headline_accent}</em>.
+      </h2>
+      <p class="text-base md:text-lg text-primary/70 leading-relaxed">
+        {dict.soutenir.body}
+      </p>
+    </div>
+    <div class="md:col-span-7 bg-white border border-line rounded-2xl p-8 md:p-10">
+      <h3 class="font-serif text-2xl font-medium text-primary mb-6">{dict.soutenir.card_title}</h3>
+      <div class="space-y-7">
+        <div class="border-l-2 border-accent pl-6">
+          <p class="font-medium text-primary mb-1">{dict.soutenir.sepa.title}</p>
+          <p class="text-sm text-primary/60 mb-2">{dict.soutenir.sepa.subtitle}</p>
+          <p class="font-mono text-sm text-primary">{dict.soutenir.sepa.iban}</p>
+          <p class="font-mono text-xs text-primary/50 mt-1">{dict.soutenir.sepa.bic}</p>
+        </div>
+        <div class="border-l-2 border-line pl-6">
+          <p class="font-medium text-primary mb-1">{dict.soutenir.stripe.title}</p>
+          <p class="text-sm text-primary/60 mb-3">{dict.soutenir.stripe.subtitle}</p>
+          <Button href={support} variant="underline" arrow>{dict.soutenir.stripe.cta}</Button>
+        </div>
+        <div class="border-l-2 border-line pl-6">
+          <p class="font-medium text-primary mb-1">{dict.soutenir.membership.title}</p>
+          <p class="text-sm text-primary/60 mb-3">{dict.soutenir.membership.subtitle}</p>
+          <Button href={membership} variant="underline" arrow>{dict.soutenir.membership.cta}</Button>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- PARTNERS — only rendered when at least one partner is featured in i18n.partners.slots -->
+{dict.partners.slots.length > 0 && (
+  <section id="partenaires" class="border-t border-line bg-white">
+    <Container class="py-20 md:py-28">
+      <div class="grid md:grid-cols-12 gap-12 mb-12 md:mb-16">
+        <div class="md:col-span-4">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+            {dict.partners.eyebrow}
+          </p>
+        </div>
+        <div class="md:col-span-8">
+          <h2 class="font-serif text-4xl md:text-5xl lg:text-6xl font-light text-primary tracking-tight leading-[1.05] mb-6">
+            {dict.partners.title}
+          </h2>
+          <p class="text-lg text-primary/70 leading-relaxed max-w-2xl">
+            {dict.partners.intro}
+          </p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-px bg-line border border-line rounded-2xl overflow-hidden">
+        {dict.partners.slots.map((slot) => (
+          <div class="bg-surface aspect-square flex flex-col items-center justify-center p-6 text-center hover:bg-white transition-colors group">
+            <div class="font-serif text-3xl md:text-4xl font-light text-primary/70 group-hover:text-primary transition-colors mb-3">
+              {slot.name.split(' ').slice(0, 2).map(w => w[0]).join('').toUpperCase()}
+            </div>
+            <p class="font-mono text-[10px] uppercase tracking-wider text-primary/60 leading-tight mb-1">
+              {slot.name}
+            </p>
+            <p class="font-mono text-[9px] uppercase tracking-wider text-accent-deep/70 leading-tight">
+              {slot.category}
+            </p>
+          </div>
+        ))}
+      </div>
+
+      <div class="mt-12 md:mt-16 grid md:grid-cols-12 gap-8 items-end pt-12 border-t border-line">
+        <div class="md:col-span-8">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">
+            {dict.partners.cta_label}
+          </p>
+          <p class="text-lg md:text-xl text-primary/80 font-light leading-relaxed max-w-2xl">
+            {dict.partners.cta_body}
+          </p>
+        </div>
+        <div class="md:col-span-4 md:text-right">
+          <Button href={localizedPath(locale, 'contact')} variant="primary" arrow>
+            {dict.partners.cta_label}
+          </Button>
+        </div>
+      </div>
+    </Container>
+  </section>
+)}

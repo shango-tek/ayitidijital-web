@@ -1,0 +1,76 @@
+---
+interface Props {
+  status: string;
+  statusKind?: 'live' | 'soon' | 'concept';
+  year: string;
+  title: string;
+  description: string;
+  href?: string;
+  external?: boolean;
+  urlLabel?: string;
+  meta?: string;
+}
+
+const {
+  status,
+  statusKind = 'soon',
+  year,
+  title,
+  description,
+  href,
+  external = false,
+  urlLabel,
+  meta,
+} = Astro.props;
+
+const statusDot = statusKind === 'live' ? '●' : '○';
+const statusColor =
+  statusKind === 'live' ? 'text-accent-deep' : 'text-primary/40';
+const cardOpacity = statusKind === 'live' ? '' : 'opacity-95';
+const cardBase =
+  'card-hover bg-white border border-line p-8 md:p-10 flex flex-col rounded-2xl h-full';
+
+const target = external ? '_blank' : undefined;
+const rel = external ? 'noopener noreferrer' : undefined;
+---
+
+{
+  href ? (
+    <a href={href} class={`${cardBase} ${cardOpacity} group`} target={target} rel={rel}>
+      <div class="flex items-center justify-between mb-8">
+        <span class={`font-mono text-xs uppercase tracking-wider ${statusColor}`}>
+          {statusDot} {status}
+        </span>
+        <span class="text-xs text-primary/40 font-mono">{year}</span>
+      </div>
+      <h3 class="font-serif text-2xl md:text-3xl font-medium text-primary mb-4 leading-tight">
+        {title}
+      </h3>
+      <p class="text-primary/70 leading-relaxed mb-8 flex-grow text-[15px]">
+        {description}
+      </p>
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-primary font-medium group-hover:text-accent-deep transition-colors">
+          {urlLabel ?? 'En savoir plus'} →
+        </span>
+        {meta && <span class="font-mono text-xs text-primary/50">{meta}</span>}
+      </div>
+    </a>
+  ) : (
+    <div class={`${cardBase} ${cardOpacity}`}>
+      <div class="flex items-center justify-between mb-8">
+        <span class={`font-mono text-xs uppercase tracking-wider ${statusColor}`}>
+          {statusDot} {status}
+        </span>
+        <span class="text-xs text-primary/40 font-mono">{year}</span>
+      </div>
+      <h3 class="font-serif text-2xl md:text-3xl font-medium text-primary mb-4 leading-tight">
+        {title}
+      </h3>
+      <p class="text-primary/70 leading-relaxed mb-8 flex-grow text-[15px]">
+        {description}
+      </p>
+      {meta && <div class="text-sm text-primary/40 font-mono">{meta}</div>}
+    </div>
+  )
+}

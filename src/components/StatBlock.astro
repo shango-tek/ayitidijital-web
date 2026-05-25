@@ -1,0 +1,21 @@
+---
+interface Props {
+  valueMain: string;
+  valueAccent?: string;
+  valueSuffix?: string;
+  label: string;
+}
+
+const { valueMain, valueAccent, valueSuffix, label } = Astro.props;
+---
+
+<div>
+  <p class="font-serif text-5xl md:text-6xl font-light mb-3 leading-none tracking-tight">
+    {valueMain}
+    {valueAccent && <span class="text-accent">{valueAccent}</span>}
+    {valueSuffix && <span>{valueSuffix}</span>}
+  </p>
+  <p class="text-surface/70 text-xs md:text-sm uppercase tracking-wider font-mono leading-snug">
+    {label}
+  </p>
+</div>

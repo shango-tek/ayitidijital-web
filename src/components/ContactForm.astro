@@ -1,0 +1,70 @@
+---
+import { type Locale, getDict } from '../i18n';
+import FormField from './FormField.astro';
+import Button from './Button.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const form = dict.contact_form;
+---
+
+<form
+  action={`/api/contact`}
+  method="POST"
+  class="space-y-6"
+  data-contact-form
+  novalidate
+>
+  <FormField label={form.name} name="name" required autocomplete="name" />
+  <FormField label={form.email} name="email" type="email" required autocomplete="email" />
+  <FormField label={form.subject} name="subject" required />
+  <FormField
+    label={form.message}
+    name="message"
+    type="textarea"
+    required
+    rows={6}
+  />
+
+  <div data-form-status class="hidden bg-surface border border-accent rounded-xl p-6">
+    <p class="font-serif text-xl text-primary mb-1">{form.success_title}</p>
+    <p class="text-primary/70 text-sm">{form.success_body}</p>
+  </div>
+
+  <div class="pt-2">
+    <Button type="submit" variant="primary" size="lg" arrow>
+      {form.submit}
+    </Button>
+  </div>
+</form>
+
+<script>
+  const form = document.querySelector('[data-contact-form]') as HTMLFormElement | null;
+  if (form) {
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = form.querySelector('[data-form-status]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      try {
+        if (submitBtn) submitBtn.setAttribute('disabled', 'true');
+        const data = new FormData(form);
+        try {
+          await fetch(form.action, { method: 'POST', body: data });
+        } catch (_) {
+          /* swallow — endpoint may not be available in static builds */
+        }
+        status?.classList.remove('hidden');
+        form.reset();
+        status?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (submitBtn) submitBtn.removeAttribute('disabled');
+      }
+    });
+  }
+</script>

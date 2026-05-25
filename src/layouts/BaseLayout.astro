@@ -1,0 +1,125 @@
+---
+import '../styles/global.css';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import {
+  type Locale,
+  getDict,
+  getLocaleFromUrl,
+  LOCALES,
+  alternatePath,
+} from '../i18n';
+
+interface Props {
+  title?: string;
+  description?: string;
+  locale?: Locale;
+  ogImage?: string;
+}
+
+const detectedLocale = getLocaleFromUrl(Astro.url);
+const {
+  title,
+  description,
+  locale = detectedLocale,
+  ogImage = '/og-default.png',
+} = Astro.props;
+
+const dict = getDict(locale);
+const siteName = dict.meta.site_name;
+const fullTitle = title ? `${title} — ${siteName}` : `${siteName} — ${dict.hero.title_line_1} ${dict.hero.title_accent}`;
+const metaDesc = description ?? dict.meta.default_description;
+
+const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://ayitidijital.org').toString();
+const ogImageUrl = new URL(ogImage, Astro.site ?? 'https://ayitidijital.org').toString();
+
+const htmlLang =
+  locale === 'fr' ? 'fr-FR' : locale === 'ht' ? 'ht' : 'en';
+
+const orgSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'NonprofitOrganization',
+  name: 'Ayiti Dijital e.V.',
+  alternateName: 'Ayiti Dijital',
+  url: 'https://ayitidijital.org',
+  email: 'kontakt@ayitidijital.org',
+  description: dict.meta.default_description,
+  foundingDate: '2026',
+  foundingLocation: {
+    '@type': 'Place',
+    name: 'Munich, Germany',
+  },
+  address: {
+    '@type': 'PostalAddress',
+    addressLocality: 'Munich',
+    addressCountry: 'DE',
+  },
+  inLanguage: ['fr', 'ht', 'en'],
+};
+---
+
+<!doctype html>
+<html lang={htmlLang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="generator" content={Astro.generator} />
+
+    <title>{fullTitle}</title>
+    <meta name="description" content={metaDesc} />
+    <link rel="canonical" href={canonical} />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="alternate icon" href="/favicon.ico" />
+
+    {LOCALES.map((loc) => {
+      const href = new URL(alternatePath(Astro.url, loc), Astro.site ?? 'https://ayitidijital.org').toString();
+      return <link rel="alternate" hreflang={loc} href={href} />;
+    })}
+    <link rel="alternate" hreflang="x-default" href={new URL(alternatePath(Astro.url, 'fr'), Astro.site ?? 'https://ayitidijital.org').toString()} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={metaDesc} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:locale" content={htmlLang.replace('-', '_')} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={metaDesc} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <meta name="theme-color" content="#0B2545" />
+    <meta name="format-detection" content="telephone=no" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300..900&family=Inter:wght@300..700&family=JetBrains+Mono:wght@400..600&display=swap"
+    />
+
+    <script type="application/ld+json" set:html={JSON.stringify(orgSchema)} />
+  </head>
+
+  <body class="bg-surface text-[#1A1A1A] antialiased min-h-screen flex flex-col">
+    <a
+      href="#main"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-50 focus:bg-primary focus:text-surface focus:px-4 focus:py-2 focus:rounded-full focus:shadow-lg"
+    >
+      Skip to content
+    </a>
+
+    <Nav currentLocale={locale} />
+
+    <main id="main" class="flex-1">
+      <slot />
+    </main>
+
+    <Footer currentLocale={locale} />
+  </body>
+</html>

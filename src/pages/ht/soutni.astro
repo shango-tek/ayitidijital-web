@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import SupportPage from '../../components/SupportPage.astro';
+import { getDict } from '../../i18n';
+
+const locale = 'ht' as const;
+const dict = getDict(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={dict.soutenir.page_title}
+  description={dict.soutenir.page_description}
+>
+  <SupportPage locale={locale} />
+</BaseLayout>

@@ -1,0 +1,160 @@
+---
+import { type Locale, getDict } from '../i18n';
+import Container from './Container.astro';
+import SectionHeader from './SectionHeader.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const page = dict.pages.about;
+---
+
+<section class="hero-pattern">
+  <Container class="pt-20 md:pt-28 pb-16 md:pb-20">
+    <div class="max-w-4xl">
+      <SectionHeader
+        eyebrow={page.eyebrow}
+        title={page.h1}
+        level="h1"
+        size="lg"
+      />
+      <p class="mt-8 text-lg md:text-xl text-primary/75 font-light max-w-2xl leading-relaxed">
+        {page.intro}
+      </p>
+    </div>
+  </Container>
+</section>
+
+<!-- MISSION -->
+<section class="border-t border-line bg-white">
+  <Container class="py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4 accent-line pt-3">
+          {page.mission_title}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <p class="font-serif text-2xl md:text-3xl leading-snug text-primary font-light">
+          {page.mission_body}
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- VISION -->
+<section class="border-t border-line bg-white">
+  <Container class="py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-12">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-4 accent-line pt-3">
+          {page.vision_title}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <p class="font-serif text-2xl md:text-3xl leading-snug text-primary font-light">
+          {page.vision_body}
+        </p>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- STRUCTURE: dual-entity model (e.V. + future GmbH) -->
+<section class="border-t border-line bg-surface">
+  <Container class="py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-12 mb-12 md:mb-16">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          {page.structure_title}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <p class="font-serif text-xl md:text-2xl leading-snug text-primary font-light">
+          {page.structure_intro}
+        </p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+      {page.structure_entities.map((entity, idx) => (
+        <article class={`bg-white border rounded-2xl p-8 md:p-10 card-hover ${idx === 0 ? 'border-primary/20' : 'border-line'}`}>
+          <!-- Header row: status pill + index -->
+          <div class="flex items-center justify-between mb-6">
+            <span class={`font-mono text-xs uppercase tracking-wider ${idx === 0 ? 'text-accent-deep' : 'text-primary/40'}`}>
+              {idx === 0 ? '●' : '○'} {entity.status}
+            </span>
+            <span class="font-mono text-xs text-primary/30">0{idx + 1}</span>
+          </div>
+
+          <!-- Entity name -->
+          <h3 class="font-serif text-2xl md:text-3xl font-medium text-primary mb-2">
+            {entity.name}
+          </h3>
+
+          <!-- Entity type -->
+          <p class="font-mono text-xs uppercase tracking-wider text-primary/50 mb-6">
+            {entity.type}
+          </p>
+
+          <!-- Role description -->
+          <p class="text-primary/75 leading-relaxed mb-8">
+            {entity.role}
+          </p>
+
+          <!-- Location footer -->
+          <div class="pt-6 border-t border-line">
+            <p class="font-mono text-xs text-primary/40">
+              {entity.location}
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>
+
+<!-- PRINCIPLES -->
+<section class="border-t border-line bg-white">
+  <Container class="py-20 md:py-28">
+    <div class="mb-12 md:mb-16">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+        {page.principles_title}
+      </p>
+    </div>
+    <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+      {page.principles.map((p) => (
+        <div class="bg-white border border-line rounded-2xl p-8 md:p-10 card-hover">
+          <h3 class="font-serif text-2xl font-medium text-primary mb-3">{p.title}</h3>
+          <p class="text-primary/70 leading-relaxed">{p.body}</p>
+        </div>
+      ))}
+    </div>
+  </Container>
+</section>
+
+<section class="border-t border-line bg-white">
+  <Container class="py-20 md:py-28">
+    <div class="mb-12 md:mb-16">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+        {page.team_title}
+      </p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-6 md:gap-8">
+      {page.team.map((member) => (
+        <article class="bg-surface/60 border border-line rounded-2xl p-8 card-hover">
+          <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mb-5">
+            <span class="font-serif text-xl text-primary">{member.name.split(' ').map(n => n[0]).join('')}</span>
+          </div>
+          <h3 class="font-serif text-xl font-medium text-primary mb-1">{member.name}</h3>
+          <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-4">{member.role}</p>
+          <p class="text-sm text-primary/70 leading-relaxed">{member.bio}</p>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>

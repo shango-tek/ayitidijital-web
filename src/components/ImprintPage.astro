@@ -1,0 +1,273 @@
+---
+import { type Locale, getDict } from '../i18n';
+import Container from './Container.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const p = dict.pages.imprint;
+
+// Build the section list once — keeps TOC and main content in sync.
+const sections = [
+  {
+    id: 'publisher',
+    number: '01',
+    title: p.publisher_title,
+    subtitle: undefined as string | undefined,
+  },
+  {
+    id: 'representative',
+    number: '02',
+    title: p.representative_title,
+    subtitle: undefined,
+  },
+  {
+    id: 'contact',
+    number: '03',
+    title: p.contact_title,
+    subtitle: undefined,
+  },
+  {
+    id: 'responsible',
+    number: '04',
+    title: p.responsible_title,
+    subtitle: p.responsible_subtitle,
+  },
+  {
+    id: 'liability',
+    number: '05',
+    title: p.liability_title,
+    subtitle: undefined,
+  },
+  {
+    id: 'copyright',
+    number: '06',
+    title: p.copyright_title,
+    subtitle: undefined,
+  },
+  {
+    id: 'dispute',
+    number: '07',
+    title: p.dispute_title,
+    subtitle: undefined,
+  },
+];
+---
+
+<!-- Hero / page header -->
+<section class="hero-pattern print:bg-transparent print:hero-pattern-none">
+  <Container class="pt-20 md:pt-28 pb-12 md:pb-16">
+    <div class="max-w-3xl">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-6 accent-line pt-3">
+        {p.eyebrow}
+      </p>
+      <h1 class="font-serif font-light text-primary tracking-tight leading-[1.05] text-5xl md:text-6xl">
+        {p.h1}
+      </h1>
+      <p class="mt-8 text-lg md:text-xl text-primary/75 font-light leading-relaxed">
+        {p.intro}
+      </p>
+      <p class="mt-10 font-mono text-xs uppercase tracking-wider text-primary/40">
+        {p.last_updated_label}
+        <span class="text-accent-deep ml-2">·</span>
+        <span class="text-primary/70 ml-2 normal-case tracking-normal">{p.last_updated_value}</span>
+      </p>
+    </div>
+  </Container>
+</section>
+
+<!-- Main body: TOC + sections -->
+<section class="border-t border-line bg-white print:border-none print:bg-transparent">
+  <Container class="py-14 md:py-20">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <!-- TOC (left, sticky on desktop, hidden on print) -->
+      <aside class="lg:col-span-3 print:hidden" aria-label={p.toc_title}>
+        <div class="lg:sticky lg:top-28">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-5 accent-line pt-3">
+            {p.toc_title}
+          </p>
+          <nav>
+            <ol class="space-y-3 text-sm">
+              {sections.map((s) => (
+                <li>
+                  <a
+                    href={`#${s.id}`}
+                    data-toc-link={s.id}
+                    class="group flex items-start gap-3 text-primary/65 hover:text-primary transition-colors"
+                  >
+                    <span class="font-mono text-[10px] uppercase tracking-wider text-primary/40 group-hover:text-accent-deep transition-colors mt-1 shrink-0">
+                      § {s.number}
+                    </span>
+                    <span class="leading-snug">{s.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Sections (right) -->
+      <article class="lg:col-span-9 max-w-3xl">
+        <div class="space-y-14 md:space-y-16">
+
+          <!-- 01 Publisher -->
+          <section id="publisher" class="scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 01</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.publisher_title}
+            </h2>
+            <dl class="grid sm:grid-cols-[10rem_1fr] gap-y-3 gap-x-6 text-base">
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.publisher_dl.name_label}</dt>
+              <dd class="text-primary leading-relaxed">{p.publisher_dl.name_value}</dd>
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.publisher_dl.status_label}</dt>
+              <dd class="text-primary/80 leading-relaxed">{p.publisher_dl.status_value}</dd>
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.publisher_dl.address_label}</dt>
+              <dd class="text-primary/80 leading-relaxed">{p.publisher_dl.address_value}</dd>
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.publisher_dl.registry_label}</dt>
+              <dd class="text-primary/80 leading-relaxed font-mono text-sm">{p.publisher_dl.registry_value}</dd>
+            </dl>
+          </section>
+
+          <!-- 02 Representative -->
+          <section id="representative" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 02</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.representative_title}
+            </h2>
+            <dl class="grid sm:grid-cols-[10rem_1fr] gap-y-3 gap-x-6 text-base">
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.representative_dl.name_label}</dt>
+              <dd class="text-primary leading-relaxed">{p.representative_dl.name_value}</dd>
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.representative_dl.role_label}</dt>
+              <dd class="text-primary/80 leading-relaxed">{p.representative_dl.role_value}</dd>
+            </dl>
+          </section>
+
+          <!-- 03 Contact -->
+          <section id="contact" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 03</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.contact_title}
+            </h2>
+            <dl class="grid sm:grid-cols-[10rem_1fr] gap-y-3 gap-x-6 text-base">
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.contact_dl.email_label}</dt>
+              <dd class="leading-relaxed">
+                <a
+                  href={`mailto:${p.contact_dl.email_value}`}
+                  class="text-primary underline underline-offset-4 decoration-accent decoration-1 hover:decoration-primary hover:text-accent-deep transition"
+                >
+                  {p.contact_dl.email_value}
+                </a>
+              </dd>
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">{p.contact_dl.post_label}</dt>
+              <dd class="text-primary/80 leading-relaxed">{p.contact_dl.post_value}</dd>
+            </dl>
+          </section>
+
+          <!-- 04 Responsible -->
+          <section id="responsible" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 04</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-2 leading-tight">
+              {p.responsible_title}
+            </h2>
+            {p.responsible_subtitle && (
+              <p class="font-mono text-xs uppercase tracking-wider text-primary/40 mb-6">{p.responsible_subtitle}</p>
+            )}
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed">
+              {p.responsible_body}
+            </p>
+          </section>
+
+          <!-- 05 Liability -->
+          <section id="liability" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 05</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.liability_title}
+            </h2>
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed">
+              {p.liability_body}
+            </p>
+          </section>
+
+          <!-- 06 Copyright -->
+          <section id="copyright" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 06</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.copyright_title}
+            </h2>
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed">
+              {p.copyright_body}
+            </p>
+          </section>
+
+          <!-- 07 Dispute -->
+          <section id="dispute" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 07</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.dispute_title}
+            </h2>
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed">
+              {p.dispute_body}
+            </p>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </Container>
+</section>
+
+<style>
+  @media print {
+    /* Strip decorative backgrounds on print */
+    section.hero-pattern { background-image: none !important; }
+    .print\:hero-pattern-none { background-image: none !important; }
+  }
+</style>
+
+<script>
+  // Highlight the current TOC entry as the user scrolls.
+  function initTocSpy() {
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')
+    );
+    if (links.length === 0) return;
+    const map = new Map<string, HTMLAnchorElement>();
+    for (const link of links) {
+      const id = link.dataset.tocLink;
+      if (id) map.set(id, link);
+    }
+    const sections = Array.from(map.keys())
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const setActive = (id: string) => {
+      for (const link of links) {
+        const isActive = link.dataset.tocLink === id;
+        link.classList.toggle('text-primary', isActive);
+        link.classList.toggle('font-medium', isActive);
+        link.classList.toggle('text-primary/65', !isActive);
+      }
+    };
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        // Pick the entry highest in the viewport that's currently intersecting.
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length === 0) return;
+        const id = visible[0].target.id;
+        if (id) setActive(id);
+      },
+      { rootMargin: '-30% 0px -55% 0px', threshold: 0 }
+    );
+    for (const s of sections) obs.observe(s);
+  }
+  initTocSpy();
+</script>

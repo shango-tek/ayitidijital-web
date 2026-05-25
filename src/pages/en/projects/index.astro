@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ProjectsListPage from '../../../components/ProjectsListPage.astro';
+import { getDict } from '../../../i18n';
+
+const locale = 'en' as const;
+const dict = getDict(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={dict.pages.projects.title}
+  description={dict.pages.projects.description}
+>
+  <ProjectsListPage locale={locale} />
+</BaseLayout>

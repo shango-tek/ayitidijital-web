@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import MembershipPage from '../../components/MembershipPage.astro';
+import { getDict } from '../../i18n';
+
+const locale = 'ht' as const;
+const dict = getDict(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={dict.pages.membership.title}
+  description={dict.pages.membership.description}
+>
+  <MembershipPage locale={locale} />
+</BaseLayout>

@@ -1,0 +1,17 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PrivacyPage from '../../components/PrivacyPage.astro';
+import { getDict } from '../../i18n';
+
+const locale = 'en' as const;
+const dict = getDict(locale);
+const p = dict.pages.privacy;
+---
+
+<BaseLayout
+  locale={locale}
+  title={p.title}
+  description={p.description}
+>
+  <PrivacyPage locale={locale} />
+</BaseLayout>

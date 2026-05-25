@@ -1,0 +1,300 @@
+---
+import { type Locale, getDict } from '../i18n';
+import Container from './Container.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const p = dict.pages.privacy;
+
+const sections = [
+  { id: 'summary',    number: '01', title: p.summary_title },
+  { id: 'controller', number: '02', title: p.controller_title },
+  { id: 'data',       number: '03', title: p.data_title },
+  { id: 'cookies',    number: '04', title: p.cookies_title },
+  { id: 'rights',     number: '05', title: p.rights_title },
+  { id: 'hosting',    number: '06', title: p.hosting_title },
+  { id: 'contact',    number: '07', title: p.contact_title },
+];
+---
+
+<!-- Hero -->
+<section class="hero-pattern print:bg-transparent print:hero-pattern-none">
+  <Container class="pt-20 md:pt-28 pb-12 md:pb-16">
+    <div class="max-w-3xl">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-6 accent-line pt-3">
+        {p.eyebrow}
+      </p>
+      <h1 class="font-serif font-light text-primary tracking-tight leading-[1.05] text-5xl md:text-6xl">
+        {p.h1}
+      </h1>
+      <p class="mt-8 text-lg md:text-xl text-primary/75 font-light leading-relaxed">
+        {p.intro}
+      </p>
+      <p class="mt-10 font-mono text-xs uppercase tracking-wider text-primary/40">
+        {p.last_updated_label}
+        <span class="text-accent-deep ml-2">·</span>
+        <span class="text-primary/70 ml-2 normal-case tracking-normal">{p.last_updated_value}</span>
+      </p>
+    </div>
+  </Container>
+</section>
+
+<!-- Main body -->
+<section class="border-t border-line bg-white print:border-none print:bg-transparent">
+  <Container class="py-14 md:py-20">
+    <div class="grid lg:grid-cols-12 gap-10 lg:gap-16">
+
+      <!-- TOC -->
+      <aside class="lg:col-span-3 print:hidden" aria-label={p.toc_title}>
+        <div class="lg:sticky lg:top-28">
+          <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-5 accent-line pt-3">
+            {p.toc_title}
+          </p>
+          <nav>
+            <ol class="space-y-3 text-sm">
+              {sections.map((s) => (
+                <li>
+                  <a
+                    href={`#${s.id}`}
+                    data-toc-link={s.id}
+                    class="group flex items-start gap-3 text-primary/65 hover:text-primary transition-colors"
+                  >
+                    <span class="font-mono text-[10px] uppercase tracking-wider text-primary/40 group-hover:text-accent-deep transition-colors mt-1 shrink-0">
+                      § {s.number}
+                    </span>
+                    <span class="leading-snug">{s.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Content -->
+      <article class="lg:col-span-9 max-w-3xl">
+        <div class="space-y-14 md:space-y-16">
+
+          <!-- 01 Summary box -->
+          <section id="summary" class="scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 01</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-2 leading-tight">
+              {p.summary_title}
+            </h2>
+            <p class="text-primary/60 mb-8">{p.summary_subtitle}</p>
+
+            <div class="bg-surface border border-line rounded-2xl p-7 md:p-9 print:border-line print:rounded-none">
+              <ul class="space-y-6">
+                {p.summary_points.map((pt, idx) => (
+                  <li class="flex items-start gap-5">
+                    <span class="font-mono text-xs text-accent-deep shrink-0 mt-1 w-8">
+                      0{idx + 1}
+                    </span>
+                    <div>
+                      <p class="font-serif text-lg md:text-xl text-primary leading-snug mb-1">
+                        {pt.title}
+                      </p>
+                      <p class="text-primary/70 leading-relaxed text-[15px]">
+                        {pt.body}
+                      </p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <!-- 02 Controller -->
+          <section id="controller" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 02</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.controller_title}
+            </h2>
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed mb-6">
+              {p.controller_body}
+            </p>
+            <dl class="grid sm:grid-cols-[14rem_1fr] gap-y-3 gap-x-6 text-base">
+              <dt class="font-mono text-xs uppercase tracking-wider text-primary/45 pt-1">
+                {p.controller_dpo_label}
+              </dt>
+              <dd class="leading-relaxed">
+                <a
+                  href={`mailto:${p.controller_dpo_value}`}
+                  class="text-primary underline underline-offset-4 decoration-accent decoration-1 hover:decoration-primary hover:text-accent-deep transition"
+                >
+                  {p.controller_dpo_value}
+                </a>
+              </dd>
+            </dl>
+          </section>
+
+          <!-- 03 Data -->
+          <section id="data" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 03</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.data_title}
+            </h2>
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed">
+              {p.data_body}
+            </p>
+          </section>
+
+          <!-- 04 Cookies table -->
+          <section id="cookies" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 04</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.cookies_title}
+            </h2>
+            <p class="text-base text-primary/80 leading-relaxed mb-8">
+              {p.cookies_intro}
+            </p>
+
+            <div class="overflow-x-auto -mx-6 md:mx-0 print:overflow-visible">
+              <table class="w-full text-sm border-collapse min-w-[44rem] md:min-w-0">
+                <thead>
+                  <tr class="border-b border-primary/15">
+                    <th class="font-mono text-[11px] uppercase tracking-wider text-primary/50 text-left px-4 md:px-3 py-3 font-medium">
+                      {p.cookies_table_headers.name}
+                    </th>
+                    <th class="font-mono text-[11px] uppercase tracking-wider text-primary/50 text-left px-4 md:px-3 py-3 font-medium">
+                      {p.cookies_table_headers.purpose}
+                    </th>
+                    <th class="font-mono text-[11px] uppercase tracking-wider text-primary/50 text-left px-4 md:px-3 py-3 font-medium">
+                      {p.cookies_table_headers.duration}
+                    </th>
+                    <th class="font-mono text-[11px] uppercase tracking-wider text-primary/50 text-left px-4 md:px-3 py-3 font-medium">
+                      {p.cookies_table_headers.type}
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {p.cookies_rows.map((row) => (
+                    <tr class="border-b border-line align-top">
+                      <td class="px-4 md:px-3 py-4 text-primary/90 font-mono text-xs">{row.name}</td>
+                      <td class="px-4 md:px-3 py-4 text-primary/80 leading-snug">{row.purpose}</td>
+                      <td class="px-4 md:px-3 py-4 text-primary/70 leading-snug">{row.duration}</td>
+                      <td class="px-4 md:px-3 py-4 text-primary/70 leading-snug">{row.type}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            <p class="mt-6 text-sm text-primary/60 leading-relaxed italic">
+              {p.cookies_note}
+            </p>
+          </section>
+
+          <!-- 05 Rights cards -->
+          <section id="rights" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 05</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.rights_title}
+            </h2>
+            <p class="text-base text-primary/80 leading-relaxed mb-8">
+              {p.rights_intro}
+            </p>
+
+            <ul class="grid sm:grid-cols-2 gap-4 md:gap-5 list-none p-0">
+              {p.rights_cards.map((r) => (
+                <li class="bg-white border border-line rounded-xl p-5 md:p-6 card-hover print:border-line">
+                  <p class="font-serif text-2xl text-accent-deep mb-3 leading-none" aria-hidden="true">{r.icon}</p>
+                  <h3 class="font-serif text-lg font-medium text-primary mb-2 leading-snug">
+                    {r.title}
+                  </h3>
+                  <p class="text-sm text-primary/70 leading-relaxed">{r.body}</p>
+                </li>
+              ))}
+            </ul>
+
+            <p class="mt-8 text-sm text-primary/65 leading-relaxed border-l-2 border-accent pl-4">
+              {p.rights_complaint}
+            </p>
+          </section>
+
+          <!-- 06 Hosting -->
+          <section id="hosting" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 06</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.hosting_title}
+            </h2>
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed">
+              {p.hosting_body}
+            </p>
+          </section>
+
+          <!-- 07 Contact -->
+          <section id="contact" class="border-t border-line pt-14 md:pt-16 scroll-mt-24">
+            <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-3">§ 07</p>
+            <h2 class="font-serif text-3xl md:text-4xl font-medium text-primary mb-6 leading-tight">
+              {p.contact_title}
+            </h2>
+            <p class="text-base md:text-lg text-primary/80 leading-relaxed mb-6">
+              {p.contact_body}
+            </p>
+            <a
+              href={`mailto:${p.contact_email}`}
+              class="inline-flex items-center gap-2 font-mono text-sm text-primary border border-line rounded-full px-5 py-2.5 bg-white hover:bg-surface hover:border-accent transition-colors"
+            >
+              <span>{p.contact_email}</span>
+              <span aria-hidden="true">→</span>
+            </a>
+          </section>
+
+        </div>
+      </article>
+
+    </div>
+  </Container>
+</section>
+
+<style>
+  @media print {
+    section.hero-pattern { background-image: none !important; }
+    .print\:hero-pattern-none { background-image: none !important; }
+  }
+</style>
+
+<script>
+  function initTocSpy() {
+    const links = Array.from(
+      document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]')
+    );
+    if (links.length === 0) return;
+    const map = new Map<string, HTMLAnchorElement>();
+    for (const link of links) {
+      const id = link.dataset.tocLink;
+      if (id) map.set(id, link);
+    }
+    const sections = Array.from(map.keys())
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => el !== null);
+
+    const setActive = (id: string) => {
+      for (const link of links) {
+        const isActive = link.dataset.tocLink === id;
+        link.classList.toggle('text-primary', isActive);
+        link.classList.toggle('font-medium', isActive);
+        link.classList.toggle('text-primary/65', !isActive);
+      }
+    };
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        const visible = entries
+          .filter((e) => e.isIntersecting)
+          .sort((a, b) => a.boundingClientRect.top - b.boundingClientRect.top);
+        if (visible.length === 0) return;
+        const id = visible[0].target.id;
+        if (id) setActive(id);
+      },
+      { rootMargin: '-30% 0px -55% 0px', threshold: 0 }
+    );
+    for (const s of sections) obs.observe(s);
+  }
+  initTocSpy();
+</script>

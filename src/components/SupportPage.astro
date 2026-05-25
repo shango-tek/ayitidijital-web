@@ -1,0 +1,284 @@
+---
+import { type Locale, localizedPath, getDict } from '../i18n';
+import Container from './Container.astro';
+import Button from './Button.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const s = dict.soutenir;
+const membership = localizedPath(locale, 'membership');
+---
+
+<!-- HERO -->
+<section class="hero-pattern">
+  <Container class="pt-20 md:pt-28 pb-16 md:pb-24">
+    <div class="max-w-4xl">
+      <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep mb-6 accent-line pt-3">
+        {s.eyebrow}
+      </p>
+      <h1 class="font-serif font-light text-primary tracking-tight leading-[1.05] text-5xl md:text-6xl lg:text-7xl">
+        {s.headline_pre_line_1}{' '}
+        {s.headline_pre_line_2}{' '}
+        <em class="text-accent-deep not-italic font-medium">{s.headline_accent}</em>.
+      </h1>
+      <p class="mt-8 text-lg md:text-xl text-primary/75 font-light max-w-2xl leading-relaxed">
+        {s.body}
+      </p>
+    </div>
+  </Container>
+</section>
+
+<!-- WHY SUPPORT -->
+<section class="border-t border-line bg-white">
+  <Container class="py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-12 mb-12 md:mb-16">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          {s.why_eyebrow}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <h2 class="font-serif text-3xl md:text-4xl text-primary leading-snug font-light tracking-tight">
+          {s.why_title}
+        </h2>
+        <p class="mt-4 text-primary/70 leading-relaxed">{s.why_intro}</p>
+      </div>
+    </div>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+      {s.why_cards.map((c) => (
+        <article class="bg-surface/60 border border-line rounded-2xl p-7 md:p-8 card-hover flex flex-col h-full">
+          <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-6">{c.number}</p>
+          <h3 class="font-serif text-xl md:text-2xl font-medium text-primary mb-3 leading-tight">
+            {c.title}
+          </h3>
+          <p class="text-primary/70 leading-relaxed text-[15px]">{c.body}</p>
+        </article>
+      ))}
+    </div>
+  </Container>
+</section>
+
+<!-- HOW TO GIVE -->
+<section class="border-t border-line bg-surface">
+  <Container class="py-20 md:py-28">
+    <div class="grid md:grid-cols-12 gap-12 mb-12 md:mb-16">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          {s.how_eyebrow}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <h2 class="font-serif text-3xl md:text-4xl text-primary leading-snug font-light tracking-tight">
+          {s.how_title}
+        </h2>
+        <p class="mt-4 text-primary/70 leading-relaxed">{s.how_intro}</p>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 md:gap-7">
+
+      <!-- Option 1 — Single -->
+      <article class="bg-white border border-line rounded-2xl p-8 md:p-9 card-hover flex flex-col h-full">
+        <div class="flex items-center justify-between mb-6">
+          <span class="font-mono text-xs uppercase tracking-wider text-primary/45">01</span>
+          <span class="font-mono text-xs text-accent-deep">{s.options.single.fee}</span>
+        </div>
+        <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-2">{s.options.single.label}</p>
+        <h3 class="font-serif text-2xl md:text-[1.75rem] font-medium text-primary mb-4 leading-tight">
+          {s.options.single.title}
+        </h3>
+        <p class="text-primary/70 leading-relaxed mb-8 flex-grow text-[15px]">
+          {s.options.single.body}
+        </p>
+        <div>
+          <!-- TODO · wire Stripe checkout -->
+          <Button href="#stripe-placeholder" variant="primary" size="md" arrow>
+            {s.options.single.cta}
+          </Button>
+          <p class="mt-4 font-mono text-[10px] text-primary/35 uppercase tracking-wider">
+            {s.options.single.todo}
+          </p>
+        </div>
+      </article>
+
+      <!-- Option 2 — Monthly (highlighted) -->
+      <article class="bg-primary text-surface rounded-2xl p-8 md:p-9 card-hover flex flex-col h-full">
+        <div class="flex items-center justify-between mb-6">
+          <span class="font-mono text-xs uppercase tracking-wider text-surface/55">02</span>
+          <span class="font-mono text-xs text-accent">{s.options.monthly.fee}</span>
+        </div>
+        <p class="font-mono text-xs uppercase tracking-wider text-accent mb-2">{s.options.monthly.label}</p>
+        <h3 class="font-serif text-2xl md:text-[1.75rem] font-medium mb-4 leading-tight">
+          {s.options.monthly.title}
+        </h3>
+        <p class="text-surface/80 leading-relaxed mb-8 flex-grow text-[15px]">
+          {s.options.monthly.body}
+        </p>
+        <div>
+          <!-- TODO · wire Stripe subscription -->
+          <Button href="#stripe-monthly-placeholder" variant="secondary" size="md" arrow>
+            {s.options.monthly.cta}
+          </Button>
+          <p class="mt-4 font-mono text-[10px] text-surface/45 uppercase tracking-wider">
+            {s.options.monthly.todo}
+          </p>
+        </div>
+      </article>
+
+      <!-- Option 3 — Member -->
+      <article class="bg-white border border-line rounded-2xl p-8 md:p-9 card-hover flex flex-col h-full">
+        <div class="flex items-center justify-between mb-6">
+          <span class="font-mono text-xs uppercase tracking-wider text-primary/45">03</span>
+          <span class="font-mono text-xs text-accent-deep">{s.options.member.fee}</span>
+        </div>
+        <p class="font-mono text-xs uppercase tracking-wider text-accent-deep mb-2">{s.options.member.label}</p>
+        <h3 class="font-serif text-2xl md:text-[1.75rem] font-medium text-primary mb-4 leading-tight">
+          {s.options.member.title}
+        </h3>
+        <p class="text-primary/70 leading-relaxed mb-8 flex-grow text-[15px]">
+          {s.options.member.body}
+        </p>
+        <div>
+          <Button href={membership} variant="primary" size="md" arrow>
+            {s.options.member.cta}
+          </Button>
+        </div>
+      </article>
+
+    </div>
+  </Container>
+</section>
+
+<!-- SEPA / Bank transfer -->
+<section class="border-t border-line bg-white">
+  <Container class="py-20 md:py-24">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-12">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          {s.sepa_eyebrow}
+        </p>
+        <p class="mt-6 text-primary/70 leading-relaxed max-w-sm">
+          {s.sepa_intro}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <div class="bg-surface/60 border border-line rounded-2xl p-7 md:p-9">
+          <dl class="grid sm:grid-cols-[10rem_1fr] gap-y-4 gap-x-6 font-mono text-sm">
+            <dt class="text-xs uppercase tracking-wider text-primary/45 pt-1">{s.sepa_holder_label}</dt>
+            <dd class="text-primary">{s.sepa_holder_value}</dd>
+            <dt class="text-xs uppercase tracking-wider text-primary/45 pt-1">{s.sepa_iban_label}</dt>
+            <dd class="text-primary">{s.sepa.iban}</dd>
+            <dt class="text-xs uppercase tracking-wider text-primary/45 pt-1">{s.sepa_bic_label}</dt>
+            <dd class="text-primary">{s.sepa.bic.replace('BIC · ', '')}</dd>
+            <dt class="text-xs uppercase tracking-wider text-primary/45 pt-1">{s.sepa_ref_label}</dt>
+            <dd class="text-primary/80">{s.sepa_ref_value}</dd>
+          </dl>
+          <p class="mt-6 text-sm text-primary/60">{s.sepa.subtitle}</p>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- DONOR RECOGNITION -->
+<section class="border-t border-line bg-surface">
+  <Container class="py-20 md:py-24">
+    <div class="grid md:grid-cols-12 gap-12 mb-10 md:mb-14">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          {s.donors_eyebrow}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <h2 class="font-serif text-3xl md:text-4xl text-primary leading-snug font-light tracking-tight">
+          {s.donors_title}
+        </h2>
+        <p class="mt-4 text-primary/70 leading-relaxed max-w-2xl">{s.donors_intro}</p>
+      </div>
+    </div>
+
+    <ul class="grid sm:grid-cols-3 gap-5 md:gap-6 list-none p-0">
+      {s.donors_list.map((d) => (
+        <li class="bg-white border border-line rounded-xl p-6 md:p-7 card-hover">
+          <p class="font-serif text-lg text-primary leading-snug mb-2">{d.name}</p>
+          <p class="font-mono text-xs uppercase tracking-wider text-primary/40">{d.location}</p>
+        </li>
+      ))}
+    </ul>
+
+    <p class="mt-8 text-sm italic text-primary/60 max-w-2xl">{s.donors_note}</p>
+  </Container>
+</section>
+
+<!-- TAX DEDUCTIBILITY -->
+<section class="border-t border-line bg-white">
+  <Container class="py-20 md:py-24">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-12 items-start">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          {s.tax_eyebrow}
+        </p>
+      </div>
+      <div class="md:col-span-8">
+        <div class="bg-surface border-l-2 border-accent rounded-r-xl p-7 md:p-9">
+          <h2 class="font-serif text-2xl md:text-3xl text-primary mb-4 font-medium leading-tight">
+            {s.tax_title}
+          </h2>
+          <p class="text-primary/75 leading-relaxed mb-6">
+            {s.tax_body}
+          </p>
+          <p class="font-mono text-xs uppercase tracking-wider text-primary/55">
+            <span class="inline-block w-2 h-2 rounded-full bg-accent-deep mr-2 align-middle"></span>
+            {s.tax_status}
+          </p>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>
+
+<!-- FAQ -->
+<section class="border-t border-line bg-surface">
+  <Container class="py-20 md:py-24">
+    <div class="grid md:grid-cols-12 gap-10 md:gap-12">
+      <div class="md:col-span-4">
+        <p class="font-mono text-xs uppercase tracking-[0.2em] text-accent-deep accent-line pt-3">
+          {s.faq_eyebrow}
+        </p>
+        <h2 class="mt-6 font-serif text-3xl md:text-4xl text-primary leading-snug font-light tracking-tight">
+          {s.faq_title}
+        </h2>
+      </div>
+      <div class="md:col-span-8">
+        <ul class="space-y-3 list-none p-0">
+          {s.faq_items.map((item, idx) => (
+            <li>
+              <details class="group bg-white border border-line rounded-xl overflow-hidden">
+                <summary class="cursor-pointer list-none flex items-start gap-4 p-5 md:p-6 hover:bg-surface/40 transition-colors">
+                  <span class="font-mono text-xs uppercase tracking-wider text-accent-deep shrink-0 mt-1 w-6">
+                    0{idx + 1}
+                  </span>
+                  <span class="flex-grow font-serif text-lg text-primary leading-snug pr-4">
+                    {item.q}
+                  </span>
+                  <span
+                    class="font-mono text-xl text-primary/40 group-open:rotate-45 transition-transform shrink-0"
+                    aria-hidden="true"
+                  >+</span>
+                </summary>
+                <div class="px-5 md:px-6 pb-6 pt-1 pl-[3.25rem]">
+                  <p class="text-primary/75 leading-relaxed text-[15px]">{item.a}</p>
+                </div>
+              </details>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  </Container>
+</section>

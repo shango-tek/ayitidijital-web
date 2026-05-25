@@ -1,0 +1,88 @@
+---
+interface Props {
+  href?: string;
+  type?: 'button' | 'submit' | 'reset';
+  variant?: 'primary' | 'secondary' | 'ghost' | 'underline';
+  size?: 'sm' | 'md' | 'lg';
+  class?: string;
+  external?: boolean;
+  arrow?: boolean;
+  id?: string;
+}
+
+const {
+  href,
+  type = 'button',
+  variant = 'primary',
+  size = 'md',
+  class: className = '',
+  external = false,
+  arrow = false,
+  id,
+} = Astro.props;
+
+const sizeClass =
+  size === 'sm'
+    ? 'px-4 py-2 text-xs'
+    : size === 'lg'
+      ? 'px-9 py-4 text-sm'
+      : 'px-7 py-3.5 text-sm';
+
+let variantClass = '';
+switch (variant) {
+  case 'primary':
+    // Solid dark pill — main call-to-action. Subtle lift + bronze pivot on hover.
+    variantClass =
+      'group rounded-full bg-primary text-surface font-medium shadow-[0_1px_2px_rgba(11,37,69,0.08)] hover:bg-accent-deep hover:shadow-[0_4px_16px_rgba(139,111,63,0.18)] hover:-translate-y-0.5 transition-all duration-300 ease-out';
+    break;
+  case 'secondary':
+    // Outlined pill — medium-weight CTA. Border darkens to bronze on hover.
+    variantClass =
+      'group rounded-full bg-transparent text-primary border border-primary/15 font-medium hover:border-accent-deep hover:bg-white hover:-translate-y-0.5 hover:shadow-[0_4px_16px_rgba(11,37,69,0.06)] transition-all duration-300 ease-out';
+    break;
+  case 'ghost':
+    // Soft pill — tertiary or low-attention. Sits flat until hover.
+    variantClass =
+      'group rounded-full bg-transparent text-primary font-medium hover:bg-white hover:shadow-[0_2px_8px_rgba(11,37,69,0.04)] transition-all duration-300 ease-out';
+    break;
+  case 'underline':
+    // Text-link CTA — no underline. Arrow slides + color shifts to bronze on hover.
+    // (Kept the prop name "underline" for API compat; the underline itself is gone.)
+    variantClass =
+      'group inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-accent-deep transition-colors duration-300';
+    break;
+}
+
+const sizeFinal = variant === 'underline' ? '' : sizeClass;
+const allClasses = `inline-flex items-center justify-center gap-2.5 ${sizeFinal} ${variantClass} ${className}`.trim();
+const rel = external ? 'noopener noreferrer' : undefined;
+const target = external ? '_blank' : undefined;
+---
+
+{
+  href ? (
+    <a href={href} class={allClasses} rel={rel} target={target} id={id}>
+      <slot />
+      {arrow && (
+        <span
+          aria-hidden="true"
+          class="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1"
+        >
+          →
+        </span>
+      )}
+    </a>
+  ) : (
+    <button type={type} class={allClasses} id={id}>
+      <slot />
+      {arrow && (
+        <span
+          aria-hidden="true"
+          class="inline-block transition-transform duration-300 ease-out group-hover:translate-x-1"
+        >
+          →
+        </span>
+      )}
+    </button>
+  )
+}

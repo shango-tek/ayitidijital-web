@@ -1,0 +1,259 @@
+---
+import { type Locale, getDict, localizedPath } from '../i18n';
+import FormField from './FormField.astro';
+import Button from './Button.astro';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const dict = getDict(locale);
+const form = dict.membership_form;
+const privacyHref = localizedPath(locale, 'privacy');
+const transparencyHref = localizedPath(locale, 'transparency');
+
+const types = [
+  { value: 'ordinary',   t: form.types.ordinary,   highlight: true,  fee: form.types.ordinary.fee   },
+  { value: 'supporting', t: form.types.supporting, highlight: false, fee: form.types.supporting.fee },
+  { value: 'student',    t: form.types.student,    highlight: false, fee: form.types.student.fee    },
+];
+
+const feeMap: Record<string, string> = {
+  ordinary:   form.types.ordinary.fee,
+  supporting: form.types.supporting.fee,
+  student:    form.types.student.fee,
+};
+---
+
+<form
+  action={`/api/membership`}
+  method="POST"
+  class="space-y-12 md:space-y-14"
+  data-membership-form
+  novalidate
+>
+
+  <!-- Step 1: Type as visual cards -->
+  <fieldset class="space-y-6">
+    <div class="flex items-baseline gap-4 mb-2">
+      <span class="font-mono text-xs uppercase tracking-wider text-accent-deep">{form.step_label} 01</span>
+      <span class="h-px flex-grow bg-line"></span>
+    </div>
+    <legend class="font-serif text-2xl md:text-3xl text-primary font-medium mb-1 leading-tight">{form.section_type}</legend>
+    <p class="text-sm text-primary/65 leading-relaxed max-w-2xl">{form.section_type_help}</p>
+
+    <div class="grid md:grid-cols-3 gap-4 md:gap-5 pt-2" role="radiogroup" aria-label={form.section_type}>
+      {types.map((opt) => (
+        <label
+          class="block cursor-pointer group"
+          data-type-card={opt.value}
+        >
+          <input
+            type="radio"
+            name="type"
+            value={opt.value}
+            checked={opt.highlight}
+            class="sr-only peer"
+            required
+          />
+          <div
+            class="h-full bg-white border border-line rounded-2xl p-6 md:p-7 transition-all
+                   peer-checked:border-accent peer-checked:bg-surface
+                   peer-checked:shadow-[0_0_0_3px_rgba(197,165,114,0.15)]
+                   peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-accent peer-focus-visible:outline-offset-2
+                   hover:border-accent/60"
+          >
+            <div class="flex items-center justify-between mb-4">
+              <span class="font-mono text-xs uppercase tracking-wider text-accent-deep">{opt.t.label}</span>
+              <span
+                class="w-5 h-5 rounded-full border-2 border-primary/25 grid place-items-center
+                       group-has-[:checked]:border-accent group-has-[:checked]:bg-accent transition-all"
+                aria-hidden="true"
+              >
+                <span class="w-1.5 h-1.5 rounded-full bg-surface scale-0 group-has-[:checked]:scale-100 transition-transform"></span>
+              </span>
+            </div>
+            <p class="font-serif text-2xl md:text-3xl text-primary font-medium mb-1 leading-none">
+              {opt.fee.split('/')[0].trim()}
+            </p>
+            <p class="font-mono text-[11px] uppercase tracking-wider text-primary/45 mb-5">
+              /{opt.fee.split('/').slice(1).join('/').trim()}
+            </p>
+            <p class="text-xs font-mono uppercase tracking-wider text-primary/45 mb-2">{opt.t.for_label}</p>
+            <p class="text-sm text-primary/75 leading-relaxed mb-5">{opt.t.for}</p>
+            <ul class="space-y-2 list-none p-0">
+              {opt.t.benefits.map((b) => (
+                <li class="flex items-start gap-2 text-sm text-primary/75 leading-snug">
+                  <span class="text-accent-deep mt-0.5" aria-hidden="true">·</span>
+                  <span>{b}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </label>
+      ))}
+    </div>
+
+    <div class="pt-2">
+      <FormField
+        label={form.fee_label}
+        name="fee_display"
+        type="text"
+        readonly
+        value={feeMap.ordinary}
+        help={form.fee_help}
+      />
+    </div>
+  </fieldset>
+
+  <!-- Step 2: Identity -->
+  <fieldset class="space-y-6">
+    <div class="flex items-baseline gap-4 mb-2">
+      <span class="font-mono text-xs uppercase tracking-wider text-accent-deep">{form.step_label} 02</span>
+      <span class="h-px flex-grow bg-line"></span>
+    </div>
+    <legend class="font-serif text-2xl md:text-3xl text-primary font-medium mb-1 leading-tight">{form.section_identity}</legend>
+
+    <div class="grid sm:grid-cols-2 gap-5">
+      <FormField label={form.first_name} name="first_name" required autocomplete="given-name" />
+      <FormField label={form.last_name} name="last_name" required autocomplete="family-name" />
+    </div>
+    <FormField label={form.email} name="email" type="email" required autocomplete="email" />
+  </fieldset>
+
+  <!-- Step 3: Address -->
+  <fieldset class="space-y-6">
+    <div class="flex items-baseline gap-4 mb-2">
+      <span class="font-mono text-xs uppercase tracking-wider text-accent-deep">{form.step_label} 03</span>
+      <span class="h-px flex-grow bg-line"></span>
+    </div>
+    <legend class="font-serif text-2xl md:text-3xl text-primary font-medium mb-1 leading-tight">{form.section_address}</legend>
+
+    <FormField label={form.address} name="address" required autocomplete="street-address" />
+    <div class="grid sm:grid-cols-3 gap-5">
+      <FormField label={form.postal_code} name="postal_code" required autocomplete="postal-code" />
+      <FormField label={form.city} name="city" required autocomplete="address-level2" spanFull={false} class="sm:col-span-1" />
+      <FormField label={form.country} name="country" required autocomplete="country-name" />
+    </div>
+  </fieldset>
+
+  <!-- Step 4: Motivation -->
+  <fieldset class="space-y-6">
+    <div class="flex items-baseline gap-4 mb-2">
+      <span class="font-mono text-xs uppercase tracking-wider text-accent-deep">{form.step_label} 04</span>
+      <span class="h-px flex-grow bg-line"></span>
+    </div>
+    <legend class="font-serif text-2xl md:text-3xl text-primary font-medium mb-1 leading-tight">{form.section_motivation}</legend>
+
+    <FormField
+      label={form.motivation}
+      name="motivation"
+      type="textarea"
+      maxlength={500}
+      rows={6}
+      help={form.motivation_help}
+    />
+  </fieldset>
+
+  <!-- Step 5: Confirmations -->
+  <fieldset class="space-y-6">
+    <div class="flex items-baseline gap-4 mb-2">
+      <span class="font-mono text-xs uppercase tracking-wider text-accent-deep">{form.step_label} 05</span>
+      <span class="h-px flex-grow bg-line"></span>
+    </div>
+    <legend class="font-serif text-2xl md:text-3xl text-primary font-medium mb-1 leading-tight">{form.section_confirm}</legend>
+
+    <div class="space-y-4 pt-2">
+      <label class="flex items-start gap-3 cursor-pointer group">
+        <input
+          type="checkbox"
+          name="accept_statutes"
+          required
+          class="mt-1 w-4 h-4 rounded border-line text-primary focus:ring-accent accent-[#0B2545]"
+        />
+        <span class="text-sm text-primary/80 leading-relaxed group-hover:text-primary">
+          {form.accept_statutes}{' '}
+          <a href={transparencyHref} class="underline underline-offset-2 decoration-accent">
+            {dict.footer.links.statutes.toLowerCase()}
+          </a>
+        </span>
+      </label>
+      <label class="flex items-start gap-3 cursor-pointer group">
+        <input
+          type="checkbox"
+          name="accept_privacy"
+          required
+          class="mt-1 w-4 h-4 rounded border-line text-primary focus:ring-accent accent-[#0B2545]"
+        />
+        <span class="text-sm text-primary/80 leading-relaxed group-hover:text-primary">
+          {form.accept_privacy}{' '}
+          <a href={privacyHref} class="underline underline-offset-2 decoration-accent">
+            {dict.footer.links.privacy.toLowerCase()}
+          </a>
+        </span>
+      </label>
+    </div>
+  </fieldset>
+
+  <div data-form-status class="hidden bg-surface border border-accent rounded-xl p-6">
+    <p class="font-serif text-xl text-primary mb-1" data-status-title>{form.success_title}</p>
+    <p class="text-primary/70 text-sm" data-status-body>{form.success_body}</p>
+  </div>
+
+  <div class="pt-4">
+    <Button type="submit" variant="primary" size="lg" arrow>
+      {form.submit}
+    </Button>
+    <p class="mt-4 font-mono text-xs uppercase tracking-wider text-primary/45">
+      {form.submit_note}
+    </p>
+  </div>
+</form>
+
+<script define:vars={{ feeMap }}>
+  const form = document.querySelector('[data-membership-form]');
+  if (form) {
+    const feeField = form.querySelector('input[name="fee_display"]');
+
+    // Update fee display whenever the type radio changes.
+    const radios = form.querySelectorAll('input[name="type"]');
+    for (const r of radios) {
+      r.addEventListener('change', (e) => {
+        const target = e.target;
+        if (target && feeField) {
+          feeField.value = feeMap[target.value] ?? '';
+        }
+      });
+    }
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const status = form.querySelector('[data-form-status]');
+      const submitBtn = form.querySelector('button[type="submit"]');
+      try {
+        if (submitBtn) submitBtn.setAttribute('disabled', 'true');
+        const data = new FormData(form);
+        // Best-effort POST — endpoint is a placeholder until Resend/Airtable
+        // is wired up. We optimistically show success either way so the UI
+        // stays predictable during the placeholder phase.
+        try {
+          await fetch(form.action, { method: 'POST', body: data });
+        } catch (_) {
+          /* swallow — endpoint may not be available in static builds */
+        }
+        status?.classList.remove('hidden');
+        form.reset();
+        if (feeField) feeField.value = feeMap.ordinary;
+        // Re-check the default radio after reset.
+        const def = form.querySelector('input[name="type"][value="ordinary"]');
+        if (def) def.checked = true;
+        status?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } catch (err) {
+        console.error(err);
+      } finally {
+        if (submitBtn) submitBtn.removeAttribute('disabled');
+      }
+    });
+  }
+</script>

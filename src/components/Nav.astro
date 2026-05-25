@@ -1,0 +1,172 @@
+---
+import { type Locale, localizedPath, getDict } from '../i18n';
+import LangSwitcher from './LangSwitcher.astro';
+import Button from './Button.astro';
+
+interface Props {
+  currentLocale: Locale;
+}
+
+const { currentLocale } = Astro.props;
+const dict = getDict(currentLocale);
+
+const navLinks = [
+  { href: localizedPath(currentLocale, 'home'), label: dict.nav.accueil },
+  { href: localizedPath(currentLocale, 'projects'), label: dict.nav.projets },
+  { href: localizedPath(currentLocale, 'about'), label: dict.nav.qui_sommes_nous },
+  { href: localizedPath(currentLocale, 'transparency'), label: dict.nav.transparence },
+  { href: localizedPath(currentLocale, 'contact'), label: dict.nav.contact },
+];
+
+const home = localizedPath(currentLocale, 'home');
+const support = localizedPath(currentLocale, 'support');
+const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/';
+---
+
+<nav
+  data-nav
+  class="border-b border-line bg-surface/85 backdrop-blur-md sticky top-0 z-50 transition-shadow"
+  aria-label="Primary"
+>
+  <div class="max-w-7xl mx-auto px-6 md:px-8 py-4 md:py-5 flex items-center justify-between gap-4">
+    <a
+      href={home}
+      class="flex items-center gap-3 rounded-md focus-visible:outline-none"
+      aria-label="Ayiti Dijital"
+    >
+      <span class="font-serif text-2xl font-medium tracking-tight text-primary">
+        ayiti<span class="text-accent">·</span>dijital
+      </span>
+    </a>
+
+    <div class="hidden md:flex items-center gap-9 text-sm text-primary/80">
+      {navLinks.map((link) => {
+        const linkPath = link.href.replace(/\/$/, '') || '/';
+        const isActive = currentPath === linkPath || (linkPath !== '/' && currentPath.startsWith(linkPath));
+        return (
+          <a
+            href={link.href}
+            class={`hover:text-primary transition-colors relative py-1 ${isActive ? 'text-primary font-medium' : ''}`}
+            aria-current={isActive ? 'page' : undefined}
+          >
+            {link.label}
+            {isActive && (
+              <span class="absolute left-0 right-0 -bottom-0.5 h-px bg-accent" aria-hidden="true"></span>
+            )}
+          </a>
+        );
+      })}
+    </div>
+
+    <div class="flex items-center gap-3">
+      <div class="hidden md:block">
+        <LangSwitcher currentLocale={currentLocale} />
+      </div>
+      <div class="hidden md:block">
+        <Button href={support} variant="primary" size="sm">
+          {dict.nav.soutenir}
+        </Button>
+      </div>
+
+      <!-- Mobile menu trigger -->
+      <button
+        type="button"
+        data-mobile-trigger
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label={dict.nav.menu}
+        class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-line text-primary hover:bg-white transition"
+      >
+        <svg
+          class="w-5 h-5"
+          data-mobile-icon-open
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.75"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M4 7h16M4 12h16M4 17h16" />
+        </svg>
+        <svg
+          class="w-5 h-5 hidden"
+          data-mobile-icon-close
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+          stroke-width="1.75"
+          aria-hidden="true"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" d="M6 6l12 12M6 18L18 6" />
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile menu panel -->
+  <div
+    id="mobile-menu"
+    data-mobile-menu
+    class="md:hidden hidden border-t border-line bg-surface"
+  >
+    <div class="px-6 py-6 flex flex-col gap-5">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="text-primary text-lg font-serif"
+        >
+          {link.label}
+        </a>
+      ))}
+
+      <div class="border-t border-line pt-5 flex items-center justify-between gap-4">
+        <LangSwitcher currentLocale={currentLocale} />
+        <Button href={support} variant="primary" size="sm">
+          {dict.nav.soutenir}
+        </Button>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<script>
+  function initNav() {
+    const trigger = document.querySelector<HTMLButtonElement>('[data-mobile-trigger]');
+    const menu = document.querySelector<HTMLElement>('[data-mobile-menu]');
+    const iconOpen = document.querySelector<HTMLElement>('[data-mobile-icon-open]');
+    const iconClose = document.querySelector<HTMLElement>('[data-mobile-icon-close]');
+    if (!trigger || !menu || !iconOpen || !iconClose) return;
+    if (trigger.dataset.navInit === '1') return;
+    trigger.dataset.navInit = '1';
+
+    trigger.addEventListener('click', () => {
+      const isOpen = !menu.classList.contains('hidden');
+      if (isOpen) {
+        menu.classList.add('hidden');
+        iconOpen.classList.remove('hidden');
+        iconClose.classList.add('hidden');
+        trigger.setAttribute('aria-expanded', 'false');
+      } else {
+        menu.classList.remove('hidden');
+        iconOpen.classList.add('hidden');
+        iconClose.classList.remove('hidden');
+        trigger.setAttribute('aria-expanded', 'true');
+      }
+    });
+
+    // Sticky nav shadow on scroll
+    const nav = document.querySelector<HTMLElement>('[data-nav]');
+    if (!nav) return;
+    const onScroll = () => {
+      if (window.scrollY > 8) {
+        nav.classList.add('shadow-[0_1px_0_0_rgba(11,37,69,0.05)]');
+      } else {
+        nav.classList.remove('shadow-[0_1px_0_0_rgba(11,37,69,0.05)]');
+      }
+    };
+    onScroll();
+    window.addEventListener('scroll', onScroll, { passive: true });
+  }
+
+  initNav();
+</script>

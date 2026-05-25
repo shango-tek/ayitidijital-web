@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import LexHaitiPage from '../../../components/LexHaitiPage.astro';
+import { getDict } from '../../../i18n';
+
+const locale = 'ht' as const;
+const dict = getDict(locale);
+---
+
+<BaseLayout
+  locale={locale}
+  title={dict.pages.lexhaiti.title}
+  description={dict.pages.lexhaiti.description}
+>
+  <LexHaitiPage locale={locale} />
+</BaseLayout>

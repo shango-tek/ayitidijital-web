@@ -1,0 +1,496 @@
+{
+  "locale": "ht",
+  "lang_label": "Kreyòl Ayisyen",
+  "lang_code": "HT",
+  "meta": {
+    "site_name": "Ayiti Dijital",
+    "default_description": "Yon asosyasyon san bi likratif k ap bati byen piblik dijital pou Ayiti — kòmanse ak dwa a."
+  },
+  "nav": {
+    "accueil": "Akèy",
+    "projets": "Pwoje yo",
+    "qui_sommes_nous": "Kiyès nou ye",
+    "transparence": "Transparans",
+    "contact": "Kontak",
+    "soutenir": "Soutni nou",
+    "menu": "Meni",
+    "close": "Fèmen"
+  },
+  "lang": {
+    "label": "Lang",
+    "current": "Lang aktyèl"
+  },
+  "hero": {
+    "eyebrow": "Verein in Gründung · Minik · 2026",
+    "title_line_1": "Enfrastrikti",
+    "title_accent": "dijital piblik",
+    "title_line_3": "Ayiti a.",
+    "subtitle": "N ap bati byen piblik dijital pou Repiblik Ayiti — aksesib, lib, ki dire. Nou kòmanse ak dwa a.",
+    "cta_primary": "Dekouvri pwoje nou yo",
+    "cta_secondary": "Li misyon nou"
+  },
+  "mission": {
+    "eyebrow": "Misyon nou",
+    "headline_pre": "Ayiti pa bezwen plis pwomès. Li bezwen ",
+    "headline_accent": "enfrastrikti ki dire",
+    "headline_post": " — gratis, an franse ak an kreyòl, sitabl, louvri pou tout moun.",
+    "body": "Nou se yon asosyasyon san bi likratif anba lwa alman. Nou bati epi nou kenbe platfòm dijital ki gen enterè piblik — pou Ayisyen, dyaspora a, chèchè ak enstitisyon yo."
+  },
+  "projects_section": {
+    "eyebrow": "Sa n ap bati",
+    "title": "Pwoje nou yo.",
+    "all_link": "Wè tout",
+    "all_link_text": "Tout pwoje nou yo",
+    "lexhaiti": {
+      "status": "An pwodiksyon",
+      "year": "2025",
+      "title": "LexHaïti Public",
+      "description": "Tout kòpis dwa ayisyen an — Konstitisyon, kòd, lwa, dekrè — gratis, bileng, sitabl.",
+      "url_label": "lexhaiti.org",
+      "meta": "2 400+ atik"
+    },
+    "domains": {
+      "status": "An preparasyon",
+      "year": "2026",
+      "title": "Domèn .ht",
+      "description": "Rann domèn .ht yo aksesib epi pri ki bay tout moun — pou chak antreprenè ak òganizasyon ayisyen ka egziste sou entènèt la.",
+      "meta": "Talè"
+    },
+    "civic": {
+      "status": "Konsèp",
+      "year": "2026+",
+      "title": "Done sivik louvri",
+      "description": "Yon API piblik pou done administratif, demografik ak ekonomik Ayiti — pou rechèch ak jounalis.",
+      "meta": "Konsèp"
+    }
+  },
+  "impact": {
+    "eyebrow": "Enpak ki mezirab",
+    "stats": [
+      { "value_main": "2 400", "value_accent": "+", "label": "Atik jiridik estriktire" },
+      { "value_main": "2", "value_accent": "·", "value_suffix": "3", "label": "Lang — franse · kreyòl" },
+      { "value_main": "100", "value_accent": "%", "label": "Sous louvri · gratis" },
+      { "value_main": "0", "value_accent": "€", "label": "Reklam · trakè" }
+    ]
+  },
+  "soutenir": {
+    "eyebrow": "Soutni misyon nou",
+    "headline_pre_line_1": "Chak don bati",
+    "headline_pre_line_2": "yon enfrastrikti",
+    "headline_accent": "ki dire",
+    "body": "Lajan nou soti nan sibvansyon enstitisyonèl, fondasyon, ak don endividyèl. Pa gen reklam. Pa gen abònman. Pa gen trakè.",
+    "card_title": "Kijan pou bay",
+    "sepa": {
+      "title": "Vire SEPA",
+      "subtitle": "Resi fiskal alman si ou mande l",
+      "iban": "DE00 0000 0000 0000 0000 00",
+      "bic": "BIC · GENODEF1XXX"
+    },
+    "stripe": {
+      "title": "Stripe",
+      "subtitle": "Don sou entènèt ak kat bankè",
+      "cta": "Fè yon don"
+    },
+    "membership": {
+      "title": "Vin manm",
+      "subtitle": "Adere ak asosyasyon an · kòmanse a 12€ / ane",
+      "cta": "Enskri"
+    },
+    "page_title": "Soutni nou",
+    "page_description": "Soutni misyon Ayiti Dijital — don oswa adezyon.",
+    "why_eyebrow": "Poukisa soutni",
+    "why_title": "Chak ewo finanse yon komen ki dire.",
+    "why_intro": "Men kote don ou ale konkrètman.",
+    "why_cards": [
+      { "number": "01", "title": "Ebèjman ak enfrastrikti", "body": "Sèvè ewopeyen, kopi sove ki redonan, sètifika — pou LexHaïti rete sou entènèt 24/7, san poz ni reklam." },
+      { "number": "02", "title": "Kirasyon dwa ayisyen an", "body": "Veye lwa yo, estrikti atik pa atik, verifye sous ofisyèl yo. Yon travay editè ki dousman e meticulously." },
+      { "number": "03", "title": "Tradiksyon an kreyòl", "body": "Tradiksyon pwogresif kòpis la an kreyòl ayisyen, pa jiris ak lengwis ayisyen — pou dwa a apatni a de lang yo." },
+      { "number": "04", "title": "Zouti louvri ki dire", "body": "Kòd sous louvri, API piblik, ekspòtasyon gratis. Tout sa nou bati rete reitilizab pa lòt moun." }
+    ],
+    "how_eyebrow": "Kijan pou bay",
+    "how_title": "Twa fason pou soutni.",
+    "how_intro": "Chwazi sa ki konvni ou.",
+    "options": {
+      "single": {
+        "label": "Don yon fwa",
+        "fee": "Kòmanse a 10€",
+        "title": "Don inik",
+        "body": "Yon jès yon fwa, ak kat bankè via Stripe. Resi fiskal alman disponib sou demann.",
+        "cta": "Fè yon don",
+        "todo": "TODO · Stripe checkout pou brache"
+      },
+      "monthly": {
+        "label": "Don regilye",
+        "fee": "Kòmanse a 5€ / mwa",
+        "title": "Soutyen mansyèl",
+        "body": "Yon soutyen regilye, prelve chak mwa. Se sa ki pèmèt nou planifye dirableman.",
+        "cta": "Vin donatè mansyèl",
+        "todo": "TODO · Stripe abònman pou brache"
+      },
+      "member": {
+        "label": "Adezyon",
+        "fee": "Kòmanse a 12€ / ane",
+        "title": "Vin manm",
+        "body": "Adere ak asosyasyon an, vote nan asanble jeneral la, patisipe nan gouvènans komen dijital la.",
+        "cta": "Enskri"
+      }
+    },
+    "sepa_eyebrow": "Vire bankè (SEPA)",
+    "sepa_intro": "Pou don pi gwo yo oswa òganizasyon yo, vire SEPA a rete opsyon ki pi senp — san entèmedyè ni frè.",
+    "sepa_iban_label": "IBAN",
+    "sepa_bic_label": "BIC",
+    "sepa_holder_label": "Benefisyè",
+    "sepa_holder_value": "Ayiti Dijital e.V.",
+    "sepa_ref_label": "Referans",
+    "sepa_ref_value": "Don — non ou",
+    "donors_eyebrow": "Soutyen nou yo",
+    "donors_title": "Yo deja ap soutni nou.",
+    "donors_intro": "Ak akò yo — kèk figi pami moun ki rann misyon sa a posib.",
+    "donors_list": [
+      { "name": "Donatè anonim", "location": "Minik" },
+      { "name": "Fanmi D.", "location": "Pòtoprens · dyaspora" },
+      { "name": "Fondasyon X", "location": "Pou konfime · 2026" }
+    ],
+    "donors_note": "Èske ou vle parèt isit la — oswa rete anonim ? Ou chwazi nan moman don an.",
+    "tax_eyebrow": "Dediktiblite fiskal",
+    "tax_title": "Resi fiskal sou demann.",
+    "tax_body": "Yon fwa rekonesans itilite piblik (Gemeinnützigkeit) bay pa fisk alman an, don ou yo ap dediktib jiska 20% revni enpozab nan Almay. Dediktiblite a etann nan tout Inyon Ewopeyen via atik 110d EStG.",
+    "tax_status": "An kou rekonesans · atestasyon pwovizwa disponib sou demann",
+    "faq_eyebrow": "Kesyon kouran",
+    "faq_title": "Tout sa ou vle konnen.",
+    "faq_items": [
+      { "q": "Èske don mwen dediktib nan enpo ?", "a": "Wi, depi rekonesans itilite piblik la bay pa Finanzamt München (pwosedi an kou). Pou don ki fèt anvan, yon resi pwovizwa bay — dediktiblite retwoaktif ap konfime apre rekonesans ofisyèl." },
+      { "q": "Èske mwen ka bay depi yon lòt peyi ke Almay ?", "a": "Wi. Don SEPA yo mache nan tout zòn ewo san frè. Andeyò zòn ewo, itilize Stripe (kat bankè) oswa ekri nou pou yon vire entènasyonal." },
+      { "q": "Kijan lajan an itilize ?", "a": "Ebèjman, kirasyon jiridik, tradiksyon an kreyòl, enfrastrikti lojisyèl. N ap pibliye yon rapò finansye anyèl an detay — premye rapò prevwa kòmansman 2027." },
+      { "q": "Èske mwen ka kanpe don mansyèl mwen nenpòt lè ?", "a": "Wi, san kondisyon. Yon lyen dezabònman enkli nan chak imèl konfimasyon. Pa gen jistifikasyon ki obligatwa." },
+      { "q": "E si mwen pi pito bay an nati (tan, ladrès) ?", "a": "Ak plezi. Ekri nou a kontakt@ayitidijital.org — nou bezwen regilyèman relekti jiridik, tradiksyon kreyòl, oswa èd pwentyèl sou enfrastrikti." }
+    ]
+  },
+  "partners": {
+    "eyebrow": "Patnè nou yo",
+    "title": "Yo akonpaye nou.",
+    "intro": "Enstitisyon, fondasyon, òganizasyon patnè — ansanm n ap bati enfrastrikti dijital piblik Ayiti a.",
+    "placeholder_note": "Seksyon sa a ap parèt depi yon premye patenarya ofisyèl fòmalize.",
+    "slots": [],
+    "cta_label": "Vin yon patnè",
+    "cta_body": "Ou reprezante yon enstitisyon, yon fondasyon oswa yon òganizasyon e ou vle soutni nou? Ekri nou."
+  },
+  "footer": {
+    "tagline": "Asosyasyon san bi likratif anba lwa alman, k ap fèt.",
+    "address_line_1": "Minik · Almay",
+    "address_line_2": "Amtsgericht München · VR pending",
+    "h_projects": "Pwoje",
+    "h_association": "Asosyasyon",
+    "h_contact": "Kontak",
+    "h_legal": "Legal",
+    "links": {
+      "lexhaiti": "LexHaïti Public",
+      "domains": "Domèn .ht",
+      "civic": "Done louvri",
+      "about": "Kiyès nou ye",
+      "transparency": "Transparans",
+      "statutes": "Estati",
+      "annual_report": "Rapò anyèl",
+      "email": "kontakt@ayitidijital.org",
+      "github": "GitHub",
+      "newsletter": "Newsletter",
+      "imprint": "Enfòmasyon legal",
+      "privacy": "Konfidansyalite",
+      "become_member": "Vin manm"
+    },
+    "copyright": "© 2026 Ayiti Dijital e.V. — CC BY-SA 4.0",
+    "proverb": "« Men anpil chay pa lou »",
+    "proverb_translation": "Anpil men fè chay la vin lejè"
+  },
+  "pages": {
+    "projects": {
+      "title": "Pwoje yo",
+      "description": "Tout pwoje enfrastrikti dijital piblik Ayiti Dijital ap bati.",
+      "eyebrow": "Chantye nou",
+      "h1": "Pwoje.",
+      "intro": "Sa n ap bati jodi a — epi sa n ap prepare pou demen.",
+      "view_project": "Wè pwoje a"
+    },
+    "lexhaiti": {
+      "title": "LexHaïti Public",
+      "description": "Tout kòpis dwa ayisyen an — gratis, bileng, sitabl.",
+      "eyebrow": "Pwoje fanal · 2025",
+      "h1": "LexHaïti Public.",
+      "lead": "Tout kòpis dwa ayisyen an — Konstitisyon, kòd, lwa, dekrè — gratis, bileng, sitabl.",
+      "what_title": "Sa li ye",
+      "what_body": "Yon platfòm sou entènèt ki bay aksè a tout dwa pozitif ayisyen an pou tout moun ki gen yon koneksyon entènèt — san enskripsyon, san reklam, san trakè. Chak tèks òganize atik pa atik, sitabl yon fason ki dire, e progresivman tradwi an kreyòl.",
+      "why_title": "Poukisa",
+      "why_body": "Dwa yon peyi dwe pou sitwayen li yo. Jodi a, jwenn yon kòd ayisyen ki ajou egzije swa achte yon liv ki koute chè, swa navige nan PDF ki gaye toupatou. LexHaïti repare mank estriktirèl sa a.",
+      "for_title": "Pou kiyès",
+      "for_body": "Sitwayen, jiris, etidyan, chèchè, jounalis, fonksyonè, dyaspora. Tout moun ki bezwen konnen oswa site yon nòm.",
+      "specs_title": "An chif",
+      "specs": [
+        { "value": "2 400+", "label": "Atik estriktire" },
+        { "value": "2", "label": "Lang" },
+        { "value": "100%", "label": "Gratis · san reklam" }
+      ],
+      "cta": "Ouvè LexHaïti →"
+    },
+    "about": {
+      "title": "Kiyès nou ye",
+      "description": "Ekip ak vizyon ki dèyè Ayiti Dijital — yon asosyasyon ayisyen pou dijital piblik la.",
+      "eyebrow": "Kiyès nou ye",
+      "h1": "Yon asosyasyon ayisyen.",
+      "intro": "Ayiti Dijital se yon asosyasyon san bi likratif k ap fèt nan Minik kòm yon e.V. (anba lwa alman). Misyon nou : bati epi kenbe platfòm dijital ki gen enterè piblik pou Ayiti.",
+      "mission_title": "Misyon nou",
+      "mission_body": "Bati epi kenbe enfrastrikti dijital piblik Ayiti a — aksesib libreman, an franse ak an kreyòl, fèt pou dire pi lwen pase sik politik yo. Soti nan dwa rive nan non domèn, soti nan done sivik rive nan zouti louvri.",
+      "vision_title": "Vizyon nou",
+      "vision_body": "Yon Ayiti kote enfrastrikti dijital baz la — dwa, non domèn, done sivik — apatni a piblik la, ki aksesib libreman, e ki fèt pou dire pi lwen pase sik politik ak ekonomik yo.",
+      "structure_title": "Estrikti",
+      "structure_intro": "Ayiti Dijital reyini de antite konplemantè anba yon misyon komen : bati epi fè dire enfrastrikti dijital piblik Ayiti a.",
+      "structure_entities": [
+        {
+          "name": "Ayiti Dijital e.V.",
+          "type": "Asosyasyon san bi likratif",
+          "status": "K ap fèt · 2026",
+          "role": "Opere byen piblik yo (LexHaïti Public), resevwa sibvansyon, don ak kotizasyon, garanti pèmenans komen dijital la.",
+          "location": "Minik · Amtsgericht München"
+        },
+        {
+          "name": "Ayiti Digital Labs GmbH",
+          "type": "Konpayi komèsyal",
+          "status": "Pou fonde apre",
+          "role": "Mèt mak LexHaïti®, opere pwodwi pwofesyonèl yo (LexHaïti Pro, sèvis .ht). Yon pati nan revni li ale nan asosyasyon an.",
+          "location": "Minik · pou fonde"
+        }
+      ],
+      "principles_title": "Prensip nou yo",
+      "principles": [
+        { "title": "Komen an anvan tout", "body": "Tout sa ki se byen piblik — dwa a, done sivik yo, kòd sous la — rete gratis epi l ap rete konsa. Pa gen mi peman sou aksè a dwa a. Sèvis pwofesyonèl peyan yo (LexHaïti Pro, domèn .ht), ki opere apa pa konpayi sè komèsyal nou an, finanse epi pwoteje komen sa a — yo pa janm ranplase l." },
+        { "title": "Louvri", "body": "Kòd sous louvri, done ki ka reitilize, estanda louvri. Enstitisyon yo dwe ka pran travay nou yo nenpòt lè." },
+        { "title": "Bileng", "body": "Tout bagay fèt pou franse ak kreyòl, san yerachi ant de lang yo." },
+        { "title": "Dirab", "body": "Achitekti senp, depandans redwi nan minimòm. Platfòm nou yo dwe mache ak ti mwayen, pou lontan." }
+      ],
+      "team_title": "Ekip fondatè",
+      "team": [
+        { "name": "Glory Pracht", "role": "Fondatè · Prezidan", "bio": "Fondatè HDDI e.V. ak Ayiti Dijital. Li baze Minik, e li pote misyon an depi 2025." }
+      ]
+    },
+    "transparency": {
+      "title": "Transparans",
+      "description": "Estati, gouvènans ak finansman Ayiti Dijital e.V.",
+      "eyebrow": "Transparans",
+      "h1": "Tout sa nou fè se piblik.",
+      "intro": "Yon asosyasyon ki gen enterè piblik dwe transparan sou estati li, gouvènans li ak finansman li. Men sa nou pibliye — epi sa n ap pibliye.",
+      "statutes_title": "Estati",
+      "statutes_body": "Estati Ayiti Dijital e.V. yo anrejistre nan Amtsgericht München. Yon vèsyon piblik an franse, alman ak kreyòl ap disponib lè asosyasyon an ofisyèlman fonde.",
+      "statutes_status": "An preparasyon · pibliye lè anrejistreman fini",
+      "governance_title": "Gouvènans",
+      "governance_body": "Konsèy administrasyon (Vorstand) gen omwen twa manm ki eli pa asanble jeneral la. Asanble jeneral chak ane ouvè pou tout manm. Kont anyèl yo odite.",
+      "finance_title": "Finansman",
+      "finance_body": "Lajan nou soti nan twa sous : sibvansyon enstitisyonèl ak fondasyon, kotizasyon manm yo, ak don endividyèl. Chak ane n ap pibliye yon rapò finansye an detay.",
+      "annual_report_status": "Premye rapò prevwa : kòmansman 2027"
+    },
+    "membership": {
+      "title": "Vin manm",
+      "description": "Vin manm Ayiti Dijital e.V. — soutni konstriksyon yon enfrastrikti dijital piblik pou Ayiti.",
+      "eyebrow": "Adezyon",
+      "h1": "Vin manm.",
+      "intro": "Adezyon louvri pou tout moun ki soutni misyon nou. Lè konsèy la apwouve demann ou, w ap resevwa konfimasyon pa imèl.",
+      "sidebar": {
+        "benefits_title": "Avantaj manm yo",
+        "benefits": [
+          "Dwa vote nan asanble jeneral chak ane",
+          "Patisipe nan desizyon estratejik yo",
+          "Aksè anvan tout moun ak rapò finansye yo",
+          "Newsletter trimestryèl rezève pou manm yo",
+          "Envitasyon ak evènman asosyasyon an"
+        ],
+        "fees_title": "Repartisyon kotizasyon an",
+        "fees_intro": "Kote kotizasyon ou ale, an mwayèn :",
+        "fees": [
+          { "label": "Ebèjman ak enfrastrikti", "value": "40%" },
+          { "label": "Kirasyon ak tradiksyon", "value": "35%" },
+          { "label": "Fonksyònman asosyasyon an", "value": "15%" },
+          { "label": "Rezèv ak enprevi", "value": "10%" }
+        ],
+        "process_title": "Pwosesis adezyon",
+        "process": [
+          { "step": "1", "title": "Soumèt", "body": "Ranpli fòm sa a — kèk minit." },
+          { "step": "2", "title": "Validasyon", "body": "Vorstand la egzamine demann ou nan 7 jou louvrab." },
+          { "step": "3", "title": "Byenveni", "body": "Ou resevwa konfimasyon, estati ak koòdone pou kotizasyon an." }
+        ]
+      }
+    },
+    "contact": {
+      "title": "Kontak",
+      "description": "Kontakte Ayiti Dijital — kesyon, près, patenarya.",
+      "eyebrow": "Kontak",
+      "h1": "Ekri nou.",
+      "intro": "Kesyon, près, patenarya enstitisyonèl — nou li tout bagay e nou reponn nan kèk jou.",
+      "direct_email": "Oswa ekri dirèkteman a"
+    },
+    "imprint": {
+      "title": "Enfòmasyon legal",
+      "description": "Enfòmasyon legal Ayiti Dijital e.V. dapre § 5 TMG.",
+      "eyebrow": "Enfòmasyon legal",
+      "h1": "Enfòmasyon legal.",
+      "intro": "Dapre § 5 TMG (Telemediengesetz, lwa alman sou medya elektwonik).",
+      "last_updated_label": "Dènye mizajou",
+      "last_updated_value": "25 me 2026",
+      "toc_title": "Tab matyè",
+      "publisher_title": "Editè",
+      "publisher_dl": {
+        "name_label": "Non legal",
+        "name_value": "Ayiti Dijital e.V.",
+        "status_label": "Estati",
+        "status_value": "Verein in Gründung (k ap fèt)",
+        "address_label": "Syèj",
+        "address_value": "Minik, Almay",
+        "registry_label": "Anrejistreman",
+        "registry_value": "Amtsgericht München · VR pending"
+      },
+      "representative_title": "Reprezantasyon legal",
+      "representative_dl": {
+        "name_label": "Prezidan konsèy la",
+        "name_value": "Glory Pracht",
+        "role_label": "Fonksyon",
+        "role_value": "Reprezantan legal dapre § 26 BGB"
+      },
+      "contact_title": "Kontak",
+      "contact_dl": {
+        "email_label": "Adrès imèl",
+        "email_value": "kontakt@ayitidijital.org",
+        "post_label": "Adrès postal",
+        "post_value": "Ayiti Dijital e.V., Minik, Almay"
+      },
+      "responsible_title": "Responsab kontni",
+      "responsible_subtitle": "dapre § 55 al. 2 RStV",
+      "responsible_body": "Glory Pracht — menm adrès postal ak asosyasyon an.",
+      "liability_title": "Responsablite",
+      "liability_body": "Malgre kontwòl regilye, nou pa pran responsablite pou kontni lyen ekstèn yo. Egzeplwatè sit ki lye yo sèl responsab pou kontni yo.",
+      "copyright_title": "Dwa otè",
+      "copyright_body": "Sòf si nou di kontrè, kontni sit la pibliye anba lisans Creative Commons CC BY-SA 4.0. Mak ak logo yo rete pwopriyete pwopriyetè respektif yo.",
+      "dispute_title": "Rezolisyon konfli",
+      "dispute_body": "Komisyon Ewopeyen an mete disponib yon platfòm rezolisyon konfli sou entènèt : https://ec.europa.eu/consumers/odr. Nou pa oblije ni dispoze patisipe nan yon pwosedi rezolisyon devan yon òganis abitraj konsomatè."
+    },
+    "privacy": {
+      "title": "Konfidansyalite",
+      "description": "Politik konfidansyalite Ayiti Dijital — RGPD.",
+      "eyebrow": "Konfidansyalite",
+      "h1": "Politik konfidansyalite.",
+      "intro": "Nou pran pwoteksyon done pèsonèl ou trè oserye. Politik sa a dekri ki done nou kolekte, poukisa, ak dwa ou yo.",
+      "last_updated_label": "Dènye mizajou",
+      "last_updated_value": "25 me 2026",
+      "toc_title": "Tab matyè",
+      "summary_title": "Sa nou fè",
+      "summary_subtitle": "Esansyèl la, an twa liy.",
+      "summary_points": [
+        { "title": "Nou pa trase ou.", "body": "Pa gen okenn cookie reklam, okenn piksèl tyès pati, okenn fingerprinting sou sit sa a." },
+        { "title": "Analitik ki respekte ou.", "body": "Nou itilize Plausible Analytics, ki ebèje nan Inyon Ewopeyen, san cookie ni done pèsonèl." },
+        { "title": "Done adezyon sou konsantman.", "body": "Nou estoke koòdone ou sèlman si ou ranpli yon fòm volontèman (adezyon, kontak)." }
+      ],
+      "controller_title": "Responsab tretman",
+      "controller_body": "Ayiti Dijital e.V., Minik, Almay — kontakt@ayitidijital.org",
+      "controller_dpo_label": "Kontak pou pwoteksyon done",
+      "controller_dpo_value": "kontakt@ayitidijital.org",
+      "data_title": "Done ki kolekte",
+      "data_body": "Sit sa a pa depoze okenn cookie swivi. Nou kolekte done pèsonèl sèlman lè ou voye yo volontèman pa yon fòm (adezyon, kontak). Done sa yo estoke sou sèvè ewopeyen e itilize sèlman pou trete demann ou.",
+      "cookies_title": "Cookies ak depo lokal",
+      "cookies_intro": "Pou transparans — men tout sa sit sa a estoke nan navigatè ou :",
+      "cookies_table_headers": {
+        "name": "Non",
+        "purpose": "Objektif",
+        "duration": "Dire",
+        "type": "Tip"
+      },
+      "cookies_rows": [
+        { "name": "—", "purpose": "Pa gen cookie ki depoze sou sit sa a", "duration": "—", "type": "—" },
+        { "name": "localStorage (preferans entèfas)", "purpose": "Sonje lang ou chwazi oswa meni an", "duration": "Pèmanan (jiska efase)", "type": "Teknik · pa yon cookie" }
+      ],
+      "cookies_note": "Zouti analiz nou, Plausible Analytics, pa depoze okenn cookie e li pa itilize idantifyan pèmanan.",
+      "rights_title": "Dwa ou yo (RGPD)",
+      "rights_intro": "RGPD garanti ou yon ansanm dwa sou done pèsonèl ou. Pou egzèse yo, ekri a kontakt@ayitidijital.org — n ap reponn nan 30 jou.",
+      "rights_cards": [
+        { "icon": "①", "title": "Dwa aksè", "body": "Jwenn yon kopi done nou kenbe sou ou." },
+        { "icon": "②", "title": "Dwa rektifikasyon", "body": "Korije nenpòt done ki pa egzak oswa enkonplè." },
+        { "icon": "③", "title": "Dwa pou efase", "body": "Mande sipresyon done ou yo — sòf si yon obligasyon legal di kontrè." },
+        { "icon": "④", "title": "Dwa limitasyon", "body": "Limite tretman done ou yo nan kèk ka." },
+        { "icon": "⑤", "title": "Dwa potabilite", "body": "Resevwa done ou yo nan yon fòma estriktire e reitilizab." },
+        { "icon": "⑥", "title": "Dwa opozisyon", "body": "Opoze tretman done ou yo nenpòt lè." }
+      ],
+      "rights_complaint": "Ou gen dwa tou pou pote yon plent devan otorite pwoteksyon done Baviè a (BayLfD) : datenschutz-bayern.de.",
+      "hosting_title": "Ebèjman",
+      "hosting_body": "Sit sa a ebèje sou yon enfrastrikti ki nan Inyon Ewopeyen. Pa gen okenn zouti tyès pati analiz oswa reklam.",
+      "contact_title": "Kontak pwoteksyon done",
+      "contact_body": "Pou nenpòt kesyon sou pwoteksyon done ou — egzèsis dwa, plent, demann — ekri nou dirèkteman.",
+      "contact_email": "kontakt@ayitidijital.org"
+    }
+  },
+  "membership_form": {
+    "step_label": "Etap",
+    "section_type": "Tip adezyon",
+    "section_type_help": "Chwazi fòmil ki koresponn ak sitiyasyon ou. Ou ka chanje l pi ta sou senp demann.",
+    "types": {
+      "ordinary": {
+        "label": "Manm òdinè",
+        "fee": "12 € / ane",
+        "for_label": "Pou kiyès",
+        "for": "Moun ki vle patisipe konplètman nan lavi asosyasyon an.",
+        "benefits": [
+          "Dwa vote nan AG",
+          "Kalifye pou Vorstand",
+          "Resi fiskal alman"
+        ]
+      },
+      "supporting": {
+        "label": "Manm soutyen",
+        "fee": "60 € oswa plis / ane",
+        "for_label": "Pou kiyès",
+        "for": "Moun oswa òganizasyon ki vle soutni nou finansyèman, san dwa vote.",
+        "benefits": [
+          "Soutyen ranfòse nan misyon an",
+          "San dwa vote",
+          "Resi fiskal alman"
+        ]
+      },
+      "student": {
+        "label": "Etidyan",
+        "fee": "10 € / ane",
+        "for_label": "Pou kiyès",
+        "for": "Etidyan, aprantiyaj ak moun nan fòmasyon (jistifikatif demande).",
+        "benefits": [
+          "Tarif redwi",
+          "Dwa vote nan AG",
+          "Resi fiskal alman"
+        ]
+      }
+    },
+    "section_identity": "Idantite",
+    "first_name": "Prenon",
+    "last_name": "Non",
+    "email": "Adrès imèl",
+    "section_address": "Adrès postal",
+    "address": "Adrès",
+    "postal_code": "Kòd postal",
+    "city": "Vil",
+    "country": "Peyi",
+    "fee_label": "Kotizasyon anyèl",
+    "fee_help": "Kalkile otomatikman dapre tip adezyon ou chwazi.",
+    "section_motivation": "Motivasyon",
+    "motivation": "Poukisa ou vle vin manm ?",
+    "motivation_help": "500 karaktè maksimòm.",
+    "section_confirm": "Konfimasyon",
+    "accept_statutes": "Mwen aksepte estati asosyasyon an.",
+    "accept_privacy": "Mwen aksepte politik konfidansyalite a.",
+    "submit": "Voye demann mwen",
+    "submit_note": "Repons Vorstand la nan 7 jou louvrab.",
+    "required": "Chan obligatwa",
+    "success_title": "Demann voye.",
+    "success_body": "Mèsi — n ap retounen vè ou nan kèk jou."
+  },
+  "contact_form": {
+    "name": "Non ou",
+    "email": "Adrès imèl",
+    "subject": "Sijè",
+    "message": "Mesaj",
+    "submit": "Voye",
+    "success_title": "Mesaj voye.",
+    "success_body": "Mèsi — n ap reponn ou nan kèk jou."
+  }
+}

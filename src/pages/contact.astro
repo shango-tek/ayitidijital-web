@@ -1,0 +1,29 @@
+---
+import FormLayout from '../layouts/FormLayout.astro';
+import ContactForm from '../components/ContactForm.astro';
+import { getDict } from '../i18n';
+
+const locale = 'fr' as const;
+const dict = getDict(locale);
+---
+
+<FormLayout
+  locale={locale}
+  title={dict.pages.contact.title}
+  description={dict.pages.contact.description}
+  eyebrow={dict.pages.contact.eyebrow}
+  heading={dict.pages.contact.h1}
+  intro={dict.pages.contact.intro}
+>
+  <ContactForm locale={locale} />
+
+  <p class="mt-12 text-sm text-primary/55 text-center">
+    {dict.pages.contact.direct_email}{' '}
+    <a
+      href="mailto:kontakt@ayitidijital.org"
+      class="text-primary underline underline-offset-4 decoration-accent decoration-2 hover:text-accent-deep transition-colors"
+    >
+      kontakt@ayitidijital.org
+    </a>
+  </p>
+</FormLayout>

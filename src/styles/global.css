@@ -1,0 +1,124 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #0B2545;
+  --color-accent: #C5A572;
+  --color-accent-deep: #8B6F3F;
+  --color-surface: #FAF7F2;
+  --color-surface-dark: #FFFFFF;
+  --color-text: #1A1A1A;
+  --color-text-soft: #4A4A4A;
+  --color-line: #E5DFD3;
+
+  --font-serif: 'Fraunces', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+}
+
+/* ============================================================
+   Base
+============================================================ */
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Variable Fraunces — use heavy optical size at large sizes */
+.font-serif-display {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+  font-variation-settings: "opsz" 144;
+}
+
+.font-serif {
+  font-family: var(--font-serif);
+  font-optical-sizing: auto;
+}
+
+/* ============================================================
+   Decorative
+============================================================ */
+.hero-pattern {
+  background-image:
+    radial-gradient(circle at 20% 30%, rgba(197, 165, 114, 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(197, 165, 114, 0.06) 0%, transparent 50%);
+}
+
+.accent-line {
+  position: relative;
+}
+.accent-line::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: -8px;
+  width: 32px;
+  height: 1px;
+  background: var(--color-accent);
+}
+
+/* ============================================================
+   Interactivity
+============================================================ */
+.card-hover {
+  transition:
+    transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    border-color 0.3s ease;
+}
+.card-hover:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 36px rgba(11, 37, 69, 0.09);
+  border-color: rgba(197, 165, 114, 0.4);
+}
+
+/* Accessible focus rings tinted with brand accent */
+*:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Forms */
+input,
+textarea,
+select {
+  font-family: inherit;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: rgba(11, 37, 69, 0.35);
+}
+
+/* Selection */
+::selection {
+  background: var(--color-accent);
+  color: var(--color-primary);
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
