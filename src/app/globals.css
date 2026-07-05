@@ -1,0 +1,459 @@
+@import "tailwindcss";
+
+/* The ported design system (site.css / radiant-parts.css) is imported into the
+   `base` layer so Tailwind's `utilities` layer always wins. Otherwise site.css's
+   unlayered `*{margin:0;padding:0}` reset would beat every Tailwind padding /
+   margin utility (unlayered CSS outranks any @layer), silently disabling them.
+   New UI can now use Tailwind freely; the ported design keeps its own classes. */
+@import "../styles/site.css" layer(base);
+@import "../styles/radiant-parts.css" layer(base);
+@import "../styles/konbit-footer.css" layer(base); /* two-card Konbit footer */
+@import "../styles/silent-precision.css" layer(base);
+
+/* ==================================================================
+   Corporate design → Tailwind v4 theme. Makes brand colours + fonts
+   available as utilities (bg-primary, text-accent, border-sand,
+   font-display, font-mono …) for any NEW markup, while the ported
+   design system keeps using its own hand-written classes/variables.
+   ================================================================== */
+@theme {
+  --color-primary: #12246B;        /* Konbit navy — primary brand */
+  --color-primary-deep: #0E1B4D;   /* Ink navy — dark surfaces */
+  --color-accent: #D21034;         /* Drapo red — secondary accent (one per view) */
+  --color-sand: #F4EFE6;           /* warm neutral background */
+  --color-sky: #DCE8FA;            /* gradient midpoint */
+  --color-periwinkle: #B9C6F2;     /* gradient end / dark-mode dots */
+  --color-ink: #161C3B;            /* body text */
+  --color-ink-soft: #4A5170;       /* muted text */
+  --color-paper: #FCFAF5;          /* page background */
+
+  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-sans: var(--font-hanken), 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* ------------------------------------------------------------------
+   Font wiring — the design CSS (site.css / radiant-parts.css) references
+   the display / body / mono families via the --font-display / --font-body /
+   --font-mono custom properties. next/font exposes each as a hashed CSS
+   variable on <html>; re-point the design's variables at them. Body text is
+   Hanken Grotesk (warm humanist sans); headlines stay Space Grotesk.
+   ------------------------------------------------------------------ */
+:root {
+  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-body: var(--font-hanken), 'Hanken Grotesk', system-ui, sans-serif;
+  --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-hand: var(--font-caveat), 'Caveat', cursive;
+}
+
+/* ------------------------------------------------------------------
+   Container width. `.container` is ALSO a built-in Tailwind utility, and
+   because the ported design reuses that class name, Tailwind emits its own
+   `.container` in the `utilities` layer — which outranks the `base` layer
+   where site.css now lives. So the authoritative width is asserted here,
+   unlayered, to win over it. (Keep in sync with `.container` in site.css.)
+   ------------------------------------------------------------------ */
+.container {
+  max-width: 88rem;
+}
+
+/* ------------------------------------------------------------------
+   Preloader — the growing brand spiral. The <Preloader> client component
+   flips `data-fade` on to dismiss it (see components/layout/Preloader.tsx).
+   ------------------------------------------------------------------ */
+#preloader {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: grid;
+  place-items: center;
+  background: #FCFAF5;
+  overflow: hidden;
+  transition: opacity .55s ease, visibility .55s ease;
+}
+/* 3x bigger + keeps growing (spiral drawing all the while) until the page is ready */
+#preloader img {
+  width: 624px;
+  height: 624px;
+  transform-origin: center;
+  animation: preGrow 9s cubic-bezier(.1, .7, .3, 1) forwards;
+}
+@keyframes preGrow {
+  0% { transform: scale(.18); opacity: 0; }
+  9% { opacity: 1; }
+  100% { transform: scale(1.2); opacity: 1; }
+}
+#preloader[data-fade] {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+#preloader[data-fade] img {
+  transform: scale(1.42);
+  transition: transform .55s cubic-bezier(.5, 0, .85, .3);
+}
+
+/* ------------------------------------------------------------------
+   Floating navbar — the real RadiantNavbar (design untouched) re-rendered
+   inside a fixed, full-width liquid-glass bar that slides in on scroll and
+   stays pinned at the top. See components/layout/FloatingNav.tsx.
+   ------------------------------------------------------------------ */
+.floatnav {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 60;
+  opacity: 0;
+  pointer-events: none;
+  /* fade in place — the navbar "detaches" where it sits, it does not slide in */
+  transition: opacity .28s ease;
+  /* liquid glass: translucent tint + heavy blur + saturation boost */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, .55), rgba(247, 244, 236, .34));
+  -webkit-backdrop-filter: blur(22px) saturate(185%);
+  backdrop-filter: blur(22px) saturate(185%);
+  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  box-shadow:
+    0 12px 36px -14px rgba(18, 36, 107, .30),
+    inset 0 1px 0 0 rgba(255, 255, 255, .7);
+}
+/* diagonal specular sheen — the moving-light "liquid glass" highlight */
+.floatnav::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    114deg,
+    rgba(255, 255, 255, .24) 0%,
+    rgba(255, 255, 255, 0) 24%,
+    rgba(255, 255, 255, 0) 70%,
+    rgba(255, 255, 255, .16) 100%
+  );
+}
+.floatnav-shown {
+  opacity: 1;
+  pointer-events: auto;
+}
+/* keep the navbar's own design, just drop the hero's tall top gap + sit content
+   above the specular sheen */
+.floatnav .floatnav-inner {
+  position: relative;
+  z-index: 1;
+}
+/* Floating bar hugs the very top: drop the in-hero nav's 2rem top gap so the
+   first hairline sits flush at the viewport edge — just the bar floating over
+   the page content, no empty glass above it. */
+.floatnav .rn-header {
+  padding-top: 0;
+}
+@media (prefers-reduced-motion: reduce) {
+  .floatnav {
+    transition: opacity .2s ease;
+  }
+}
+
+/* ------------------------------------------------------------------
+   Mobile / tablet navigation (< 1024px) — port of the "Studio" menu.
+   A floating CLOSED bar (logo + ☰, z-40) and the panel's own OPEN header
+   (logo + ✕, z-50) sit at the same position, so the logo holds still and
+   ☰ morphs to ✕ in place. The navy PANEL animates height 0 → auto (CSS
+   grid-rows) in normal flow, pushing the rounded-top content card down.
+   Unlayered so the < 1024px overrides win over the layered design CSS.
+   ------------------------------------------------------------------ */
+.mnav { position: relative; z-index: 50 }
+/* Hide the hamburger only on a TRUE desktop — wide AND a hovering pointer.
+   Touch devices (iPads, incl. landscape ≥1024) keep the Studio hamburger. */
+@media (min-width: 1024px) and (hover: hover) and (pointer: fine) { .mnav { display: none } }
+
+/* shared header row — identical in the closed bar and the open panel header */
+.mnav-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem }
+.mnav-logo { display: inline-flex; align-items: center; gap: .6rem; text-decoration: none }
+.mnav-brand { font: 700 1.18rem var(--font-display); letter-spacing: -.01em; white-space: nowrap }
+.mnav-actions { display: flex; align-items: center; gap: .25rem }
+.mnav-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  margin-right: -.5rem;
+  border: 0;
+  background: none;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background-color .13s ease;
+}
+.mnav-toggle svg { width: 1.5rem; height: 1.5rem; fill: currentColor }
+
+/* CLOSED bar — floats over the content card top (dark on the light hero).
+   The PlusGrid row adds ~9px of its own top/bottom padding for the hairlines. */
+.mnav-bar { position: absolute; top: 0; left: 0; right: 0; z-index: 40; padding-top: 1.1rem }
+.mnav-pgleft, .mnav-pgitem { display: block }
+.mnav-bar .mnav-brand { color: var(--navy) }
+.mnav-bar .mnav-toggle { color: var(--navy) }
+.mnav-bar .mnav-toggle:hover { background: rgba(18, 36, 107, .08) }
+
+/* PANEL — grows in flow (grid-rows), navy */
+.mnav-panel {
+  position: relative;
+  z-index: 50;
+  display: grid;
+  grid-template-rows: 0fr;
+  background: var(--navy);
+  transition: grid-template-rows .5s cubic-bezier(.32, .72, 0, 1);
+}
+.mnav-open .mnav-panel { grid-template-rows: 1fr }
+.mnav-panel-inner { overflow: hidden; min-height: 0 }
+/* padding-top matches the closed bar's — both header rows now carry the PlusGrid
+   (which adds ~9px of its own row padding), so the logo holds still on open */
+.mnav-panel-content { padding: 1.1rem 0 2.75rem }
+/* PlusGrid recoloured light so the line + plus marks read on the navy panel */
+.mnav-panel .pg-rule-t1, .mnav-panel .pg-rule-t2 { border-top-color: rgba(255, 255, 255, .17) }
+.mnav-panel .pg-row:last-child .pg-rule-b1, .mnav-panel .pg-row:last-child .pg-rule-b2 { border-bottom-color: rgba(255, 255, 255, .17) }
+.mnav-panel .pg-ico { fill: rgba(255, 255, 255, .24) }
+.mnav-panel .mnav-brand { color: #fff }
+.mnav-panel .mnav-toggle { color: #fff }
+.mnav-panel .mnav-toggle:hover { background: rgba(255, 255, 255, .12) }
+
+/* language dropdown (open header) */
+/* header sits above the menu below it, so the open language dropdown (which
+   overlaps the menu) receives clicks instead of the menu cells under it */
+.mnav-head { position: relative; z-index: 20 }
+.mnav-lang { position: relative; display: inline-flex; align-items: center }
+.mnav-langtrigger {
+  display: inline-flex;
+  align-items: center;
+  gap: .25rem;
+  padding: .4rem .55rem;
+  border-radius: 999px;
+  font: 600 .85rem var(--font-display);
+  color: #fff;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: background-color .13s ease;
+}
+.mnav-langtrigger:hover { background: rgba(255, 255, 255, .12) }
+/* closed bar sits on the light hero — navy trigger + navy hover */
+.mnav-bar .mnav-langtrigger { color: var(--navy) }
+.mnav-bar .mnav-langtrigger:hover { background: rgba(18, 36, 107, .08) }
+.mnav-bar .mnav-chev { color: var(--navy) }
+.mnav-chev { width: .8rem; height: .8rem; transition: transform .18s ease }
+.mnav-lang[data-open] .mnav-chev { transform: rotate(180deg) }
+/* same liquid-glass panel as the desktop language dropdown (.hm-panel-inner) */
+.mnav-langmenu {
+  position: absolute;
+  top: calc(100% + .5rem);
+  right: 0;
+  z-index: 70;
+  min-width: 9.5rem;
+  margin: 0;
+  padding: .4rem;
+  list-style: none;
+  background: rgba(250, 249, 246, .55);
+  -webkit-backdrop-filter: blur(26px) saturate(1.7);
+  backdrop-filter: blur(26px) saturate(1.7);
+  border: 1px solid rgba(255, 255, 255, .6);
+  border-radius: 12px;
+  box-shadow: 0 26px 46px rgba(18, 36, 107, .16), inset 0 1px 0 rgba(255, 255, 255, .55);
+  animation: navFade .16s ease-out;
+}
+.mnav-langmenu button {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: .55rem .7rem;
+  border-radius: 8px;
+  font: 500 .95rem var(--font-body);
+  color: var(--navy);
+  background: none;
+  border: 0;
+  cursor: pointer;
+  transition: background-color .12s ease;
+}
+.mnav-langmenu button:hover { background: rgba(18, 36, 107, .06) }
+.mnav-langmenu button.is-current { font-weight: 700 }
+.mnav-langcode { font: 600 .78rem var(--font-display); color: var(--ink-soft) }
+
+/* Line-separated menu cells — simple hairline dividers, 1 col on phone, 2 on
+   tablet (Studio-style). Big display type, generous padding, red hover arrow. */
+.mnav-menu { margin-top: 1.5rem }
+.mnav-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  border-bottom: 1px solid rgba(255, 255, 255, .14);
+}
+.mnav-cell {
+  position: relative;
+  padding: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, .14);
+  transition: background-color .18s ease;
+}
+.mnav-cell:hover { background: rgba(255, 255, 255, .05) }
+/* the OPEN menu never shows the plus-grid frame (phone + tablet); the closed bar
+   keeps it. So every cell keeps its top hairline and the grid owns its top edge. */
+.mnav-panel .pg-rule,
+.mnav-panel .pg-ico { display: none }
+@media (min-width: 640px) {
+  .mnav-list { grid-template-columns: 1fr 1fr }
+  .mnav-cell:nth-child(even) { border-left: 1px solid rgba(255, 255, 255, .14) }
+  /* more breathing room between the header and the grid */
+  .mnav-menu { margin-top: 2.75rem }
+  /* uniform-height cells with vertically-centred content */
+  .mnav-cell { min-height: 9rem; display: flex; flex-direction: column; justify-content: center }
+}
+/* tablet in portrait has the vertical room — give the grid a touch more air */
+@media (min-width: 640px) and (orientation: portrait) {
+  .mnav-menu { margin-top: 3.5rem }
+}
+.mnav-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  font: 500 clamp(2.1rem, 9vw, 2.75rem)/1 var(--font-display);
+  letter-spacing: -.02em;
+  color: #fff;
+  text-decoration: none;
+  transition: transform .24s cubic-bezier(.32, .72, 0, 1);
+}
+.mnav-link:hover { transform: translateX(.5rem) }
+.mnav-link-arrow {
+  width: 1.5rem;
+  height: 1.5rem;
+  color: var(--red);
+  opacity: 0;
+  transform: translateX(-.6rem);
+  transition: opacity .2s ease, transform .24s cubic-bezier(.32, .72, 0, 1);
+}
+.mnav-link:hover .mnav-link-arrow { opacity: 1; transform: translateX(0) }
+/* accordion: label + chevron toggle share a row; the sub-links collapse below */
+.mnav-cellhead { display: flex; align-items: center; justify-content: space-between; gap: 1rem }
+.mnav-subtoggle {
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  margin: -.4rem -.6rem -.4rem 0;
+  border: 0;
+  background: none;
+  border-radius: 999px;
+  color: rgba(255, 255, 255, .7);
+  cursor: pointer;
+  transition: background-color .13s ease, color .13s ease;
+}
+.mnav-subtoggle:hover { background: rgba(255, 255, 255, .1); color: #fff }
+.mnav-subtoggle .mnav-chev { width: 1.15rem; height: 1.15rem; transition: transform .28s cubic-bezier(.32, .72, 0, 1) }
+.mnav-subtoggle[aria-expanded="true"] .mnav-chev { transform: rotate(180deg) }
+.mnav-subwrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows .34s cubic-bezier(.32, .72, 0, 1);
+}
+.mnav-subwrap.is-open { grid-template-rows: 1fr }
+.mnav-subinner { overflow: hidden; min-height: 0 }
+.mnav-sub { display: flex; flex-wrap: wrap; gap: .3rem 1.4rem; padding-top: 1rem }
+@media (prefers-reduced-motion: reduce) { .mnav-subwrap { transition: none } }
+.mnav-sublink {
+  font: 500 1rem/1.5 var(--font-body);
+  color: rgba(255, 255, 255, .58);
+  text-decoration: none;
+  transition: color .14s ease;
+}
+.mnav-sublink:hover { color: #fff }
+
+/* foot — support CTA + Studio-style follow-us social row */
+.mnav-foot { margin-top: 2.75rem; display: flex; flex-direction: column; align-items: flex-start; gap: 2.25rem }
+/* Support button spans the width on phone, natural width from tablet up */
+.mnav-support-btn { width: 100%; justify-content: center }
+@media (min-width: 640px) {
+  /* wider than its label, but not the full column (tablet) */
+  .mnav-support-btn { width: auto; min-width: 13rem; justify-content: center }
+  /* foot becomes two columns: support button (left, where Studio puts offices)
+     + the follow-us block (right) */
+  .mnav-foot { display: grid; grid-template-columns: 1fr 1fr; align-items: center; justify-items: start; gap: 2rem }
+}
+.mnav-follow-title {
+  margin: 0 0 1.05rem;
+  font: 600 .8rem/1 var(--font-display);
+  letter-spacing: .17em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, .55);
+}
+.mnav-social { display: flex; gap: 1.55rem; margin: 0; padding: 0; list-style: none }
+.mnav-social-link {
+  display: inline-flex;
+  color: #fff;
+  opacity: .78;
+  transition: opacity .15s ease, transform .18s ease;
+}
+.mnav-social-link:hover { opacity: 1; transform: translateY(-2px) }
+.mnav-social-ico { width: 1.35rem; height: 1.35rem; fill: currentColor }
+
+@media (prefers-reduced-motion: reduce) { .mnav-panel { transition: none } }
+
+/* Below 1024px OR on any touch device (so iPads get it in landscape too): the
+   Studio menu replaces the in-hero navbar + floating nav; the whole page becomes
+   a rounded-top content card, hero flush to its top. */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  /* the Studio (MobileNav) bar is the sole nav below 1024px — hide BOTH heroes'
+     in-panel navbars so neither collides with it (double logo otherwise) */
+  .hp .rn-header,
+  .precision-hero .rn-header { display: none }
+  .floatnav { display: none }
+  /* navy sits BEHIND the content card, so the card's rounded top corners reveal
+     the menu colour — at rest as two subtle notches, and when the menu opens the
+     same navy grows to the full panel, so the card reads as sliding out of it. */
+  body { background: var(--navy) }
+  .mshell {
+    position: relative;
+    border-top-left-radius: 2rem;
+    border-top-right-radius: 2rem;
+    background: var(--paper);
+    overflow: hidden;
+  }
+  .hp .hp-bg { inset: 0; border-radius: 0 }
+  .hp-inner { padding-top: 5.75rem }
+  /* precision hero stays an inset, rounded card here too (space top/left/right) so
+     it reads as a contained, fully-visible card — the inset bg + clip-path come
+     from the base rules; we just clear the MobileNav bar with padding-top */
+  .precision-hero-inner { padding-top: 5.75rem }
+  /* the MobileNav closed bar now floats over the DARK precision hero (home only),
+     so its navy logo/brand/lang/burger would be near-invisible — paint them light.
+     (the open panel keeps its own light-on-navy styling, untouched.) */
+  .mnav-bar .mnav-brand,
+  .mnav-bar .mnav-langtrigger,
+  .mnav-bar .mnav-chev,
+  .mnav-bar .mnav-toggle { color: #fff }
+  .mnav-bar .mnav-logo .lanbi path { fill: #fff }
+  .mnav-bar .mnav-toggle:hover,
+  .mnav-bar .mnav-langtrigger:hover { background: rgba(255, 255, 255, .12) }
+  .mnav-bar .pg-rule { border-color: rgba(255, 255, 255, .5) }
+  .mnav-bar .pg-row:last-child .pg-rule-b1,
+  .mnav-bar .pg-row:last-child .pg-rule-b2 { border-bottom-color: rgba(255, 255, 255, .5) }
+  .mnav-bar .pg-ico { fill: rgba(255, 255, 255, .65) }
+}
+
+/* Laptops/desktops with a mouse (13" and up): the hero description reads as 2
+   lines — a bit smaller and wider than the tablet size. Written UNLAYERED (not in
+   @layer base) so it outranks Tailwind's `lg:` utilities. Touch tablets are
+   excluded via hover/pointer, so they keep the 3-line size. */
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .precision-hero-content p {
+    font-size: 1.25rem;
+    max-width: 72rem;
+  }
+}
+
+/* The glass Sipòte button (LiquidButton) uses Tailwind's `text-primary` (navy) —
+   correct on the light floating nav, but it must be white over the dark hero.
+   Unlayered so it outranks the layered `text-primary` utility. */
+.precision-hero .rn-support {
+  color: #fff;
+}

@@ -1,0 +1,226 @@
+@theme {
+  --color-precision-bg: #0a0a0f;
+  --color-precision-fg: #f5f5f7;
+  --color-precision-muted: #8a8a96;
+  --color-precision-border: #2a2a35;
+  --color-precision-card: #16161d;
+}
+
+.precision-hero {
+  position: relative;
+  overflow: hidden;
+  /* clip the whole hero to the inset card shape (same rect as .precision-hero-bg:
+     .5rem inset top/left/right, flush bottom, 2rem radius) so the full-bleed
+     PlusGrid rules can't poke past the rounded corners — it reads as one card.
+     Dropped to none on mobile, where the hero is full-bleed. */
+  clip-path: inset(0.5rem 0.5rem 0 0.5rem round 2rem);
+}
+
+.precision-hero-bg {
+  position: absolute;
+  /* rounded card inset from the edges (space top/left/right, flush bottom) — the
+     same treatment as the HeroPanel card below it (.hp-bg), with a light inner
+     hairline instead of a dark one since this panel is dark. */
+  inset: .5rem;
+  bottom: 0;
+  border-radius: 2rem;
+  background: var(--color-precision-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+
+.precision-hero-inner {
+  position: relative;
+  z-index: 1;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem 6.5rem;
+}
+
+.precision-hero .rn-header {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  max-width: 88rem;
+  margin: 0 auto;
+}
+
+/* Lighten PlusGrid rules for better visibility on dark hero background */
+.precision-hero .pg-rule {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* the bottom double-line draws with border-bottom under a higher-specificity
+   `.pg-row:last-child .pg-rule-b*` rule, so it needs an equally-specific
+   override or it stays the near-invisible black hairline on the dark hero */
+.precision-hero .pg-row:last-child .pg-rule-b1,
+.precision-hero .pg-row:last-child .pg-rule-b2 {
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+
+.precision-hero .pg-ico {
+  fill: rgba(255, 255, 255, 0.7);
+}
+
+/* the lanbi logo mark's dots are hardcoded navy/red — paint them white so the
+   spiral is visible on the dark hero (CSS beats the inline fill attributes) */
+.precision-hero .rn-logo-mark path {
+  fill: #fff;
+}
+
+/* Ensure navbar text and icons are visible on dark background */
+.precision-hero .rn-brand-name,
+.precision-hero .rn-link,
+.precision-hero .rn-lang-cur,
+.precision-hero .rn-ico,
+.precision-hero .hm-trigger,
+.precision-hero .hm-chev {
+  color: #fff;
+}
+
+.precision-hero .rn-logo-link {
+  color: #fff;
+}
+
+.precision-hero .rn-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* the dropdown + language triggers use a near-black hover tint by default,
+   invisible on the dark hero — give them the same white hover glow the plain
+   links get, so every item up to the language switcher reacts on hover */
+.precision-hero .hm-trigger:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.precision-hero .hm[data-open] .hm-trigger {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* the search button's hover ring uses a near-black tint (invisible on the dark
+   hero) — restore the visible hover with the same white glow the links get */
+.precision-hero .rn-search:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* "Sou nou" dropdown — the base panel is a light sand glass with navy links,
+   which reads as low-contrast grey over the dark hero. Turn it into dark glass
+   with white text so it matches the hero and stays legible. */
+.precision-hero .hm-panel-inner {
+  background: rgba(16, 16, 22, 0.72);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.precision-hero .hm-panel-inner a {
+  color: #fff;
+}
+
+.precision-hero .hm-panel-inner a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.precision-hero .hm-panel-inner a[aria-current="true"] {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+.precision-hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+@media (min-width: 1024px) {
+  .precision-hero-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* on laptops/desktops (13"–16"+) the card nearly fills the viewport — a touch
+       under 100vh so its rounded bottom edge stays fully visible above the fold
+       instead of sitting flush against (and cut off by) the viewport bottom */
+    min-height: calc(100vh - 1.5rem);
+    /* drop the big bottom padding (it was for the removed marquee) so the
+       centered content sits in the true middle between the nav plus-grid and the
+       card's bottom edge, rather than being pulled upward */
+    padding-bottom: 0;
+  }
+}
+
+/* touch tablets in landscape (e.g. iPad): fill the whole viewport height — the
+   small under-100vh reveal we keep on the desktop card isn't wanted here */
+@media (hover: none) and (pointer: coarse) and (min-width: 1024px) and (orientation: landscape) {
+  .precision-hero-inner {
+    min-height: 100dvh;
+  }
+}
+
+
+.precision-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tahoe-glass-text {
+  color: transparent;
+  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.9) 55%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,1) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.18);
+  filter: drop-shadow(0 15px 35px rgba(0,0,0,0.45)) drop-shadow(0 5px 10px rgba(0,0,0,0.25));
+  animation: precision-shimmer 8s linear infinite;
+}
+
+@keyframes precision-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes precision-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-precision-marquee {
+  animation: precision-marquee 28s linear infinite;
+}
+
+.precision-reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 1000ms cubic-bezier(0.16,1,0.3,1), transform 1000ms cubic-bezier(0.16,1,0.3,1);
+}
+
+.precision-reveal.is-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.precision-vignette {
+  background: radial-gradient(circle at center, transparent 0%, var(--color-precision-bg) 100%);
+}
+
+.precision-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+
+.precision-tag-pill {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-precision-marquee, .tahoe-glass-text { animation: none; }
+}

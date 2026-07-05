@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5cc3ebc1-3445-4bdd-98a1-51e9744c057d" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution />
+  </component>
+  <component name="EmbeddingIndexingInfo">
+    <option name="cachedIndexableFilesCount" value="83" />
+    <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="WdMkzVMA" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="NextEditCompletionFeaturesState">
+    <decayedCancelled>
+      <entry key="MS100" value="0.0" />
+      <entry key="MS500" value="0.0" />
+      <entry key="S2" value="0.0" />
+      <entry key="S5" value="0.0" />
+      <entry key="S10" value="5.088009396295255E-267" />
+      <entry key="S30" value="1.7199505795579637E-89" />
+      <entry key="S60" value="4.14722868860395E-45" />
+      <entry key="M2" value="6.439898049351364E-23" />
+      <entry key="M5" value="1.329081450696805E-9" />
+      <entry key="M10" value="3.645656937640739E-5" />
+      <entry key="M15" value="0.0010994712198724125" />
+      <entry key="M30" value="0.03315827528505523" />
+      <entry key="H1" value="0.18209515367437476" />
+      <entry key="H2" value="0.43048823818284837" />
+      <entry key="H4" value="0.8892393042440616" />
+      <entry key="D1" value="8.434324572590379" />
+      <entry key="W1" value="14.576269501200272" />
+    </decayedCancelled>
+    <decayedSelected>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0" />
+      <entry key="S5" value="1.0" />
+      <entry key="S10" value="1.0" />
+      <entry key="S30" value="1.0" />
+      <entry key="S60" value="1.0" />
+      <entry key="M2" value="1.0" />
+      <entry key="M5" value="1.0" />
+      <entry key="M10" value="1.0" />
+      <entry key="M15" value="1.0" />
+      <entry key="M30" value="1.0000000000000058" />
+      <entry key="H1" value="1.0000001068653723" />
+      <entry key="H2" value="1.0004619270312787" />
+      <entry key="H4" value="1.0303886582449906" />
+      <entry key="D1" value="1.9953238018540151" />
+      <entry key="W1" value="2.8102335193629324" />
+    </decayedSelected>
+    <decayedShown>
+      <entry key="MS100" value="9.058555098364925E-10" />
+      <entry key="MS500" value="0.015538596385518971" />
+      <entry key="S2" value="0.35306360109618873" />
+      <entry key="S5" value="0.6593882115263177" />
+      <entry key="S10" value="0.8120272233899044" />
+      <entry key="S30" value="0.9329467649630555" />
+      <entry key="S60" value="0.9658916942199345" />
+      <entry key="M2" value="0.9827978908300193" />
+      <entry key="M5" value="0.9930833186835645" />
+      <entry key="M10" value="0.9965720944564086" />
+      <entry key="M15" value="0.9987881729101212" />
+      <entry key="M30" value="1.0319961066891754" />
+      <entry key="H1" value="1.181500416605178" />
+      <entry key="H2" value="1.430640629316595" />
+      <entry key="H4" value="1.9194380271405562" />
+      <entry key="D1" value="10.42945202737271" />
+      <entry key="W1" value="17.38645509275158" />
+    </decayedShown>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5,
+  &quot;fromUser&quot;: false
+}</component>
+  <component name="ProjectId" id="3Fz8vPDTcMTqxbhCQhQ8VeFowRE" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.go.formatter.settings.were.checked": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
+    "go.import.settings.migrated": "true",
+    "js.debugger.nextJs.config.created.client": "true",
+    "js.debugger.nextJs.config.created.server": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/pracht/dev/projects/ayiti-dijital-next/public",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "npm.Next.js: server-side.executor": "Run",
+    "org.rust.first.attach.projects": "true",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "to.speed.mode.migration.done": "true",
+    "ts.external.directory.path": "/Users/pracht/dev/projects/ayiti-dijital-next/node_modules/typescript/lib"
+  }
+}]]></component>
+  <component name="ReactDesignerToolWindowState">
+    <option name="myId2Visible">
+      <map>
+        <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
+        <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+      </map>
+    </option>
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/public" />
+    </key>
+  </component>
+  <component name="RunManager" selected="npm.Next.js: server-side">
+    <configuration name="Next.js: debug client-side" type="JavascriptDebugType" uri="http://localhost:3000/">
+      <method v="2" />
+    </configuration>
+    <configuration name="Next.js: server-side" type="js.build_tools.npm">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="dev" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5cc3ebc1-3445-4bdd-98a1-51e9744c057d" name="Changes" comment="" />
+      <created>1783066767327</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1783066767327</updated>
+      <workItem from="1783066768696" duration="18156000" />
+      <workItem from="1783192369124" duration="21587000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

@@ -1,0 +1,177 @@
+/* ============================================================
+   KonbitFooter — one self-contained rounded footer card:
+   marquee → PlusGrid line → two cards → PlusGrid line +
+   copyright/socials → stroke wordmark. Replaces the standalone
+   SitemapFooter; brand-retinted, handwritten accents in Caveat.
+   ============================================================ */
+
+.kf-section{position:relative}
+/* full-bleed footer panel — fills the container edge to edge, flush at the bottom */
+.kf-frame{width:auto;margin:0}
+
+/* ---------- container panel — full width/height soft-gradient, rounded TOP corners ----------
+   No overflow:hidden, so the PlusGrid hairlines (100vw) bleed to the viewport
+   edges like the navbar; the gradient bg + top border clip themselves via radius. */
+/* subtle hero-style inset hairline on the top edge (no gradient glow) */
+.kf-card{position:relative;border-radius:2rem 2rem 0 0;background:linear-gradient(135deg,#FBF8F0 0%,#EFF1FA 42%,#E2E7F6 70%,#DBDDF1 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
+.kf-card-inner{position:relative;max-width:92rem;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem) clamp(1.4rem,2.6vw,2.2rem)}
+
+/* marquee along the top — breaks out to the full viewport (scrolls in from the
+   viewport edges, not the container), and sits high near the rounded corners */
+.kf-marquee{position:relative;left:50%;transform:translateX(-50%);width:100vw;z-index:1;overflow:hidden;-webkit-mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent);mask-image:linear-gradient(to right,transparent,#000 4%,#000 96%,transparent)}
+.kf-marquee .mq{padding:.55rem 0 1.1rem}
+
+/* PlusGrid — hairlines run full card width (100vw clipped by the card),
+   plus-marks stay at the content edges. */
+.kf-card .pg-rules{left:50%;width:100vw;transform:translateX(-50%)}
+.kf-card .pg-rule{border-color:var(--line)}
+.kf-card .pg-ico{fill:rgba(18,36,107,.28)}
+.kf-cards-item{padding:34px 0 30px}
+/* two decorative plus-marks on the first line — one centred on the navy card's
+   left edge, one in the gutter between the two cards (navy col = 350px, gap = 16px) */
+.kf-plus{position:absolute;top:-.5rem;width:15px;height:15px;fill:rgba(18,36,107,.28);z-index:4;pointer-events:none}
+.kf-plus-a{left:-.5rem}
+.kf-plus-b{left:calc(358px - .5rem)}
+
+.kf-wrapper{display:grid;grid-template-columns:350px minmax(0,1fr);gap:16px;align-items:stretch}
+/* let the grid tracks shrink below their content's intrinsic width on small
+   screens — without this the cards blow past the viewport on real phones */
+.kf-left,.kf-right{min-width:0}
+
+/* ---------- Left card (navy spiral) ---------- */
+.kf-left{position:relative;min-height:340px;border-radius:24px;padding:30px;overflow:hidden;background:var(--navy);box-shadow:0 12px 40px rgba(18,36,107,.28);display:flex;flex-direction:column;justify-content:space-between}
+.kf-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
+.kf-left::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(120% 90% at 15% 0%,rgba(18,36,107,0) 40%,rgba(10,18,54,.5) 100%)}
+.kf-logo{display:flex;align-items:center;gap:13px;position:relative;z-index:1}
+.kf-logo-mark{width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.8);display:grid;place-items:center;flex:none}
+.kf-logo-mark svg{width:28px;height:28px;display:block}
+.kf-logo-name{font-family:var(--font-display);font-size:28px;font-weight:700;color:#fff;letter-spacing:-.02em}
+.kf-tagline{margin-top:auto;margin-bottom:26px;position:relative;z-index:1;font-family:var(--font-body);font-size:19px;font-weight:500;color:#fff;line-height:1.45}
+.kf-tagline span{color:rgba(255,255,255,.65)}
+/* label + icons on one line if they fit; otherwise the icons wrap onto a second
+   line beneath the label — but the label itself never breaks across lines */
+.kf-social-row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:center;gap:10px 16px;position:relative;z-index:1}
+.kf-social-label{font-family:var(--font-hand);font-size:19px;font-weight:600;color:rgba(255,255,255,.92);letter-spacing:.3px;white-space:nowrap}
+.kf-social-icons{display:flex;gap:7px}
+.kf-social-icon{width:36px;height:36px;border-radius:9px;background:#0e1014;color:#fff;display:grid;place-items:center;box-shadow:0 6px 18px rgba(0,0,0,.35),0 2px 6px rgba(0,0,0,.2);transition:background .2s,transform .15s,box-shadow .2s}
+.kf-social-icon svg{width:15px;height:15px;display:block}
+.kf-social-icon:hover{background:#000;transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.5),0 3px 10px rgba(0,0,0,.3)}
+
+/* ---------- Right card (sitemap + wide CTA) ---------- */
+.kf-right{position:relative;background:#fff;border-radius:24px;padding:32px;overflow:visible;box-shadow:0 6px 26px rgba(18,36,107,.08);display:flex;flex-direction:column;gap:30px}
+
+/* floating lucky badge */
+.kf-lucky{position:absolute;top:-34px;right:32px;z-index:10;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
+.kf-cube{width:88px;height:88px;border-radius:22px;transform:rotate(-10deg);background:linear-gradient(135deg,#3B54A6 0%,#12246B 55%,#0E1B4D 100%);display:grid;place-items:center;box-shadow:inset 3px 3px 8px rgba(255,255,255,.3),inset -3px -3px 12px rgba(0,0,0,.22),8px 14px 28px rgba(18,36,107,.42)}
+.kf-cube-mark{transform:rotate(10deg);width:56px;height:56px;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.25))}
+.kf-lucky-row{display:flex;gap:6px;align-items:center;transform:rotate(-4deg);margin-top:4px}
+.kf-lucky-arrow{width:20px;height:20px;color:var(--navy-tint)}
+.kf-lucky-arrow svg{width:100%;height:100%;display:block}
+.kf-lucky-arrow path{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.kf-lucky-text{font-family:var(--font-hand);font-size:20px;font-weight:600;color:var(--navy-tint);white-space:nowrap}
+
+/* nav cols — the sitemap. Desktop & wide tablet landscape (≥1120px): all 4
+   columns incl. Legal on one row, nothing in the bottom bar. */
+.kf-nav-cols{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:26px 20px;padding-right:96px}
+.kf-col{min-width:0}
+@media (max-width:1180px){
+ /* hide the badge so the 4 columns get the full width — they still fit to ~1120px */
+ .kf-nav-cols{padding-right:0}
+ .kf-lucky{display:none}
+}
+@media (max-width:1120px){
+ /* below here the side-by-side navy card squeezes the sitemap too much for 4
+    columns, so drop to 3 and move Legal into the bottom bar */
+ .kf-nav-cols{grid-template-columns:repeat(3,minmax(0,1fr))}
+ .kf-nav-cols .kf-col:nth-child(4){display:none}
+ .kf-bottom .kf-legal{display:flex} /* higher specificity — beats the later base rule */
+}
+/* mobile: 2×2 with Legal back in the sitemap, no Legal in the bottom bar */
+@media (max-width:640px){
+ .kf-nav-cols{grid-template-columns:repeat(2,minmax(0,1fr))}
+ .kf-nav-cols .kf-col:nth-child(4){display:block}
+ .kf-bottom .kf-legal{display:none}
+}
+.kf-col-title{font-family:var(--font-hand);font-size:24px;font-weight:600;font-style:italic;color:#9199b3;margin-bottom:14px}
+.kf-col a{display:block;font-family:var(--font-body);font-size:14px;font-weight:600;color:var(--navy);margin-bottom:12px;text-decoration:none;transition:color .2s;width:fit-content}
+.kf-col a:hover{color:var(--red)}
+
+/* wide CTA — spans almost the full card */
+.kf-cta{margin-top:auto;display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.kf-cta h4{font-family:var(--font-body);font-size:15px;font-weight:400;color:#6b7280;line-height:1.45}
+.kf-cta h4 strong{display:block;font-family:var(--font-display);font-size:20px;font-weight:700;color:var(--navy)}
+.kf-subscribe{display:flex;width:100%;background:#fff;border:1.5px solid rgba(18,36,107,.18);border-radius:999px;padding:5px;box-shadow:0 2px 10px rgba(0,0,0,.04)}
+.kf-subscribe input{flex:1;min-width:0;padding:12px 20px;background:transparent;border:0;outline:none;font-family:var(--font-body);font-size:14px;color:var(--navy)}
+.kf-subscribe input::placeholder{color:#9199b3}
+/* Chrome/Safari autofill paints a pale-blue fill + black text over the field;
+   background can't override it, so mask it back to the white pill with navy text */
+.kf-subscribe input:-webkit-autofill,
+.kf-subscribe input:-webkit-autofill:hover,
+.kf-subscribe input:-webkit-autofill:focus,
+.kf-subscribe input:-webkit-autofill:active{
+ -webkit-text-fill-color:var(--navy)!important;
+ caret-color:var(--navy);
+ /* keep the field transparent — freeze Chrome's autofill background transition so
+    its pale-blue fill never paints; the white pill shows through instead */
+ transition:background-color 600000s 0s,color 600000s 0s!important;
+}
+/* desktop & tablet: original wide text button (arrow-only kicks in on phones) */
+.kf-subscribe button{display:flex;align-items:center;justify-content:center;padding:12px 26px;background:var(--navy);color:#fff;border:0;font-family:var(--font-body);font-size:14px;font-weight:600;border-radius:999px;cursor:pointer;box-shadow:0 6px 20px rgba(18,36,107,.28),0 2px 8px rgba(0,0,0,.15);transition:background .2s,box-shadow .2s,transform .15s;white-space:nowrap}
+.kf-subscribe button .kf-btn-icon{display:none}
+.kf-subscribe button svg{width:20px;height:20px;display:block}
+.kf-subscribe button:hover{background:var(--navy-deep);transform:translateY(-1px);box-shadow:0 10px 28px rgba(18,36,107,.4),0 3px 10px rgba(0,0,0,.2)}
+.kf-subscribe button:disabled{opacity:.72;cursor:default;transform:none}
+/* iOS Safari auto-zooms the page when a focused field's font-size is < 16px.
+   On touch devices bump the field (and its button, to match) to 16px so tapping
+   the CTA never zooms — works in both portrait and landscape, desktop unchanged. */
+@media (pointer:coarse){
+ .kf-subscribe input,.kf-subscribe button{font-size:16px}
+}
+
+/* ---------- bottom row (copyright + socials) ---------- */
+.kf-bottom{display:flex;justify-content:space-between;align-items:center;gap:1rem;flex-wrap:wrap}
+/* width fixes the trailing plus-mark onto the same vertical as the inter-card
+   mark above (navy col 350px + half the 16px gutter, less the mark's own inset) */
+.kf-copy-item{display:flex;align-items:center;padding:.7rem 0;width:357px;min-height:3.5rem}
+.kf-copyright{font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--ink-soft)}
+/* Legal links relocated into the bottom bar's middle (between the copyright and
+   the proverb) only where the sitemap drops Legal (≤1120px); hidden by default */
+.kf-legal{display:none;align-items:center;gap:1.4rem;flex-wrap:wrap;min-height:3.5rem}
+.kf-legal a{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:color .15s}
+.kf-legal a:hover{color:var(--red)}
+.kf-proverb-wrap{display:flex}
+/* both bottom-row items share a min-height so their plus-marks land on the same
+   double-hairlines (otherwise the shorter copyright block floats off the lines) */
+.kf-proverb-item{display:flex;align-items:center;padding:.7rem 0;min-height:3.5rem}
+.kf-proverb{font-family:var(--font-hand);font-size:1.25rem;font-weight:600;color:var(--navy-tint);letter-spacing:.3px;white-space:nowrap}
+
+/* ---------- Watermark (stroke wordmark, below the copyright line) ---------- */
+.kf-watermark{position:relative;z-index:0;width:100%;max-width:35rem;margin:16px auto 6px;pointer-events:none;user-select:none;line-height:0}
+.kf-watermark svg{display:block;width:100%;height:auto;overflow:visible}
+.kf-watermark text{font-family:var(--font-display);font-weight:700;letter-spacing:-.03em;fill:none;stroke:rgba(18,36,107,.2);stroke-width:2;vector-effect:non-scaling-stroke;paint-order:stroke}
+
+/* ---------- Responsive ---------- */
+@media (max-width:860px){
+ .kf-wrapper{grid-template-columns:minmax(0,1fr)}
+ .kf-left{min-height:auto;gap:36px}
+ .kf-plus-b{display:none} /* no inter-card gutter once the cards stack */
+ .kf-copy-item{width:auto} /* drop the alignment width — no gutter mark to meet */
+}
+@media (max-width:560px){
+ .kf-right{padding:24px}
+ .kf-nav-cols{gap:24px 20px}
+ .kf-cta{padding-top:20px}
+ .kf-cube{width:68px;height:68px}
+ .kf-cube-mark{width:44px;height:44px}
+ /* phones only: shrink the submit to an arrow-only circle so the field has room */
+ .kf-subscribe button{width:46px;height:46px;padding:0;flex:none;align-self:center}
+ .kf-subscribe button .kf-btn-label{display:none}
+ .kf-subscribe button .kf-btn-icon{display:grid;place-items:center}
+ /* phones: drop the proverb and keep only the copyright — full-width and centered,
+    framed by its own four plus-marks on the card edges. One row, so the grid is
+    shorter, and the marks sit on the copyright's own top/bottom hairlines. */
+ .kf-bottom{flex-direction:column;align-items:stretch}
+ .kf-proverb-wrap{display:none}
+ .kf-copy-item{width:100%;justify-content:center;min-height:3rem}
+ .kf-copyright{font-size:16px}
+}
