@@ -103,7 +103,9 @@
           }
         ]
       }
-    ]
+    ],
+    "expandAllLabel": "Expand all",
+    "collapseAllLabel": "Collapse all"
   },
   "privacy": {
     "title": "Privacy",
@@ -519,7 +521,9 @@
           }
         ]
       }
-    ]
+    ],
+    "expandAllLabel": "Expand all",
+    "collapseAllLabel": "Collapse all"
   },
   "consent": {
     "title": "Audience measurement",

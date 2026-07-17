@@ -71,6 +71,9 @@ export interface LegalDoc {
   lastUpdatedLabel: string
   lastUpdatedValue: string
   tocTitle: string
+  /** Labels for the expand/collapse-all control (accordion documents only). */
+  expandAllLabel: string
+  collapseAllLabel: string
   sections: LegalSectionContent[]
 }
 

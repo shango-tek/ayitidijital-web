@@ -7,12 +7,16 @@ import type { LegalBlock, LegalDoc } from '@/content/legal'
 /**
  * Shell for the two statutory documents (Impressum / privacy policy).
  *
- * Same page furniture as the rest of the site — the dark {@link PageHeader}
- * band, the 90rem measure, the ambient gold/navy glows from PasseALaction —
- * with a sticky section nav under the header that tracks scroll. Each section
- * is a split row (number + title parked on the left, prose on the right), which
- * mirrors the split SectionHeader used across the site and keeps the text at a
- * readable measure even at full width.
+ * Sections are ROWS, not a title/prose split: a full-width header you click,
+ * with its panel directly underneath. The split (title parked left, prose
+ * right) reads well for a document that is always open, but it fights an
+ * accordion — the toggle ends up stranded at the far edge of the title rail,
+ * away from the text it reveals, and a collapsed row leaves the whole right
+ * half empty. Rows keep the control, the label and the content together, which
+ * is what makes an accordion learnable.
+ *
+ * `accordion` only changes whether the rows collapse. Both documents share the
+ * same anatomy so they read as one pair.
  */
 export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion?: boolean }) {
   const bare = doc.h1.replace(/\.\s*$/, '')
@@ -22,20 +26,23 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
   const navRef = useRef<HTMLOListElement>(null)
   const chipRefs = useRef<Record<string, HTMLLIElement | null>>({})
 
-  // Which sections are expanded. Only meaningful when `accordion` — the imprint
-  // is eight short sections and reads better fully open. Several may be open at
-  // once: this is a reference document, so opening one clause must not close the
-  // one you were comparing it against.
+  // Several sections may be open at once: this is a reference document, so
+  // opening one clause must not close the one you were comparing it against.
   const [openIds, setOpenIds] = useState<Set<string>>(
     () => new Set(doc.sections[0] ? [doc.sections[0].id] : []),
   )
   const isOpen = (id: string) => !accordion || openIds.has(id)
+  const allOpen = doc.sections.every((s) => openIds.has(s.id))
+
   const toggle = (id: string) =>
     setOpenIds((prev) => {
       const next = new Set(prev)
       next.has(id) ? next.delete(id) : next.add(id)
       return next
     })
+
+  const toggleAll = () =>
+    setOpenIds(allOpen ? new Set() : new Set(doc.sections.map((s) => s.id)))
 
   // A collapsed section must still be reachable: opening via #anchor covers deep
   // links from outside, the section nav, and the browser's own hash navigation.
@@ -45,7 +52,6 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
       const id = window.location.hash.slice(1)
       if (!id || !doc.sections.some((s) => s.id === id)) return
       setOpenIds((prev) => new Set(prev).add(id))
-      // Let the panel expand before the browser settles on the anchor.
       requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: 'start' }))
     }
     openFromHash()
@@ -70,8 +76,6 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
         if (el.getBoundingClientRect().top > READING_LINE) break
         current = s.id
       }
-      // Bottom of the page can't scroll far enough to bring the last section's
-      // top over the line — resolve it so the final chip is reachable.
       const atBottom = window.innerHeight + window.scrollY >= document.body.scrollHeight - 2
       if (atBottom) current = doc.sections[doc.sections.length - 1]?.id ?? current
       setActive(current)
@@ -86,15 +90,11 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
     }
   }, [doc.sections])
 
-  // Keep the active chip visible as you scroll, centring it in the rail.
-  //
-  // Driving the nav's own scrollLeft rather than chip.scrollIntoView() keeps
-  // this strictly horizontal — scrollIntoView would also scroll the page
-  // vertically and fight the reader.
-  //
-  // Measured off getBoundingClientRect, not offsetLeft: the chips' offsetParent
-  // is the sticky <nav>, not the scrolling <ol>, so offsetLeft is relative to
-  // the wrong box and ignores the rail's current scroll.
+  // Keep the active chip visible, centred in the rail. Driving the nav's own
+  // scrollLeft (not chip.scrollIntoView) keeps this strictly horizontal —
+  // scrollIntoView would also scroll the page and fight the reader. Measured off
+  // getBoundingClientRect, not offsetLeft: the chips' offsetParent is the sticky
+  // <nav>, not the scrolling <ol>.
   useEffect(() => {
     const nav = navRef.current
     const chip = chipRefs.current[active]
@@ -109,7 +109,6 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
 
     nav.scrollTo({
       left: target,
-      // Respect a reduced-motion preference — this is decorative movement.
       behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',
     })
   }, [active])
@@ -159,7 +158,6 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
       </nav>
 
       <div className="legal-body relative overflow-hidden bg-white">
-        {/* ambient glows — same pair as Passe à l'action */}
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-gold/[0.07] blur-3xl"
@@ -169,72 +167,79 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
           className="pointer-events-none absolute -left-24 bottom-0 h-[28rem] w-[28rem] rounded-full bg-primary/[0.06] blur-3xl"
         />
 
-        <div className="relative mx-auto max-w-[90rem] px-5 pb-24 pt-14 md:px-10 lg:pb-32 lg:pt-20">
-          {/* Lead — the one piece of display type in the body */}
-          <div className="grid gap-6 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16">
-            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft/60 lg:pt-3">
+        {/* 64rem: a legal document is read, not scanned — a 90rem row would put
+            the toggle a screen-width away from its title, and the prose past a
+            comfortable measure. */}
+        <div className="relative mx-auto max-w-[64rem] px-5 pb-24 pt-14 md:px-10 lg:pb-32 lg:pt-20">
+          <p className="max-w-3xl font-display text-[clamp(1.3rem,2.3vw,1.75rem)] font-medium leading-[1.4] tracking-tight text-primary">
+            {doc.lead}
+          </p>
+
+          {/* Meta row: when it was last touched, and — for the accordion — a way
+              to open everything at once, which readers reach for before Ctrl+F
+              or printing. */}
+          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-b border-black/[0.08] pb-5">
+            <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft/60">
               {doc.lastUpdatedLabel}
-              <span className="mt-1 block normal-case tracking-normal text-ink-soft">
+              <span className="ml-2 normal-case tracking-normal text-ink-soft">
                 {doc.lastUpdatedValue}
               </span>
             </p>
-            <p className="max-w-3xl font-display text-[clamp(1.3rem,2.3vw,1.85rem)] font-medium leading-[1.38] tracking-tight text-primary">
-              {doc.lead}
-            </p>
+            {accordion ? (
+              <button
+                type="button"
+                onClick={toggleAll}
+                className="rounded-full border border-black/10 px-3.5 py-1.5 font-display text-xs font-semibold text-ink-soft transition-colors hover:border-primary/30 hover:text-primary"
+              >
+                {allOpen ? doc.collapseAllLabel : doc.expandAllLabel}
+              </button>
+            ) : null}
           </div>
 
-          <div className="mt-14 flex flex-col gap-12 lg:mt-20 lg:gap-16">
-            {doc.sections.map((s) => (
-              <section
-                key={s.id}
-                id={s.id}
-                className="scroll-mt-24 grid gap-5 border-t border-black/[0.08] pt-9 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16"
-              >
-                {/* Left rail — number + title, parked while its prose scrolls */}
-                <div className={accordion ? '' : 'lg:sticky lg:top-24 lg:self-start'}>
-                  <span className="inline-flex items-center rounded-full border border-gold-deep/30 px-2 py-0.5 font-mono text-[10px] text-gold-deep">
-                    {s.number}
-                  </span>
-                  <Heading
+          <div className="flex flex-col">
+            {doc.sections.map((s) => {
+              const open = isOpen(s.id)
+              return (
+                <section
+                  key={s.id}
+                  id={s.id}
+                  className="scroll-mt-24 border-b border-black/[0.08]"
+                >
+                  <SectionHeading
                     accordion={accordion}
-                    open={isOpen(s.id)}
+                    open={open}
                     onToggle={() => toggle(s.id)}
                     panelId={`${s.id}-panel`}
+                    number={s.number}
                     title={s.title}
+                    subtitle={s.subtitle}
                   />
-                  {s.subtitle ? (
-                    // NOT uppercased: these carry statute citations whose casing
-                    // is meaningful ("MStV", "DDG") — text-transform would
-                    // render "§ 18 al. 2 MStV" as "§ 18 AL. 2 MSTV".
-                    <p className="mt-2 font-mono text-[11px] tracking-[0.06em] text-ink-soft/70">
-                      {s.subtitle}
-                    </p>
-                  ) : null}
-                </div>
 
-                {/* Collapsed via grid-rows rather than `hidden`, deliberately:
-                    display:none would drop the text out of the document, so
-                    Ctrl+F wouldn't find it. This is a statutory document that
-                    must stay readily available (§ 5 DDG) — the words stay in the
-                    page, the row simply has no height. Same technique as the
-                    FAQ accordion. */}
-                <div
-                  id={`${s.id}-panel`}
-                  className={[
-                    'legal-panel grid max-w-3xl transition-[grid-template-rows] duration-300 ease-out',
-                    isOpen(s.id) ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
-                  ].join(' ')}
-                >
-                  <div className="overflow-hidden">
-                    <div className="flex flex-col gap-5">
-                      {s.blocks.map((b, i) => (
-                        <Block key={i} block={b} />
-                      ))}
+                  {/* Collapsed via grid-rows rather than `hidden`: display:none
+                      would drop the text out of the document and break Ctrl+F,
+                      and this must stay readily available (§ 5 DDG). The words
+                      stay; the row simply has no height. */}
+                  <div
+                    id={`${s.id}-panel`}
+                    role="region"
+                    aria-labelledby={`${s.id}-heading`}
+                    className={[
+                      'legal-panel grid transition-[grid-template-rows] duration-300 ease-out',
+                      open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+                    ].join(' ')}
+                  >
+                    <div className="overflow-hidden">
+                      {/* Aligned under the title, not the number. */}
+                      <div className="flex max-w-3xl flex-col gap-5 pb-9 sm:pl-[3.4rem]">
+                        {s.blocks.map((b, i) => (
+                          <Block key={i} block={b} />
+                        ))}
+                      </div>
                     </div>
                   </div>
-                </div>
-              </section>
-            ))}
+                </section>
+              )
+            })}
           </div>
         </div>
       </div>
@@ -243,44 +248,86 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
 }
 
 /**
- * Section heading. A plain <h2> when the document reads open (the imprint); a
- * button that expands its panel when it collapses (the privacy policy, which is
- * long enough that a wall of text buries the parts people came for).
+ * The row header. Number, title and (optional) subtitle on the left, the
+ * affordance on the right edge of the row — one predictable place, next to the
+ * thing it opens.
  */
-function Heading({
+function SectionHeading({
   accordion,
   open,
   onToggle,
   panelId,
+  number,
   title,
+  subtitle,
 }: {
   accordion: boolean
   open: boolean
   onToggle: () => void
   panelId: string
+  number: string
   title: string
+  subtitle?: string
 }) {
-  const heading = 'font-display text-xl font-bold leading-snug tracking-tight text-primary lg:text-2xl'
+  const inner = (
+    <>
+      <span className="w-8 shrink-0 pt-1 font-mono text-xs text-gold-deep">{number}</span>
+      <span className="flex-1">
+        <span className="block font-display text-lg font-bold leading-snug tracking-tight text-primary lg:text-xl">
+          {title}
+        </span>
+        {subtitle ? (
+          // NOT uppercased: these carry statute citations whose casing is
+          // meaningful ("MStV", "DDG") — text-transform would render
+          // "§ 18 al. 2 MStV" as "§ 18 AL. 2 MSTV".
+          <span className="mt-1 block font-mono text-[11px] tracking-[0.06em] text-ink-soft/70">
+            {subtitle}
+          </span>
+        ) : null}
+      </span>
+    </>
+  )
 
-  if (!accordion) return <h2 className={`mt-3 ${heading}`}>{title}</h2>
+  if (!accordion) {
+    return (
+      <h2 id={`${panelId}-heading`} className="flex items-start gap-5 pb-5 pt-9">
+        {inner}
+      </h2>
+    )
+  }
 
   return (
-    <h2 className="mt-3">
+    <h2 id={`${panelId}-heading`}>
       <button
         type="button"
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className={`legal-doc-toggle group flex w-full items-start justify-between gap-4 text-left ${heading}`}
+        className="legal-doc-toggle group flex w-full items-start gap-5 py-6 text-left transition-colors hover:[&_.legal-doc-title]:text-gold-deep"
       >
-        {title}
-        <svg
-          viewBox="0 0 24 24"
+        <span className="w-8 shrink-0 pt-1 font-mono text-xs text-gold-deep">{number}</span>
+        <span className="flex-1">
+          <span className="legal-doc-title block font-display text-lg font-bold leading-snug tracking-tight text-primary transition-colors lg:text-xl">
+            {title}
+          </span>
+          {subtitle ? (
+            <span className="mt-1 block font-mono text-[11px] tracking-[0.06em] text-ink-soft/70">
+              {subtitle}
+            </span>
+          ) : null}
+        </span>
+        {/* One fixed spot, right edge of the row. */}
+        <span
           aria-hidden="true"
-          className={`mt-1.5 h-4 w-4 shrink-0 text-gold-deep transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
+          className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-black/10 text-primary transition-colors group-hover:border-gold-deep/50 group-hover:bg-gold/10"
         >
-          <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
-        </svg>
+          <svg
+            viewBox="0 0 24 24"
+            className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
+          >
+            <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+          </svg>
+        </span>
       </button>
     </h2>
   )
@@ -294,8 +341,6 @@ function Block({ block }: { block: LegalBlock }) {
     case 'note':
       return <p className="text-sm leading-relaxed text-ink-soft/85">{linkify(block.body)}</p>
 
-    // Sub-label within a section. `mt-2 first:mt-0` so it breathes above the
-    // group it introduces without doubling the gap before the first one.
     case 'subheading':
       return (
         <p className="mt-2 font-display text-sm font-bold text-primary first:mt-0">{block.title}</p>
@@ -326,24 +371,9 @@ function Block({ block }: { block: LegalBlock }) {
         </div>
       )
 
-    case 'dl':
-      return (
-        <dl className="grid gap-x-8 gap-y-3 sm:grid-cols-[minmax(0,10rem)_1fr]">
-          {block.rows.map((row) => (
-            <div key={row.label} className="contents">
-              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft/70 sm:pt-1">
-                {row.label}
-              </dt>
-              <dd className="font-medium text-primary">{linkify(row.value)}</dd>
-            </div>
-          ))}
-        </dl>
-      )
-
     // Run-in list, not cards. These are clauses of a statutory document — card
-    // chrome (borders, fills, lift shadows) is product styling and reads as
-    // marketing here. The bold run-in title carries the scanning weight, with a
-    // small gold dot echoing the site's kicker.
+    // chrome reads as marketing here. The bold run-in title carries the
+    // scanning weight, with a small gold dot echoing the site's kicker.
     case 'points':
       return (
         <ul className="flex flex-col gap-3">
@@ -357,6 +387,20 @@ function Block({ block }: { block: LegalBlock }) {
             </li>
           ))}
         </ul>
+      )
+
+    case 'dl':
+      return (
+        <dl className="grid gap-x-8 gap-y-3 sm:grid-cols-[minmax(0,10rem)_1fr]">
+          {block.rows.map((row) => (
+            <div key={row.label} className="contents">
+              <dt className="font-mono text-[11px] uppercase tracking-[0.14em] text-ink-soft/70 sm:pt-1">
+                {row.label}
+              </dt>
+              <dd className="font-medium text-primary">{linkify(row.value)}</dd>
+            </div>
+          ))}
+        </dl>
       )
 
     case 'email':

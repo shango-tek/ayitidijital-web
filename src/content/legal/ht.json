@@ -103,7 +103,9 @@
           }
         ]
       }
-    ]
+    ],
+    "expandAllLabel": "Louvri tout",
+    "collapseAllLabel": "Fèmen tout"
   },
   "privacy": {
     "title": "Konfidansyalite",
@@ -519,7 +521,9 @@
           }
         ]
       }
-    ]
+    ],
+    "expandAllLabel": "Louvri tout",
+    "collapseAllLabel": "Fèmen tout"
   },
   "consent": {
     "title": "Mezi odyans",

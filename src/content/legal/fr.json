@@ -103,7 +103,9 @@
           }
         ]
       }
-    ]
+    ],
+    "expandAllLabel": "Tout déplier",
+    "collapseAllLabel": "Tout replier"
   },
   "privacy": {
     "title": "Confidentialité",
@@ -519,7 +521,9 @@
           }
         ]
       }
-    ]
+    ],
+    "expandAllLabel": "Tout déplier",
+    "collapseAllLabel": "Tout replier"
   },
   "consent": {
     "title": "Mesure d'audience",
