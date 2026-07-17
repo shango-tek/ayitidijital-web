@@ -15,20 +15,13 @@
         "title": "Jeneral",
         "blocks": [
           {
-            "kind": "dl",
-            "rows": [
-              {
-                "label": "Non",
-                "value": "Ayiti Dijital"
-              },
-              {
-                "label": "Fòm jiridik",
-                "value": "Asosyasyon dwa alman k ap fèt (Verein in Gründung)"
-              },
-              {
-                "label": "Syèj",
-                "value": "Ursberger Str. 15, 81673 München, Deutschland"
-              }
+            "kind": "address",
+            "lines": [
+              "Ayiti Dijital",
+              "Verein in Gründung",
+              "Ursberger Str. 15",
+              "81673 München",
+              "Deutschland"
             ]
           },
           {
@@ -40,37 +33,24 @@
             "title": "Reprezante pa"
           },
           {
-            "kind": "dl",
-            "rows": [
-              {
-                "label": "1. Vorstand",
-                "value": "Glory Pierrette"
-              },
-              {
-                "label": "2. Vorstand",
-                "value": "Berlens Legagneur"
-              }
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (1. Vorstand)",
+              "Berlens Legagneur (2. Vorstand)"
             ]
           },
           {
             "kind": "note",
-            "body": "Chak manm Vorstand gen dwa reprezante asosyasyon an pou kont li (Einzelvertretungsbefugnis)."
+            "body": "Chak manm Vorstand gen dwa reprezante asosyasyon an pou kont li (Einzelvertretungsbefugnis), dapre § 26 BGB."
           },
           {
             "kind": "subheading",
             "title": "Kontak"
           },
           {
-            "kind": "dl",
-            "rows": [
-              {
-                "label": "Adrès imèl",
-                "value": "kontakt@ayitidijital.org"
-              },
-              {
-                "label": "Adrès postal",
-                "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
-              }
+            "kind": "address",
+            "lines": [
+              "kontakt@ayitidijital.org"
             ]
           },
           {
@@ -78,8 +58,11 @@
             "title": "Responsab kontni dapre § 18 al. 2 MStV"
           },
           {
-            "kind": "text",
-            "body": "Glory Pierrette (1. Vorstand), nan menm adrès postal asosyasyon an ki endike anwo a."
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (1. Vorstand)",
+              "Adrès menm jan ak anwo a"
+            ]
           }
         ]
       },

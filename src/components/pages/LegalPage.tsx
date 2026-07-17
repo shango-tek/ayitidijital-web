@@ -121,7 +121,7 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
       {/* Section nav — sticky, horizontal, follows the active section */}
       <nav
         aria-label={doc.tocTitle}
-        className="sticky top-0 z-30 border-b border-black/[0.07] bg-white/85 backdrop-blur-md"
+        className="legal-nav sticky top-0 z-30 border-b border-black/[0.07] bg-white/85 backdrop-blur-md"
       >
         <ol
           ref={navRef}
@@ -158,7 +158,7 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
         </ol>
       </nav>
 
-      <div className="relative overflow-hidden bg-white">
+      <div className="legal-body relative overflow-hidden bg-white">
         {/* ambient glows — same pair as Passe à l'action */}
         <span
           aria-hidden="true"
@@ -221,7 +221,7 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
                 <div
                   id={`${s.id}-panel`}
                   className={[
-                    'grid max-w-3xl transition-[grid-template-rows] duration-300 ease-out',
+                    'legal-panel grid max-w-3xl transition-[grid-template-rows] duration-300 ease-out',
                     isOpen(s.id) ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
                   ].join(' ')}
                 >
@@ -271,7 +271,7 @@ function Heading({
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className={`group flex w-full items-start justify-between gap-4 text-left ${heading}`}
+        className={`legal-doc-toggle group flex w-full items-start justify-between gap-4 text-left ${heading}`}
       >
         {title}
         <svg
@@ -299,6 +299,31 @@ function Block({ block }: { block: LegalBlock }) {
     case 'subheading':
       return (
         <p className="mt-2 font-display text-sm font-bold text-primary first:mt-0">{block.title}</p>
+      )
+
+    // The provider block. A real <address> — the element exists for precisely
+    // this, and it is what makes the page machine-readable as contact details.
+    // `not-italic` because browsers italicise <address> by default.
+    case 'address':
+      return (
+        <address className="not-italic leading-relaxed text-primary">
+          {block.lines.map((line, i) => (
+            <span key={i} className="block">
+              {linkify(line)}
+            </span>
+          ))}
+        </address>
+      )
+
+    case 'lines':
+      return (
+        <div className="leading-relaxed text-primary">
+          {block.lines.map((line, i) => (
+            <span key={i} className="block">
+              {linkify(line)}
+            </span>
+          ))}
+        </div>
       )
 
     case 'dl':

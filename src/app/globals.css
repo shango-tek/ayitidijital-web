@@ -584,3 +584,54 @@
 }
 
 /* cache-bust 29866 */
+
+/* --- Statutory pages in print --------------------------------------------
+   § 5 DDG expects the imprint to be "ständig verfügbar" — in practice also
+   saveable and printable, without special software. Two things matter here:
+
+   1. Every accordion panel must open. A collapsed panel is a zero-height grid
+      row, so printing the Datenschutz as-is would emit almost nothing.
+   2. The chrome goes. Nav, footer, the dark header band and its photo are
+      screen furniture; on paper they waste a page and drink toner.        */
+@media print {
+  .site-header,
+  .mnav-bar,
+  .legal-nav,
+  #flickering-footer,
+  .kf-scrolltop,
+  #preloader,
+  .page-header img,
+  .page-header svg {
+    display: none !important;
+  }
+
+  /* Collapsed sections must print. */
+  .legal-panel { grid-template-rows: 1fr !important; }
+  .legal-panel > div { overflow: visible !important; }
+  /* The +/× affordance means nothing on paper. */
+  .legal-doc-toggle svg { display: none !important; }
+
+  /* Dark band → plain heading. */
+  .page-header {
+    min-height: 0 !important;
+    padding: 0 0 1.5rem !important;
+    background: #fff !important;
+  }
+  .page-header h1,
+  .page-header h1 span {
+    color: #000 !important;
+    -webkit-text-stroke: 0 !important;
+    font-style: normal !important;
+  }
+
+  .site-main { background: #fff !important; }
+  /* Ambient glows are decorative gradients — pure toner. */
+  .legal-body span[aria-hidden='true'] { display: none !important; }
+
+  /* Print the destination of real links; the page is a reference document and
+     a printed "lda.bayern.de" that goes nowhere is useless. */
+  .legal-body a[href^='http']::after { content: ' (' attr(href) ')'; font-size: 0.85em; }
+
+  a { text-decoration: underline; }
+  body { background: #fff !important; }
+}

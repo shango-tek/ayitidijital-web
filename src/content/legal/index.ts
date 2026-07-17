@@ -43,6 +43,14 @@ export type LegalBlock =
   /** Sub-label inside a section — groups the identity block of the imprint
    *  ("Vertreten durch", "Kontakt", …) without inventing a second heading level. */
   | { kind: 'subheading'; title: string }
+  /**
+   * The provider block, as an Impressum is conventionally set: name, legal
+   * form, street, postcode + town, country — one per line, no labels. Rendered
+   * as a real <address>, which is the element for exactly this.
+   */
+  | { kind: 'address'; lines: string[] }
+  /** Plain stacked lines, e.g. the board members. No labels, no <address>. */
+  | { kind: 'lines'; lines: string[] }
 
 export interface LegalSectionContent {
   /** Anchor id — stable across locales so /fr/…#contact and /en/…#contact match. */

@@ -15,20 +15,13 @@
         "title": "Généralités",
         "blocks": [
           {
-            "kind": "dl",
-            "rows": [
-              {
-                "label": "Nom",
-                "value": "Ayiti Dijital"
-              },
-              {
-                "label": "Forme juridique",
-                "value": "Association de droit allemand en cours de fondation (Verein in Gründung)"
-              },
-              {
-                "label": "Siège",
-                "value": "Ursberger Str. 15, 81673 München, Deutschland"
-              }
+            "kind": "address",
+            "lines": [
+              "Ayiti Dijital",
+              "Verein in Gründung",
+              "Ursberger Str. 15",
+              "81673 München",
+              "Deutschland"
             ]
           },
           {
@@ -40,37 +33,24 @@
             "title": "Représentée par"
           },
           {
-            "kind": "dl",
-            "rows": [
-              {
-                "label": "1. Vorstand",
-                "value": "Glory Pierrette"
-              },
-              {
-                "label": "2. Vorstand",
-                "value": "Berlens Legagneur"
-              }
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (1. Vorstand)",
+              "Berlens Legagneur (2. Vorstand)"
             ]
           },
           {
             "kind": "note",
-            "body": "Chaque membre du Vorstand est habilité à représenter l'association seul (Einzelvertretungsbefugnis)."
+            "body": "Chaque membre du Vorstand est habilité à représenter l'association seul (Einzelvertretungsbefugnis), conformément au § 26 BGB."
           },
           {
             "kind": "subheading",
             "title": "Contact"
           },
           {
-            "kind": "dl",
-            "rows": [
-              {
-                "label": "Adresse e-mail",
-                "value": "kontakt@ayitidijital.org"
-              },
-              {
-                "label": "Adresse postale",
-                "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
-              }
+            "kind": "address",
+            "lines": [
+              "kontakt@ayitidijital.org"
             ]
           },
           {
@@ -78,8 +58,11 @@
             "title": "Responsable du contenu au sens du § 18 al. 2 MStV"
           },
           {
-            "kind": "text",
-            "body": "Glory Pierrette (1. Vorstand), joignable à l'adresse postale de l'association indiquée ci-dessus."
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (1. Vorstand)",
+              "Adresse comme ci-dessus"
+            ]
           }
         ]
       },
