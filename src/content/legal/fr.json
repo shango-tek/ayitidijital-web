@@ -10,9 +10,9 @@
     "tocTitle": "Sommaire",
     "sections": [
       {
-        "id": "editeur",
+        "id": "general",
         "number": "01",
-        "title": "Éditeur",
+        "title": "Généralités",
         "blocks": [
           {
             "kind": "dl",
@@ -33,15 +33,12 @@
           },
           {
             "kind": "note",
-            "body": "L'association n'est pas encore inscrite au registre des associations. Les mentions relatives au registre et le numéro VR seront ajoutés dès l'inscription auprès de l'Amtsgericht München."
-          }
-        ]
-      },
-      {
-        "id": "representation",
-        "number": "02",
-        "title": "Représentation légale",
-        "blocks": [
+            "body": "L'association n'est pas encore inscrite au registre des associations : il n'y a donc ni numéro VR ni numéro de TVA à indiquer. Ces mentions seront ajoutées dès l'inscription auprès de l'Amtsgericht München."
+          },
+          {
+            "kind": "subheading",
+            "title": "Représentée par"
+          },
           {
             "kind": "dl",
             "rows": [
@@ -58,14 +55,11 @@
           {
             "kind": "note",
             "body": "Chaque membre du Vorstand est habilité à représenter l'association seul (Einzelvertretungsbefugnis)."
-          }
-        ]
-      },
-      {
-        "id": "contact",
-        "number": "03",
-        "title": "Contact",
-        "blocks": [
+          },
+          {
+            "kind": "subheading",
+            "title": "Contact"
+          },
           {
             "kind": "dl",
             "rows": [
@@ -78,15 +72,11 @@
                 "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
               }
             ]
-          }
-        ]
-      },
-      {
-        "id": "responsable",
-        "number": "04",
-        "title": "Responsable du contenu",
-        "subtitle": "au sens du § 18 al. 2 MStV",
-        "blocks": [
+          },
+          {
+            "kind": "subheading",
+            "title": "Responsable du contenu au sens du § 18 al. 2 MStV"
+          },
           {
             "kind": "text",
             "body": "Glory Pierrette (1. Vorstand), joignable à l'adresse postale de l'association indiquée ci-dessus."
@@ -95,45 +85,38 @@
       },
       {
         "id": "responsabilite",
-        "number": "05",
+        "number": "02",
         "title": "Responsabilité des contenus",
         "blocks": [
           {
             "kind": "text",
-            "body": "En tant que prestataire, nous sommes responsables de nos propres contenus conformément au droit commun (§ 7 al. 1 DDG). Nous ne sommes en revanche pas tenus de surveiller les informations de tiers que nous transmettons ou stockons, ni de rechercher activement des circonstances révélant une activité illicite (§§ 8 à 10 DDG). Dès que nous avons connaissance d'une infraction concrète, nous retirons le contenu concerné sans délai."
+            "body": "En tant que prestataire, nous sommes responsables de nos propres contenus sur ces pages conformément au droit commun (§ 7 al. 1 DDG). Nous ne sommes en revanche pas tenus de surveiller les informations de tiers que nous transmettons ou stockons, ni de rechercher activement des circonstances révélant une activité illicite (§§ 8 à 10 DDG). Les obligations de retrait ou de blocage prévues par le droit commun demeurent réservées ; une telle responsabilité ne peut toutefois être engagée qu'à compter de la connaissance d'une infraction concrète. Dès que nous en avons connaissance, nous retirons le contenu concerné sans délai."
           }
         ]
       },
       {
         "id": "liens",
-        "number": "06",
+        "number": "03",
         "title": "Responsabilité des liens",
         "blocks": [
           {
             "kind": "text",
-            "body": "Ce site contient des liens vers des sites externes sur le contenu desquels nous n'avons aucune influence. Les exploitants des sites liés sont seuls responsables de leur contenu. Ces sites ont été vérifiés au moment de la mise en lien et aucun contenu illicite n'y était alors décelable. Un contrôle permanent n'est pas raisonnablement exigible sans indice concret d'infraction ; le cas échéant, nous retirons le lien sans délai."
+            "body": "Ce site contient des liens vers des sites externes sur le contenu desquels nous n'avons aucune influence. Nous ne pouvons donc offrir aucune garantie quant à ces contenus tiers : leur exploitant ou éditeur en est toujours seul responsable. Ces sites ont été vérifiés au moment de la mise en lien et aucun contenu illicite n'y était alors décelable. Un contrôle permanent n'est pas raisonnablement exigible sans indice concret d'infraction ; dès que nous en avons connaissance, nous retirons le lien sans délai."
           }
         ]
       },
       {
         "id": "droits-auteur",
-        "number": "07",
+        "number": "04",
         "title": "Droits d'auteur",
         "blocks": [
           {
             "kind": "text",
-            "body": "Sauf mention contraire, les contenus de ce site sont publiés sous licence Creative Commons CC BY-SA 4.0. Les marques et logos restent la propriété de leurs détenteurs respectifs."
-          }
-        ]
-      },
-      {
-        "id": "litiges",
-        "number": "08",
-        "title": "Règlement des litiges",
-        "blocks": [
+            "body": "Sauf mention contraire, les contenus et œuvres créés par l'association sur ce site sont publiés sous licence Creative Commons CC BY-SA 4.0. Vous pouvez donc les reproduire, les modifier et les diffuser, y compris à des fins commerciales, à deux conditions : créditer Ayiti Dijital et partager vos versions dérivées sous la même licence."
+          },
           {
             "kind": "text",
-            "body": "Nous ne sommes ni obligés ni disposés à participer à une procédure de règlement des litiges devant un organisme d'arbitrage de consommation."
+            "body": "Les contenus qui n'ont pas été créés par l'association restent soumis aux droits de leurs auteurs et sont signalés comme tels ; c'est notamment le cas des marques, logos et photographies de tiers, que la licence ci-dessus ne couvre pas. Si vous constatez malgré tout une atteinte au droit d'auteur, signalez-le nous : dès que nous en avons connaissance, nous retirons le contenu concerné sans délai."
           }
         ]
       }

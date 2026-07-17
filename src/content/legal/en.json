@@ -10,9 +10,9 @@
     "tocTitle": "Contents",
     "sections": [
       {
-        "id": "editeur",
+        "id": "general",
         "number": "01",
-        "title": "Provider",
+        "title": "General",
         "blocks": [
           {
             "kind": "dl",
@@ -33,15 +33,12 @@
           },
           {
             "kind": "note",
-            "body": "The association is not yet entered in the register of associations. The register details and VR number will be added once registration with the Amtsgericht München is complete."
-          }
-        ]
-      },
-      {
-        "id": "representation",
-        "number": "02",
-        "title": "Legal representation",
-        "blocks": [
+            "body": "The association is not yet entered in the register of associations, so there is no VR number and no VAT identification number to state. Both will be added once registration with the Amtsgericht München is complete."
+          },
+          {
+            "kind": "subheading",
+            "title": "Represented by"
+          },
           {
             "kind": "dl",
             "rows": [
@@ -58,14 +55,11 @@
           {
             "kind": "note",
             "body": "Each board member is authorised to represent the association individually (Einzelvertretungsbefugnis)."
-          }
-        ]
-      },
-      {
-        "id": "contact",
-        "number": "03",
-        "title": "Contact",
-        "blocks": [
+          },
+          {
+            "kind": "subheading",
+            "title": "Contact"
+          },
           {
             "kind": "dl",
             "rows": [
@@ -78,15 +72,11 @@
                 "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
               }
             ]
-          }
-        ]
-      },
-      {
-        "id": "responsable",
-        "number": "04",
-        "title": "Responsible for content",
-        "subtitle": "within the meaning of § 18 (2) MStV",
-        "blocks": [
+          },
+          {
+            "kind": "subheading",
+            "title": "Responsible for content within the meaning of § 18 (2) MStV"
+          },
           {
             "kind": "text",
             "body": "Glory Pierrette (1. Vorstand), reachable at the association's postal address given above."
@@ -95,45 +85,38 @@
       },
       {
         "id": "responsabilite",
-        "number": "05",
+        "number": "02",
         "title": "Liability for content",
         "blocks": [
           {
             "kind": "text",
-            "body": "As a service provider, we are responsible for our own content under general law (§ 7 (1) DDG). We are not, however, obliged to monitor third-party information we transmit or store, nor to actively investigate circumstances indicating unlawful activity (§§ 8 to 10 DDG). As soon as we become aware of a specific infringement, we will remove the content concerned without delay."
+            "body": "As a service provider, we are responsible for our own content on these pages under general law (§ 7 (1) DDG). We are not, however, obliged to monitor third-party information we transmit or store, nor to actively investigate circumstances indicating unlawful activity (§§ 8 to 10 DDG). Obligations to remove or block the use of information under general law remain unaffected; any such liability arises only from the point at which we become aware of a specific infringement. As soon as we do, we will remove the content concerned without delay."
           }
         ]
       },
       {
         "id": "liens",
-        "number": "06",
+        "number": "03",
         "title": "Liability for links",
         "blocks": [
           {
             "kind": "text",
-            "body": "This site contains links to external sites over whose content we have no influence. The operators of the linked sites are solely responsible for their content. Those sites were checked at the time of linking and no unlawful content was discernible then. Permanent monitoring is not reasonable without concrete evidence of an infringement; should we become aware of one, we will remove the link without delay."
+            "body": "This site contains links to external sites over whose content we have no influence. We therefore cannot accept any warranty for that third-party content: the provider or operator of those pages is always solely responsible for it. Those sites were checked at the time of linking and no unlawful content was discernible then. Permanent monitoring is not reasonable without concrete evidence of an infringement; as soon as we become aware of one, we will remove the link without delay."
           }
         ]
       },
       {
         "id": "droits-auteur",
-        "number": "07",
+        "number": "04",
         "title": "Copyright",
         "blocks": [
           {
             "kind": "text",
-            "body": "Unless otherwise stated, the content of this site is published under a Creative Commons CC BY-SA 4.0 licence. Trademarks and logos remain the property of their respective holders."
-          }
-        ]
-      },
-      {
-        "id": "litiges",
-        "number": "08",
-        "title": "Dispute resolution",
-        "blocks": [
+            "body": "Unless otherwise stated, content and works created by the association on this site are published under a Creative Commons CC BY-SA 4.0 licence. You may therefore reproduce, adapt and distribute them, including commercially, on two conditions: credit Ayiti Dijital, and share any derivative under the same licence."
+          },
           {
             "kind": "text",
-            "body": "We are neither obliged nor willing to participate in dispute resolution proceedings before a consumer arbitration body."
+            "body": "Content not created by the association remains subject to the rights of its authors and is marked as such; this applies in particular to third-party trademarks, logos and photographs, which the licence above does not cover. Should you nonetheless notice an infringement of copyright, please tell us: as soon as we become aware of one, we will remove the content concerned without delay."
           }
         ]
       }

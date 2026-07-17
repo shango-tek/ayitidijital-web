@@ -294,6 +294,13 @@ function Block({ block }: { block: LegalBlock }) {
     case 'note':
       return <p className="text-sm leading-relaxed text-ink-soft/85">{linkify(block.body)}</p>
 
+    // Sub-label within a section. `mt-2 first:mt-0` so it breathes above the
+    // group it introduces without doubling the gap before the first one.
+    case 'subheading':
+      return (
+        <p className="mt-2 font-display text-sm font-bold text-primary first:mt-0">{block.title}</p>
+      )
+
     case 'dl':
       return (
         <dl className="grid gap-x-8 gap-y-3 sm:grid-cols-[minmax(0,10rem)_1fr]">

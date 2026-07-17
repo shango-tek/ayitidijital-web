@@ -10,9 +10,9 @@
     "tocTitle": "Tab matyè",
     "sections": [
       {
-        "id": "editeur",
+        "id": "general",
         "number": "01",
-        "title": "Editè",
+        "title": "Jeneral",
         "blocks": [
           {
             "kind": "dl",
@@ -33,15 +33,12 @@
           },
           {
             "kind": "note",
-            "body": "Asosyasyon an poko enskri nan rejis asosyasyon yo. N ap ajoute enfòmasyon rejis la ak nimewo VR a lè enskripsyon an fèt nan Amtsgericht München."
-          }
-        ]
-      },
-      {
-        "id": "representation",
-        "number": "02",
-        "title": "Reprezantasyon legal",
-        "blocks": [
+            "body": "Asosyasyon an poko enskri nan rejis asosyasyon yo : donk pa gen ni nimewo VR ni nimewo TVA pou nou endike. N ap ajoute yo tou de lè enskripsyon an fèt nan Amtsgericht München."
+          },
+          {
+            "kind": "subheading",
+            "title": "Reprezante pa"
+          },
           {
             "kind": "dl",
             "rows": [
@@ -58,14 +55,11 @@
           {
             "kind": "note",
             "body": "Chak manm Vorstand gen dwa reprezante asosyasyon an pou kont li (Einzelvertretungsbefugnis)."
-          }
-        ]
-      },
-      {
-        "id": "contact",
-        "number": "03",
-        "title": "Kontak",
-        "blocks": [
+          },
+          {
+            "kind": "subheading",
+            "title": "Kontak"
+          },
           {
             "kind": "dl",
             "rows": [
@@ -78,15 +72,11 @@
                 "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
               }
             ]
-          }
-        ]
-      },
-      {
-        "id": "responsable",
-        "number": "04",
-        "title": "Responsab kontni",
-        "subtitle": "dapre § 18 al. 2 MStV",
-        "blocks": [
+          },
+          {
+            "kind": "subheading",
+            "title": "Responsab kontni dapre § 18 al. 2 MStV"
+          },
           {
             "kind": "text",
             "body": "Glory Pierrette (1. Vorstand), nan menm adrès postal asosyasyon an ki endike anwo a."
@@ -95,45 +85,38 @@
       },
       {
         "id": "responsabilite",
-        "number": "05",
+        "number": "02",
         "title": "Responsablite kontni",
         "blocks": [
           {
             "kind": "text",
-            "body": "Kòm founisè sèvis, nou responsab pou pwòp kontni nou yo dapre lwa jeneral la (§ 7 al. 1 DDG). Men nou pa oblije siveye enfòmasyon tyès pati nou transmèt oswa estoke, ni chèche aktivman siy yon aktivite ilegal (§§ 8 rive 10 DDG). Depi nou konnen gen yon vyolasyon konkrè, n ap retire kontni an san pèdi tan."
+            "body": "Kòm founisè sèvis, nou responsab pou pwòp kontni nou yo sou paj sa yo dapre lwa jeneral la (§ 7 al. 1 DDG). Men nou pa oblije siveye enfòmasyon tyès pati nou transmèt oswa estoke, ni chèche aktivman siy yon aktivite ilegal (§§ 8 rive 10 DDG). Obligasyon pou retire oswa bloke enfòmasyon dapre lwa jeneral la rete an vigè ; men responsablite sa a kòmanse sèlman lè nou konnen gen yon vyolasyon konkrè. Depi nou konnen, n ap retire kontni an san pèdi tan."
           }
         ]
       },
       {
         "id": "liens",
-        "number": "06",
+        "number": "03",
         "title": "Responsablite lyen",
         "blocks": [
           {
             "kind": "text",
-            "body": "Sit sa a gen lyen ki mennen sou sit ekstèn nou pa gen okenn kontwòl sou kontni yo. Egzeplwatè sit ki lye yo sèl responsab pou kontni yo. Nou te tcheke sit sa yo lè nou te mete lyen an e nou pa t wè okenn kontni ilegal lè sa a. Nou pa ka rezonableman siveye yo tout tan san yon siy konkrè vyolasyon ; si nou aprann gen youn, n ap retire lyen an san pèdi tan."
+            "body": "Sit sa a gen lyen ki mennen sou sit ekstèn nou pa gen okenn kontwòl sou kontni yo. Se poutèt sa nou pa ka bay okenn garanti pou kontni tyès pati sa yo : se toujou moun k ap egzeplwate oswa pibliye paj sa yo ki sèl responsab. Nou te tcheke sit sa yo lè nou te mete lyen an e nou pa t wè okenn kontni ilegal lè sa a. Nou pa ka rezonableman siveye yo tout tan san yon siy konkrè vyolasyon ; depi nou konnen gen youn, n ap retire lyen an san pèdi tan."
           }
         ]
       },
       {
         "id": "droits-auteur",
-        "number": "07",
+        "number": "04",
         "title": "Dwa otè",
         "blocks": [
           {
             "kind": "text",
-            "body": "Sòf si nou di kontrè, kontni sit la pibliye anba lisans Creative Commons CC BY-SA 4.0. Mak ak logo yo rete pwopriyete pwopriyetè respektif yo."
-          }
-        ]
-      },
-      {
-        "id": "litiges",
-        "number": "08",
-        "title": "Rezolisyon konfli",
-        "blocks": [
+            "body": "Sòf si nou di kontrè, kontni ak zèv asosyasyon an kreye sou sit sa a pibliye anba lisans Creative Commons CC BY-SA 4.0. Donk ou ka repwodui yo, modifye yo epi difize yo, menm pou rezon komèsyal, sou de kondisyon : bay Ayiti Dijital kredi, epi pataje vèsyon derive ou yo anba menm lisans lan."
+          },
           {
             "kind": "text",
-            "body": "Nou pa oblije ni dispoze patisipe nan yon pwosedi rezolisyon konfli devan yon òganis abitraj konsomatè."
+            "body": "Kontni asosyasyon an pa kreye rete anba dwa otè yo e nou make yo kòm sa ; sa gen ladan sitou mak, logo ak foto tyès pati, ke lisans ki anwo a pa kouvri. Si malgre sa ou wè yon vyolasyon dwa otè, fè nou konnen : depi nou konnen, n ap retire kontni an san pèdi tan."
           }
         ]
       }

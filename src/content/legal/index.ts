@@ -40,6 +40,9 @@ export type LegalBlock =
   | { kind: 'dl'; rows: LegalRow[] }
   | { kind: 'points'; items: LegalPoint[] }
   | { kind: 'email'; value: string }
+  /** Sub-label inside a section — groups the identity block of the imprint
+   *  ("Vertreten durch", "Kontakt", …) without inventing a second heading level. */
+  | { kind: 'subheading'; title: string }
 
 export interface LegalSectionContent {
   /** Anchor id — stable across locales so /fr/…#contact and /en/…#contact match. */
