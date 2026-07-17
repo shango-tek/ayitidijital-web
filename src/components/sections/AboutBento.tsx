@@ -119,25 +119,29 @@ export function AboutBento({
             </div>
           </div>
 
-          {/* RIGHT — the same three pillars + photo, but staggered: two columns
-              offset against each other rather than a flush 2×2 grid. Same
-              content, more rhythm.
+          {/* RIGHT — the same three pillars + photo, staggered: two columns
+              offset against each other rather than a flush 2×2 grid.
 
-              Column order is Mission / Vision on the left, Devise / photo on the
-              right, so reading down one column then the other still gives
-              Mission → Vision → Devise. The offset lands on the SECOND column so
-              the sequence starts at the top-left, where the eye arrives from the
-              intro copy. */}
+              The offset is on the FIRST column. The section centres its two
+              halves (lg:items-center), so without it the nearest card floats
+              ~69px ABOVE the intro's kicker — neither aligned nor deliberately
+              staggered, and the cards end up visually outranking the copy they
+              support. Dropping this column instead lands Mission on the kicker's
+              line, gives the headline air, and puts the open space beside the
+              text rather than out in the page margin.
+
+              Mission stays leftmost either way, so Mission → Vision → Devise
+              survives for a reader arriving from the copy. */}
           <div className="grid grid-cols-2 items-start gap-4 sm:gap-5">
-            <div className="flex flex-col gap-4 sm:gap-5">
+            {/* Offset only from sm up — on a phone the columns are already
+                narrow and a stagger just opens a gap at the top. */}
+            <div className="flex flex-col gap-4 sm:mt-12 sm:gap-5 lg:mt-16">
               {pillars.slice(0, 2).map((p, i) => (
                 <BentoCard key={p.name} icon={ICONS[i]} label={p.name} body={p.body} />
               ))}
             </div>
 
-            {/* Offset only from sm up — on a phone the two columns are already
-                narrow, and a stagger there just opens a gap at the top. */}
-            <div className="flex flex-col gap-4 sm:mt-12 sm:gap-5 lg:mt-16">
+            <div className="flex flex-col gap-4 sm:gap-5">
               {pillars.slice(2, 3).map((p) => (
                 <BentoCard key={p.name} icon={ICONS[2]} label={p.name} body={p.body} />
               ))}
