@@ -197,11 +197,7 @@ function Block({ block }: { block: LegalBlock }) {
       return <p className="leading-relaxed text-ink-soft">{linkify(block.body)}</p>
 
     case 'note':
-      return (
-        <p className="border-l-2 border-gold-deep/35 pl-4 text-sm leading-relaxed text-ink-soft">
-          {linkify(block.body)}
-        </p>
-      )
+      return <p className="text-sm leading-relaxed text-ink-soft/85">{linkify(block.body)}</p>
 
     case 'dl':
       return (
