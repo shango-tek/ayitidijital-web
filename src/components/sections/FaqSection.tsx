@@ -71,7 +71,8 @@ export function FaqSection({ id, label, strokeWord, titleRest, subtitle, items }
                   )}
                 >
                   <div className="overflow-hidden">
-                    <p className="max-w-3xl px-6 pb-6 leading-relaxed text-ink-soft lg:px-8">{item.a}</p>
+                    {/* Full measure, matching the statutory pages' accordion. */}
+                    <p className="px-6 pb-6 leading-relaxed text-ink-soft lg:px-8">{item.a}</p>
                   </div>
                 </div>
               </div>
