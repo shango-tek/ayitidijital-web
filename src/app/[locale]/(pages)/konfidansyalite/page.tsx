@@ -15,5 +15,7 @@ import { LegalPage } from '@/components/pages/LegalPage'
  */
 export default function PrivacyRoute() {
   const { locale } = useLocale()
-  return <LegalPage doc={getLegalContent(locale).privacy} />
+  // Accordion: this document runs to fifteen sections, and most readers arrive
+  // for one of them. The imprint stays fully open — it is short.
+  return <LegalPage doc={getLegalContent(locale).privacy} accordion />
 }

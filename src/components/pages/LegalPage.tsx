@@ -14,13 +14,44 @@ import type { LegalBlock, LegalDoc } from '@/content/legal'
  * mirrors the split SectionHeader used across the site and keeps the text at a
  * readable measure even at full width.
  */
-export function LegalPage({ doc }: { doc: LegalDoc }) {
+export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion?: boolean }) {
   const bare = doc.h1.replace(/\.\s*$/, '')
   const [strokeWord, ...rest] = bare.split(' ')
   const [active, setActive] = useState(doc.sections[0]?.id ?? '')
 
   const navRef = useRef<HTMLOListElement>(null)
   const chipRefs = useRef<Record<string, HTMLLIElement | null>>({})
+
+  // Which sections are expanded. Only meaningful when `accordion` — the imprint
+  // is eight short sections and reads better fully open. Several may be open at
+  // once: this is a reference document, so opening one clause must not close the
+  // one you were comparing it against.
+  const [openIds, setOpenIds] = useState<Set<string>>(
+    () => new Set(doc.sections[0] ? [doc.sections[0].id] : []),
+  )
+  const isOpen = (id: string) => !accordion || openIds.has(id)
+  const toggle = (id: string) =>
+    setOpenIds((prev) => {
+      const next = new Set(prev)
+      next.has(id) ? next.delete(id) : next.add(id)
+      return next
+    })
+
+  // A collapsed section must still be reachable: opening via #anchor covers deep
+  // links from outside, the section nav, and the browser's own hash navigation.
+  useEffect(() => {
+    if (!accordion) return
+    const openFromHash = () => {
+      const id = window.location.hash.slice(1)
+      if (!id || !doc.sections.some((s) => s.id === id)) return
+      setOpenIds((prev) => new Set(prev).add(id))
+      // Let the panel expand before the browser settles on the anchor.
+      requestAnimationFrame(() => document.getElementById(id)?.scrollIntoView({ block: 'start' }))
+    }
+    openFromHash()
+    window.addEventListener('hashchange', openFromHash)
+    return () => window.removeEventListener('hashchange', openFromHash)
+  }, [accordion, doc.sections])
 
   // Scroll-spy: the active section is the LAST one whose top has crossed the
   // reading line just under the sticky nav.
@@ -160,13 +191,17 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
                 className="scroll-mt-24 grid gap-5 border-t border-black/[0.08] pt-9 lg:grid-cols-[minmax(0,22rem)_minmax(0,1fr)] lg:gap-16"
               >
                 {/* Left rail — number + title, parked while its prose scrolls */}
-                <div className="lg:sticky lg:top-24 lg:self-start">
+                <div className={accordion ? '' : 'lg:sticky lg:top-24 lg:self-start'}>
                   <span className="inline-flex items-center rounded-full border border-gold-deep/30 px-2 py-0.5 font-mono text-[10px] text-gold-deep">
                     {s.number}
                   </span>
-                  <h2 className="mt-3 font-display text-xl font-bold leading-snug tracking-tight text-primary lg:text-2xl">
-                    {s.title}
-                  </h2>
+                  <Heading
+                    accordion={accordion}
+                    open={isOpen(s.id)}
+                    onToggle={() => toggle(s.id)}
+                    panelId={`${s.id}-panel`}
+                    title={s.title}
+                  />
                   {s.subtitle ? (
                     // NOT uppercased: these carry statute citations whose casing
                     // is meaningful ("MStV", "DDG") — text-transform would
@@ -177,10 +212,26 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
                   ) : null}
                 </div>
 
-                <div className="flex max-w-3xl flex-col gap-5">
-                  {s.blocks.map((b, i) => (
-                    <Block key={i} block={b} />
-                  ))}
+                {/* Collapsed via grid-rows rather than `hidden`, deliberately:
+                    display:none would drop the text out of the document, so
+                    Ctrl+F wouldn't find it. This is a statutory document that
+                    must stay readily available (§ 5 DDG) — the words stay in the
+                    page, the row simply has no height. Same technique as the
+                    FAQ accordion. */}
+                <div
+                  id={`${s.id}-panel`}
+                  className={[
+                    'grid max-w-3xl transition-[grid-template-rows] duration-300 ease-out',
+                    isOpen(s.id) ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
+                  ].join(' ')}
+                >
+                  <div className="overflow-hidden">
+                    <div className="flex flex-col gap-5">
+                      {s.blocks.map((b, i) => (
+                        <Block key={i} block={b} />
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </section>
             ))}
@@ -188,6 +239,50 @@ export function LegalPage({ doc }: { doc: LegalDoc }) {
         </div>
       </div>
     </>
+  )
+}
+
+/**
+ * Section heading. A plain <h2> when the document reads open (the imprint); a
+ * button that expands its panel when it collapses (the privacy policy, which is
+ * long enough that a wall of text buries the parts people came for).
+ */
+function Heading({
+  accordion,
+  open,
+  onToggle,
+  panelId,
+  title,
+}: {
+  accordion: boolean
+  open: boolean
+  onToggle: () => void
+  panelId: string
+  title: string
+}) {
+  const heading = 'font-display text-xl font-bold leading-snug tracking-tight text-primary lg:text-2xl'
+
+  if (!accordion) return <h2 className={`mt-3 ${heading}`}>{title}</h2>
+
+  return (
+    <h2 className="mt-3">
+      <button
+        type="button"
+        onClick={onToggle}
+        aria-expanded={open}
+        aria-controls={panelId}
+        className={`group flex w-full items-start justify-between gap-4 text-left ${heading}`}
+      >
+        {title}
+        <svg
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          className={`mt-1.5 h-4 w-4 shrink-0 text-gold-deep transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
+        >
+          <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" />
+        </svg>
+      </button>
+    </h2>
   )
 }
 

@@ -194,24 +194,121 @@
           },
           {
             "kind": "note",
-            "body": "We are not required to appoint a data protection officer. For any question about your data, write to the address above."
+            "body": "We are not required to appoint a data protection officer: neither the Art. 37 GDPR nor the § 38 BDSG thresholds are met. For any question about your data, write to the address above."
+          }
+        ]
+      },
+      {
+        "id": "definitions",
+        "number": "03",
+        "title": "Definitions",
+        "subtitle": "within the meaning of Art. 4 GDPR",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "This page uses the regulation's vocabulary. Here is what those terms mean, in the sense given by Art. 4 GDPR."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Personal data",
+                "body": "Any information relating to an identified or identifiable natural person: a name, an address, an online identifier, an IP address."
+              },
+              {
+                "title": "Data subject",
+                "body": "The natural person whose data is processed — in this case, you."
+              },
+              {
+                "title": "Processing",
+                "body": "Any operation performed on data: collection, recording, consultation, disclosure, storage, erasure."
+              },
+              {
+                "title": "Controller",
+                "body": "Whoever decides the purposes and means of the processing. For this site, that is the association."
+              },
+              {
+                "title": "Processor",
+                "body": "A third party processing data on our behalf and on our instructions — here, our host."
+              },
+              {
+                "title": "Consent",
+                "body": "A freely given, specific, informed and unambiguous indication that you agree to a processing operation."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "We define only the terms actually used on this page. Profiling and pseudonymisation are absent: we do neither."
+          }
+        ]
+      },
+      {
+        "id": "bases-legales",
+        "number": "04",
+        "title": "Legal bases",
+        "subtitle": "Art. 6 GDPR",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Processing personal data is lawful only where it rests on one of the grounds in Art. 6 GDPR."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Consent — Art. 6(1)(a)",
+                "body": "You explicitly agree to a particular processing operation, and may withdraw that agreement at any time."
+              },
+              {
+                "title": "Contract — Art. 6(1)(b)",
+                "body": "The processing is necessary to perform a contract or to take pre-contractual steps."
+              },
+              {
+                "title": "Legal obligation — Art. 6(1)(c)",
+                "body": "The law requires us to process or retain certain data, for instance for accounting."
+              },
+              {
+                "title": "Legitimate interest — Art. 6(1)(f)",
+                "body": "The processing is necessary to run the site securely and your rights and freedoms do not override it."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Today only legitimate interest applies to this site, and only for the technical data required to deliver the pages. We ask for no consent, because we do nothing that requires one."
           }
         ]
       },
       {
         "id": "hebergement",
-        "number": "03",
-        "title": "Hosting and server logs",
+        "number": "05",
+        "title": "Hosting, server logs and transfers outside the EU",
         "blocks": [
           {
             "kind": "text",
-            "body": "This site is hosted by Vercel Inc. (United States). To deliver a page, your browser necessarily transmits technical data to the host: your IP address, the date and time of the request, the address requested, the referring site and your browser type. This processing is essential to making the site available and rests on our legitimate interest (Art. 6(1)(f) GDPR). As Vercel is a US company, a transfer of this technical data to the United States cannot be excluded."
+            "body": "This site is hosted by Vercel Inc. (United States), acting as our processor. To deliver a page, your browser necessarily transmits technical data to the host: your IP address, the date and time of the request, the address requested, the referring site and your browser type. That data serves to deliver the site, keep it secure and diagnose faults. It is not used to identify you and is not combined with any other information."
+          },
+          {
+            "kind": "text",
+            "body": "This processing is essential to making the site available and rests on our legitimate interest (Art. 6(1)(f) GDPR). As Vercel is a US company, a transfer of this technical data to a third country within the meaning of Art. 44 ff. GDPR cannot be excluded."
+          }
+        ]
+      },
+      {
+        "id": "securite",
+        "number": "06",
+        "title": "Transport security",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "This site is served over HTTPS only: everything exchanged between your browser and the server is encrypted using TLS. You can tell by the address, which begins with “https://”. That encryption stops third parties reading what you look at in transit, and forms part of the technical measures required by Art. 25 and Art. 32 GDPR."
           }
         ]
       },
       {
         "id": "cookies",
-        "number": "04",
+        "number": "07",
         "title": "Cookies and local storage",
         "blocks": [
           {
@@ -222,7 +319,7 @@
       },
       {
         "id": "mesure",
-        "number": "05",
+        "number": "08",
         "title": "Analytics",
         "blocks": [
           {
@@ -233,18 +330,33 @@
       },
       {
         "id": "externes",
-        "number": "06",
+        "number": "09",
         "title": "Fonts and external content",
         "blocks": [
           {
             "kind": "text",
-            "body": "Fonts are installed on and loaded from our own domain: your browser contacts no Google server. The site embeds no images, video, maps or widgets from any third-party service."
+            "body": "Fonts are installed on and loaded from our own domain: your browser contacts no Google server. The same goes for images. The site embeds no video, maps, fonts, widgets or scripts from any third-party service."
+          }
+        ]
+      },
+      {
+        "id": "reseaux-sociaux",
+        "number": "10",
+        "title": "Social media",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "We maintain profiles on several social networks, and the footer links to them. Those are plain links: no “like” button, no thumbnail and no script from those platforms is embedded in this site. Your browser does not contact them, and they learn nothing about your visit unless you click."
+          },
+          {
+            "kind": "text",
+            "body": "The moment you follow such a link you leave this site: the terms and privacy policy of that platform then apply, and we have no influence over the data it collects."
           }
         ]
       },
       {
         "id": "formulaires",
-        "number": "07",
+        "number": "11",
         "title": "Forms",
         "blocks": [
           {
@@ -254,17 +366,36 @@
         ]
       },
       {
+        "id": "conservation",
+        "number": "12",
+        "title": "Retention",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "We retain no personal data from this site, because we collect none. The technical data needed to deliver the pages is processed by our host and kept for a limited period, for security and diagnostics."
+          },
+          {
+            "kind": "text",
+            "body": "Were we to collect data — through a working form, say — we would keep it only as long as the purpose requires, or as long as a legal obligation demands, and then erase it."
+          }
+        ]
+      },
+      {
         "id": "droits",
-        "number": "08",
+        "number": "13",
         "title": "Your rights",
         "subtitle": "under the GDPR",
         "blocks": [
+          {
+            "kind": "text",
+            "body": "The GDPR grants you the following rights over your personal data."
+          },
           {
             "kind": "points",
             "items": [
               {
                 "title": "Right of access",
-                "body": "Obtain a copy of the data we hold about you."
+                "body": "Obtain confirmation that data about you is processed, and a copy of it."
               },
               {
                 "title": "Right to rectification",
@@ -284,19 +415,67 @@
               },
               {
                 "title": "Right to object",
-                "body": "Object to the processing of your data at any time."
+                "body": "Object at any time to processing based on our legitimate interest."
+              },
+              {
+                "title": "Withdrawal of consent",
+                "body": "Withdraw a consent at any time, without affecting the lawfulness of processing before withdrawal."
+              },
+              {
+                "title": "Automated decisions",
+                "body": "Not be subject to a decision based solely on automated processing. We make none."
               }
             ]
           },
           {
             "kind": "note",
-            "body": "To exercise these rights, write to kontakt@ayitidijital.org; we respond within 30 days. You also have the right to lodge a complaint with the authority responsible for private bodies in Bavaria: the Bayerisches Landesamt für Datenschutzaufsicht (BayLDA), Ansbach — lda.bayern.de."
+            "body": "To exercise these rights, write to kontakt@ayitidijital.org; we respond within 30 days. Exercising them is free of charge."
+          }
+        ]
+      },
+      {
+        "id": "autorite",
+        "number": "14",
+        "title": "Supervisory authority",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Independently of any recourse to us, you may lodge a complaint with a supervisory authority. Ours is:"
+          },
+          {
+            "kind": "dl",
+            "rows": [
+              {
+                "label": "Authority",
+                "value": "Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)"
+              },
+              {
+                "label": "Address",
+                "value": "Promenade 18, 91522 Ansbach, Deutschland"
+              },
+              {
+                "label": "Telephone",
+                "value": "+49 981 180093-0"
+              },
+              {
+                "label": "Email",
+                "value": "poststelle@lda.bayern.de"
+              },
+              {
+                "label": "Website",
+                "value": "lda.bayern.de"
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Bavaria splits supervision between two bodies: the BayLfD oversees public bodies, the BayLDA private ones — associations included."
           }
         ]
       },
       {
         "id": "contact",
-        "number": "09",
+        "number": "15",
         "title": "Privacy contact",
         "blocks": [
           {
