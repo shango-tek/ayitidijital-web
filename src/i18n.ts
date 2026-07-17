@@ -9,7 +9,12 @@ export const LOCALES = ['ht', 'fr', 'en'] as const
 
 export type Locale = (typeof LOCALES)[number]
 
-export const DEFAULT_LOCALE: Locale = 'ht'
+/**
+ * The locale `/` redirects to, and the fallback for an unrecognised segment.
+ * French — it is the widest-reach language for the site's audience, and it is
+ * what ayitidijital.org served before the Next.js rebuild.
+ */
+export const DEFAULT_LOCALE: Locale = 'fr'
 
 /** Type guard: is `value` one of the supported locales? */
 export function isLocale(value: string | undefined): value is Locale {

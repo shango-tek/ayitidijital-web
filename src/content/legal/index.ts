@@ -1,109 +1,70 @@
-import type { Locale } from '../../i18n'
+import { DEFAULT_LOCALE, type Locale } from '../../i18n'
 import ht from './ht.json'
 import fr from './fr.json'
 import en from './en.json'
 
 /* ------------------------------------------------------------------ *
- * Legal content — Impressum (§ 5 TMG) and privacy policy (GDPR).
+ * Legal content — Impressum (§ 5 DDG) and privacy policy (GDPR).
  *
- * The JSON files in this directory are a VERBATIM port of the dictionaries
- * that served these pages on the previous (Astro) site. The wording is a
- * legal statement by Ayiti Dijital e.V. — do not paraphrase, summarise, or
- * "improve" it. Edit the JSON only with the association's approval, and keep
- * `last_updated_value` in step with any change.
+ * This is a legal statement by Ayiti Dijital, not site copy. Two rules:
  *
- * Key names stay snake_case to mirror the source dictionaries 1:1, so the
- * port stays auditable against the old repo.
+ *  1. Every factual claim here must be TRUE OF THE BUILT SITE. The privacy
+ *     policy asserts no cookies, no storage, no analytics and no third-party
+ *     requests — that is currently accurate, and it is load-bearing. Adding an
+ *     analytics script, an embed, a remote font or a remote <img> makes this
+ *     page false. Update the page in the same commit, or don't add the thing.
+ *  2. Don't invent facts to fill a gap. A register number we don't have or an
+ *     address we haven't confirmed is a worse legal position than an honestly
+ *     shorter page. Omit the section instead — that is why there is no register
+ *     block (§ 5 Abs. 1 Nr. 4 DDG applies only to registers you are entered in)
+ *     and no VAT block (§ 5 Abs. 1 Nr. 6 DDG applies only "sofern vorhanden").
+ *
+ * Keep `lastUpdatedValue` in step with any change to the wording.
  * ------------------------------------------------------------------ */
 
-export interface LegalLabelValue {
+export interface LegalRow {
   label: string
   value: string
 }
 
-export interface ImprintContent {
+export interface LegalPoint {
   title: string
-  description: string
-  eyebrow: string
-  h1: string
-  intro: string
-  last_updated_label: string
-  last_updated_value: string
-  toc_title: string
-  publisher_title: string
-  publisher_dl: {
-    name_label: string
-    name_value: string
-    status_label: string
-    status_value: string
-    address_label: string
-    address_value: string
-    registry_label: string
-    registry_value: string
-  }
-  representative_title: string
-  representative_dl: {
-    name_label: string
-    name_value: string
-    role_label: string
-    role_value: string
-  }
-  representative_note: string
-  contact_title: string
-  contact_dl: {
-    email_label: string
-    email_value: string
-    post_label: string
-    post_value: string
-  }
-  responsible_title: string
-  responsible_subtitle: string
-  responsible_body: string
-  liability_title: string
-  liability_body: string
-  copyright_title: string
-  copyright_body: string
-  dispute_title: string
-  dispute_body: string
+  body: string
 }
 
-export interface PrivacyContent {
+/** A block of content within a section. `kind` selects the renderer. */
+export type LegalBlock =
+  | { kind: 'text'; body: string }
+  | { kind: 'note'; body: string }
+  | { kind: 'dl'; rows: LegalRow[] }
+  | { kind: 'points'; items: LegalPoint[] }
+  | { kind: 'email'; value: string }
+
+export interface LegalSectionContent {
+  /** Anchor id — stable across locales so /fr/…#contact and /en/…#contact match. */
+  id: string
+  number: string
+  title: string
+  subtitle?: string
+  blocks: LegalBlock[]
+}
+
+export interface LegalDoc {
   title: string
   description: string
   eyebrow: string
+  /** Ends with a period; the first word gets the outlined treatment. */
   h1: string
-  intro: string
-  last_updated_label: string
-  last_updated_value: string
-  toc_title: string
-  summary_title: string
-  summary_subtitle: string
-  summary_points: { title: string; body: string }[]
-  controller_title: string
-  controller_body: string
-  controller_dpo_label: string
-  controller_dpo_value: string
-  data_title: string
-  data_body: string
-  cookies_title: string
-  cookies_intro: string
-  cookies_table_headers: { name: string; purpose: string; duration: string; type: string }
-  cookies_rows: { name: string; purpose: string; duration: string; type: string }[]
-  cookies_note: string
-  rights_title: string
-  rights_intro: string
-  rights_cards: { icon: string; title: string; body: string }[]
-  rights_complaint: string
-  hosting_title: string
-  hosting_body: string
-  contact_title: string
-  contact_body: string
-  contact_email: string
+  lead: string
+  lastUpdatedLabel: string
+  lastUpdatedValue: string
+  tocTitle: string
+  sections: LegalSectionContent[]
 }
 
 export interface LegalContent {
-  imprint: ImprintContent
-  privacy: PrivacyContent
+  imprint: LegalDoc
+  privacy: LegalDoc
 }
 
 const LEGAL: Record<Locale, LegalContent> = {
@@ -113,5 +74,5 @@ const LEGAL: Record<Locale, LegalContent> = {
 }
 
 export function getLegalContent(locale: Locale): LegalContent {
-  return LEGAL[locale] ?? LEGAL.ht
+  return LEGAL[locale] ?? LEGAL[DEFAULT_LOCALE]
 }

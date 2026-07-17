@@ -9,8 +9,13 @@ export interface PageHeaderProps {
   titleRest: string
   /** Optional supporting sentence under the heading. */
   subtitle?: string
-  /** Background photo, frosted behind the heading. Heavily blurred, so a small
-   *  image is fine. Override per page. */
+  /**
+   * Background photo, frosted behind the heading. Heavily blurred, so a small
+   * image is fine. MUST be a local asset under /public — never a remote URL:
+   * the header renders eagerly, so a third-party host would receive every
+   * visitor's IP before they interact with anything. Omit it for a clean dark
+   * band (what the statutory pages use).
+   */
   image?: string
 }
 
@@ -33,18 +38,21 @@ export function PageHeader({
   strokeWord,
   titleRest,
   subtitle = '',
-  image = 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=1200&auto=format&fit=crop',
+  image,
 }: PageHeaderProps) {
   return (
     <section className="page-header relative isolate flex overflow-hidden bg-[#0a0a0f] min-h-[26rem] lg:min-h-[34rem] pt-32 pb-14 lg:pb-20">
-      {/* Frosted background photo (kept visible — the glass blur shows) */}
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img
-        src={image}
-        alt=""
-        aria-hidden="true"
-        className="absolute inset-0 -z-10 h-full w-full scale-105 object-cover blur-md"
-      />
+      {/* Frosted background photo (kept visible — the glass blur shows). Omitted
+          entirely when no image is passed, leaving the gradients + watermark. */}
+      {image ? (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img
+          src={image}
+          alt=""
+          aria-hidden="true"
+          className="absolute inset-0 -z-10 h-full w-full scale-105 object-cover blur-md"
+        />
+      ) : null}
 
       {/* Legibility + blue: near-black behind the heading (left) blends through
           navy, then reveals the frosted photo on the right */}

@@ -14,7 +14,7 @@ const nextConfig: any = {
    *
    * That site served French at the root (`/mentions-legales`) and prefixed only
    * en/ht; this one is locale-prefixed throughout, with one shared Kreyòl slug
-   * per route. These two documents are statutory (§ 5 TMG / GDPR) and are cited
+   * per route. These two documents are statutory (§ 5 DDG / GDPR) and are cited
    * from outside the site, so their old URLs must keep resolving.
    *
    * `/ht/enfomasyon-legal` and `/ht/konfidansyalite` need no entry — the old
@@ -22,7 +22,7 @@ const nextConfig: any = {
    */
   async redirects() {
     return [
-      // Impressum / mentions légales — § 5 TMG
+      // Impressum / mentions légales — § 5 DDG
       { source: "/mentions-legales", destination: "/fr/enfomasyon-legal", permanent: true },
       { source: "/en/imprint", destination: "/en/enfomasyon-legal", permanent: true },
       // Privacy policy — GDPR

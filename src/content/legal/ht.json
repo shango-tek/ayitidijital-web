@@ -1,142 +1,257 @@
 {
   "imprint": {
     "title": "Enfòmasyon legal",
-    "description": "Enfòmasyon legal Ayiti Dijital e.V. dapre § 5 TMG.",
+    "description": "Enfòmasyon legal Ayiti Dijital (Verein in Gründung), dapre § 5 DDG.",
     "eyebrow": "Enfòmasyon legal",
     "h1": "Enfòmasyon legal.",
-    "intro": "Dapre § 5 TMG (Telemediengesetz, lwa alman sou medya elektwonik).",
-    "last_updated_label": "Dènye mizajou",
-    "last_updated_value": "25 me 2026",
-    "toc_title": "Tab matyè",
-    "publisher_title": "Editè",
-    "publisher_dl": {
-      "name_label": "Non legal",
-      "name_value": "Ayiti Dijital e.V.",
-      "status_label": "Estati",
-      "status_value": "Verein in Gründung (k ap fèt)",
-      "address_label": "Syèj",
-      "address_value": "Minik, Almay",
-      "registry_label": "Anrejistreman",
-      "registry_value": "Amtsgericht München · VR pending"
-    },
-    "representative_title": "Reprezantasyon legal",
-    "representative_dl": {
-      "name_label": "1. Vorstand",
-      "name_value": "Glory Pierrette",
-      "role_label": "2. Vorstand",
-      "role_value": "Berlens Legagneur"
-    },
-    "representative_note": "Chak manm Vorstand gen dwa reprezante asosyasyon an pou kont li (Einzelvertretungsbefugnis).",
-    "contact_title": "Kontak",
-    "contact_dl": {
-      "email_label": "Adrès imèl",
-      "email_value": "kontakt@ayitidijital.org",
-      "post_label": "Adrès postal",
-      "post_value": "Ayiti Dijital e.V., Minik, Almay"
-    },
-    "responsible_title": "Responsab kontni",
-    "responsible_subtitle": "dapre § 55 al. 2 RStV",
-    "responsible_body": "Glory Pierrette (1. Vorstand), menm adrès postal ak asosyasyon an.",
-    "liability_title": "Responsablite",
-    "liability_body": "Malgre kontwòl regilye, nou pa pran responsablite pou kontni lyen ekstèn yo. Egzeplwatè sit ki lye yo sèl responsab pou kontni yo.",
-    "copyright_title": "Dwa otè",
-    "copyright_body": "Sòf si nou di kontrè, kontni sit la pibliye anba lisans Creative Commons CC BY-SA 4.0. Mak ak logo yo rete pwopriyete pwopriyetè respektif yo.",
-    "dispute_title": "Rezolisyon konfli",
-    "dispute_body": "Komisyon Ewopeyen an mete disponib yon platfòm rezolisyon konfli sou entènèt : https://ec.europa.eu/consumers/odr. Nou pa oblije ni dispoze patisipe nan yon pwosedi rezolisyon devan yon òganis abitraj konsomatè."
+    "lead": "Enfòmasyon obligatwa sou moun ki pibliye sit sa a, dapre § 5 DDG (Digitale-Dienste-Gesetz, lwa alman sou sèvis dijital yo).",
+    "lastUpdatedLabel": "Dènye mizajou",
+    "lastUpdatedValue": "17 jiyè 2026",
+    "tocTitle": "Tab matyè",
+    "sections": [
+      {
+        "id": "editeur",
+        "number": "01",
+        "title": "Editè",
+        "blocks": [
+          {
+            "kind": "dl",
+            "rows": [
+              { "label": "Non", "value": "Ayiti Dijital" },
+              { "label": "Fòm jiridik", "value": "Asosyasyon dwa alman k ap fèt (Verein in Gründung)" },
+              { "label": "Syèj", "value": "München, Deutschland" }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Asosyasyon an poko enskri nan rejis asosyasyon yo. N ap ajoute enfòmasyon rejis la ak nimewo VR a lè enskripsyon an fèt nan Amtsgericht München."
+          }
+        ]
+      },
+      {
+        "id": "representation",
+        "number": "02",
+        "title": "Reprezantasyon legal",
+        "blocks": [
+          {
+            "kind": "dl",
+            "rows": [
+              { "label": "1. Vorstand", "value": "Glory Pierrette" },
+              { "label": "2. Vorstand", "value": "Berlens Legagneur" }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Chak manm Vorstand gen dwa reprezante asosyasyon an pou kont li (Einzelvertretungsbefugnis)."
+          }
+        ]
+      },
+      {
+        "id": "contact",
+        "number": "03",
+        "title": "Kontak",
+        "blocks": [
+          {
+            "kind": "dl",
+            "rows": [
+              { "label": "Adrès imèl", "value": "kontakt@ayitidijital.org" },
+              { "label": "Adrès postal", "value": "Ayiti Dijital, München, Deutschland" }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "responsable",
+        "number": "04",
+        "title": "Responsab kontni",
+        "subtitle": "dapre § 18 al. 2 MStV",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Glory Pierrette (1. Vorstand), nan menm adrès postal asosyasyon an ki endike anwo a."
+          }
+        ]
+      },
+      {
+        "id": "responsabilite",
+        "number": "05",
+        "title": "Responsablite kontni",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Kòm founisè sèvis, nou responsab pou pwòp kontni nou yo dapre lwa jeneral la (§ 7 al. 1 DDG). Men nou pa oblije siveye enfòmasyon tyès pati nou transmèt oswa estoke, ni chèche aktivman siy yon aktivite ilegal (§§ 8 rive 10 DDG). Depi nou konnen gen yon vyolasyon konkrè, n ap retire kontni an san pèdi tan."
+          }
+        ]
+      },
+      {
+        "id": "liens",
+        "number": "06",
+        "title": "Responsablite lyen",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sit sa a gen lyen ki mennen sou sit ekstèn nou pa gen okenn kontwòl sou kontni yo. Egzeplwatè sit ki lye yo sèl responsab pou kontni yo. Nou te tcheke sit sa yo lè nou te mete lyen an e nou pa t wè okenn kontni ilegal lè sa a. Nou pa ka rezonableman siveye yo tout tan san yon siy konkrè vyolasyon ; si nou aprann gen youn, n ap retire lyen an san pèdi tan."
+          }
+        ]
+      },
+      {
+        "id": "droits-auteur",
+        "number": "07",
+        "title": "Dwa otè",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sòf si nou di kontrè, kontni sit la pibliye anba lisans Creative Commons CC BY-SA 4.0. Mak ak logo yo rete pwopriyete pwopriyetè respektif yo."
+          }
+        ]
+      },
+      {
+        "id": "litiges",
+        "number": "08",
+        "title": "Rezolisyon konfli",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Nou pa oblije ni dispoze patisipe nan yon pwosedi rezolisyon konfli devan yon òganis abitraj konsomatè."
+          }
+        ]
+      }
+    ]
   },
   "privacy": {
     "title": "Konfidansyalite",
-    "description": "Politik konfidansyalite Ayiti Dijital, RGPD.",
+    "description": "Politik konfidansyalite Ayiti Dijital. Pa gen cookie, pa gen swivi, pa gen koleksyon done.",
     "eyebrow": "Konfidansyalite",
     "h1": "Politik konfidansyalite.",
-    "intro": "Nou pran pwoteksyon done pèsonèl ou trè oserye. Politik sa a dekri ki done nou kolekte, poukisa, ak dwa ou yo.",
-    "last_updated_label": "Dènye mizajou",
-    "last_updated_value": "25 me 2026",
-    "toc_title": "Tab matyè",
-    "summary_title": "Sa nou fè",
-    "summary_subtitle": "Esansyèl la, an twa liy.",
-    "summary_points": [
+    "lead": "Sit sa a pa depoze okenn cookie, pa itilize okenn zouti mezi odyans e li pa kolekte okenn done pèsonèl. Paj sa a dekri ti sa k ap pase kanmenm, ak dwa ou genyen yo.",
+    "lastUpdatedLabel": "Dènye mizajou",
+    "lastUpdatedValue": "17 jiyè 2026",
+    "tocTitle": "Tab matyè",
+    "sections": [
       {
-        "title": "Nou pa trase ou.",
-        "body": "Pa gen okenn cookie reklam, okenn piksèl tyès pati, okenn fingerprinting sou sit sa a."
+        "id": "en-bref",
+        "number": "01",
+        "title": "An kout",
+        "subtitle": "Esansyèl la, an twa liy",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              { "title": "Nou pa trase ou.", "body": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans." },
+              { "title": "Pa gen kontni tyès pati.", "body": "Imaj ak lèt yo sèvi depi pwòp domèn nou. Lè w ap gade sit sa a, navigatè w pa kontakte okenn lòt sèvè." },
+              { "title": "Pa gen koleksyon.", "body": "Pou kounye a, okenn fòm sou sit sa a pa transmèt ni konsève done." }
+            ]
+          }
+        ]
       },
       {
-        "title": "Analitik ki respekte ou.",
-        "body": "Nou itilize Plausible Analytics, ki ebèje nan Inyon Ewopeyen, san cookie ni done pèsonèl."
+        "id": "responsable",
+        "number": "02",
+        "title": "Responsab tretman",
+        "blocks": [
+          {
+            "kind": "dl",
+            "rows": [
+              { "label": "Responsab", "value": "Ayiti Dijital (Verein in Gründung), München, Deutschland" },
+              { "label": "Kontak", "value": "kontakt@ayitidijital.org" }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Nou pa oblije nonmen yon delege pwoteksyon done. Pou nenpòt kesyon sou done ou, ekri nan adrès ki anwo a."
+          }
+        ]
       },
       {
-        "title": "Done adezyon sou konsantman.",
-        "body": "Nou estoke koòdone ou sèlman si ou ranpli yon fòm volontèman (adezyon, kontak)."
+        "id": "hebergement",
+        "number": "03",
+        "title": "Ebèjman ak fichye jounal",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Se Vercel Inc. (Etazini) ki ebèje sit sa a. Pou montre yon paj, navigatè w oblije voye kèk done teknik bay ebèjè a : adrès IP ou, dat ak lè demann lan, adrès ou mande a, sit referan an ak tip navigatè a. Tretman sa a endispansab pou mete sit la disponib e li chita sou enterè lejitim nou (atik 6, § 1, pwen f, RGPD). Kòm Vercel se yon konpayi ameriken, nou pa ka eskli yon transfè done teknik sa yo nan Etazini."
+          }
+        ]
+      },
+      {
+        "id": "cookies",
+        "number": "04",
+        "title": "Cookies ak depo lokal",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sit sa a pa depoze okenn cookie e li pa ekri anyen nan depo lokal (localStorage) navigatè w. Se poutèt sa ou p ap wè okenn bandwòl konsantman : pa gen anyen pou aksepte ni pou refize."
+          }
+        ]
+      },
+      {
+        "id": "mesure",
+        "number": "05",
+        "title": "Mezi odyans",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Pa genyen. Nou pa itilize ni Google Analytics, ni Plausible, ni okenn lòt zouti mezi odyans, swivi oswa reklam. Nou pa konnen konbyen moun ki vizite sit sa a."
+          }
+        ]
+      },
+      {
+        "id": "externes",
+        "number": "06",
+        "title": "Lèt ak kontni ekstèn",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Lèt yo enstale sou pwòp domèn nou e yo chaje depi la : navigatè w pa kontakte okenn sèvè Google. Sit la pa entegre okenn imaj, videyo, kat oswa widget ki soti nan yon sèvis tyès pati."
+          }
+        ]
+      },
+      {
+        "id": "formulaires",
+        "number": "07",
+        "title": "Fòm yo",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Fòm enfòlèt ki sou sit sa a poko konekte ak yon sèvis voye imèl : sa ou antre a pa transmèt ni konsève. Depi fòm sa yo aktif, n ap mete paj sa a ajou anvan nou kolekte okenn done."
+          }
+        ]
+      },
+      {
+        "id": "droits",
+        "number": "08",
+        "title": "Dwa ou yo",
+        "subtitle": "dapre RGPD",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              { "title": "Dwa aksè", "body": "Jwenn yon kopi done nou kenbe sou ou." },
+              { "title": "Dwa rektifikasyon", "body": "Korije nenpòt done ki pa egzak oswa enkonplè." },
+              { "title": "Dwa pou efase", "body": "Mande sipresyon done ou yo, sòf si yon obligasyon legal di kontrè." },
+              { "title": "Dwa limitasyon", "body": "Limite tretman done ou yo nan kèk ka." },
+              { "title": "Dwa potabilite", "body": "Resevwa done ou yo nan yon fòma estriktire e reitilizab." },
+              { "title": "Dwa opozisyon", "body": "Opoze tretman done ou yo nenpòt lè." }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Pou egzèse dwa sa yo, ekri a kontakt@ayitidijital.org ; n ap reponn nan 30 jou. Ou gen dwa tou pou pote yon plent devan otorite ki responsab òganis prive nan Baviè : Bayerisches Landesamt für Datenschutzaufsicht (BayLDA), Ansbach — lda.bayern.de."
+          }
+        ]
+      },
+      {
+        "id": "contact",
+        "number": "09",
+        "title": "Kontak pwoteksyon done",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Pou nenpòt kesyon sou pwoteksyon done ou, egzèsis dwa ou, yon plent oswa yon demann, ekri nou dirèkteman."
+          },
+          { "kind": "email", "value": "kontakt@ayitidijital.org" }
+        ]
       }
-    ],
-    "controller_title": "Responsab tretman",
-    "controller_body": "Ayiti Dijital e.V., Minik, Almay, kontakt@ayitidijital.org",
-    "controller_dpo_label": "Kontak pou pwoteksyon done",
-    "controller_dpo_value": "kontakt@ayitidijital.org",
-    "data_title": "Done ki kolekte",
-    "data_body": "Sit sa a pa depoze okenn cookie swivi. Nou kolekte done pèsonèl sèlman lè ou voye yo volontèman pa yon fòm (adezyon, kontak). Done sa yo estoke sou sèvè ewopeyen e itilize sèlman pou trete demann ou.",
-    "cookies_title": "Cookies ak depo lokal",
-    "cookies_intro": "Pou transparans, men tout sa sit sa a estoke nan navigatè ou :",
-    "cookies_table_headers": {
-      "name": "Non",
-      "purpose": "Objektif",
-      "duration": "Dire",
-      "type": "Tip"
-    },
-    "cookies_rows": [
-      {
-        "name": "—",
-        "purpose": "Pa gen cookie ki depoze sou sit sa a",
-        "duration": "—",
-        "type": "—"
-      },
-      {
-        "name": "localStorage (preferans entèfas)",
-        "purpose": "Sonje lang ou chwazi oswa meni an",
-        "duration": "Pèmanan (jiska efase)",
-        "type": "Teknik · pa yon cookie"
-      }
-    ],
-    "cookies_note": "Zouti analiz nou, Plausible Analytics, pa depoze okenn cookie e li pa itilize idantifyan pèmanan.",
-    "rights_title": "Dwa ou yo (RGPD)",
-    "rights_intro": "RGPD garanti ou yon ansanm dwa sou done pèsonèl ou. Pou egzèse yo, ekri a kontakt@ayitidijital.org, n ap reponn nan 30 jou.",
-    "rights_cards": [
-      {
-        "icon": "①",
-        "title": "Dwa aksè",
-        "body": "Jwenn yon kopi done nou kenbe sou ou."
-      },
-      {
-        "icon": "②",
-        "title": "Dwa rektifikasyon",
-        "body": "Korije nenpòt done ki pa egzak oswa enkonplè."
-      },
-      {
-        "icon": "③",
-        "title": "Dwa pou efase",
-        "body": "Mande sipresyon done ou yo, sòf si yon obligasyon legal di kontrè."
-      },
-      {
-        "icon": "④",
-        "title": "Dwa limitasyon",
-        "body": "Limite tretman done ou yo nan kèk ka."
-      },
-      {
-        "icon": "⑤",
-        "title": "Dwa potabilite",
-        "body": "Resevwa done ou yo nan yon fòma estriktire e reitilizab."
-      },
-      {
-        "icon": "⑥",
-        "title": "Dwa opozisyon",
-        "body": "Opoze tretman done ou yo nenpòt lè."
-      }
-    ],
-    "rights_complaint": "Ou gen dwa tou pou pote yon plent devan otorite pwoteksyon done Baviè a (BayLfD) : datenschutz-bayern.de.",
-    "hosting_title": "Ebèjman",
-    "hosting_body": "Sit sa a ebèje sou yon enfrastrikti ki nan Inyon Ewopeyen. Pa gen okenn zouti tyès pati analiz oswa reklam.",
-    "contact_title": "Kontak pwoteksyon done",
-    "contact_body": "Pou nenpòt kesyon sou pwoteksyon done ou, egzèsis dwa, plent, demann, ekri nou dirèkteman.",
-    "contact_email": "kontakt@ayitidijital.org"
+    ]
   }
 }

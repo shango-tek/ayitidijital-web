@@ -14,7 +14,7 @@ export default function TravayNouPage() {
   return (
     <RoutePage
       path="/travay-nou"
-      image="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=1200&auto=format&fit=crop"
+      image="/ecosystem/lexhaiti.webp"
     >
       <WhatWeDo content={c} />
     </RoutePage>
