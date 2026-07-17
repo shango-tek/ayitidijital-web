@@ -88,7 +88,12 @@ export function PageHeader({
       <div className="relative mt-auto w-full mx-auto max-w-[90rem] px-5 md:px-10">
         
 
-        <h1 className="font-display text-[clamp(2.25rem,5vw,4rem)] font-extrabold text-white leading-[1.06] tracking-tight max-w-3xl">
+        {/* Uncapped: a max-w here wrapped the longer titles ("Politique de
+            confidentialité", "Actualités & événements") onto a second line for
+            no reason — at 64px they need ~980px and the cap allowed 768px. The
+            short titles never reach the container width, so nothing else moves;
+            narrow viewports still wrap naturally via the clamp. */}
+        <h1 className="font-display text-[clamp(2.25rem,5vw,4rem)] font-extrabold text-white leading-[1.06] tracking-tight">
           <span className="italic" style={strokeStyle}>
             {strokeWord}&nbsp;
           </span>
