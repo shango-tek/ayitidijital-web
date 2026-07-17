@@ -35,8 +35,8 @@
           {
             "kind": "lines",
             "lines": [
-              "Glory Pierrette (1. Vorstand)",
-              "Berlens Legagneur (2. Vorstand)"
+              "Glory Pierrette (Vorstandsvorsitzender)",
+              "Berlens Legagneur (stellvertretender Vorsitzender)"
             ]
           },
           {
@@ -50,7 +50,7 @@
           {
             "kind": "address",
             "lines": [
-              "kontakt@ayitidijital.org"
+              "contact@ayitidijital.org"
             ]
           },
           {
@@ -60,7 +60,7 @@
           {
             "kind": "lines",
             "lines": [
-              "Glory Pierrette (1. Vorstand)",
+              "Glory Pierrette (Vorstandsvorsitzender)",
               "Adrès menm jan ak anwo a"
             ]
           }
@@ -134,7 +134,7 @@
               },
               {
                 "title": "Echanj pa imèl",
-                "body": "Nenpòt korespondans ou kòmanse ak nou nan kontakt@ayitidijital.org."
+                "body": "Nenpòt korespondans ou kòmanse ak nou nan contact@ayitidijital.org."
               }
             ]
           },
@@ -184,7 +184,7 @@
               },
               {
                 "label": "Kontak",
-                "value": "kontakt@ayitidijital.org"
+                "value": "contact@ayitidijital.org"
               }
             ]
           },
@@ -445,7 +445,7 @@
           },
           {
             "kind": "note",
-            "body": "Pou egzèse dwa sa yo, ekri a kontakt@ayitidijital.org ; n ap reponn nan 30 jou. Egzèse yo gratis."
+            "body": "Pou egzèse dwa sa yo, ekri a contact@ayitidijital.org ; n ap reponn nan 30 jou. Egzèse yo gratis."
           }
         ]
       },
@@ -500,7 +500,7 @@
           },
           {
             "kind": "email",
-            "value": "kontakt@ayitidijital.org"
+            "value": "contact@ayitidijital.org"
           }
         ]
       }
