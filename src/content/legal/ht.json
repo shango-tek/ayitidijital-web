@@ -310,5 +310,26 @@
         ]
       }
     ]
+  },
+  "consent": {
+    "title": "Mezi odyans",
+    "body": "Nou ta renmen mezire odyans sit sa a pou nou konprann sa ki itil pou ou. Mezi sa a depoze yon cookie sou aparèy ou e li kòmanse sèlman si ou dakò. Si ou refize, sa p ap chanje anyen nan vizit ou.",
+    "accept": "Aksepte",
+    "reject": "Refize",
+    "policyLabel": "Politik konfidansyalite"
+  },
+  "analytics": {
+    "off": {
+      "summaryTitle": "Nou pa trase ou.",
+      "summaryBody": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans.",
+      "sectionTitle": "Mezi odyans",
+      "sectionBody": "Pa genyen. Nou pa itilize ni Google Analytics, ni Plausible, ni okenn lòt zouti mezi odyans, swivi oswa reklam. Nou pa konnen konbyen moun ki vizite sit sa a."
+    },
+    "on": {
+      "summaryTitle": "Yon mezi odyans ki senp.",
+      "summaryBody": "Pou konplete lè n ap chwazi yon zouti mezi.",
+      "sectionTitle": "Mezi odyans",
+      "sectionBody": "Pou konplete lè n ap chwazi yon zouti mezi : kiyès k ap trete done yo, ki kote, ak sou ki baz legal."
+    }
   }
 }

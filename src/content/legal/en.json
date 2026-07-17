@@ -310,5 +310,26 @@
         ]
       }
     ]
+  },
+  "consent": {
+    "title": "Audience measurement",
+    "body": "We'd like to measure this site's audience to understand what is useful to you. That measurement stores a cookie on your device and only starts if you agree. Declining changes nothing about your visit.",
+    "accept": "Accept",
+    "reject": "Decline",
+    "policyLabel": "Privacy policy"
+  },
+  "analytics": {
+    "off": {
+      "summaryTitle": "We don't track you.",
+      "summaryBody": "No cookies, no third-party pixels, no fingerprinting, no analytics.",
+      "sectionTitle": "Analytics",
+      "sectionBody": "None. We use neither Google Analytics, nor Plausible, nor any other analytics, tracking or advertising tool. We do not know how many people visit this site."
+    },
+    "on": {
+      "summaryTitle": "Modest audience measurement.",
+      "summaryBody": "To be completed once a measurement tool is chosen.",
+      "sectionTitle": "Analytics",
+      "sectionBody": "To be completed once a measurement tool is chosen: who processes the data, where, and on what legal basis."
+    }
   }
 }

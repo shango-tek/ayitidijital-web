@@ -310,5 +310,26 @@
         ]
       }
     ]
+  },
+  "consent": {
+    "title": "Mesure d'audience",
+    "body": "Nous aimerions mesurer l'audience de ce site pour comprendre ce qui vous est utile. Cette mesure dépose un cookie sur votre appareil et ne démarre qu'avec votre accord. Refuser ne change rien à votre visite.",
+    "accept": "Accepter",
+    "reject": "Refuser",
+    "policyLabel": "Politique de confidentialité"
+  },
+  "analytics": {
+    "off": {
+      "summaryTitle": "Nous ne vous traçons pas.",
+      "summaryBody": "Aucun cookie, aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience.",
+      "sectionTitle": "Mesure d'audience",
+      "sectionBody": "Aucune. Nous n'utilisons ni Google Analytics, ni Plausible, ni aucun autre outil de mesure d'audience, de suivi ou de publicité. Nous ne savons pas combien de personnes visitent ce site."
+    },
+    "on": {
+      "summaryTitle": "Une mesure d'audience sobre.",
+      "summaryBody": "À compléter lorsqu'un outil de mesure sera choisi.",
+      "sectionTitle": "Mesure d'audience",
+      "sectionBody": "À compléter lorsqu'un outil de mesure sera choisi : qui traite les données, où, et sur quelle base légale."
+    }
   }
 }

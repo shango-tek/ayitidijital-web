@@ -5,6 +5,7 @@ import '../globals.css'
 import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
 import { Preloader } from '../../components/layout/Preloader'
+import { CookieBanner } from '../../components/ui/CookieBanner'
 import { LocaleProvider } from '../../components/i18n/LocaleProvider'
 
 /* Google fonts the design CSS expects, exposed as CSS variables that
@@ -102,7 +103,12 @@ export default async function LocaleLayout({
     >
       <body id="top" suppressHydrationWarning>
         <Preloader />
-        <LocaleProvider initialLocale={lang}>{children}</LocaleProvider>
+        <LocaleProvider initialLocale={lang}>
+          {children}
+          {/* Dormant until an analytics provider is configured — see
+              src/lib/analytics.ts */}
+          <CookieBanner />
+        </LocaleProvider>
       </body>
     </html>
   )

@@ -1,4 +1,5 @@
 import { DEFAULT_LOCALE, type Locale } from '../../i18n'
+import { ANALYTICS_ENABLED } from '../../lib/analytics'
 import ht from './ht.json'
 import fr from './fr.json'
 import en from './en.json'
@@ -62,9 +63,28 @@ export interface LegalDoc {
   sections: LegalSectionContent[]
 }
 
+/** Consent-banner copy. Only surfaced in cookie mode — see src/lib/analytics.ts. */
+export interface ConsentContent {
+  title: string
+  body: string
+  accept: string
+  reject: string
+  policyLabel: string
+}
+
+/** The two truthful wordings for "do you measure anything?". */
+export interface AnalyticsWording {
+  summaryTitle: string
+  summaryBody: string
+  sectionTitle: string
+  sectionBody: string
+}
+
 export interface LegalContent {
   imprint: LegalDoc
   privacy: LegalDoc
+  consent: ConsentContent
+  analytics: { off: AnalyticsWording; on: AnalyticsWording }
 }
 
 const LEGAL: Record<Locale, LegalContent> = {
@@ -73,6 +93,57 @@ const LEGAL: Record<Locale, LegalContent> = {
   en: en as LegalContent,
 }
 
+/**
+ * Swap the privacy policy's analytics wording to match what the build actually
+ * does. The JSON ships the "no analytics" text because that is today's truth;
+ * flip ANALYTICS_ENABLED and the summary point and the "Analytics" section
+ * switch to the `analytics.on` wording in every locale, without anyone editing
+ * prose at the call site.
+ *
+ * This exists because the previous policy claimed Plausible for months while no
+ * analytics was loaded. Deriving the claim from the same switch that loads the
+ * tracker is the only version that cannot rot.
+ *
+ * `analytics.on` is currently a PLACEHOLDER — no provider has been chosen. Fill
+ * it in honestly (who processes the data, where, on what legal basis, and
+ * whether anything is stored on the device) in the same commit that turns a
+ * provider on.
+ */
+function withAnalyticsWording(content: LegalContent): LegalContent {
+  const wording = ANALYTICS_ENABLED ? content.analytics.on : content.analytics.off
+
+  const privacy: LegalDoc = {
+    ...content.privacy,
+    sections: content.privacy.sections.map((section) => {
+      if (section.id === 'mesure') {
+        return {
+          ...section,
+          title: wording.sectionTitle,
+          blocks: [{ kind: 'text', body: wording.sectionBody } as LegalBlock],
+        }
+      }
+      if (section.id === 'en-bref') {
+        return {
+          ...section,
+          blocks: section.blocks.map((b) =>
+            b.kind === 'points'
+              ? {
+                  ...b,
+                  items: b.items.map((item, i) =>
+                    i === 0 ? { title: wording.summaryTitle, body: wording.summaryBody } : item,
+                  ),
+                }
+              : b,
+          ),
+        }
+      }
+      return section
+    }),
+  }
+
+  return { ...content, privacy }
+}
+
 export function getLegalContent(locale: Locale): LegalContent {
-  return LEGAL[locale] ?? LEGAL[DEFAULT_LOCALE]
+  return withAnalyticsWording(LEGAL[locale] ?? LEGAL[DEFAULT_LOCALE])
 }
