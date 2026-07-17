@@ -172,12 +172,13 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
         <div className="relative mx-auto max-w-[90rem] px-5 pb-24 pt-14 md:px-10 lg:pb-32 lg:pt-20">
           {/* Preamble: opening paragraph set large, the rest as prose. This is
               the document's own introduction — it is not a section, so it is not
-              collapsible and not in the table of contents. */}
-          <p className="max-w-3xl font-display text-[clamp(1.3rem,2.3vw,1.75rem)] font-medium leading-[1.4] tracking-tight text-primary">
+              collapsible and not in the table of contents. Runs the full measure
+              by request. */}
+          <p className="font-display text-[clamp(1.3rem,2.3vw,1.75rem)] font-medium leading-[1.4] tracking-tight text-primary">
             {doc.lead}
           </p>
           {doc.intro?.length ? (
-            <div className="mt-6 flex max-w-3xl flex-col gap-4">
+            <div className="mt-6 flex flex-col gap-4">
               {doc.intro.map((p, i) => (
                 <p key={i} className="leading-relaxed text-ink-soft">
                   {linkify(p)}
@@ -188,8 +189,9 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
 
           {/* Meta row: when it was last touched, and — for the accordion — a way
               to open everything at once, which readers reach for before Ctrl+F
-              or printing. */}
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 border-b border-black/[0.08] pb-5">
+              or printing. No rule beneath it: the accordion rows are already
+              bounded cards, so a divider sat right on top of the first one. */}
+          <div className="mt-10 mb-6 flex flex-wrap items-center justify-between gap-4">
             <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft/60">
               {doc.lastUpdatedLabel}
               <span className="ml-2 normal-case tracking-normal text-ink-soft">
@@ -243,7 +245,8 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
                     ].join(' ')}
                   >
                     <div className="overflow-hidden">
-                      <div className="flex max-w-3xl flex-col gap-5 px-6 pb-6 lg:px-8 lg:pb-8">
+                      {/* Full measure by request — no max-w cap on the prose. */}
+                      <div className="flex flex-col gap-5 px-6 pb-6 lg:px-8 lg:pb-8">
                         {s.blocks.map((b, i) => (
                           <Block key={i} block={b} />
                         ))}
