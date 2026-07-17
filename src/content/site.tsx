@@ -593,7 +593,7 @@ const ht: SiteContent = {
   },
   metaTitle: 'Ayiti Dijital — Lanbi a sonnen, konbit dijital la kòmanse',
   metaDescription:
-    'Ayiti Dijital e.V. ap bati enfrastrikti dijital louvri pou Ayiti ak dyaspora li: lwa, achiv, fòmasyon ak zouti open source.',
+    'Ayiti Dijital ap bati enfrastrikti dijital louvri pou Ayiti ak dyaspora li: lwa, achiv, fòmasyon ak zouti open source.',
 }
 
 /* ------------------------------------------------------------------ *
@@ -924,7 +924,7 @@ const fr: SiteContent = {
   },
   metaTitle: 'Ayiti Dijital — La lambi résonne, le konbit numérique commence',
   metaDescription:
-    'Ayiti Dijital e.V. construit une infrastructure numérique libre et ouverte pour Haïti et sa diaspora : lois, archives, formation et outils open source.',
+    'Ayiti Dijital construit une infrastructure numérique libre et ouverte pour Haïti et sa diaspora : lois, archives, formation et outils open source.',
 }
 
 /* ------------------------------------------------------------------ *
@@ -1255,7 +1255,7 @@ const en: SiteContent = {
   },
   metaTitle: 'Ayiti Dijital — The conch sounds, the digital konbit begins',
   metaDescription:
-    'Ayiti Dijital e.V. is building free, open digital infrastructure for Haiti and its diaspora: laws, archives, training and open-source tools.',
+    'Ayiti Dijital is building free, open digital infrastructure for Haiti and its diaspora: laws, archives, training and open-source tools.',
 }
 
 /* ------------------------------------------------------------------ *
