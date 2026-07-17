@@ -119,19 +119,37 @@ export function AboutBento({
             </div>
           </div>
 
-          {/* RIGHT — bento: 3 pillar cards + 1 photo */}
-          <div className="grid grid-cols-2 gap-4 sm:gap-5">
-            {pillars.slice(0, 3).map((p, i) => (
-              <BentoCard key={p.name} icon={ICONS[i]} label={p.name} body={p.body} />
-            ))}
-            <div className="min-h-[13rem] overflow-hidden rounded-card ring-1 ring-black/[0.04]">
-              <img
-                src={photo}
-                alt={photoAlt}
-                loading="lazy"
-                decoding="async"
-                className="h-full w-full object-cover"
-              />
+          {/* RIGHT — the same three pillars + photo, but staggered: two columns
+              offset against each other rather than a flush 2×2 grid. Same
+              content, more rhythm.
+
+              Column order is Mission / Vision on the left, Devise / photo on the
+              right, so reading down one column then the other still gives
+              Mission → Vision → Devise. The offset lands on the SECOND column so
+              the sequence starts at the top-left, where the eye arrives from the
+              intro copy. */}
+          <div className="grid grid-cols-2 items-start gap-4 sm:gap-5">
+            <div className="flex flex-col gap-4 sm:gap-5">
+              {pillars.slice(0, 2).map((p, i) => (
+                <BentoCard key={p.name} icon={ICONS[i]} label={p.name} body={p.body} />
+              ))}
+            </div>
+
+            {/* Offset only from sm up — on a phone the two columns are already
+                narrow, and a stagger there just opens a gap at the top. */}
+            <div className="flex flex-col gap-4 sm:mt-12 sm:gap-5 lg:mt-16">
+              {pillars.slice(2, 3).map((p) => (
+                <BentoCard key={p.name} icon={ICONS[2]} label={p.name} body={p.body} />
+              ))}
+              <div className="min-h-[13rem] flex-1 overflow-hidden rounded-card ring-1 ring-black/[0.04]">
+                <img
+                  src={photo}
+                  alt={photoAlt}
+                  loading="lazy"
+                  decoding="async"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
           </div>
         </div>
