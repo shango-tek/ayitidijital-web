@@ -167,13 +167,24 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
           className="pointer-events-none absolute -left-24 bottom-0 h-[28rem] w-[28rem] rounded-full bg-primary/[0.06] blur-3xl"
         />
 
-        {/* 64rem: a legal document is read, not scanned — a 90rem row would put
-            the toggle a screen-width away from its title, and the prose past a
-            comfortable measure. */}
-        <div className="relative mx-auto max-w-[64rem] px-5 pb-24 pt-14 md:px-10 lg:pb-32 lg:pt-20">
+        {/* 90rem — the site's measure, and what FaqSection uses for the same
+            row treatment. Prose inside each panel stays capped for readability. */}
+        <div className="relative mx-auto max-w-[90rem] px-5 pb-24 pt-14 md:px-10 lg:pb-32 lg:pt-20">
+          {/* Preamble: opening paragraph set large, the rest as prose. This is
+              the document's own introduction — it is not a section, so it is not
+              collapsible and not in the table of contents. */}
           <p className="max-w-3xl font-display text-[clamp(1.3rem,2.3vw,1.75rem)] font-medium leading-[1.4] tracking-tight text-primary">
             {doc.lead}
           </p>
+          {doc.intro?.length ? (
+            <div className="mt-6 flex max-w-3xl flex-col gap-4">
+              {doc.intro.map((p, i) => (
+                <p key={i} className="leading-relaxed text-ink-soft">
+                  {linkify(p)}
+                </p>
+              ))}
+            </div>
+          ) : null}
 
           {/* Meta row: when it was last touched, and — for the accordion — a way
               to open everything at once, which readers reach for before Ctrl+F
@@ -196,14 +207,17 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
             ) : null}
           </div>
 
-          <div className="flex flex-col">
+          {/* Rows share FaqSection's treatment on the landing page — same soft
+              card, same circled +, same grid-rows reveal — so the accordion the
+              reader already met behaves identically here. */}
+          <div className="flex flex-col gap-4">
             {doc.sections.map((s) => {
               const open = isOpen(s.id)
               return (
                 <section
                   key={s.id}
                   id={s.id}
-                  className="scroll-mt-24 border-b border-black/[0.08]"
+                  className="scroll-mt-24 overflow-hidden rounded-2xl border border-black/[0.07] bg-[#F7F9FC] transition-colors"
                 >
                   <SectionHeading
                     accordion={accordion}
@@ -222,15 +236,14 @@ export function LegalPage({ doc, accordion = false }: { doc: LegalDoc; accordion
                   <div
                     id={`${s.id}-panel`}
                     role="region"
-                    aria-labelledby={`${s.id}-heading`}
+                    aria-labelledby={`${s.id}-panel-heading`}
                     className={[
                       'legal-panel grid transition-[grid-template-rows] duration-300 ease-out',
                       open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]',
                     ].join(' ')}
                   >
                     <div className="overflow-hidden">
-                      {/* Aligned under the title, not the number. */}
-                      <div className="flex max-w-3xl flex-col gap-5 pb-9 sm:pl-[3.4rem]">
+                      <div className="flex max-w-3xl flex-col gap-5 px-6 pb-6 lg:px-8 lg:pb-8">
                         {s.blocks.map((b, i) => (
                           <Block key={i} block={b} />
                         ))}
@@ -269,29 +282,28 @@ function SectionHeading({
   title: string
   subtitle?: string
 }) {
-  const inner = (
-    <>
-      <span className="w-8 shrink-0 pt-1 font-mono text-xs text-gold-deep">{number}</span>
-      <span className="flex-1">
-        <span className="block font-display text-lg font-bold leading-snug tracking-tight text-primary lg:text-xl">
-          {title}
-        </span>
-        {subtitle ? (
-          // NOT uppercased: these carry statute citations whose casing is
-          // meaningful ("MStV", "DDG") — text-transform would render
-          // "§ 18 al. 2 MStV" as "§ 18 AL. 2 MSTV".
-          <span className="mt-1 block font-mono text-[11px] tracking-[0.06em] text-ink-soft/70">
-            {subtitle}
-          </span>
-        ) : null}
+  const label = (
+    <span className="flex-1">
+      <span className="legal-doc-title block font-display text-lg font-semibold leading-snug text-primary transition-colors lg:text-xl">
+        {title}
       </span>
-    </>
+      {subtitle ? (
+        // NOT uppercased: these carry statute citations whose casing is
+        // meaningful ("MStV", "DDG") — text-transform would render
+        // "§ 18 al. 2 MStV" as "§ 18 AL. 2 MSTV".
+        <span className="mt-1 block font-mono text-[11px] tracking-[0.06em] text-ink-soft/70">
+          {subtitle}
+        </span>
+      ) : null}
+    </span>
   )
+  const num = <span className="w-8 shrink-0 pt-1 font-mono text-xs text-gold-deep">{number}</span>
 
   if (!accordion) {
     return (
-      <h2 id={`${panelId}-heading`} className="flex items-start gap-5 pb-5 pt-9">
-        {inner}
+      <h2 id={`${panelId}-heading`} className="flex items-start gap-5 px-6 pb-4 pt-6 lg:px-8 lg:pt-7">
+        {num}
+        {label}
       </h2>
     )
   }
@@ -303,29 +315,23 @@ function SectionHeading({
         onClick={onToggle}
         aria-expanded={open}
         aria-controls={panelId}
-        className="legal-doc-toggle group flex w-full items-start gap-5 py-6 text-left transition-colors hover:[&_.legal-doc-title]:text-gold-deep"
+        className="legal-doc-toggle group flex w-full items-start gap-5 px-6 py-5 text-left lg:px-8 lg:py-6"
       >
-        <span className="w-8 shrink-0 pt-1 font-mono text-xs text-gold-deep">{number}</span>
-        <span className="flex-1">
-          <span className="legal-doc-title block font-display text-lg font-bold leading-snug tracking-tight text-primary transition-colors lg:text-xl">
-            {title}
-          </span>
-          {subtitle ? (
-            <span className="mt-1 block font-mono text-[11px] tracking-[0.06em] text-ink-soft/70">
-              {subtitle}
-            </span>
-          ) : null}
-        </span>
-        {/* One fixed spot, right edge of the row. */}
+        {num}
+        {label}
+        {/* Same circled + as the landing-page FAQ, in one fixed spot. */}
         <span
           aria-hidden="true"
-          className="mt-0.5 grid h-7 w-7 shrink-0 place-items-center rounded-full border border-black/10 text-primary transition-colors group-hover:border-gold-deep/50 group-hover:bg-gold/10"
+          className="mt-0.5 grid h-8 w-8 shrink-0 place-items-center rounded-full border border-black/10 transition-colors group-hover:border-gold-deep/50 group-hover:bg-gold/10"
         >
           <svg
             viewBox="0 0 24 24"
-            className={`h-3.5 w-3.5 transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2.2"
+            className={`h-4 w-4 text-primary transition-transform duration-300 ${open ? 'rotate-45' : ''}`}
           >
-            <path d="M12 5v14M5 12h14" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" />
+            <path strokeLinecap="round" d="M12 5v14M5 12h14" />
           </svg>
         </span>
       </button>

@@ -67,7 +67,10 @@ export interface LegalDoc {
   eyebrow: string
   /** Ends with a period; the first word gets the outlined treatment. */
   h1: string
+  /** Opening paragraph, set large. On the privacy policy this is the preamble. */
   lead: string
+  /** Further preamble paragraphs under the lead, set as normal prose. */
+  intro?: string[]
   lastUpdatedLabel: string
   lastUpdatedValue: string
   tocTitle: string

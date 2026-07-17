@@ -112,32 +112,15 @@
     "description": "Privacy policy of Ayiti Dijital. No cookies, no tracking, no data collection.",
     "eyebrow": "Privacy",
     "h1": "Privacy policy.",
-    "lead": "This site sets no cookies, runs no analytics and collects no personal data. This page describes the little that happens anyway, and the rights you have.",
+    "lead": "Thank you for your interest in Ayiti Dijital. You can read this site without disclosing any personal data whatsoever: we ask for none and collect none.",
     "lastUpdatedLabel": "Last updated",
     "lastUpdatedValue": "17 July 2026",
     "tocTitle": "Contents",
     "sections": [
       {
-        "id": "preambule",
-        "title": "Preamble",
-        "subtitle": "what this notice covers",
+        "id": "champ",
+        "title": "Scope",
         "blocks": [
-          {
-            "kind": "text",
-            "body": "Thank you for your interest in Ayiti Dijital. You can read this site without disclosing any personal data whatsoever: we ask for none and collect none."
-          },
-          {
-            "kind": "text",
-            "body": "Should you one day wish to use a particular service of the association — writing to us, joining, subscribing to the newsletter — processing your data could become necessary. Where such processing is necessary and no legal basis covers it, we obtain your consent first."
-          },
-          {
-            "kind": "text",
-            "body": "This notice explains which data we process as controller, which data the processors we appoint handle — our host, for instance — and what rights you have. By “personal data” we mean information within the meaning of Art. 4(1) GDPR: a name, an email address, a postal address."
-          },
-          {
-            "kind": "subheading",
-            "title": "Scope"
-          },
           {
             "kind": "points",
             "items": [
@@ -523,7 +506,11 @@
       }
     ],
     "expandAllLabel": "Expand all",
-    "collapseAllLabel": "Collapse all"
+    "collapseAllLabel": "Collapse all",
+    "intro": [
+      "Should you one day wish to use a particular service of the association — writing to us, joining, subscribing to the newsletter — processing your data could become necessary. Where such processing is necessary and no legal basis covers it, we obtain your consent first.",
+      "This notice explains which data we process as controller, which data the processors we appoint handle — our host, for instance — and what rights you have. By “personal data” we mean information within the meaning of Art. 4(1) GDPR: a name, an email address, a postal address."
+    ]
   },
   "consent": {
     "title": "Audience measurement",

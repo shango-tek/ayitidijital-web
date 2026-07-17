@@ -112,32 +112,15 @@
     "description": "Politique de confidentialité d'Ayiti Dijital. Aucun cookie, aucun traçage, aucune collecte.",
     "eyebrow": "Confidentialité",
     "h1": "Politique de confidentialité.",
-    "lead": "Ce site ne dépose aucun cookie, n'utilise aucun outil de mesure d'audience et ne collecte aucune donnée personnelle. Cette page décrit le peu qui se passe malgré tout, et les droits dont vous disposez.",
+    "lead": "Nous vous remercions de l'intérêt que vous portez à Ayiti Dijital. La consultation de ce site est possible sans communiquer la moindre donnée personnelle : nous n'en demandons aucune et n'en recueillons aucune.",
     "lastUpdatedLabel": "Dernière mise à jour",
     "lastUpdatedValue": "17 juillet 2026",
     "tocTitle": "Sommaire",
     "sections": [
       {
-        "id": "preambule",
-        "title": "Préambule",
-        "subtitle": "ce que couvre cette déclaration",
+        "id": "champ",
+        "title": "Champ d'application",
         "blocks": [
-          {
-            "kind": "text",
-            "body": "Nous vous remercions de l'intérêt que vous portez à Ayiti Dijital. La consultation de ce site est possible sans communiquer la moindre donnée personnelle : nous n'en demandons aucune et n'en recueillons aucune."
-          },
-          {
-            "kind": "text",
-            "body": "Si vous souhaitez un jour recourir à un service particulier de l'association — nous écrire, adhérer, vous abonner à l'infolettre — un traitement de vos données pourrait devenir nécessaire. Lorsqu'un tel traitement est nécessaire et qu'aucune base légale ne le fonde, nous recueillons votre consentement au préalable."
-          },
-          {
-            "kind": "text",
-            "body": "Cette déclaration explique quelles données nous traitons en tant que responsable, quelles données traitent les sous-traitants que nous mandatons — notre hébergeur, par exemple — et de quels droits vous disposez. Par « données personnelles », nous entendons les informations au sens de l'art. 4, point 1, du RGPD : un nom, une adresse e-mail, une adresse postale."
-          },
-          {
-            "kind": "subheading",
-            "title": "Champ d'application"
-          },
           {
             "kind": "points",
             "items": [
@@ -523,7 +506,11 @@
       }
     ],
     "expandAllLabel": "Tout déplier",
-    "collapseAllLabel": "Tout replier"
+    "collapseAllLabel": "Tout replier",
+    "intro": [
+      "Si vous souhaitez un jour recourir à un service particulier de l'association — nous écrire, adhérer, vous abonner à l'infolettre — un traitement de vos données pourrait devenir nécessaire. Lorsqu'un tel traitement est nécessaire et qu'aucune base légale ne le fonde, nous recueillons votre consentement au préalable.",
+      "Cette déclaration explique quelles données nous traitons en tant que responsable, quelles données traitent les sous-traitants que nous mandatons — notre hébergeur, par exemple — et de quels droits vous disposez. Par « données personnelles », nous entendons les informations au sens de l'art. 4, point 1, du RGPD : un nom, une adresse e-mail, une adresse postale."
+    ]
   },
   "consent": {
     "title": "Mesure d'audience",

@@ -112,32 +112,15 @@
     "description": "Politik konfidansyalite Ayiti Dijital. Pa gen cookie, pa gen swivi, pa gen koleksyon done.",
     "eyebrow": "Konfidansyalite",
     "h1": "Politik konfidansyalite.",
-    "lead": "Sit sa a pa depoze okenn cookie, pa itilize okenn zouti mezi odyans e li pa kolekte okenn done pèsonèl. Paj sa a dekri ti sa k ap pase kanmenm, ak dwa ou genyen yo.",
+    "lead": "Nou di ou mèsi pou enterè ou pote pou Ayiti Dijital. Ou ka li sit sa a san ou pa bay okenn done pèsonèl : nou pa mande okenn e nou pa ranmase okenn.",
     "lastUpdatedLabel": "Dènye mizajou",
     "lastUpdatedValue": "17 jiyè 2026",
     "tocTitle": "Tab matyè",
     "sections": [
       {
-        "id": "preambule",
-        "title": "Preyanbil",
-        "subtitle": "sa deklarasyon sa a kouvri",
+        "id": "champ",
+        "title": "Chan aplikasyon",
         "blocks": [
-          {
-            "kind": "text",
-            "body": "Nou di ou mèsi pou enterè ou pote pou Ayiti Dijital. Ou ka li sit sa a san ou pa bay okenn done pèsonèl : nou pa mande okenn e nou pa ranmase okenn."
-          },
-          {
-            "kind": "text",
-            "body": "Si yon jou ou ta vle sèvi ak yon sèvis patikilye asosyasyon an — ekri nou, vin manm, abòne w nan enfòlèt la — li ta ka nesesè pou nou trete done ou. Lè yon tretman konsa nesesè e pa gen okenn baz legal ki kouvri l, nou mande konsantman ou anvan."
-          },
-          {
-            "kind": "text",
-            "body": "Deklarasyon sa a esplike ki done nou trete kòm responsab, ki done sou-tretan nou mande yo trete — ebèjè nou, pa egzanp — ak ki dwa ou genyen. Lè nou di « done pèsonèl », nou vle di enfòmasyon dapre atik 4, pwen 1, RGPD la : yon non, yon adrès imèl, yon adrès postal."
-          },
-          {
-            "kind": "subheading",
-            "title": "Chan aplikasyon"
-          },
           {
             "kind": "points",
             "items": [
@@ -523,7 +506,11 @@
       }
     ],
     "expandAllLabel": "Louvri tout",
-    "collapseAllLabel": "Fèmen tout"
+    "collapseAllLabel": "Fèmen tout",
+    "intro": [
+      "Si yon jou ou ta vle sèvi ak yon sèvis patikilye asosyasyon an — ekri nou, vin manm, abòne w nan enfòlèt la — li ta ka nesesè pou nou trete done ou. Lè yon tretman konsa nesesè e pa gen okenn baz legal ki kouvri l, nou mande konsantman ou anvan.",
+      "Deklarasyon sa a esplike ki done nou trete kòm responsab, ki done sou-tretan nou mande yo trete — ebèjè nou, pa egzanp — ak ki dwa ou genyen. Lè nou di « done pèsonèl », nou vle di enfòmasyon dapre atik 4, pwen 1, RGPD la : yon non, yon adrès imèl, yon adrès postal."
+    ]
   },
   "consent": {
     "title": "Mezi odyans",
