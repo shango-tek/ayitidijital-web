@@ -86,7 +86,7 @@ export function HomeView() {
             cards={c.whatWeDo.cards.map((card, i) => ({
               ...card,
               href:
-                [`/${locale}/travay-nou`, `/${locale}/ekosistem`, '#kominote'][i] ??
+                [`/${locale}/travay-nou`, `/${locale}/ekosistem`, `/${locale}/kominote`][i] ??
                 `/${locale}/travay-nou`,
             }))}
             outro={c.whatWeDo.outro}
@@ -108,7 +108,13 @@ export function HomeView() {
             outro={c.ecosystem.outro}
             viewAll={c.ecosystem.viewAll}
             viewAllHref={`/${locale}/travay-nou`}
-            projects={c.ecosystem.projects.map((p) => ({ ...p, href: `/${locale}/travay-nou` }))}
+            projects={c.ecosystem.projects.map((p) => ({
+              ...p,
+              // Each project's own slug (from its image filename) → its anchor on
+              // the ecosystem page, so six distinct projects don't all open the
+              // same URL.
+              href: `/${locale}/ekosistem#${p.image.split('/').pop()?.replace(/\.\w+$/, '') ?? ''}`,
+            }))}
           />
 
           {/* Domaines d'action — thematic areas as gold numbered cards */}

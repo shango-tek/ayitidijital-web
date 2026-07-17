@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { LanbiMark } from '../brand/LanbiMark'
 import { SectionHeader } from '../ui/SectionHeader'
 import { useLocale } from '../i18n/LocaleProvider'
+import { submitNewsletter } from '@/lib/newsletter'
 import type { NewsletterContent } from '@/content/site'
 
 export interface NewsletterSectionProps {
@@ -35,12 +36,21 @@ export function NewsletterSection({ id = 'enfolet', content }: NewsletterSection
     ? `/${locale}${content.privacy.href}`
     : content.privacy.href
 
-  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault()
-    const email = String(new FormData(e.currentTarget).get('email') ?? '').trim()
+    const data = new FormData(e.currentTarget)
+    const email = String(data.get('email') ?? '').trim()
     if (!email) return
-    // TODO: POST to a real newsletter service.
-    setDone(true)
+    try {
+      await submitNewsletter({
+        email,
+        firstName: String(data.get('firstName') ?? ''),
+        lastName: String(data.get('lastName') ?? ''),
+      })
+      setDone(true) // only claim success once the submit actually resolved
+    } catch {
+      /* leave the form up so the user can retry */
+    }
   }
 
   return (

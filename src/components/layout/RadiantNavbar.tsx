@@ -18,13 +18,6 @@ const Chevron = () => (
   </svg>
 )
 
-const SearchIcon = () => (
-  <svg className="rn-ico" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-    <circle cx="11" cy="11" r="7" stroke="currentColor" strokeWidth="1.7" />
-    <path d="M20 20l-3.4-3.4" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" />
-  </svg>
-)
-
 export interface RadiantNavbarProps {
   brandName: string
   links: NavLink[]
@@ -45,7 +38,7 @@ export function RadiantNavbar({
   links,
   langs,
   banner,
-  supportHref = '#support',
+  supportHref = '/soutni',
   supportLabel = 'Sipòte',
 }: RadiantNavbarProps) {
   const pathname = usePathname()
@@ -127,10 +120,7 @@ export function RadiantNavbar({
               </HoverMenu>
             </PlusGridItem>
 
-            <button type="button" className="rn-search" aria-label="Chèche">
-              <SearchIcon />
-            </button>
-            <Button variant="red" pill size="sm" href={supportHref} className="rn-support">
+            <Button variant="red" pill size="sm" href={toHref(supportHref)} className="rn-support">
               {supportLabel}
             </Button>
           </nav>

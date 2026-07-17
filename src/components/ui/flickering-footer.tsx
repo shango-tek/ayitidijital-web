@@ -11,6 +11,7 @@ import { SocialIcon } from "@/components/brand/SocialIcon";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { PlusGrid, PlusGridItem, PlusGridRow } from "@/components/ui/PlusGrid";
 import { useLocale } from "@/components/i18n/LocaleProvider";
+import { submitNewsletter } from "@/lib/newsletter";
 import type { KonbitFooterContent } from "@/content/site";
 import type { SitemapColumn, SocialLink } from "@/components/layout/SitemapFooter";
 
@@ -1197,9 +1198,18 @@ export const FlickeringFooter = ({
                     <form
                       className="kf-subscribe"
                       suppressHydrationWarning
-                      onSubmit={(e) => {
+                      onSubmit={async (e) => {
                         e.preventDefault();
-                        setDone(true);
+                        const email = String(
+                          new FormData(e.currentTarget).get("email") ?? "",
+                        ).trim();
+                        if (!email) return;
+                        try {
+                          await submitNewsletter({ email });
+                          setDone(true);
+                        } catch {
+                          /* leave the form up to retry */
+                        }
                       }}
                     >
                       <input

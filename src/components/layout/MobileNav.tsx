@@ -241,7 +241,7 @@ export function MobileNav() {
 
             {/* Foot — support CTA, then a Studio-style "Follow us" social row. */}
             <div className="mnav-foot container">
-              <Button variant="red" pill href="#support" className="mnav-support-btn">
+              <Button variant="red" pill href={`/${locale}/soutni`} className="mnav-support-btn">
                 {content.supportLabel}
               </Button>
               <div className="mnav-follow">

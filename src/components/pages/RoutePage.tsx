@@ -13,12 +13,16 @@ import type { NavLink } from '@/components/layout/SiteNav'
  */
 export function RoutePage({
   path,
+  title: titleProp,
   subtitle,
   image,
   children,
 }: {
   /** The locale-less route path, e.g. "/travay-nou" — matched against navLinks. */
   path: string
+  /** Header heading. Falls back to the matching navbar entry's label, then the
+   *  path. Pass this for routes that are not in the nav (e.g. /soutni). */
+  title?: string
   /** Optional supporting sentence in the header; defaults to the hero blurb. */
   subtitle?: string
   /** Optional frosted background photo for this page's header. */
@@ -27,7 +31,7 @@ export function RoutePage({
 }) {
   const c = useContent()
   const entry: NavLink | undefined = c.navLinks.find((l) => l.href === path)
-  const title = entry?.label ?? path
+  const title = titleProp ?? entry?.label ?? path
 
   // Split the heading so the first word gets the italic outlined treatment.
   const [strokeWord, ...rest] = title.split(' ')

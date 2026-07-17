@@ -275,8 +275,8 @@ const ht: SiteContent = {
   heroTitle: { shaping: 'Fasonnen', tomorrow: 'Demen', with: 'ak', vision: 'Vizyon', and: '&', action: 'Aksyon' },
   scrollTopLabel: 'Tounen anlè',
   heroDescription: {
-    full: 'Yon sant inovasyon pou transfòmasyon dijital. Nou rasanble moun k ap bati yon valè ki dire epi ki soutnab. Nou konsevwa solisyon pou defi sosyete yo, nou pouse limit teknolojik yo pi lwen, epi nou fòme lidè ki fè yon vre diferans.',
-    short: 'Yon sant inovasyon pou transfòmasyon dijital — n ap rasanble moun pou bati valè ki dire epi mennen vre chanjman.',
+    full: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv, konpetans ak zouti open source ki pou tout moun.",
+    short: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv ak zouti open source ki pou tout moun.",
   },
   skipToContent: 'Ale nan kontni an',
   statsKicker: 'An chif',
@@ -316,7 +316,7 @@ const ht: SiteContent = {
         href: '#pwoje',
         variant: 'navy',
       },
-      { label: 'Antre nan konbit la', href: '#kominote', variant: 'sand' },
+      { label: 'Antre nan konbit la', href: '/kominote', variant: 'sand' },
     ],
   },
   stats: [
@@ -537,7 +537,7 @@ const ht: SiteContent = {
     email: { label: 'Imel', placeholder: 'ada.lovelace@imel.com' },
     consent: 'Mwen dakò pou nou trete done pèsonèl mwen yo nan bi pou voye enfòlèt la ban mwen.',
     button: 'Wi, abòne',
-    confirm: 'Mèsi! Ou abòne nan enfòlèt la.',
+    confirm: 'Mèsi! N ap tounen vin jwenn ou byen vit.',
   },
   footerColumns: [
     {
@@ -552,17 +552,17 @@ const ht: SiteContent = {
     {
       heading: 'Ekosistèm',
       links: [
-        { label: 'Fè yon don', href: '#don' },
-        { label: 'Vin nan kominote a', href: '#kominote' },
-        { label: 'Kontak', href: '#kontak' },
+        { label: 'Fè yon don', href: '/soutni' },
+        { label: 'Vin nan kominote a', href: '/kominote' },
+        { label: 'Kontak', href: 'mailto:contact@ayitidijital.org' },
       ],
     },
     {
       heading: 'Tematik',
       links: [
-        { label: 'Dijitalizasyon & IA', href: '#tematik' },
-        { label: 'Dirablite', href: '#tematik' },
-        { label: 'Antreprenarya', href: '#tematik' },
+        { label: 'Dijitalizasyon & IA', href: '/#domenn' },
+        { label: 'Dirablite', href: '/#domenn' },
+        { label: 'Antreprenarya', href: '/#domenn' },
       ],
     },
     {
@@ -606,8 +606,8 @@ const fr: SiteContent = {
   heroTitle: { shaping: 'Façonner', tomorrow: "l'Avenir", with: 'avec', vision: 'Vision', and: '&', action: 'Action.' },
   scrollTopLabel: 'Haut de page',
   heroDescription: {
-    full: "Un pôle d'innovation pour la transformation numérique. Nous réunissons celles et ceux qui bâtissent une valeur durable. Nous concevons des solutions aux défis de société, repoussons les frontières technologiques et formons des leaders qui changent vraiment les choses.",
-    short: "Un pôle d'innovation pour la transformation numérique — rassembler pour bâtir une valeur durable et mener un vrai changement.",
+    full: "Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives, compétences et outils open source qui appartiennent à tous.",
+    short: "Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives et outils open source.",
   },
   skipToContent: 'Aller au contenu',
   statsKicker: 'En chiffres',
@@ -647,7 +647,7 @@ const fr: SiteContent = {
         href: '#pwoje',
         variant: 'navy',
       },
-      { label: 'Rejoindre le konbit', href: '#kominote', variant: 'sand' },
+      { label: 'Rejoindre le konbit', href: '/kominote', variant: 'sand' },
     ],
   },
   stats: [
@@ -868,7 +868,7 @@ const fr: SiteContent = {
     email: { label: 'E-mail', placeholder: 'ada.lovelace@email.com' },
     consent: 'J’accepte le traitement de mes données personnelles aux fins de l’envoi de l’infolettre.',
     button: 'Oui, je m’abonne',
-    confirm: 'Merci ! Vous êtes bien abonné·e.',
+    confirm: 'Merci ! Nous revenons vers vous très vite.',
   },
   footerColumns: [
     {
@@ -883,17 +883,17 @@ const fr: SiteContent = {
     {
       heading: 'Écosystème',
       links: [
-        { label: 'Faire un don', href: '#don' },
-        { label: 'Rejoindre la communauté', href: '#kominote' },
-        { label: 'Contact', href: '#kontak' },
+        { label: 'Faire un don', href: '/soutni' },
+        { label: 'Rejoindre la communauté', href: '/kominote' },
+        { label: 'Contact', href: 'mailto:contact@ayitidijital.org' },
       ],
     },
     {
       heading: 'Thématiques',
       links: [
-        { label: 'Digitalisation & IA', href: '#tematik' },
-        { label: 'Durabilité', href: '#tematik' },
-        { label: 'Entrepreneuriat', href: '#tematik' },
+        { label: 'Digitalisation & IA', href: '/#domenn' },
+        { label: 'Durabilité', href: '/#domenn' },
+        { label: 'Entrepreneuriat', href: '/#domenn' },
       ],
     },
     {
@@ -937,8 +937,8 @@ const en: SiteContent = {
   heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.' },
   scrollTopLabel: 'Back to top',
   heroDescription: {
-    full: 'An innovative hub for digital transformation. We bring people together who build lasting, sustainable value. We engineer solutions for societal challenges, push technological boundaries, and develop leaders who make a real difference.',
-    short: 'An innovative hub for digital transformation — bringing people together to build lasting value and lead real change.',
+    full: "Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools that belong to everyone.",
+    short: "Free, open digital infrastructure for Haiti and its diaspora — laws, archives and open-source tools.",
   },
   skipToContent: 'Skip to content',
   statsKicker: 'By the numbers',
@@ -978,7 +978,7 @@ const en: SiteContent = {
         href: '#pwoje',
         variant: 'navy',
       },
-      { label: 'Join the konbit', href: '#kominote', variant: 'sand' },
+      { label: 'Join the konbit', href: '/kominote', variant: 'sand' },
     ],
   },
   stats: [
@@ -1199,7 +1199,7 @@ const en: SiteContent = {
     email: { label: 'Email', placeholder: 'ada.lovelace@email.com' },
     consent: 'I consent to the processing of my personal data for the purpose of sending the newsletter.',
     button: 'Yes, subscribe',
-    confirm: 'Thanks! You’re subscribed.',
+    confirm: 'Thanks! We’ll get back to you shortly.',
   },
   footerColumns: [
     {
@@ -1214,17 +1214,17 @@ const en: SiteContent = {
     {
       heading: 'Ecosystem',
       links: [
-        { label: 'Donate', href: '#don' },
-        { label: 'Join the community', href: '#kominote' },
-        { label: 'Contact', href: '#kontak' },
+        { label: 'Donate', href: '/soutni' },
+        { label: 'Join the community', href: '/kominote' },
+        { label: 'Contact', href: 'mailto:contact@ayitidijital.org' },
       ],
     },
     {
       heading: 'Themes',
       links: [
-        { label: 'Digitalization & AI', href: '#tematik' },
-        { label: 'Sustainability', href: '#tematik' },
-        { label: 'Entrepreneurship', href: '#tematik' },
+        { label: 'Digitalization & AI', href: '/#domenn' },
+        { label: 'Sustainability', href: '/#domenn' },
+        { label: 'Entrepreneurship', href: '/#domenn' },
       ],
     },
     {
