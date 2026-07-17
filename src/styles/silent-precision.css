@@ -24,7 +24,9 @@
   inset: .5rem;
   bottom: 0;
   border-radius: 2rem;
-  background: var(--color-precision-bg);
+  /* per-surface navy top-wash over the near-black base (header only — the shared
+     --color-precision-bg token is left untouched so the footer stays flat). */
+  background: radial-gradient(125% 85% at 50% -12%, color-mix(in srgb, var(--color-primary) 26%, transparent) 0%, transparent 58%), var(--color-precision-bg);
   box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
 }
 
@@ -41,7 +43,7 @@
   position: relative;
   z-index: 50;
   width: 100%;
-  max-width: 88rem;
+  max-width: 90rem;
   margin: 0 auto;
 }
 
@@ -62,10 +64,11 @@
   fill: rgba(255, 255, 255, 0.7);
 }
 
-/* the lanbi logo mark's dots are hardcoded navy/red — paint them white so the
-   spiral is visible on the dark hero (CSS beats the inline fill attributes) */
-.precision-hero .rn-logo-mark path {
-  fill: #fff;
+/* the lanbi logo mark's dots are hardcoded navy/red — the navy half has almost
+   no contrast on the dark hero, so recolor just those to the lighter brand blue
+   and let the red dots keep their colour (CSS beats the inline fill attributes) */
+.precision-hero .rn-logo-mark .lanbi-dot--navy {
+  fill: var(--lanbi-blue-ondark);
 }
 
 /* Ensure navbar text and icons are visible on dark background */
@@ -146,6 +149,11 @@
        card's bottom edge, rather than being pulled upward */
     padding-bottom: 0;
   }
+  /* The ScrollIndicator is absolutely positioned, so the flex content otherwise
+     centres over the FULL height (incl. the button's band) and lands too low.
+     Reserve that bottom band so the text centres between the nav plus-grid and
+     the scroll-to-bottom button. */
+  .precision-hero-content { padding-bottom: 5.5rem; }
 }
 
 /* touch tablets in landscape (e.g. iPad): fill the whole viewport height — the
@@ -176,6 +184,10 @@
   -webkit-text-stroke: 1.5px rgba(255,255,255,0.18);
   filter: drop-shadow(0 15px 35px rgba(0,0,0,0.45)) drop-shadow(0 5px 10px rgba(0,0,0,0.25));
   animation: precision-shimmer 8s linear infinite;
+  /* `background-clip: text` clips the last line's descenders (the italic "y" in
+     Vizyon/Aksyon) to the text box — a touch of bottom padding gives them room
+     without loosening the tight leading. */
+  padding-bottom: 0.2em;
 }
 
 @keyframes precision-shimmer {
@@ -219,6 +231,169 @@
 .precision-tag-pill {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
+}
+
+/* Footer Styles */
+.precision-footer {
+  position: relative;
+  overflow: hidden;
+  clip-path: inset(0.5rem 0.5rem 0.5rem 0.5rem round 2rem);
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  max-width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.precision-footer-bg {
+  position: absolute;
+  inset: 0.5rem;
+  border-radius: 2rem;
+  background: var(--color-precision-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.precision-footer-inner {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1.5rem 4rem;
+  width: 90rem;
+  margin: 0 auto;
+}
+
+.precision-footer-grid .pg-rule {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.precision-footer-grid .pg-ico {
+  fill: rgba(255, 255, 255, 0.2);
+}
+
+.precision-footer-cta {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.precision-footer-cta-title {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+}
+
+.precision-footer-cta-desc {
+  font-size: 1.25rem;
+  color: var(--color-precision-muted);
+  max-width: 32rem;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+.precision-footer-cta-btn {
+  display: inline-block;
+  background: var(--color-precision-fg);
+  color: var(--color-precision-bg);
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.precision-footer-cta-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.precision-footer-nav-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+@media (min-width: 768px) {
+  .precision-footer-nav-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.precision-footer-nav-title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-precision-fg);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.precision-footer-nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.precision-footer-nav-link {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--color-precision-muted);
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.precision-footer-nav-link:hover {
+  color: var(--color-precision-fg);
+}
+
+.precision-footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.precision-footer-bottom-brand-item,
+.precision-footer-bottom-social-item {
+  flex: 0 1 auto;
+  padding: 2rem 0;
+}
+
+.precision-footer-bottom-brand-item {
+  padding-right: 2rem;
+}
+
+.precision-footer-bottom-social-item {
+  padding-left: 2rem;
+  margin-left: auto;
+}
+
+.precision-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.precision-footer-brand-name {
+  font-weight: 700;
+  color: var(--color-precision-fg);
+  font-family: var(--font-display);
+}
+
+.precision-footer-socials {
+  display: flex;
+  gap: 1.25rem;
+  height: 100%;
+  align-items: center;
+}
+
+.precision-footer-social-link {
+  color: var(--color-precision-muted);
+  transition: color 0.2s ease;
+}
+
+.precision-footer-social-link:hover {
+  color: var(--color-precision-fg);
 }
 
 @media (prefers-reduced-motion: reduce) {

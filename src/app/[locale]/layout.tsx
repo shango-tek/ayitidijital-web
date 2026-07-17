@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { Space_Grotesk, Hanken_Grotesk, IBM_Plex_Mono, Caveat } from 'next/font/google'
+import { Space_Grotesk, Hanken_Grotesk, IBM_Plex_Mono, Caveat, Playfair_Display } from 'next/font/google'
 import '../globals.css'
 import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
@@ -35,6 +35,16 @@ const caveat = Caveat({
   subsets: ['latin'],
   weight: ['500', '600', '700'],
   variable: '--font-caveat',
+  display: 'swap',
+})
+
+/* Serif italic accent for the hero title (a real webfont — replaces the fragile
+   system `serif` fallback so it renders identically on every device). */
+const playfair = Playfair_Display({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  weight: ['500', '600'],
+  variable: '--font-playfair',
   display: 'swap',
 })
 
@@ -87,7 +97,7 @@ export default async function LocaleLayout({
     <html
       lang={lang}
       data-scroll-behavior="smooth"
-      className={`${spaceGrotesk.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} ${caveat.variable}`}
+      className={`${spaceGrotesk.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} ${caveat.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
       <body id="top" suppressHydrationWarning>

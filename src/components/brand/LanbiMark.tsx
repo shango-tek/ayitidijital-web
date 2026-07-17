@@ -39,6 +39,7 @@ export function LanbiMark({ size = 58, className, light = false }: LanbiMarkProp
           {LANBI_DOTS.map((dot, i) => (
             <path
               key={i}
+              className={dot.top ? 'lanbi-dot lanbi-dot--navy' : 'lanbi-dot lanbi-dot--red'}
               d={dot.d}
               fill={light ? '#fff' : dot.top ? NAVY : RED}
               style={{ '--r': dot.r } as CSSProperties}

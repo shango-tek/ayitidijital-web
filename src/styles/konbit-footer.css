@@ -13,8 +13,8 @@
    No overflow:hidden, so the PlusGrid hairlines (100vw) bleed to the viewport
    edges like the navbar; the gradient bg + top border clip themselves via radius. */
 /* subtle hero-style inset hairline on the top edge (no gradient glow) */
-.kf-card{position:relative;border-radius:2rem 2rem 0 0;background:linear-gradient(135deg,#FBF8F0 0%,#EFF1FA 42%,#E2E7F6 70%,#DBDDF1 100%);box-shadow:inset 0 0 0 1px rgba(0,0,0,.05)}
-.kf-card-inner{position:relative;max-width:92rem;margin:0 auto;padding:0 clamp(1.5rem,3vw,3rem) clamp(1.4rem,2.6vw,2.2rem)}
+.kf-card{position:relative;border-radius:2rem 2rem 0 0;background:linear-gradient(135deg,#0A0A0F 0%,#101018 60%,#0A0A0F 100%);box-shadow:inset 0 0 0 1px rgba(255,255,255,.08)}
+.kf-card-inner{position:relative;max-width:90rem;margin:0 auto;padding-top:0;padding-inline:clamp(1.5rem,3vw,3rem);padding-bottom:clamp(1.4rem,2.6vw,2.2rem)}
 
 /* marquee along the top — breaks out to the full viewport (scrolls in from the
    viewport edges, not the container), and sits high near the rounded corners */
@@ -24,12 +24,14 @@
 /* PlusGrid — hairlines run full card width (100vw clipped by the card),
    plus-marks stay at the content edges. */
 .kf-card .pg-rules{left:50%;width:100vw;transform:translateX(-50%)}
-.kf-card .pg-rule{border-color:var(--line)}
-.kf-card .pg-ico{fill:rgba(18,36,107,.28)}
+.kf-card .pg-rule{border-color:var(--mist-line)}
+.kf-card .pg-ico{fill:rgba(255,255,255,.3)}
+/* marquee stroke text + plus-marks go light on the dark footer card */
+.kf-marquee .mq-word{-webkit-text-stroke-color:rgba(255,255,255,.26)}
 .kf-cards-item{padding:34px 0 30px}
 /* two decorative plus-marks on the first line — one centred on the navy card's
    left edge, one in the gutter between the two cards (navy col = 350px, gap = 16px) */
-.kf-plus{position:absolute;top:-.5rem;width:15px;height:15px;fill:rgba(18,36,107,.28);z-index:4;pointer-events:none}
+.kf-plus{position:absolute;top:-.5rem;width:15px;height:15px;fill:rgba(255,255,255,.3);z-index:4;pointer-events:none}
 .kf-plus-a{left:-.5rem}
 .kf-plus-b{left:calc(358px - .5rem)}
 
@@ -39,7 +41,7 @@
 .kf-left,.kf-right{min-width:0}
 
 /* ---------- Left card (navy spiral) ---------- */
-.kf-left{position:relative;min-height:340px;border-radius:24px;padding:30px;overflow:hidden;background:var(--navy);box-shadow:0 12px 40px rgba(18,36,107,.28);display:flex;flex-direction:column;justify-content:space-between}
+.kf-left{position:relative;min-height:340px;border-radius:32px;padding:30px;overflow:hidden;background:var(--navy);box-shadow:0 12px 40px rgba(0,0,0,.45);display:flex;flex-direction:column;justify-content:space-between}
 .kf-canvas{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;pointer-events:none}
 .kf-left::after{content:"";position:absolute;inset:0;z-index:0;pointer-events:none;background:radial-gradient(120% 90% at 15% 0%,rgba(18,36,107,0) 40%,rgba(10,18,54,.5) 100%)}
 .kf-logo{display:flex;align-items:center;gap:13px;position:relative;z-index:1}
@@ -58,11 +60,11 @@
 .kf-social-icon:hover{background:#000;transform:translateY(-2px);box-shadow:0 10px 26px rgba(0,0,0,.5),0 3px 10px rgba(0,0,0,.3)}
 
 /* ---------- Right card (sitemap + wide CTA) ---------- */
-.kf-right{position:relative;background:#fff;border-radius:24px;padding:32px;overflow:visible;box-shadow:0 6px 26px rgba(18,36,107,.08);display:flex;flex-direction:column;gap:30px}
+.kf-right{position:relative;background:#fff;border-radius:32px;padding:32px;overflow:visible;box-shadow:0 10px 34px rgba(0,0,0,.4);display:flex;flex-direction:column;gap:30px}
 
 /* floating lucky badge */
 .kf-lucky{position:absolute;top:-34px;right:32px;z-index:10;display:flex;flex-direction:column;align-items:flex-start;gap:6px}
-.kf-cube{width:88px;height:88px;border-radius:22px;transform:rotate(-10deg);background:linear-gradient(135deg,#3B54A6 0%,#12246B 55%,#0E1B4D 100%);display:grid;place-items:center;box-shadow:inset 3px 3px 8px rgba(255,255,255,.3),inset -3px -3px 12px rgba(0,0,0,.22),8px 14px 28px rgba(18,36,107,.42)}
+.kf-cube{width:88px;height:88px;border-radius:32px;transform:rotate(-10deg);background:linear-gradient(135deg,#3B54A6 0%,#12246B 55%,#0E1B4D 100%);display:grid;place-items:center;box-shadow:inset 3px 3px 8px rgba(255,255,255,.3),inset -3px -3px 12px rgba(0,0,0,.22),8px 14px 28px rgba(18,36,107,.42)}
 .kf-cube-mark{transform:rotate(10deg);width:56px;height:56px;display:block;filter:drop-shadow(0 3px 6px rgba(0,0,0,.25))}
 .kf-lucky-row{display:flex;gap:6px;align-items:center;transform:rotate(-4deg);margin-top:4px}
 .kf-lucky-arrow{width:20px;height:20px;color:var(--navy-tint)}
@@ -133,17 +135,17 @@
 /* width fixes the trailing plus-mark onto the same vertical as the inter-card
    mark above (navy col 350px + half the 16px gutter, less the mark's own inset) */
 .kf-copy-item{display:flex;align-items:center;padding:.7rem 0;width:357px;min-height:3.5rem}
-.kf-copyright{font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--ink-soft)}
+.kf-copyright{font-family:var(--font-body);font-size:15px;font-weight:500;color:var(--mist-soft)}
 /* Legal links relocated into the bottom bar's middle (between the copyright and
    the proverb) only where the sitemap drops Legal (≤1120px); hidden by default */
 .kf-legal{display:none;align-items:center;gap:1.4rem;flex-wrap:wrap;min-height:3.5rem}
-.kf-legal a{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--ink-soft);text-decoration:none;transition:color .15s}
+.kf-legal a{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--mist-soft);text-decoration:none;transition:color .15s}
 .kf-legal a:hover{color:var(--red)}
 .kf-proverb-wrap{display:flex}
 /* both bottom-row items share a min-height so their plus-marks land on the same
    double-hairlines (otherwise the shorter copyright block floats off the lines) */
 .kf-proverb-item{display:flex;align-items:center;padding:.7rem 0;min-height:3.5rem}
-.kf-proverb{font-family:var(--font-hand);font-size:1.25rem;font-weight:600;color:var(--navy-tint);letter-spacing:.3px;white-space:nowrap}
+.kf-proverb{font-family:var(--font-hand);font-size:1.25rem;font-weight:600;color:var(--mist-soft);letter-spacing:.3px;white-space:nowrap}
 
 /* ---------- Watermark (stroke wordmark, below the copyright line) ---------- */
 .kf-watermark{position:relative;z-index:0;width:100%;max-width:35rem;margin:16px auto 6px;pointer-events:none;user-select:none;line-height:0}
@@ -174,4 +176,159 @@
  .kf-proverb-wrap{display:none}
  .kf-copy-item{width:100%;justify-content:center;min-height:3rem}
  .kf-copyright{font-size:16px}
+}
+
+/* ============================================================
+   Flat variant — used by the FlickeringFooter. Same Konbit
+   layout + PlusGrid, but no outer card, no inner card
+   backgrounds, no spiral canvas, no lucky badge. Content sits
+   directly on the dark footer, so the right-card content
+   (navy-on-white) is recoloured light.
+   ============================================================ */
+/* small top offset so the marquee sits high in the card, fully visible (not
+   clipped by the rounded top corners) rather than floating below a big gap. */
+/* whisper-navy field wash — a faint brand-navy top glow over the near-black so the
+   footer isn't dead-flat (mirrors the header's navy top-wash). ID beats the Tailwind
+   bg-[#0A0A0F] utility. */
+#flickering-footer{background:radial-gradient(120% 90% at 50% 0%, color-mix(in srgb, var(--color-primary) 15%, transparent) 0%, transparent 62%), #0A0A0F}
+.kf-flat .kf-card-inner{max-width:90rem;margin:0 auto;padding-top:0.75rem;padding-inline:clamp(1.5rem,3vw,3rem);padding-bottom:1.2rem}
+/* light PlusGrid hairlines + marks on the dark bg (the .kf-card scope doesn't apply here) */
+/* light PlusGrid hairlines + marks on the dark bg (the .kf-card scope doesn't apply here) */
+.kf-flat .pg-rule{border-color:var(--mist-line)}
+.kf-flat .pg-row:last-child .pg-rule-b1,
+.kf-flat .pg-row:last-child .pg-rule-b2{border-bottom-color:var(--mist-line)}
+.kf-flat .pg-ico{fill:rgba(255,255,255,.3)}
+.kf-flat .pg-rules{left:50%;width:100vw;transform:translateX(-50%)}
+/* flatten the two cards — no bg / shadow / radius / fixed height */
+.kf-flat .kf-left,.kf-flat .kf-right{background:none;box-shadow:none;border-radius:0;min-height:0;padding:0;overflow:visible}
+.kf-flat .kf-left::after{display:none}
+/* keep the base .kf-left space-between + tagline margin-top:auto so the social
+   block drops to the BOTTOM of the (stretched) left column — level with the CTA,
+   like the old cards. Stack the icons UNDER the "Rete an kontak!" label. */
+.kf-flat .kf-social-row{flex-direction:column;align-items:flex-start;gap:14px}
+.kf-flat .kf-nav-cols{padding-right:0}
+/* social chips need to read on near-black (were near-black on the navy card) */
+.kf-flat .kf-social-icon{background:rgba(255,255,255,.08)}
+.kf-flat .kf-social-icon:hover{background:rgba(255,255,255,.16)}
+/* right-card content: navy → light */
+.kf-flat .kf-col a{color:rgba(255,255,255,.82)}
+.kf-flat .kf-col a:hover{color:#fff}
+.kf-flat .kf-cta h4{color:rgba(255,255,255,.55)}
+.kf-flat .kf-cta h4 strong{color:#fff}
+.kf-flat .kf-subscribe{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.15);box-shadow:none}
+.kf-flat .kf-subscribe input{color:#fff}
+.kf-flat .kf-subscribe input::placeholder{color:rgba(255,255,255,.4)}
+/* Newsletter submit = GOLD (navy text), matching NewsletterSection's gold submit.
+   Red is reserved for the Sipote/Soutenir donate action only. */
+.kf-flat .kf-subscribe button{background:var(--color-gold);color:var(--navy);box-shadow:none}
+.kf-flat .kf-subscribe button:hover{background:#d99009;box-shadow:none;transform:none}
+/* footer brand: big bare lanbi mark (no wordmark) — fills the left column */
+.kf-flat .kf-flogo{display:inline-block;margin-bottom:auto}
+.kf-flat .kf-flogo .lanbi{display:block;width:clamp(150px,15vw,210px);height:auto;margin-left:-4px}
+
+/* recompile nudge */
+/* flickering footer marquee: smaller stroke words than the (big) Konbit marquee */
+.kf-flat .mq-word{font-size:clamp(1rem,2.4vw,1.6rem);-webkit-text-stroke-width:1px}
+.kf-flat .kf-marquee .mq{padding:.2rem 0 1rem}
+/* overlap: only the copyright/proverb line sits over the flicker band's bottom
+   edge (below its text). Lifted above the dots; the socials/CTA stay clear. */
+.kf-flat .kf-bottom{position:relative;z-index:10;margin-top:-5.85rem}
+
+/* --- Flat-footer responsive: promote the newsletter CTA above the nav links ---
+   kf-right becomes display:contents at these widths so its children (nav-cols,
+   cta) place directly onto the wrapper — letting the CTA sit before/beside the
+   columns without reordering the JSX. */
+
+/* Tablet + mobile (≤1023px): brand row — big logo on the left, tagline + "rete an
+   kontak" socials stacked on the right — then the full-width newsletter CTA, then
+   the link columns. kf-right goes display:contents so its children (nav-cols, cta)
+   order directly onto the single-column wrapper. */
+@media (max-width:1023px){
+  .kf-flat .kf-wrapper{display:flex;flex-direction:column;gap:38px}
+  .kf-flat .kf-right{display:contents}
+  /* brand row: logo (col 1, spans both rows) | tagline over socials (col 2) */
+  .kf-flat .kf-left{
+    order:1;display:grid;grid-template-columns:auto minmax(0,1fr);
+    column-gap:30px;row-gap:18px;align-items:center;
+  }
+  .kf-flat .kf-flogo{grid-column:1;grid-row:1 / 3;align-self:center;margin:0}
+  .kf-flat .kf-tagline{grid-column:2;grid-row:1;margin:0}
+  .kf-flat .kf-social-row{grid-column:2;grid-row:2;margin:0}
+  /* CTA full-width below the brand row; the input spans the whole container */
+  .kf-flat .kf-cta{order:2;margin-top:0}
+  .kf-flat .kf-subscribe{width:100%}
+  .kf-flat .kf-nav-cols{order:3}
+}
+
+/* Tablet portrait (641–1023px): brand row as one horizontal strip —
+   logo · tagline · "rete an kontak" socials, all vertically centered. Bigger
+   logo, all four link columns, Legal out of the bottom bar (it's a column now). */
+@media (min-width:641px) and (max-width:1023px){
+  .kf-flat .kf-flogo .lanbi{width:150px}
+  .kf-flat .kf-left{grid-template-columns:auto minmax(0,1fr) auto;column-gap:40px}
+  .kf-flat .kf-flogo{grid-column:1;grid-row:1;align-self:center}
+  .kf-flat .kf-tagline{grid-column:2;grid-row:1}
+  .kf-flat .kf-social-row{grid-column:3;grid-row:1}
+  .kf-flat .kf-nav-cols{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:6px}
+  .kf-flat .kf-nav-cols .kf-col:nth-child(4){display:block}
+  .kf-flat .kf-bottom .kf-legal{display:none}
+}
+
+/* Mobile (≤640px): a bit larger logo; tagline sized to sit cleanly beside it. */
+@media (max-width:640px){
+  .kf-flat .kf-flogo .lanbi{width:120px}
+  .kf-flat .kf-tagline{font-size:16px;line-height:1.4}
+}
+
+/* Flicker top-fade: mask the dot field's OWN alpha so the dots emerge from the
+   footer over a long smooth ramp. A colour overlay fading to #0A0A0F banded
+   visibly on real displays (hard edge); masking the pixels themselves is
+   density- and colour-independent, so it reads smooth everywhere. Same on all
+   breakpoints. The text sits at the vertical centre, clear of this top fade. */
+.kf-flat .kf-flicker{
+  -webkit-mask-image:linear-gradient(to bottom,transparent 0%,#000 34%);
+  mask-image:linear-gradient(to bottom,transparent 0%,#000 34%);
+}
+/* Phone: pull the dot field up to close the big dark gap under the nav columns.
+   Height stays 260px (Tailwind utility wins over this base layer), so the band —
+   and the card bottom it's anchored to — simply shift up together. */
+@media (max-width:640px){
+  .kf-flat .kf-flicker{margin-top:-40px}
+}
+
+/* --- Scroll-to-top: up-arrow sticker over a vertical label. Desktop + tablet
+   landscape (≥1024): top-right, sat below the plus-grid line. Tablet portrait
+   (641–1023): to the right of the brand row's "rete an kontak" socials. Phone
+   (≤640): compact, arrow-only, floating bottom-right. --- */
+.kf-scrolltop{
+  position:absolute; top:6.75rem; right:clamp(1.25rem,3vw,2.75rem); z-index:20;
+  display:flex; flex-direction:column; align-items:center; gap:.7rem;
+  margin:0; padding:0; background:none; border:none; cursor:pointer; color:#fff;
+}
+.kf-scrolltop-arrow{
+  width:44px; height:44px; flex:none; border-radius:999px; display:grid; place-items:center;
+  background:var(--lanbi-blue-ondark); color:var(--color-primary-deep); box-shadow:0 8px 22px rgba(143,166,245,.4);
+  transition:transform .2s ease, box-shadow .2s ease;
+}
+.kf-scrolltop-arrow svg{ width:20px; height:20px; display:block; transform:rotate(-90deg); }
+.kf-scrolltop:hover .kf-scrolltop-arrow{ transform:translateY(-4px); box-shadow:0 12px 28px rgba(143,166,245,.55); }
+.kf-scrolltop-text{
+  writing-mode:vertical-rl; transform:rotate(180deg);
+  font-family:var(--font-hand); font-size:1.05rem; line-height:1; letter-spacing:.02em;
+  white-space:nowrap; color:rgba(255,255,255,.82);
+}
+.kf-scrolltop:hover .kf-scrolltop-text{ color:#fff; }
+
+/* Tablet portrait: align with the brand row; push that row left to open room. */
+@media (min-width:641px) and (max-width:1023px){
+  .kf-scrolltop{ top:6.5rem; right:0.75rem; }
+  .kf-flat .kf-left{ padding-right:3.75rem; }
+}
+/* Phone: compact arrow-only button that floats bottom-right over the page. */
+@media (max-width:640px){
+  .kf-scrolltop{
+    position:fixed; top:auto; bottom:1.1rem; right:1rem; gap:0; z-index:50;
+  }
+  .kf-scrolltop-text{ display:none; }
+  .kf-scrolltop-arrow{ box-shadow:0 6px 18px rgba(0,0,0,.55),0 4px 14px rgba(143,166,245,.5); }
 }

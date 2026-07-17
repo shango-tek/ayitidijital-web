@@ -4,7 +4,42 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5cc3ebc1-3445-4bdd-98a1-51e9744c057d" name="Changes" comment="" />
+    <list default="true" id="5cc3ebc1-3445-4bdd-98a1-51e9744c057d" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/public/video-scroll-indicator.svg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ShadcnHelperSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ShadcnHelperSettings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/brand/LanbiMark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/brand/LanbiMark.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/brand/RadiantLogo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/brand/SpiralWatermark.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/FloatingNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/FloatingNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/FooterWatermark.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/KonbitFooter.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/MobileNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/MobileNav.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/RadiantNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/RadiantNavbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/layout/SiteFooter.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/pages/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/HomeView.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/CosmicBackground.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/HeroPanel.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/NewsletterSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/NewsletterSection.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/ProjectsGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/ProjectsGrid.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/sections/SilentPrecisionHero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/SilentPrecisionHero.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/Button.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/LangDropdown.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/PricingCard.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/liquid-glass-button.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/liquid-glass-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/magic-dust-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/magic-dust-shader.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/ui/neon-button-demo.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/content/site.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/site.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/konbit-footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/konbit-footer.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/silent-precision.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/silent-precision.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/styles/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/site.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -14,8 +49,11 @@
     <execution />
   </component>
   <component name="EmbeddingIndexingInfo">
-    <option name="cachedIndexableFilesCount" value="83" />
+    <option name="cachedIndexableFilesCount" value="128" />
     <option name="fileBasedEmbeddingIndicesEnabled" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="KubernetesApiPersistence">{}</component>
   <component name="KubernetesApiProvider">{
@@ -30,61 +68,61 @@
   </component>
   <component name="NextEditCompletionFeaturesState">
     <decayedCancelled>
+      <entry key="MS100" value="1.0" />
+      <entry key="MS500" value="1.0" />
+      <entry key="S2" value="1.0000000000135876" />
+      <entry key="S5" value="1.0000459388160232" />
+      <entry key="S10" value="1.0076755370761903" />
+      <entry key="S30" value="1.2874896710838715" />
+      <entry key="S60" value="1.7487483871022227" />
+      <entry key="M2" value="2.2197739476255935" />
+      <entry key="M5" value="2.6398000313272223" />
+      <entry key="M10" value="2.8107308041229855" />
+      <entry key="M15" value="2.8716875659720493" />
+      <entry key="M30" value="2.9348378302353777" />
+      <entry key="H1" value="2.998841029965959" />
+      <entry key="H2" value="3.6099640947964775" />
+      <entry key="H4" value="5.8609268876555936" />
+      <entry key="D1" value="18.719829189082752" />
+      <entry key="W1" value="28.581880468247046" />
+    </decayedCancelled>
+    <decayedSelected>
       <entry key="MS100" value="0.0" />
       <entry key="MS500" value="0.0" />
       <entry key="S2" value="0.0" />
       <entry key="S5" value="0.0" />
-      <entry key="S10" value="5.088009396295255E-267" />
-      <entry key="S30" value="1.7199505795579637E-89" />
-      <entry key="S60" value="4.14722868860395E-45" />
-      <entry key="M2" value="6.439898049351364E-23" />
-      <entry key="M5" value="1.329081450696805E-9" />
-      <entry key="M10" value="3.645656937640739E-5" />
-      <entry key="M15" value="0.0010994712198724125" />
-      <entry key="M30" value="0.03315827528505523" />
-      <entry key="H1" value="0.18209515367437476" />
-      <entry key="H2" value="0.43048823818284837" />
-      <entry key="H4" value="0.8892393042440616" />
-      <entry key="D1" value="8.434324572590379" />
-      <entry key="W1" value="14.576269501200272" />
-    </decayedCancelled>
-    <decayedSelected>
-      <entry key="MS100" value="1.0" />
-      <entry key="MS500" value="1.0" />
-      <entry key="S2" value="1.0" />
-      <entry key="S5" value="1.0" />
-      <entry key="S10" value="1.0" />
-      <entry key="S30" value="1.0" />
-      <entry key="S60" value="1.0" />
-      <entry key="M2" value="1.0" />
-      <entry key="M5" value="1.0" />
-      <entry key="M10" value="1.0" />
-      <entry key="M15" value="1.0" />
-      <entry key="M30" value="1.0000000000000058" />
-      <entry key="H1" value="1.0000001068653723" />
-      <entry key="H2" value="1.0004619270312787" />
-      <entry key="H4" value="1.0303886582449906" />
-      <entry key="D1" value="1.9953238018540151" />
-      <entry key="W1" value="2.8102335193629324" />
+      <entry key="S10" value="0.0" />
+      <entry key="S30" value="6.042597893460754E-305" />
+      <entry key="S60" value="7.773414882444363E-153" />
+      <entry key="M2" value="8.816697160760346E-77" />
+      <entry key="M5" value="3.785545671956386E-31" />
+      <entry key="M10" value="6.175733379259525E-16" />
+      <entry key="M15" value="7.408662785502964E-11" />
+      <entry key="M30" value="9.827126126055273E-6" />
+      <entry key="H1" value="0.004066105131027799" />
+      <entry key="H2" value="0.08792679779429331" />
+      <entry key="H4" value="0.4221225771365332" />
+      <entry key="D1" value="2.2891005010315895" />
+      <entry key="W1" value="3.6651178951120755" />
     </decayedSelected>
     <decayedShown>
-      <entry key="MS100" value="9.058555098364925E-10" />
-      <entry key="MS500" value="0.015538596385518971" />
-      <entry key="S2" value="0.35306360109618873" />
-      <entry key="S5" value="0.6593882115263177" />
-      <entry key="S10" value="0.8120272233899044" />
-      <entry key="S30" value="0.9329467649630555" />
-      <entry key="S60" value="0.9658916942199345" />
-      <entry key="M2" value="0.9827978908300193" />
-      <entry key="M5" value="0.9930833186835645" />
-      <entry key="M10" value="0.9965720944564086" />
-      <entry key="M15" value="0.9987881729101212" />
-      <entry key="M30" value="1.0319961066891754" />
-      <entry key="H1" value="1.181500416605178" />
-      <entry key="H2" value="1.430640629316595" />
-      <entry key="H4" value="1.9194380271405562" />
-      <entry key="D1" value="10.42945202737271" />
-      <entry key="W1" value="17.38645509275158" />
+      <entry key="MS100" value="0.5358867312681466" />
+      <entry key="MS500" value="0.8827029962906549" />
+      <entry key="S2" value="0.9692898169483545" />
+      <entry key="S5" value="0.9876463906348495" />
+      <entry key="S10" value="1.0014206560667385" />
+      <entry key="S30" value="1.2849191690018886" />
+      <entry key="S60" value="1.747046932149791" />
+      <entry key="M2" value="2.2187062510668407" />
+      <entry key="M5" value="2.639294660024356" />
+      <entry key="M10" value="2.8104620964012614" />
+      <entry key="M15" value="2.8715046110267863" />
+      <entry key="M30" value="2.934754160842391" />
+      <entry key="H1" value="3.0028513034819606" />
+      <entry key="H2" value="3.6977773283591255" />
+      <entry key="H4" value="6.282823478691147" />
+      <entry key="D1" value="21.008674198818362" />
+      <entry key="W1" value="32.246933340671674" />
     </decayedShown>
   </component>
   <component name="ProjectColorInfo">{
@@ -96,39 +134,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.MCP Project settings loaded": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.go.formatter.settings.were.checked": "true",
-    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
-    "codeWithMe.voiceChat.enabledByDefault": "false",
-    "com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1": "true",
-    "go.import.settings.migrated": "true",
-    "js.debugger.nextJs.config.created.client": "true",
-    "js.debugger.nextJs.config.created.server": "true",
-    "junie.onboarding.icon.badge.shown": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/pracht/dev/projects/ayiti-dijital-next/public",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "npm.Next.js: server-side.executor": "Run",
-    "org.rust.first.attach.projects": "true",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "to.speed.mode.migration.done": "true",
-    "ts.external.directory.path": "/Users/pracht/dev/projects/ayiti-dijital-next/node_modules/typescript/lib"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.MCP Project settings loaded&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.go.formatter.settings.were.checked&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;codeWithMe.voiceChat.enabledByDefault&quot;: &quot;false&quot;,
+    &quot;com.intellij.ml.llm.matterhorn.ej.ui.settings.DefaultModelSelectionForGA.v1&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;go.import.settings.migrated&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.client&quot;: &quot;true&quot;,
+    &quot;js.debugger.nextJs.config.created.server&quot;: &quot;true&quot;,
+    &quot;junie.onboarding.icon.badge.shown&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/pracht/dev/projects/ayiti-dijital-next/public&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;npm.Next.js: server-side.executor&quot;: &quot;Run&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;to.speed.mode.migration.done&quot;: &quot;true&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;/Users/pracht/dev/projects/ayiti-dijital-next/node_modules/typescript/lib&quot;
   }
-}]]></component>
+}</component>
   <component name="ReactDesignerToolWindowState">
     <option name="myId2Visible">
       <map>
         <entry key="com.intellij.reactbuddy.reactComponents" value="false" />
         <entry key="com.intellij.reactbuddy.reactInspector" value="false" />
+        <entry key="com.intellij.reactbuddy.storybook" value="false" />
       </map>
     </option>
   </component>
@@ -155,7 +196,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
-        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.25134.95" />
+        <option value="bundled-jdk-30f59d01ecdd-37e91769500f-intellij.indexing.shared.core-IU-261.26222.65" />
       </set>
     </attachedChunks>
   </component>
@@ -167,7 +208,13 @@
       <option name="presentableId" value="Default" />
       <updated>1783066767327</updated>
       <workItem from="1783066768696" duration="18156000" />
-      <workItem from="1783192369124" duration="21587000" />
+      <workItem from="1783192369124" duration="22462000" />
+      <workItem from="1783319367130" duration="13139000" />
+      <workItem from="1783359227202" duration="9638000" />
+      <workItem from="1783428099544" duration="8328000" />
+      <workItem from="1783493867665" duration="4389000" />
+      <workItem from="1783782121015" duration="5431000" />
+      <workItem from="1783924836921" duration="4347000" />
     </task>
     <servers />
   </component>

@@ -1,6 +1,7 @@
 'use client'
 
 import type { ReactNode } from 'react'
+import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { PlusGrid, PlusGridItem, PlusGridRow } from '../ui/PlusGrid'
 import { LanbiMark } from '../brand/LanbiMark'
@@ -10,8 +11,6 @@ import { useLocale } from '../i18n/LocaleProvider'
 import type { LangOption } from '../ui/LangSwitcher'
 import type { NavLink } from './SiteNav'
 import { switchLocalePath, type Locale } from '../../i18n'
-import {NeonButton} from "@/components/ui/neon-button";
-import { LiquidButton } from "@/components/ui/liquid-glass-button";
 
 const Chevron = () => (
   <svg className="hm-chev" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -53,16 +52,22 @@ export function RadiantNavbar({
   const { locale: active, setLocale } = useLocale()
   const cur = langs.find((o) => o.code === active) ?? langs[0]
 
+  // Prefix internal paths ("/travay-nou", "/sou-nou#ekip") with the active
+  // locale so links resolve to "/ht/travay-nou". Hash-only anchors ("#top") and
+  // absolute URLs (http…) are left untouched.
+  const toHref = (h: string) =>
+    h.startsWith('/') ? `/${active}${h}` : h
+
   return (
     <header className="rn-header">
       <PlusGrid>
         <PlusGridRow className="rn-row">
           <div className="rn-left">
             <PlusGridItem className="rn-logo-item">
-              <a href="#top" title="Akèy" className="rn-logo-link" aria-label={`${brandName} — Akèy`}>
+              <Link href={`/${active}`} title="Akèy" className="rn-logo-link" aria-label={`${brandName} — Akèy`}>
                 <LanbiMark size={58} className="rn-logo-mark" />
                 <span className="rn-brand-name">{brandName}</span>
-              </a>
+              </Link>
             </PlusGridItem>
             {banner && <div className="rn-banner-wrap">{banner}</div>}
           </div>
@@ -73,18 +78,18 @@ export function RadiantNavbar({
                 <PlusGridItem key={l.href} className="rn-link-item">
                   <HoverMenu align="left" trigger={<>{l.label}<Chevron /></>}>
                     {l.children.map((c) => (
-                      <a key={c.href} href={c.href} role="menuitem">
+                      <Link key={c.href} href={toHref(c.href)} role="menuitem">
                         <span className="hm-dot" aria-hidden="true" />
                         {c.label}
-                      </a>
+                      </Link>
                     ))}
                   </HoverMenu>
                 </PlusGridItem>
               ) : (
                 <PlusGridItem key={l.href} className="rn-link-item">
-                  <a href={l.href} className="rn-link">
+                  <Link href={toHref(l.href)} className="rn-link">
                     {l.label}
-                  </a>
+                  </Link>
                 </PlusGridItem>
               ),
             )}
@@ -125,15 +130,9 @@ export function RadiantNavbar({
             <button type="button" className="rn-search" aria-label="Chèche">
               <SearchIcon />
             </button>
-            <LiquidButton
-              size="sm"
-              className="rn-support rounded-full font-semibold tracking-tight"
-              onClick={() => {
-                window.location.hash = supportHref
-              }}
-            >
+            <Button variant="red" pill size="sm" href={supportHref} className="rn-support">
               {supportLabel}
-            </LiquidButton>
+            </Button>
           </nav>
         </PlusGridRow>
       </PlusGrid>

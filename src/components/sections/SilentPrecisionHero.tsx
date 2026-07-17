@@ -2,6 +2,7 @@
 
 import {useEffect, useRef, useState} from 'react'
 import {RadiantNavbar} from '../layout/RadiantNavbar'
+import {ScrollIndicator} from '../ui/ScrollIndicator'
 import type {LangOption} from '../ui/LangSwitcher'
 import type {NavLink} from '../layout/SiteNav'
 
@@ -164,6 +165,17 @@ export interface SilentPrecisionHeroProps {
     langs: LangOption[]
     banner?: { label: string; href: string }
     supportLabel?: string
+    /** Headline tokens, each rendered in its own typographic style. */
+    title: {
+        shaping: string
+        tomorrow: string
+        with: string
+        vision: string
+        and: string
+        action: string
+    }
+    /** Sub-headline paragraph: full copy for tablet/desktop, condensed for phone. */
+    description: { full: string; short: string }
 }
 
 export function SilentPrecisionHero({
@@ -172,6 +184,8 @@ export function SilentPrecisionHero({
                                         langs = [],
                                         banner,
                                         supportLabel,
+                                        title,
+                                        description,
                                     }: SilentPrecisionHeroProps) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const wrapRef = useRef<HTMLDivElement>(null)
@@ -258,9 +272,9 @@ export function SilentPrecisionHero({
 
                 {/* Ambient orbs */}
                 <div className="precision-orb w-[40rem] h-[40rem] -top-40 -left-40"
-                     style={{background: 'radial-gradient(circle, #6366f1 0%, transparent 70%)'}}></div>
+                     style={{background: 'radial-gradient(circle, var(--lanbi-blue-ondark) 0%, transparent 70%)'}}></div>
                 <div className="precision-orb w-[36rem] h-[36rem] -bottom-40 -right-32"
-                     style={{background: 'radial-gradient(circle, #ec4899 0%, transparent 70%)', opacity: 0.25}}></div>
+                     style={{background: 'radial-gradient(circle, var(--color-periwinkle) 0%, transparent 70%)', opacity: 0.25}}></div>
 
                 {/* Pixel canvas background */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
@@ -279,15 +293,15 @@ export function SilentPrecisionHero({
                         <h1 className="tahoe-glass-text flex flex-col items-center justify-center px-1 w-full text-[clamp(1.35rem,6.5vw,3rem)] sm:text-5xl md:text-7xl lg:text-[clamp(4.25rem,7vw,7.25rem)] leading-[1.08]">
                             <div
                                 className="flex flex-row items-center justify-center gap-x-2 sm:gap-x-4 lg:gap-x-6 flex-wrap">
-                                <span className="font-display italic font-medium">Shaping</span>
-                                <span className="font-sans font-extrabold tracking-tighter">Tomorrow</span>
+                                <span className="font-display italic font-medium">{title.shaping}</span>
+                                <span className="font-sans font-extrabold tracking-tighter">{title.tomorrow}</span>
                             </div>
                             <div
                                 className="flex flex-row items-center justify-center gap-x-2 sm:gap-x-4 lg:gap-x-6 flex-wrap">
-                                <span className="font-display italic font-medium">with</span>
-                                <span className="font-serif italic font-semibold">Vision</span>
-                                <span className="font-display font-medium">and</span>
-                                <span className="font-serif italic font-semibold">Action.</span>
+                                <span className="font-display italic font-medium">{title.with}</span>
+                                <span className="font-serif italic font-semibold">{title.vision}</span>
+                                <span className="font-display font-medium">{title.and}</span>
+                                <span className="font-serif italic font-semibold">{title.action}</span>
                             </div>
                         </h1>
                     </div>
@@ -297,18 +311,16 @@ export function SilentPrecisionHero({
                         className="relative z-10 flex flex-col items-center justify-center text-center mt-6 md:mt-0 order-3 md:order-3 px-1 w-full pointer-events-none">
                         {/* full copy on tablet / desktop */}
                         <p className="hidden md:block text-xl lg:text-2xl font-light text-precision-fg/80 md:max-w-3xl lg:max-w-4xl px-1 leading-relaxed">
-                            An innovative hub for digital transformation.
-                            We bring people together who build lasting, sustainable value.
-                            We engineer solutions for societal challenges, push technological boundaries, and develop
-                            leaders who make a real difference.
+                            {description.full}
                         </p>
                         {/* condensed copy on mobile — keeps the block to ~3 lines */}
                         <p className="md:hidden text-base sm:text-lg font-light text-precision-fg/80 max-w-[95%] sm:max-w-lg px-1 leading-relaxed">
-                            An innovative hub for digital transformation — bringing people together to build
-                            lasting value and lead real change.
+                            {description.short}
                         </p>
                     </div>
                 </div>
+
+                <ScrollIndicator href="#apropo" />
 
                 {/* Desktop marquee */}
           {/*      <div*/}

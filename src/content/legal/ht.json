@@ -1,0 +1,142 @@
+{
+  "imprint": {
+    "title": "Enfòmasyon legal",
+    "description": "Enfòmasyon legal Ayiti Dijital e.V. dapre § 5 TMG.",
+    "eyebrow": "Enfòmasyon legal",
+    "h1": "Enfòmasyon legal.",
+    "intro": "Dapre § 5 TMG (Telemediengesetz, lwa alman sou medya elektwonik).",
+    "last_updated_label": "Dènye mizajou",
+    "last_updated_value": "25 me 2026",
+    "toc_title": "Tab matyè",
+    "publisher_title": "Editè",
+    "publisher_dl": {
+      "name_label": "Non legal",
+      "name_value": "Ayiti Dijital e.V.",
+      "status_label": "Estati",
+      "status_value": "Verein in Gründung (k ap fèt)",
+      "address_label": "Syèj",
+      "address_value": "Minik, Almay",
+      "registry_label": "Anrejistreman",
+      "registry_value": "Amtsgericht München · VR pending"
+    },
+    "representative_title": "Reprezantasyon legal",
+    "representative_dl": {
+      "name_label": "1. Vorstand",
+      "name_value": "Glory Pierrette",
+      "role_label": "2. Vorstand",
+      "role_value": "Berlens Legagneur"
+    },
+    "representative_note": "Chak manm Vorstand gen dwa reprezante asosyasyon an pou kont li (Einzelvertretungsbefugnis).",
+    "contact_title": "Kontak",
+    "contact_dl": {
+      "email_label": "Adrès imèl",
+      "email_value": "kontakt@ayitidijital.org",
+      "post_label": "Adrès postal",
+      "post_value": "Ayiti Dijital e.V., Minik, Almay"
+    },
+    "responsible_title": "Responsab kontni",
+    "responsible_subtitle": "dapre § 55 al. 2 RStV",
+    "responsible_body": "Glory Pierrette (1. Vorstand), menm adrès postal ak asosyasyon an.",
+    "liability_title": "Responsablite",
+    "liability_body": "Malgre kontwòl regilye, nou pa pran responsablite pou kontni lyen ekstèn yo. Egzeplwatè sit ki lye yo sèl responsab pou kontni yo.",
+    "copyright_title": "Dwa otè",
+    "copyright_body": "Sòf si nou di kontrè, kontni sit la pibliye anba lisans Creative Commons CC BY-SA 4.0. Mak ak logo yo rete pwopriyete pwopriyetè respektif yo.",
+    "dispute_title": "Rezolisyon konfli",
+    "dispute_body": "Komisyon Ewopeyen an mete disponib yon platfòm rezolisyon konfli sou entènèt : https://ec.europa.eu/consumers/odr. Nou pa oblije ni dispoze patisipe nan yon pwosedi rezolisyon devan yon òganis abitraj konsomatè."
+  },
+  "privacy": {
+    "title": "Konfidansyalite",
+    "description": "Politik konfidansyalite Ayiti Dijital, RGPD.",
+    "eyebrow": "Konfidansyalite",
+    "h1": "Politik konfidansyalite.",
+    "intro": "Nou pran pwoteksyon done pèsonèl ou trè oserye. Politik sa a dekri ki done nou kolekte, poukisa, ak dwa ou yo.",
+    "last_updated_label": "Dènye mizajou",
+    "last_updated_value": "25 me 2026",
+    "toc_title": "Tab matyè",
+    "summary_title": "Sa nou fè",
+    "summary_subtitle": "Esansyèl la, an twa liy.",
+    "summary_points": [
+      {
+        "title": "Nou pa trase ou.",
+        "body": "Pa gen okenn cookie reklam, okenn piksèl tyès pati, okenn fingerprinting sou sit sa a."
+      },
+      {
+        "title": "Analitik ki respekte ou.",
+        "body": "Nou itilize Plausible Analytics, ki ebèje nan Inyon Ewopeyen, san cookie ni done pèsonèl."
+      },
+      {
+        "title": "Done adezyon sou konsantman.",
+        "body": "Nou estoke koòdone ou sèlman si ou ranpli yon fòm volontèman (adezyon, kontak)."
+      }
+    ],
+    "controller_title": "Responsab tretman",
+    "controller_body": "Ayiti Dijital e.V., Minik, Almay, kontakt@ayitidijital.org",
+    "controller_dpo_label": "Kontak pou pwoteksyon done",
+    "controller_dpo_value": "kontakt@ayitidijital.org",
+    "data_title": "Done ki kolekte",
+    "data_body": "Sit sa a pa depoze okenn cookie swivi. Nou kolekte done pèsonèl sèlman lè ou voye yo volontèman pa yon fòm (adezyon, kontak). Done sa yo estoke sou sèvè ewopeyen e itilize sèlman pou trete demann ou.",
+    "cookies_title": "Cookies ak depo lokal",
+    "cookies_intro": "Pou transparans, men tout sa sit sa a estoke nan navigatè ou :",
+    "cookies_table_headers": {
+      "name": "Non",
+      "purpose": "Objektif",
+      "duration": "Dire",
+      "type": "Tip"
+    },
+    "cookies_rows": [
+      {
+        "name": "—",
+        "purpose": "Pa gen cookie ki depoze sou sit sa a",
+        "duration": "—",
+        "type": "—"
+      },
+      {
+        "name": "localStorage (preferans entèfas)",
+        "purpose": "Sonje lang ou chwazi oswa meni an",
+        "duration": "Pèmanan (jiska efase)",
+        "type": "Teknik · pa yon cookie"
+      }
+    ],
+    "cookies_note": "Zouti analiz nou, Plausible Analytics, pa depoze okenn cookie e li pa itilize idantifyan pèmanan.",
+    "rights_title": "Dwa ou yo (RGPD)",
+    "rights_intro": "RGPD garanti ou yon ansanm dwa sou done pèsonèl ou. Pou egzèse yo, ekri a kontakt@ayitidijital.org, n ap reponn nan 30 jou.",
+    "rights_cards": [
+      {
+        "icon": "①",
+        "title": "Dwa aksè",
+        "body": "Jwenn yon kopi done nou kenbe sou ou."
+      },
+      {
+        "icon": "②",
+        "title": "Dwa rektifikasyon",
+        "body": "Korije nenpòt done ki pa egzak oswa enkonplè."
+      },
+      {
+        "icon": "③",
+        "title": "Dwa pou efase",
+        "body": "Mande sipresyon done ou yo, sòf si yon obligasyon legal di kontrè."
+      },
+      {
+        "icon": "④",
+        "title": "Dwa limitasyon",
+        "body": "Limite tretman done ou yo nan kèk ka."
+      },
+      {
+        "icon": "⑤",
+        "title": "Dwa potabilite",
+        "body": "Resevwa done ou yo nan yon fòma estriktire e reitilizab."
+      },
+      {
+        "icon": "⑥",
+        "title": "Dwa opozisyon",
+        "body": "Opoze tretman done ou yo nenpòt lè."
+      }
+    ],
+    "rights_complaint": "Ou gen dwa tou pou pote yon plent devan otorite pwoteksyon done Baviè a (BayLfD) : datenschutz-bayern.de.",
+    "hosting_title": "Ebèjman",
+    "hosting_body": "Sit sa a ebèje sou yon enfrastrikti ki nan Inyon Ewopeyen. Pa gen okenn zouti tyès pati analiz oswa reklam.",
+    "contact_title": "Kontak pwoteksyon done",
+    "contact_body": "Pou nenpòt kesyon sou pwoteksyon done ou, egzèsis dwa, plent, demann, ekri nou dirèkteman.",
+    "contact_email": "kontakt@ayitidijital.org"
+  }
+}

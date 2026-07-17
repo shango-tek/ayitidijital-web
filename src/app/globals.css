@@ -20,6 +20,8 @@
   --color-primary: #12246B;        /* Konbit navy — primary brand */
   --color-primary-deep: #0E1B4D;   /* Ink navy — dark surfaces */
   --color-accent: #D21034;         /* Drapo red — secondary accent (one per view) */
+  --color-gold: #F2A20C;           /* Blazon gold — focal accent; use ON DARK surfaces */
+  --color-gold-deep: #9C6400;      /* deep gold — for gold TEXT on light surfaces (AA-contrast) */
   --color-sand: #F4EFE6;           /* warm neutral background */
   --color-sky: #DCE8FA;            /* gradient midpoint */
   --color-periwinkle: #B9C6F2;     /* gradient end / dark-mode dots */
@@ -30,6 +32,11 @@
   --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-hanken), 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+  --font-serif: var(--font-playfair), ui-serif, Georgia, 'Times New Roman', serif;
+
+  /* Card radii — one scale: standard cards vs full-bleed feature cards. */
+  --radius-card: 1.75rem;
+  --radius-feature: 2rem;
 }
 
 /* ------------------------------------------------------------------
@@ -44,6 +51,11 @@
   --font-body: var(--font-hanken), 'Hanken Grotesk', system-ui, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-hand: var(--font-caveat), 'Caveat', cursive;
+
+  /* Dark-surface logo variant: the lanbi mark's navy dots have almost no
+     contrast on near-black, so on dark surfaces they become this lighter brand
+     blue while the red dots stay. Tune here; used by hero / header / footer. */
+  --lanbi-blue-ondark: #8fa6f5;
 }
 
 /* ------------------------------------------------------------------
@@ -54,7 +66,7 @@
    unlayered, to win over it. (Keep in sync with `.container` in site.css.)
    ------------------------------------------------------------------ */
 .container {
-  max-width: 88rem;
+  max-width: 90rem;
 }
 
 /* ------------------------------------------------------------------
@@ -100,37 +112,48 @@
    ------------------------------------------------------------------ */
 .floatnav {
   position: fixed;
-  inset: 0 0 auto 0;
+  /* 17px transparent gap above the bar so it reads as floating — the glass
+     starts at the top hairline, not the viewport edge. */
+  inset: 17px 0 auto 0;
   z-index: 60;
   opacity: 0;
   pointer-events: none;
-  /* fade in place — the navbar "detaches" where it sits, it does not slide in */
-  transition: opacity .28s ease;
-  /* liquid glass: translucent tint + heavy blur + saturation boost */
-  background: linear-gradient(to bottom, rgba(255, 255, 255, .55), rgba(247, 244, 236, .34));
-  -webkit-backdrop-filter: blur(22px) saturate(185%);
-  backdrop-filter: blur(22px) saturate(185%);
-  border-bottom: 1px solid rgba(255, 255, 255, .5);
+  /* parked fully above the viewport edge (incl. the 17px top gap) — reveals by
+     sliding down on scroll-up */
+  transform: translateY(calc(-100% - 17px));
+  transition: opacity .28s ease, transform .28s ease;
+  /* liquid glass: highly translucent tint so the page refracts through, heavy
+     blur + saturation/brightness lift, and layered edge highlights for that
+     thick-glass depth (bright top hairline, soft bottom sheen). */
+  background: linear-gradient(to bottom, rgba(255, 255, 255, .32), rgba(247, 244, 236, .14));
+  -webkit-backdrop-filter: blur(26px) saturate(200%) brightness(1.07);
+  backdrop-filter: blur(26px) saturate(200%) brightness(1.07);
+  border-bottom: 1px solid rgba(255, 255, 255, .45);
   box-shadow:
-    0 12px 36px -14px rgba(18, 36, 107, .30),
-    inset 0 1px 0 0 rgba(255, 255, 255, .7);
+    0 18px 44px -16px rgba(18, 36, 107, .34),
+    inset 0 1px 0 0 rgba(255, 255, 255, .8),
+    inset 0 -1px 0 0 rgba(255, 255, 255, .22);
 }
-/* diagonal specular sheen — the moving-light "liquid glass" highlight */
+/* diagonal specular sheen — the moving-light "liquid glass" highlight. Two soft
+   glints (top-left + bottom-right) give the surface a curved, wet look. */
 .floatnav::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: linear-gradient(
-    114deg,
-    rgba(255, 255, 255, .24) 0%,
-    rgba(255, 255, 255, 0) 24%,
-    rgba(255, 255, 255, 0) 70%,
-    rgba(255, 255, 255, .16) 100%
-  );
+  background:
+    radial-gradient(120% 180% at 8% -40%, rgba(255, 255, 255, .38) 0%, rgba(255, 255, 255, 0) 42%),
+    linear-gradient(
+      114deg,
+      rgba(255, 255, 255, .26) 0%,
+      rgba(255, 255, 255, 0) 26%,
+      rgba(255, 255, 255, 0) 68%,
+      rgba(255, 255, 255, .2) 100%
+    );
 }
 .floatnav-shown {
   opacity: 1;
+  transform: translateY(0);
   pointer-events: auto;
 }
 /* keep the navbar's own design, just drop the hero's tall top gap + sit content
@@ -139,14 +162,17 @@
   position: relative;
   z-index: 1;
 }
-/* Floating bar hugs the very top: drop the in-hero nav's 2rem top gap so the
-   first hairline sits flush at the viewport edge — just the bar floating over
-   the page content, no empty glass above it. */
+/* Glass hugs the navbar itself: header top gap is 0 so the glass edge lines up
+   with the top PlusGrid hairline. The floating gap lives on `.floatnav` (top
+   offset) so the strip above the bar stays transparent — you only ever see the
+   two grid lines framing the nav, never the glass container in the gap. */
 .floatnav .rn-header {
   padding-top: 0;
 }
 @media (prefers-reduced-motion: reduce) {
   .floatnav {
+    /* no slide for reduced-motion users — reveal by fade only */
+    transform: none;
     transition: opacity .2s ease;
   }
 }
@@ -426,12 +452,16 @@
   .precision-hero-inner { padding-top: 5.75rem }
   /* the MobileNav closed bar now floats over the DARK precision hero (home only),
      so its navy logo/brand/lang/burger would be near-invisible — paint them light.
-     (the open panel keeps its own light-on-navy styling, untouched.) */
-  .mnav-bar .mnav-brand,
-  .mnav-bar .mnav-langtrigger,
-  .mnav-bar .mnav-chev,
-  .mnav-bar .mnav-toggle { color: #fff }
-  .mnav-bar .mnav-logo .lanbi path { fill: #fff }
+     (the open panel keeps its own light-on-navy styling, untouched.)
+     Scoped to pages that actually have the dark hero: on the card-less sub-routes
+     (no .precision-hero) the bar keeps its default navy so it stays readable on
+     the light .site-main. */
+  /* home hero (.precision-hero) OR a sub-page's dark header band (.page-header) */
+  :is(body:has(.precision-hero), body:has(.page-header)) .mnav-bar .mnav-brand,
+  :is(body:has(.precision-hero), body:has(.page-header)) .mnav-bar .mnav-langtrigger,
+  :is(body:has(.precision-hero), body:has(.page-header)) .mnav-bar .mnav-chev,
+  :is(body:has(.precision-hero), body:has(.page-header)) .mnav-bar .mnav-toggle { color: #fff }
+  :is(body:has(.precision-hero), body:has(.page-header)) .mnav-bar .mnav-logo .lanbi path { fill: #fff }
   .mnav-bar .mnav-toggle:hover,
   .mnav-bar .mnav-langtrigger:hover { background: rgba(255, 255, 255, .12) }
   .mnav-bar .pg-rule { border-color: rgba(255, 255, 255, .5) }
@@ -451,9 +481,106 @@
   }
 }
 
-/* The glass Sipòte button (LiquidButton) uses Tailwind's `text-primary` (navy) —
-   correct on the light floating nav, but it must be white over the dark hero.
-   Unlayered so it outranks the layered `text-primary` utility. */
-.precision-hero .rn-support {
-  color: #fff;
+
+/* ------------------------------------------------------------------
+   Card-less sub-route pages (Travay Nou, Nouvèl, Ekosistèm, Sou nou)
+   — same RadiantNavbar as the hero, on a plain paper surface (no pixel
+   card). See SiteHeader + app/[locale]/(pages)/layout.tsx.
+   ------------------------------------------------------------------ */
+/* The navbar OVERLAYS the dark PageHeader band (same look as the home hero):
+   absolute + transparent + white-on-dark. It scrolls with the page (not sticky),
+   so it always sits over the dark band at the top of each sub-page. */
+.site-header {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 50;
 }
+/* centre the navbar to the same max width the in-hero one uses */
+.site-header .rn-header {
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+/* Light navbar over the dark header — mirrors the `.precision-hero` overrides,
+   scoped to `.site-header` so the home hero stays untouched (purely additive). */
+.site-header .pg-rule { border-color: rgba(255, 255, 255, 0.6) }
+.site-header .pg-row:last-child .pg-rule-b1,
+.site-header .pg-row:last-child .pg-rule-b2 { border-bottom-color: rgba(255, 255, 255, 0.6) }
+.site-header .pg-ico { fill: rgba(255, 255, 255, 0.7) }
+/* colored dark-surface logo: navy dots → light brand blue, red dots stay red.
+   Same treatment on the near-black footer mark. */
+.site-header .rn-logo-mark .lanbi-dot--navy,
+#flickering-footer .lanbi-dot--navy { fill: var(--lanbi-blue-ondark) }
+
+/* footer marquee: alternate the sparkle separator — brand red (odd, the base
+   colour) / brand blue (even). The word list is even-length and duplicated, so
+   the red/blue pattern stays seamless across the loop seam. */
+.mq-item:nth-child(even) .mq-star {
+  color: color-mix(in srgb, var(--lanbi-blue-ondark) 55%, transparent);
+}
+.site-header .rn-brand-name,
+.site-header .rn-link,
+.site-header .rn-lang-cur,
+.site-header .rn-ico,
+.site-header .hm-trigger,
+.site-header .hm-chev,
+.site-header .rn-logo-link { color: #fff }
+.site-header .rn-link:hover,
+.site-header .hm-trigger:hover,
+.site-header .rn-search:hover { background: rgba(255, 255, 255, 0.06) }
+.site-header .hm[data-open] .hm-trigger { background: rgba(255, 255, 255, 0.08) }
+.site-header .hm-panel-inner {
+  /* translucent dark liquid glass — the frosted header refracts through the
+     heavy blur + saturation/brightness lift, matching the floating navbar. */
+  background: rgba(16, 16, 22, 0.5);
+  -webkit-backdrop-filter: blur(28px) saturate(190%) brightness(1.06);
+  backdrop-filter: blur(28px) saturate(190%) brightness(1.06);
+  border-color: rgba(255, 255, 255, 0.16);
+  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+.site-header .hm-panel-inner a { color: #fff }
+.site-header .hm-panel-inner a:hover { background: rgba(255, 255, 255, 0.08) }
+.site-header .hm-panel-inner a[aria-current="true"] { background: rgba(255, 255, 255, 0.06) }
+
+.site-main {
+  /* pure white surface for the sub-page body (not the cream --paper) */
+  background: #fff;
+  min-height: 60vh;
+}
+.page-wrap {
+  max-width: 90rem;
+  margin: 0 auto;
+  padding: clamp(2.5rem, 6vw, 6rem) clamp(1.25rem, 4vw, 3rem) clamp(4rem, 8vw, 7rem);
+}
+.page-lede {
+  margin: 1.25rem 0 0;
+  max-width: 46rem;
+  font-size: clamp(1rem, 2.2vw, 1.2rem);
+  line-height: 1.6;
+  color: color-mix(in srgb, var(--navy) 72%, transparent);
+}
+.page-sections {
+  margin-top: clamp(2.5rem, 6vw, 4.5rem);
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+}
+.page-section {
+  scroll-margin-top: 6rem; /* clear the header when jumping to #vizyon etc. */
+  padding-top: clamp(1.5rem, 4vw, 2.5rem);
+  border-top: 1px solid color-mix(in srgb, var(--navy) 12%, transparent);
+}
+.page-section h2 {
+  font: 700 clamp(1.5rem, 3.5vw, 2.25rem)/1.1 var(--font-display);
+  letter-spacing: -.01em;
+  color: var(--navy);
+  margin: 0 0 .75rem;
+}
+
+/* Below 1024px / touch: the Studio MobileNav is the sole nav, exactly like the
+   home page — hide the desktop navbar. The dark PageHeader (pt-32) clears the
+   fixed mobile bar itself, so no extra top padding on .site-main. */
+@media (max-width: 1023px), (hover: none) and (pointer: coarse) {
+  .site-header .rn-header { display: none }
+}
+
+/* cache-bust 29866 */

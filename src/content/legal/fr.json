@@ -1,0 +1,142 @@
+{
+  "imprint": {
+    "title": "Mentions légales",
+    "description": "Mentions légales d'Ayiti Dijital e.V. selon § 5 TMG.",
+    "eyebrow": "Mentions légales",
+    "h1": "Mentions légales.",
+    "intro": "Conformément au § 5 TMG (Telemediengesetz, loi allemande sur les médias électroniques).",
+    "last_updated_label": "Dernière mise à jour",
+    "last_updated_value": "25 mai 2026",
+    "toc_title": "Sommaire",
+    "publisher_title": "Éditeur",
+    "publisher_dl": {
+      "name_label": "Raison sociale",
+      "name_value": "Ayiti Dijital e.V.",
+      "status_label": "Statut",
+      "status_value": "Verein in Gründung (en cours de fondation)",
+      "address_label": "Siège",
+      "address_value": "Munich, Deutschland",
+      "registry_label": "Enregistrement",
+      "registry_value": "Amtsgericht München · VR pending"
+    },
+    "representative_title": "Représentation légale",
+    "representative_dl": {
+      "name_label": "1. Vorstand",
+      "name_value": "Glory Pierrette",
+      "role_label": "2. Vorstand",
+      "role_value": "Berlens Legagneur"
+    },
+    "representative_note": "Chaque membre du Vorstand est habilité à représenter l'association seul (Einzelvertretungsbefugnis).",
+    "contact_title": "Contact",
+    "contact_dl": {
+      "email_label": "Adresse e-mail",
+      "email_value": "kontakt@ayitidijital.org",
+      "post_label": "Adresse postale",
+      "post_value": "Ayiti Dijital e.V., Munich, Deutschland"
+    },
+    "responsible_title": "Responsable du contenu",
+    "responsible_subtitle": "selon § 55 al. 2 RStV",
+    "responsible_body": "Glory Pierrette (1. Vorstand), adresse postale identique à celle de l'association.",
+    "liability_title": "Responsabilité",
+    "liability_body": "Malgré un contrôle régulier, nous n'assumons aucune responsabilité pour le contenu des liens externes. Les exploitants des sites liés sont seuls responsables de leur contenu.",
+    "copyright_title": "Droits d'auteur",
+    "copyright_body": "Sauf mention contraire, les contenus de ce site sont publiés sous licence Creative Commons CC BY-SA 4.0. Les marques et logos restent la propriété de leurs détenteurs respectifs.",
+    "dispute_title": "Règlement des litiges",
+    "dispute_body": "La Commission européenne met à disposition une plateforme de règlement en ligne des litiges : https://ec.europa.eu/consumers/odr. Nous ne sommes ni obligés ni disposés à participer à une procédure de règlement devant un organisme d'arbitrage de consommation."
+  },
+  "privacy": {
+    "title": "Confidentialité",
+    "description": "Politique de confidentialité d'Ayiti Dijital, RGPD.",
+    "eyebrow": "Confidentialité",
+    "h1": "Politique de confidentialité.",
+    "intro": "Nous prenons la protection de vos données personnelles très au sérieux. Cette politique décrit quelles données nous collectons, pourquoi, et vos droits.",
+    "last_updated_label": "Dernière mise à jour",
+    "last_updated_value": "25 mai 2026",
+    "toc_title": "Sommaire",
+    "summary_title": "Ce que nous faisons",
+    "summary_subtitle": "L'essentiel, en trois lignes.",
+    "summary_points": [
+      {
+        "title": "Nous ne vous traçons pas.",
+        "body": "Aucun cookie publicitaire, aucun pixel tiers, aucun fingerprinting sur ce site."
+      },
+      {
+        "title": "Analytique respectueuse.",
+        "body": "Nous utilisons Plausible Analytics, hébergé dans l'Union européenne, sans cookie ni donnée personnelle."
+      },
+      {
+        "title": "Données d'adhésion sur consentement.",
+        "body": "Nous ne stockons vos coordonnées que si vous remplissez volontairement un formulaire (adhésion, contact)."
+      }
+    ],
+    "controller_title": "Responsable du traitement",
+    "controller_body": "Ayiti Dijital e.V., Munich, Allemagne, kontakt@ayitidijital.org",
+    "controller_dpo_label": "Contact pour la protection des données",
+    "controller_dpo_value": "kontakt@ayitidijital.org",
+    "data_title": "Données collectées",
+    "data_body": "Ce site ne dépose aucun cookie de suivi. Nous ne collectons des données personnelles que lorsque vous nous les transmettez volontairement via un formulaire (adhésion, contact). Ces données sont stockées sur des serveurs européens et utilisées uniquement pour traiter votre demande.",
+    "cookies_title": "Cookies et stockage local",
+    "cookies_intro": "Pour la transparence, voici tout ce que ce site stocke dans votre navigateur :",
+    "cookies_table_headers": {
+      "name": "Nom",
+      "purpose": "Finalité",
+      "duration": "Durée",
+      "type": "Type"
+    },
+    "cookies_rows": [
+      {
+        "name": "—",
+        "purpose": "Aucun cookie n'est déposé par ce site",
+        "duration": "—",
+        "type": "—"
+      },
+      {
+        "name": "localStorage (préférences UI)",
+        "purpose": "Mémoriser la langue choisie ou le menu",
+        "duration": "Persistant (jusqu'à effacement)",
+        "type": "Technique · pas un cookie"
+      }
+    ],
+    "cookies_note": "Notre outil d'analyse, Plausible Analytics, ne dépose aucun cookie et n'utilise pas d'identifiant persistant.",
+    "rights_title": "Vos droits (RGPD)",
+    "rights_intro": "Le RGPD vous garantit un ensemble de droits sur vos données personnelles. Pour les exercer, écrivez à kontakt@ayitidijital.org, nous répondons sous 30 jours.",
+    "rights_cards": [
+      {
+        "icon": "①",
+        "title": "Droit d'accès",
+        "body": "Obtenir copie des données vous concernant que nous détenons."
+      },
+      {
+        "icon": "②",
+        "title": "Droit de rectification",
+        "body": "Corriger toute donnée inexacte ou incomplète."
+      },
+      {
+        "icon": "③",
+        "title": "Droit à l'effacement",
+        "body": "Demander la suppression de vos données, sauf obligation légale contraire."
+      },
+      {
+        "icon": "④",
+        "title": "Droit à la limitation",
+        "body": "Restreindre le traitement de vos données dans certains cas."
+      },
+      {
+        "icon": "⑤",
+        "title": "Droit à la portabilité",
+        "body": "Recevoir vos données dans un format structuré et réutilisable."
+      },
+      {
+        "icon": "⑥",
+        "title": "Droit d'opposition",
+        "body": "Vous opposer au traitement de vos données à tout moment."
+      }
+    ],
+    "rights_complaint": "Vous avez aussi le droit d'introduire une réclamation auprès de l'autorité bavaroise de protection des données (BayLfD) : datenschutz-bayern.de.",
+    "hosting_title": "Hébergement",
+    "hosting_body": "Ce site est hébergé sur une infrastructure située dans l'Union européenne. Aucun outil tiers d'analyse ou de publicité n'est utilisé.",
+    "contact_title": "Contact protection des données",
+    "contact_body": "Pour toute question concernant la protection de vos données, exercice de vos droits, plainte, demande, écrivez-nous directement.",
+    "contact_email": "kontakt@ayitidijital.org"
+  }
+}

@@ -48,7 +48,7 @@ function ProjectCard({ project }: { project: Project }) {
 /** Three-up project card grid on sand background. */
 export function ProjectsGrid({ id, kicker, title, sub, subLang, projects, cut = true }: ProjectsGridProps) {
   return (
-    <section className={cut ? 'projects cut-top' : 'projects'} id={id}>
+    <section className={`projects on-dark${cut ? ' cut-top' : ''}`} id={id}>
       <div className="container">
         <SectionHead kicker={kicker} title={title} sub={sub} subLang={subLang} />
         <div className="cards">

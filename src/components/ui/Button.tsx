@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-export type ButtonVariant = 'sand' | 'ghost' | 'navy' | 'red'
+export type ButtonVariant = 'sand' | 'ghost' | 'navy' | 'red' | 'gold'
 
 export interface ButtonProps {
   variant: ButtonVariant

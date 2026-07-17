@@ -128,15 +128,111 @@ export interface SiteContent {
   /** Support CTA button label (nav, desktop + mobile). */
   supportLabel: string
   navLinks: NavLink[]
+  /** Hero headline, split into typographically-styled tokens
+   *  (line 1: verb + subject, line 2: with + vision + and + action). */
+  heroTitle: {
+    shaping: string
+    tomorrow: string
+    with: string
+    vision: string
+    and: string
+    action: string
+  }
+  /** Footer "back to top" scroll button label. */
+  scrollTopLabel: string
+  /** Hero sub-headline paragraph (full copy on tablet/desktop, condensed on phone). */
+  heroDescription: { full: string; short: string }
   heroPanel: HeroPanelContent
   stats: StatItem[]
   projectsSection: SectionHeadContent
   projects: Project[]
+  /** Status filter chips on the Travay Nou (what-we-do) page. */
+  projectFilters: { all: string; active: string; dev: string; coming: string }
+  /** End-row CTA under the home ecosystem/projects grid (caption + "view all"). */
+  homeEcosystemCta: { caption: string; viewAll: string }
   hubSection: SectionHeadContent
   hubDefinition: HubDefinition
   hubPrograms: HubProgram[]
   diaspora: DiasporaContent
   marqueeWords: string[]
+  /** The three aspirational verbs shown in the spiral's eye — they roll one at a
+   *  time as you scroll, then resolve into all three together at the end. */
+  spiralCenterWords: [string, string, string]
+  /** "Beyond digital" mission intro under the hero: eyebrow, headline (gold period),
+   *  lead, CTA label, and photo alt text. */
+  about: { label: string; title: string; strokeWord?: string; lead: string; cta: string; imageAlt: string }
+  /** "Who we are" pillars — Mission / Vision / Devise. */
+  pillars: { label: string; items: { name: string; body: string }[] }
+  /** "What we do" overview — eyebrow, split title (outline word + rest), lead, three
+   *  Bati / Enkibe / Konekte pillar cards, and an end-row CTA. */
+  whatWeDo: {
+    label: string
+    strokeWord: string
+    titleRest: string
+    subtitle: string
+    outro: string
+    viewAll: string
+    cards: { label: string; title: string; body: string; cta: string }[]
+  }
+  /** "Explore our ecosystem" — incubated-projects carousel: eyebrow, split title
+   *  (outline accent word + rest), subtitle, six project cards, and an end-row CTA. */
+  ecosystem: {
+    label: string
+    strokeWord: string
+    titleRest: string
+    subtitle: string
+    outro: string
+    viewAll: string
+    projects: {
+      name: string
+      tagline: string
+      status: string
+      statusKey: 'active' | 'dev' | 'soon'
+      icon: 'book' | 'data' | 'cap' | 'map' | 'chart' | 'heart'
+      image: string
+    }[]
+  }
+  /** "Domaines d'action" — SDG-aligned theme cards (title, desc, SDG number, tag). */
+  domaines: {
+    label: string
+    title: string
+    subtitle: string
+    /** Locale-appropriate SDG prefix on the tile — "ODD" (fr/ht) / "SDG" (en). */
+    sdgPrefix: string
+    items: { name: string; description: string; sdg: string; tags: string[] }[]
+  }
+  /** "Le Journal" — blog teaser: split header, three article cards, view-all. */
+  journal: {
+    label: string
+    strokeWord: string
+    titleRest: string
+    subtitle: string
+    readMore: string
+    viewAll: string
+    posts: { category: string; date: string; title: string; image: string }[]
+  }
+  /** FAQ — eyebrow + stroke headline + lead (left), accordion (right). */
+  faq: {
+    label: string
+    strokeWord: string
+    titleRest: string
+    subtitle: string
+    items: { q: string; a: string }[]
+  }
+  /** "Passe à l'action" — split header + two audience cards (fund / contribute). */
+  action: {
+    label: string
+    title: string
+    subtitle: string
+    fundKreyol: string
+    fundTitle: string
+    fundDesc: string
+    fundButton: string
+    codeKreyol: string
+    codeTitle: string
+    codeDesc: string
+    codeButton: string
+  }
   /** Footer blurb under the brand lockup (was hard-coded in page.tsx). */
   footerBlurb: string
   newsletter: NewsletterContent
@@ -176,20 +272,26 @@ const footerSocials: SocialLink[] = [
 const ht: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Sipòte',
+  heroTitle: { shaping: 'Fasonnen', tomorrow: 'Demen', with: 'ak', vision: 'Vizyon', and: '&', action: 'Aksyon' },
+  scrollTopLabel: 'Tounen anlè',
+  heroDescription: {
+    full: 'Yon sant inovasyon pou transfòmasyon dijital. Nou rasanble moun k ap bati yon valè ki dire epi ki soutnab. Nou konsevwa solisyon pou defi sosyete yo, nou pouse limit teknolojik yo pi lwen, epi nou fòme lidè ki fè yon vre diferans.',
+    short: 'Yon sant inovasyon pou transfòmasyon dijital — n ap rasanble moun pou bati valè ki dire epi mennen vre chanjman.',
+  },
   skipToContent: 'Ale nan kontni an',
   statsKicker: 'An chif',
   navLinks: [
-    { label: 'Travay Nou', href: '#pwoje' },
-    { label: 'Nouvèl & evènman', href: '#nouvel' },
-    { label: 'Ekosistèm', href: '#ekosistem' },
+    { label: 'Travay Nou', href: '/travay-nou' },
+    { label: 'Nouvèl & evènman', href: '/nouvel' },
+    { label: 'Ekosistèm', href: '/ekosistem' },
     {
       label: 'Sou nou',
-      href: '#sou-nou',
+      href: '/sou-nou',
       children: [
-        { label: 'Vizyon & misyon', href: '#vizyon' },
-        { label: 'Prensip nou yo', href: '#prensip' },
-        { label: 'Ekip', href: '#ekip' },
-        { label: 'Karyè', href: '#karye' },
+        { label: 'Vizyon & misyon', href: '/sou-nou#vizyon' },
+        { label: 'Prensip nou yo', href: '/sou-nou#prensip' },
+        { label: 'Ekip', href: '/sou-nou#ekip' },
+        // { label: 'Karyè', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
   ],
@@ -258,6 +360,8 @@ const ht: SiteContent = {
       link: { label: 'Di nou ou enterese', href: '#' },
     },
   ],
+  projectFilters: { all: 'Tout', active: 'An liy', dev: 'An konstriksyon', coming: 'Ap vini' },
+  homeEcosystemCta: { caption: 'Yon ekosistèm ki ap grandi — louvri, an kreyòl, pou tout moun.', viewAll: 'Wè tout sa n ap fè' },
   hubSection: {
     kicker: 'Pou kominote a',
     title: 'Hub la pa yon bilding. Se yon konbit.',
@@ -323,12 +427,111 @@ const ht: SiteContent = {
     'TALAN',
     'ENPAK',
   ],
+  spiralCenterWords: ['Imajine', 'Bati', 'Transfòme'],
+  about: {
+    label: 'Pi lwen pase dijital',
+    title: 'Kreye yon enpak dirab.',
+    strokeWord: 'enpak',
+    lead: "Nou se yon òganizasyon ki gide pa yon misyon : fòje transfòmasyon nimerik Ayiti a. Antanke yon Kalfou Inovasyon Sivik, nou devlope pwojè pou enterè piblik epi nou akonpaye etidyan, kreyatè ak òganizasyon yo pou ede yo reyalize lide yo ak devlope inovasyon teknolojik alawonnbadè.",
+    cta: 'Aprann plis',
+    imageAlt: 'Transfòmasyon dijital an aksyon',
+  },
+  pillars: {
+    label: 'Kiyès nou ye',
+    items: [
+      { name: 'Misyon', body: 'Enkube solisyon epi pwopilse talan yo.' },
+      { name: 'Vizyon', body: 'Kolòn vètebral nimerik Ayiti.' },
+      { name: 'Deviz', body: 'Chanjman nimerik Ayiti a dwe soti nan Ayiti li menm.' },
+    ],
+  },
+  whatWeDo: {
+    label: 'Sa nou fè',
+    strokeWord: 'Dekouvri',
+    titleRest: 'travay nou',
+    subtitle: 'Yon doub motè : enfrastrikti nimerik souvren ki gen itilite piblik ak yon enkibatè ki transfòme lide etidyan yo ak kreyatè yo an start-up ki ka kanpe.',
+    outro: 'Eksplore sa n ap bati epi vin jwenn mouvman an.',
+    viewAll: 'Gade tout travay nou',
+    cards: [
+      { label: 'BATI', title: 'Enfrastrikti piblik', body: 'N ap bati byen piblik nimerik souvren, ak LexHaiti kòm pwojè pilòt fonse nou an : 2 400+ tèks jiridik ak istorik santralize epi aksesib.', cta: 'Gade pwojè yo' },
+      { label: 'ENKIBE', title: 'Enkibatè ekosistèm', body: 'Nou akonpaye etidyan ak kreyatè pou fè pwòp start-up pa yo eklate, kit yo komèsyal, teknolojik oswa sosyal.', cta: 'Pwogram nou yo' },
+      { label: 'KONEKTE', title: 'Rezo & souverènte', body: "Depi ann Ayiti, n ap konekte talan lokal yo, enstitisyon yo ak ekosistèm entènasyonal la pou katalize inovasyon.", cta: 'Vin jwenn nou' },
+    ],
+  },
+  ecosystem: {
+    label: 'Pwojè nou yo',
+    strokeWord: 'Eksplore',
+    titleRest: 'ekosistèm nou an',
+    subtitle: 'Soti nan lide rive nan lansman piblik : pwojè hub la ap fè kouve pou demokratize enfòmasyon ann Ayiti.',
+    outro: 'Dekouvri tout pwojè hub la enkibe yo.',
+    viewAll: 'Wè tout pwojè yo',
+    projects: [
+      { name: 'LexHaiti', tagline: 'Pòtay transparans jiridik, louvri epi verifyab', status: 'Aktif', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp' },
+      { name: 'Civic Data API', tagline: 'Done piblik ouvè pou Ayiti', status: 'An devlopman', statusKey: 'dev', icon: 'data', image: '/ecosystem/civic-data.webp' },
+      { name: 'Civic Tech Academy', tagline: 'Fòme batisè demen yo', status: 'Byento', statusKey: 'soon', icon: 'cap', image: '/ecosystem/academy.webp' },
+      { name: 'OpenHaïti Map', tagline: 'Katografi ouvè teritwa ayisyen an', status: 'An devlopman', statusKey: 'dev', icon: 'map', image: '/ecosystem/openhaiti-map.webp' },
+      { name: 'Budget Citoyen', tagline: 'Transparans bidjetè pou tout moun', status: 'Byento', statusKey: 'soon', icon: 'chart', image: '/ecosystem/budget-citoyen.webp' },
+      { name: 'e-Santé Haïti', tagline: 'Enfòmasyon medikal ouvè', status: 'Byento', statusKey: 'soon', icon: 'heart', image: '/ecosystem/esante.webp' },
+    ],
+  },
+  domaines: {
+    label: 'Tematik nou yo',
+    title: 'Domèn aksyon',
+    subtitle: 'Ayiti Dijital estriktire entèvansyon li yo otou sis domèn konplemantè, ki fòme yon ekosistèm koyeran pou devlopman imen ak enstitisyonèl.',
+    sdgPrefix: 'ODD',
+    items: [
+      { name: 'Edikasyon', description: 'Aksè ak yon edikasyon de kalite; ranfòse konpetans akademik, pwofesyonèl ak antreprenarya.', sdg: '4', tags: ['#civictech', '#edikasyon'] },
+      { name: 'Teknoloji', description: 'Platfòm nimerik ak zouti entèlijans atifisyèl nan sèvis sivik, demokrasi ak inovasyon.', sdg: '9', tags: ['#opensource', '#teknoloji'] },
+      { name: 'Dwa Moun', description: 'Defann dwa sivil ak politik, konbat diskou rayisman, epi ankouraje yon espas sivik enklizif.', sdg: '16', tags: ['#legaltech', '#jistis'] },
+      { name: 'Jèn yo', description: 'Akonpaye jèn talan yo ak mentora epi opòtinite pou fè pwochen jenerasyon batisè yo eklate.', sdg: '8', tags: ['#jènès', '#opòtinite'] },
+      { name: 'Devlopman Ekonomik', description: 'Antreprenarya, enkibasyon start-up ak kreyasyon valè dirab pou kominote ayisyen yo.', sdg: '8', tags: ['#antreprenarya', '#ekonomi'] },
+      { name: 'Done Ouvè', description: 'Ouvri done piblik Ayiti yo pou batisè, chèchè ak enstitisyon — transparans demokratik kòmanse ak aksè ak done.', sdg: '16/17', tags: ['#opendata', '#transparans'] },
+    ],
+  },
+  journal: {
+    label: 'Jounal la',
+    strokeWord: 'Nouvèl,',
+    titleRest: 'istwa & vwa',
+    subtitle: 'Eksplore nouvèl nou, nòt teren ak istwa enpak ki fè chanjman an avanse.',
+    readMore: 'Li atik la',
+    viewAll: 'Tout atik yo',
+    posts: [
+      { category: 'Pwojè', date: '12 me 2026', title: 'LexHaiti lanse : aksè nan dwa pou tout moun', image: '/blog/lexhaiti-hero.jpg' },
+      { category: 'Kominote', date: '28 avr. 2026', title: 'Fòme pwochen jenerasyon batisè yo', image: '/blog/collaboration.webp' },
+      { category: 'Lide', date: '9 avr. 2026', title: 'Poukisa done ouvè enpòtan pou Ayiti', image: '/blog/analytics.webp' },
+    ],
+  },
+  faq: {
+    label: 'FAQ',
+    strokeWord: 'Kesyon',
+    titleRest: 'ou yo, repons nou yo.',
+    subtitle: 'Tout sa ou bezwen konnen sou sipò, kontribisyon ak angajman nan hub la.',
+    items: [
+      { q: 'Ki misyon Ayiti Dijital?', a: 'N ap fè kouve epi lanse byen piblik nimerik ki nan enterè piblik la pou demokratize aksè a enfòmasyon ak opòtinite ann Ayiti.' },
+      { q: 'Kijan don yo itilize?', a: 'Chak kontribisyon finanse dirèkteman devlopman pwojè yo, pwogram fòmasyon yo ak enfrastrikti ouvè nou mete disponib pou tout moun.' },
+      { q: 'Èske mwen ka kontribye kòm volontè?', a: 'Wi. Devlopè, jiris, designer oswa sitwayen angaje — gen yon plas pou chak moun, sou GitHub kou nan pwogram nou yo.' },
+      { q: 'Anplis don, kijan mwen ka ede?', a: 'Pataje pwojè nou yo, rejwenn kominote a, pwopoze yon lide, oswa vin yon patnè enstitisyonèl hub la.' },
+      { q: 'Kijan pou m vin yon patnè?', a: 'Kontakte nou sou paj Kontak la : nou bati ekosistèm nan ak enstitisyon, inivèsite ak òganizasyon ki aliyen ak valè nou yo.' },
+    ],
+  },
+  action: {
+    label: 'Pase a aksyon',
+    title: 'Bati baz dijital Ayiti.',
+    subtitle: 'De fason pou fè misyon an vanse — chwazi pa w la.',
+    fundKreyol: 'PATNÈ',
+    fundTitle: 'Finanse yon pwojè',
+    fundDesc: 'Òganizasyon, bayè, dyaspora : sipò w transfòme pwototip civic tech an enfrastrikti piblik dirab.',
+    fundButton: 'Vin yon patnè',
+    codeKreyol: 'KÒDE',
+    codeTitle: 'Kontribye nan kòd la',
+    codeDesc: 'Devlopè, designer, jiris oswa tradiktè : chak pwojè hub la louvri epi verifyab, epi l ap tann ou.',
+    codeButton: 'Antre nan kominote a',
+  },
   footerBlurb: 'Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv, konpetans ak zouti open source.',
   newsletter: {
     kicker: 'Enfòlèt',
     title: 'Mize a jou chak mwa',
     body: 'Rete konekte ak rezo Ayiti Dijital la — nouvèl, evènman ak startup k ap dechennen. Yon ti gout kilti kreyativite dijital, dirèkteman nan bwat imel ou.',
-    privacy: { label: 'Deklarasyon konfidansyalite', href: '#' },
+    privacy: { label: 'Deklarasyon konfidansyalite', href: '/konfidansyalite' },
     firstName: { label: 'Prenon', placeholder: 'Ada' },
     lastName: { label: 'Non', placeholder: 'Lovelace' },
     email: { label: 'Imel', placeholder: 'ada.lovelace@imel.com' },
@@ -340,10 +543,10 @@ const ht: SiteContent = {
     {
       heading: 'Sou nou',
       links: [
-        { label: 'Vizyon & misyon', href: '#vizyon' },
-        { label: 'Prensip nou yo', href: '#prensip' },
-        { label: 'Ekip', href: '#ekip' },
-        { label: 'Karyè', href: '#karye' },
+        { label: 'Vizyon & misyon', href: '/sou-nou#vizyon' },
+        { label: 'Prensip nou yo', href: '/sou-nou#prensip' },
+        { label: 'Ekip', href: '/sou-nou#ekip' },
+        // { label: 'Karyè', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
     {
@@ -365,8 +568,8 @@ const ht: SiteContent = {
     {
       heading: 'Legal',
       links: [
-        { label: 'Mansyon legal', href: '#' },
-        { label: 'Konfidansyalite', href: '#' },
+        { label: 'Mansyon legal', href: '/enfomasyon-legal' },
+        { label: 'Konfidansyalite', href: '/konfidansyalite' },
       ],
     },
   ],
@@ -380,8 +583,8 @@ const ht: SiteContent = {
     orgLinks: [
       { label: 'Vizyon & misyon', href: '#vizyon' },
       { label: 'Prensip nou yo', href: '#prensip' },
-      { label: 'Mansyon legal', href: '#' },
-      { label: 'Konfidansyalite', href: '#' },
+      { label: 'Mansyon legal', href: '/enfomasyon-legal' },
+      { label: 'Konfidansyalite', href: '/konfidansyalite' },
     ],
     luckyText: 'Anvi bati ?',
     ctaLead: 'Teknoloji ap vanse vit.',
@@ -400,20 +603,26 @@ const ht: SiteContent = {
 const fr: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Soutenir',
+  heroTitle: { shaping: 'Façonner', tomorrow: "l'Avenir", with: 'avec', vision: 'Vision', and: '&', action: 'Action.' },
+  scrollTopLabel: 'Haut de page',
+  heroDescription: {
+    full: "Un pôle d'innovation pour la transformation numérique. Nous réunissons celles et ceux qui bâtissent une valeur durable. Nous concevons des solutions aux défis de société, repoussons les frontières technologiques et formons des leaders qui changent vraiment les choses.",
+    short: "Un pôle d'innovation pour la transformation numérique — rassembler pour bâtir une valeur durable et mener un vrai changement.",
+  },
   skipToContent: 'Aller au contenu',
   statsKicker: 'En chiffres',
   navLinks: [
-    { label: 'Notre Travail', href: '#pwoje' },
-    { label: 'Actualités & événements', href: '#nouvel' },
-    { label: 'Écosystème', href: '#ekosistem' },
+    { label: 'Notre Travail', href: '/travay-nou' },
+    { label: 'Actualités & événements', href: '/nouvel' },
+    { label: 'Écosystème', href: '/ekosistem' },
     {
       label: 'À propos',
-      href: '#sou-nou',
+      href: '/sou-nou',
       children: [
-        { label: 'Vision & mission', href: '#vizyon' },
-        { label: 'Nos principes', href: '#prensip' },
-        { label: 'Équipe', href: '#ekip' },
-        { label: 'Carrières', href: '#karye' },
+        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
+        { label: 'Nos principes', href: '/sou-nou#prensip' },
+        { label: 'Équipe', href: '/sou-nou#ekip' },
+        // { label: 'Carrières', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
   ],
@@ -482,6 +691,8 @@ const fr: SiteContent = {
       link: { label: 'Manifester votre intérêt', href: '#' },
     },
   ],
+  projectFilters: { all: 'Tous', active: 'En ligne', dev: 'En construction', coming: 'À venir' },
+  homeEcosystemCta: { caption: 'Un écosystème ouvert, en créole, qui grandit chaque jour.', viewAll: 'Voir tout ce que nous faisons' },
   hubSection: {
     kicker: 'Pour la communauté',
     title: 'Le hub n’est pas un bâtiment. C’est un konbit.',
@@ -547,12 +758,111 @@ const fr: SiteContent = {
     'TALENT',
     'IMPACT',
   ],
+  spiralCenterWords: ['Imaginer', 'Bâtir', 'Transformer'],
+  about: {
+    label: 'Au-delà du numérique',
+    title: 'Créer un impact durable.',
+    strokeWord: 'impact',
+    lead: "Nous sommes une organisation guidée par une mission : façonner la transformation numérique d'Haïti. En tant que Hub d'Innovation Civic, nous développons des projets d'intérêt public et accompagnons les étudiants, les créateurs et les organisations pour concrétiser leurs idées et développer des innovations technologiques de manière globale.",
+    cta: 'En savoir plus',
+    imageAlt: 'La transformation numérique en action',
+  },
+  pillars: {
+    label: 'Qui nous sommes',
+    items: [
+      { name: 'Mission', body: 'Incuber des solutions et propulser les talents.' },
+      { name: 'Vision', body: "La colonne vertébrale numérique d'Haïti." },
+      { name: 'Devise', body: "La transformation numérique d'Haïti doit venir d'Haïti." },
+    ],
+  },
+  whatWeDo: {
+    label: 'Ce que nous faisons',
+    strokeWord: 'Découvre',
+    titleRest: 'notre travail',
+    subtitle: "Un double moteur : des infrastructures numériques souveraines d'utilité publique et un incubateur qui transforme les idées des étudiants et des créateurs en start-ups viables.",
+    outro: 'Explorez ce que nous bâtissons et rejoignez le mouvement.',
+    viewAll: 'Voir tout notre travail',
+    cards: [
+      { label: 'BATI', title: 'Infrastructures publiques', body: 'Nous bâtissons des biens publics numériques souverains, avec LexHaiti comme projet pilote phare : 2 400+ textes juridiques et historiques centralisés et accessibles.', cta: 'Voir les projets' },
+      { label: 'ENKIBE', title: "Incubateur d'écosystème", body: "Nous accompagnons étudiants et créateurs pour faire éclore leurs propres start-ups, qu'elles soient commerciales, technologiques ou sociales.", cta: 'Nos programmes' },
+      { label: 'KONEKTE', title: 'Réseau & souveraineté', body: "Depuis Haïti, nous relions talents locaux, institutions et écosystème international pour catalyser l'innovation.", cta: 'Rejoindre' },
+    ],
+  },
+  ecosystem: {
+    label: 'Nos projets',
+    strokeWord: 'Explore',
+    titleRest: 'notre écosystème',
+    subtitle: "De l'idée au lancement public : les projets que le hub incube pour démocratiser l'information en Haïti.",
+    outro: 'Découvrez tous les projets incubés par le hub.',
+    viewAll: 'Voir tous les projets',
+    projects: [
+      { name: 'LexHaiti', tagline: 'Portail de transparence juridique, ouvert et auditable', status: 'Actif', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp' },
+      { name: 'Civic Data API', tagline: 'Données publiques ouvertes pour Haïti', status: 'En développement', statusKey: 'dev', icon: 'data', image: '/ecosystem/civic-data.webp' },
+      { name: 'Civic Tech Academy', tagline: 'Former les bâtisseurs de demain', status: 'Bientôt', statusKey: 'soon', icon: 'cap', image: '/ecosystem/academy.webp' },
+      { name: 'OpenHaïti Map', tagline: 'Cartographie ouverte du territoire haïtien', status: 'En développement', statusKey: 'dev', icon: 'map', image: '/ecosystem/openhaiti-map.webp' },
+      { name: 'Budget Citoyen', tagline: 'Transparence budgétaire pour tous', status: 'Bientôt', statusKey: 'soon', icon: 'chart', image: '/ecosystem/budget-citoyen.webp' },
+      { name: 'e-Santé Haïti', tagline: 'Information médicale ouverte', status: 'Bientôt', statusKey: 'soon', icon: 'heart', image: '/ecosystem/esante.webp' },
+    ],
+  },
+  domaines: {
+    label: 'Nos thématiques',
+    title: "Domaines d'action",
+    subtitle: 'Ayiti Dijital structure ses interventions autour de six domaines complémentaires, qui forment un écosystème cohérent de développement humain et institutionnel.',
+    sdgPrefix: 'ODD',
+    items: [
+      { name: 'Éducation', description: 'Accès à une éducation de qualité, renforcement des compétences académiques, professionnelles et entrepreneuriales.', sdg: '4', tags: ['#civictech', '#edikasyon'] },
+      { name: 'Technologie', description: "Plateformes numériques, outils d'intelligence artificielle au service du civisme, de la démocratie et de l'innovation.", sdg: '9', tags: ['#opensource', '#teknoloji'] },
+      { name: 'Droits Humains', description: "Défense des droits civils et politiques, lutte contre les discours de haine, promotion d'un espace civique inclusif.", sdg: '16', tags: ['#legaltech', '#jistis'] },
+      { name: 'Jeunesse', description: 'Accompagnement des jeunes talents, mentorat et opportunités pour faire éclore la prochaine génération de bâtisseurs.', sdg: '8', tags: ['#jènès', '#opòtinite'] },
+      { name: 'Développement Économique', description: 'Entrepreneuriat, incubation de start-ups et création de valeur durable pour les communautés haïtiennes.', sdg: '8', tags: ['#antreprenarya', '#ekonomi'] },
+      { name: 'Données ouvertes', description: "Ouvrir les données publiques d'Haïti aux bâtisseurs, chercheurs et institutions — la transparence démocratique commence par l'accès.", sdg: '16/17', tags: ['#opendata', '#transparans'] },
+    ],
+  },
+  journal: {
+    label: 'Le journal',
+    strokeWord: 'Actualités,',
+    titleRest: 'récits & voix',
+    subtitle: "Explorez nos nouvelles, notes de terrain et récits d'impact qui font avancer le changement.",
+    readMore: "Lire l'article",
+    viewAll: 'Tous les articles',
+    posts: [
+      { category: 'Projet', date: '12 mai 2026', title: "Lancement de LexHaiti : l'accès au droit pour tous", image: '/blog/lexhaiti-hero.jpg' },
+      { category: 'Communauté', date: '28 avr. 2026', title: 'Former la prochaine génération de bâtisseurs', image: '/blog/collaboration.webp' },
+      { category: 'Idées', date: '9 avr. 2026', title: 'Pourquoi les données ouvertes comptent pour Haïti', image: '/blog/analytics.webp' },
+    ],
+  },
+  faq: {
+    label: 'FAQ',
+    strokeWord: 'Vos',
+    titleRest: 'questions, nos réponses.',
+    subtitle: "Tout ce qu'il faut savoir sur le soutien, la contribution et l'engagement au sein du hub.",
+    items: [
+      { q: "Quelle est la mission d'Ayiti Dijital ?", a: "Nous incubons et lançons des biens publics numériques d'intérêt public pour démocratiser l'accès à l'information et aux opportunités en Haïti." },
+      { q: 'Comment sont utilisés les dons ?', a: "Chaque contribution finance directement le développement des projets, les programmes de formation et l'infrastructure ouverte que nous mettons à disposition de tous." },
+      { q: 'Puis-je contribuer bénévolement ?', a: "Oui. Développeurs, juristes, designers ou citoyens engagés — il y a une place pour chacun, sur GitHub comme dans nos programmes." },
+      { q: 'Au-delà du don, comment aider ?', a: 'Partagez nos projets, rejoignez la communauté, proposez une idée, ou devenez partenaire institutionnel du hub.' },
+      { q: 'Comment devenir partenaire ?', a: "Écrivez-nous via la page Contact : nous construisons l'écosystème avec des institutions, des universités et des organisations alignées sur nos valeurs." },
+    ],
+  },
+  action: {
+    label: "Passe à l'action",
+    title: "Bâtir la colonne vertébrale numérique d'Haïti.",
+    subtitle: 'Deux façons de faire avancer le mouvement — choisis la tienne.',
+    fundKreyol: 'PATNÈ',
+    fundTitle: 'Financer un projet',
+    fundDesc: 'Organisations, bailleurs, diaspora : votre soutien transforme des prototypes civic tech en infrastructures publiques durables.',
+    fundButton: 'Devenir partenaire',
+    codeKreyol: 'KÒDE',
+    codeTitle: 'Contribuer au code',
+    codeDesc: "Développeur·se, designer, juriste ou traducteur·rice : chaque projet du hub est ouvert et auditable, et t'attend.",
+    codeButton: 'Rejoindre la communauté',
+  },
   footerBlurb: 'Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives, compétences et outils open source.',
   newsletter: {
     kicker: 'Infolettre',
     title: 'Mises à jour mensuelles',
     body: 'Restez connecté·e au réseau Ayiti Dijital — actualités, événements et startups qui décollent. Une dose de culture créative numérique, directement dans votre boîte mail.',
-    privacy: { label: 'Politique de confidentialité', href: '#' },
+    privacy: { label: 'Politique de confidentialité', href: '/konfidansyalite' },
     firstName: { label: 'Prénom', placeholder: 'Ada' },
     lastName: { label: 'Nom', placeholder: 'Lovelace' },
     email: { label: 'E-mail', placeholder: 'ada.lovelace@email.com' },
@@ -564,10 +874,10 @@ const fr: SiteContent = {
     {
       heading: 'À propos',
       links: [
-        { label: 'Vision & mission', href: '#vizyon' },
-        { label: 'Nos principes', href: '#prensip' },
-        { label: 'Équipe', href: '#ekip' },
-        { label: 'Carrières', href: '#karye' },
+        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
+        { label: 'Nos principes', href: '/sou-nou#prensip' },
+        { label: 'Équipe', href: '/sou-nou#ekip' },
+        // { label: 'Carrières', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
     {
@@ -589,8 +899,8 @@ const fr: SiteContent = {
     {
       heading: 'Légal',
       links: [
-        { label: 'Mentions légales', href: '#' },
-        { label: 'Confidentialité', href: '#' },
+        { label: 'Mentions légales', href: '/enfomasyon-legal' },
+        { label: 'Confidentialité', href: '/konfidansyalite' },
       ],
     },
   ],
@@ -604,8 +914,8 @@ const fr: SiteContent = {
     orgLinks: [
       { label: 'Vision & mission', href: '#vizyon' },
       { label: 'Nos principes', href: '#prensip' },
-      { label: 'Mentions légales', href: '#' },
-      { label: 'Confidentialité', href: '#' },
+      { label: 'Mentions légales', href: '/enfomasyon-legal' },
+      { label: 'Confidentialité', href: '/konfidansyalite' },
     ],
     luckyText: 'Envie de bâtir ?',
     ctaLead: 'Le numérique avance vite.',
@@ -624,20 +934,26 @@ const fr: SiteContent = {
 const en: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Support',
+  heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.' },
+  scrollTopLabel: 'Back to top',
+  heroDescription: {
+    full: 'An innovative hub for digital transformation. We bring people together who build lasting, sustainable value. We engineer solutions for societal challenges, push technological boundaries, and develop leaders who make a real difference.',
+    short: 'An innovative hub for digital transformation — bringing people together to build lasting value and lead real change.',
+  },
   skipToContent: 'Skip to content',
   statsKicker: 'By the numbers',
   navLinks: [
-    { label: 'Our Work', href: '#pwoje' },
-    { label: 'News & events', href: '#nouvel' },
-    { label: 'Ecosystem', href: '#ekosistem' },
+    { label: 'Our Work', href: '/travay-nou' },
+    { label: 'News & events', href: '/nouvel' },
+    { label: 'Ecosystem', href: '/ekosistem' },
     {
       label: 'About',
-      href: '#sou-nou',
+      href: '/sou-nou',
       children: [
-        { label: 'Vision & mission', href: '#vizyon' },
-        { label: 'Our principles', href: '#prensip' },
-        { label: 'Team', href: '#ekip' },
-        { label: 'Careers', href: '#karye' },
+        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
+        { label: 'Our principles', href: '/sou-nou#prensip' },
+        { label: 'Team', href: '/sou-nou#ekip' },
+        // { label: 'Careers', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
   ],
@@ -706,6 +1022,8 @@ const en: SiteContent = {
       link: { label: 'Register your interest', href: '#' },
     },
   ],
+  projectFilters: { all: 'All', active: 'Live', dev: 'In dev', coming: 'Coming' },
+  homeEcosystemCta: { caption: 'An open, Kreyòl-first ecosystem, growing every day.', viewAll: 'See everything we do' },
   hubSection: {
     kicker: 'For the community',
     title: 'The hub isn’t a building. It’s a konbit.',
@@ -771,12 +1089,111 @@ const en: SiteContent = {
     'TALENT',
     'IMPACT',
   ],
+  spiralCenterWords: ['Imagine', 'Build', 'Transform'],
+  about: {
+    label: 'Beyond digitalization',
+    title: 'Create lasting impact.',
+    strokeWord: 'impact',
+    lead: "We are a purpose-driven organization guided by a single mission: to shape Haiti's digital transformation. As a Civic Innovation Hub, we develop public-interest projects and empower students, creators, and organizations to bring their ideas to life and develop technological innovations holistically.",
+    cta: 'Learn more',
+    imageAlt: 'Digital transformation in action',
+  },
+  pillars: {
+    label: 'Who we are',
+    items: [
+      { name: 'Mission', body: 'Incubating solutions and propelling talent.' },
+      { name: 'Vision', body: "Haiti's digital backbone." },
+      { name: 'Motto', body: "Haiti's digital transformation must come from Haiti." },
+    ],
+  },
+  whatWeDo: {
+    label: 'What we do',
+    strokeWord: 'Discover',
+    titleRest: 'our work',
+    subtitle: 'A dual engine: sovereign digital infrastructure for the public good, and an incubator that turns the ideas of students and creators into viable start-ups.',
+    outro: 'Explore what we are building and join the movement.',
+    viewAll: 'View all our work',
+    cards: [
+      { label: 'BATI', title: 'Public infrastructure', body: 'We build sovereign digital public goods, with LexHaiti as our flagship pilot project: 2,400+ legal and historical texts brought together and made accessible.', cta: 'View the projects' },
+      { label: 'ENKIBE', title: 'Ecosystem incubator', body: 'We support students and creators in bringing their own start-ups to life, whether commercial, technological or social.', cta: 'Our programmes' },
+      { label: 'KONEKTE', title: 'Network & sovereignty', body: 'From Haiti, we connect local talent, institutions, and the international ecosystem to catalyze innovation.', cta: 'Join us' },
+    ],
+  },
+  ecosystem: {
+    label: 'Our projects',
+    strokeWord: 'Explore',
+    titleRest: 'our ecosystem',
+    subtitle: 'From idea to public launch: the projects the hub incubates to democratize access to information in Haiti.',
+    outro: 'Discover all the projects incubated by the hub.',
+    viewAll: 'See all projects',
+    projects: [
+      { name: 'LexHaiti', tagline: 'A legal transparency portal, open and auditable', status: 'Active', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp' },
+      { name: 'Civic Data API', tagline: 'Open public data for Haiti', status: 'In development', statusKey: 'dev', icon: 'data', image: '/ecosystem/civic-data.webp' },
+      { name: 'Civic Tech Academy', tagline: "Training tomorrow's builders", status: 'Coming soon', statusKey: 'soon', icon: 'cap', image: '/ecosystem/academy.webp' },
+      { name: 'OpenHaïti Map', tagline: 'Open mapping of the Haitian territory', status: 'In development', statusKey: 'dev', icon: 'map', image: '/ecosystem/openhaiti-map.webp' },
+      { name: 'Budget Citoyen', tagline: 'Budget transparency for all', status: 'Coming soon', statusKey: 'soon', icon: 'chart', image: '/ecosystem/budget-citoyen.webp' },
+      { name: 'e-Santé Haïti', tagline: 'Open medical information', status: 'Coming soon', statusKey: 'soon', icon: 'heart', image: '/ecosystem/esante.webp' },
+    ],
+  },
+  domaines: {
+    label: 'Our themes',
+    title: 'Areas of action',
+    subtitle: 'Ayiti Dijital structures its work around six complementary areas that form a coherent ecosystem of human and institutional development.',
+    sdgPrefix: 'SDG',
+    items: [
+      { name: 'Education', description: 'Access to quality education; strengthening academic, professional and entrepreneurial skills.', sdg: '4', tags: ['#civictech', '#edikasyon'] },
+      { name: 'Technology', description: 'Digital platforms and AI tools in service of civic life, democracy and innovation.', sdg: '9', tags: ['#opensource', '#teknoloji'] },
+      { name: 'Human Rights', description: 'Defending civil and political rights, countering hate speech, and promoting an inclusive civic space.', sdg: '16', tags: ['#legaltech', '#jistis'] },
+      { name: 'Youth', description: 'Supporting young talent through mentorship and opportunity to grow the next generation of builders.', sdg: '8', tags: ['#jènès', '#opòtinite'] },
+      { name: 'Economic Development', description: 'Entrepreneurship, startup incubation and durable value creation for Haitian communities.', sdg: '8', tags: ['#antreprenarya', '#ekonomi'] },
+      { name: 'Open Data', description: "Opening Haiti's public data to builders, researchers and institutions — democratic transparency starts with access.", sdg: '16/17', tags: ['#opendata', '#transparans'] },
+    ],
+  },
+  journal: {
+    label: 'The journal',
+    strokeWord: 'News,',
+    titleRest: 'stories & voices',
+    subtitle: 'Explore our updates, field notes, and impact stories that move change forward.',
+    readMore: 'Read article',
+    viewAll: 'All articles',
+    posts: [
+      { category: 'Project', date: 'May 12, 2026', title: 'LexHaiti launches: access to law for everyone', image: '/blog/lexhaiti-hero.jpg' },
+      { category: 'Community', date: 'Apr 28, 2026', title: 'Training the next generation of builders', image: '/blog/collaboration.webp' },
+      { category: 'Ideas', date: 'Apr 9, 2026', title: 'Why open data matters for Haiti', image: '/blog/analytics.webp' },
+    ],
+  },
+  faq: {
+    label: 'FAQ',
+    strokeWord: 'Your',
+    titleRest: 'questions, answered.',
+    subtitle: 'Everything you need to know about supporting, contributing to, and joining the hub.',
+    items: [
+      { q: "What is Ayiti Dijital's mission?", a: 'We incubate and launch digital public goods that serve the public interest, in order to democratize access to information and opportunity in Haiti.' },
+      { q: 'How are donations used?', a: 'Every contribution directly funds project development, training programs, and the open infrastructure we make available to all.' },
+      { q: 'Can I volunteer?', a: "Yes. Developers, lawyers, designers, or engaged citizens — there's a place for everyone, on GitHub and in our programs." },
+      { q: 'Beyond donating, how can I help?', a: 'Share our projects, join the community, propose an idea, or become an institutional partner of the hub.' },
+      { q: 'How do I become a partner?', a: 'Reach out via the Contact page: we build the ecosystem with institutions, universities, and organizations aligned with our values.' },
+    ],
+  },
+  action: {
+    label: 'Take action',
+    title: "Build Haiti's digital backbone.",
+    subtitle: 'Two ways to move the mission forward — pick yours.',
+    fundKreyol: 'PATNÈ',
+    fundTitle: 'Fund a project',
+    fundDesc: 'Organisations, funders, diaspora: your support turns civic-tech prototypes into lasting public infrastructure.',
+    fundButton: 'Become a partner',
+    codeKreyol: 'KÒDE',
+    codeTitle: 'Contribute code',
+    codeDesc: "Developer, designer, jurist, or translator: every project in the hub is open and auditable, and it's waiting for you.",
+    codeButton: 'Join the community',
+  },
   footerBlurb: 'Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools.',
   newsletter: {
     kicker: 'Newsletter',
     title: 'Monthly updates',
     body: 'Stay connected to the Ayiti Dijital network — news, events and startups taking off. A dose of creative digital culture, straight to your inbox.',
-    privacy: { label: 'Privacy policy', href: '#' },
+    privacy: { label: 'Privacy policy', href: '/konfidansyalite' },
     firstName: { label: 'First name', placeholder: 'Ada' },
     lastName: { label: 'Last name', placeholder: 'Lovelace' },
     email: { label: 'Email', placeholder: 'ada.lovelace@email.com' },
@@ -788,10 +1205,10 @@ const en: SiteContent = {
     {
       heading: 'About',
       links: [
-        { label: 'Vision & mission', href: '#vizyon' },
-        { label: 'Our principles', href: '#prensip' },
-        { label: 'Team', href: '#ekip' },
-        { label: 'Careers', href: '#karye' },
+        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
+        { label: 'Our principles', href: '/sou-nou#prensip' },
+        { label: 'Team', href: '/sou-nou#ekip' },
+        // { label: 'Careers', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
     {
@@ -813,8 +1230,8 @@ const en: SiteContent = {
     {
       heading: 'Legal',
       links: [
-        { label: 'Legal notice', href: '#' },
-        { label: 'Privacy', href: '#' },
+        { label: 'Legal notice', href: '/enfomasyon-legal' },
+        { label: 'Privacy', href: '/konfidansyalite' },
       ],
     },
   ],
@@ -828,8 +1245,8 @@ const en: SiteContent = {
     orgLinks: [
       { label: 'Vision & mission', href: '#vizyon' },
       { label: 'Our principles', href: '#prensip' },
-      { label: 'Legal notice', href: '#' },
-      { label: 'Privacy', href: '#' },
+      { label: 'Legal notice', href: '/enfomasyon-legal' },
+      { label: 'Privacy', href: '/konfidansyalite' },
     ],
     luckyText: 'Ready to build?',
     ctaLead: 'Tech moves fast.',
