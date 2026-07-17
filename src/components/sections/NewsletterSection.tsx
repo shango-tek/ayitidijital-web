@@ -5,6 +5,7 @@ import { LanbiMark } from '../brand/LanbiMark'
 import { SectionHeader } from '../ui/SectionHeader'
 import { useLocale } from '../i18n/LocaleProvider'
 import { submitNewsletter } from '@/lib/newsletter'
+import { Button } from '../ui/Button'
 import type { NewsletterContent } from '@/content/site'
 
 export interface NewsletterSectionProps {
@@ -134,13 +135,11 @@ export function NewsletterSection({ id = 'enfolet', content }: NewsletterSection
                   />
                 </label>
                 <p className="mt-4 text-xs leading-relaxed text-white/55">{content.consent}</p>
-                <button
-                  type="submit"
-                  className="mt-5 inline-flex items-center gap-2.5 rounded-full bg-gold px-7 py-3.5 font-display text-sm font-bold text-primary transition-transform duration-200 hover:-translate-y-0.5"
-                >
-                  {content.button}
-                  <Arrow />
-                </button>
+                <div className="mt-5">
+                  <Button variant="gold" type="submit" arrow>
+                    {content.button}
+                  </Button>
+                </div>
               </form>
             )}
           </div>

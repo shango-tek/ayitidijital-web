@@ -29,7 +29,7 @@
   --color-ink-soft: #4A5170;       /* muted text */
   --color-paper: #FCFAF5;          /* page background */
 
-  --font-display: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-bricolage), ui-sans-serif, system-ui, sans-serif;
   --font-sans: var(--font-hanken), 'Hanken Grotesk', ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-serif: var(--font-playfair), ui-serif, Georgia, 'Times New Roman', serif;
@@ -47,7 +47,7 @@
    Hanken Grotesk (warm humanist sans); headlines stay Space Grotesk.
    ------------------------------------------------------------------ */
 :root {
-  --font-display: var(--font-space-grotesk), system-ui, sans-serif;
+  --font-display: var(--font-bricolage), system-ui, sans-serif;
   --font-body: var(--font-hanken), 'Hanken Grotesk', system-ui, sans-serif;
   --font-mono: var(--font-ibm-plex-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
   --font-hand: var(--font-caveat), 'Caveat', cursive;

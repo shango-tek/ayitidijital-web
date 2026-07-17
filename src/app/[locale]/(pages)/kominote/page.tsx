@@ -1,6 +1,7 @@
 'use client'
 
 import { RoutePage } from '@/components/pages/RoutePage'
+import { Button } from '@/components/ui/Button'
 import { useLocale } from '@/components/i18n/LocaleProvider'
 
 const GITHUB = 'https://github.com/shango-tek/ayitidijital-web'
@@ -85,13 +86,11 @@ export default function KominotePage() {
                 >
                   <h3 className="font-display text-lg font-bold text-primary">{title}</h3>
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{body}</p>
-                  <a
-                    href={href}
-                    {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                    className="mt-5 inline-flex items-center gap-2 self-start rounded-full border-2 border-gold-deep px-5 py-2.5 font-display text-sm font-bold text-gold-deep transition-colors duration-200 hover:border-gold hover:bg-gold hover:text-primary"
-                  >
-                    {cta}
-                  </a>
+                  <div className="mt-5">
+                    <Button variant="gold-outline" href={href} size="sm" external={external} arrow>
+                      {cta}
+                    </Button>
+                  </div>
                 </article>
               ))}
             </div>

@@ -1,4 +1,5 @@
 import { SectionHeader } from '../ui/SectionHeader'
+import { Button } from '../ui/Button'
 
 export interface PasseALactionProps {
   id?: string
@@ -16,12 +17,6 @@ export interface PasseALactionProps {
   codeButton: string
   codeHref: string
 }
-
-const Arrow = () => (
-  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true">
-    <path strokeLinecap="round" strokeLinejoin="round" d="M5 12h14M13 6l6 6-6 6" />
-  </svg>
-)
 
 /**
  * "Passe à l'action" — split header over two audience cards: fund a project
@@ -59,13 +54,11 @@ export function PasseALaction({
             <span className="font-mono text-sm uppercase tracking-[0.3em] text-gold-deep">{fundKreyol}</span>
             <h3 className="mt-4 font-display text-2xl font-bold text-primary lg:text-3xl">{fundTitle}</h3>
             <p className="mb-8 mt-3 leading-relaxed text-ink-soft">{fundDesc}</p>
-            <a
-              href={fundHref}
-              className="mt-auto inline-flex items-center gap-2 self-start rounded-full bg-gold px-6 py-3 font-display text-sm font-bold text-primary shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
-            >
-              {fundButton}
-              <Arrow />
-            </a>
+            <div className="mt-auto">
+              <Button variant="gold" href={fundHref} size="sm" arrow>
+                {fundButton}
+              </Button>
+            </div>
           </article>
 
           {/* Contribute code — gold outline CTA */}
@@ -73,13 +66,11 @@ export function PasseALaction({
             <span className="font-mono text-sm uppercase tracking-[0.3em] text-gold-deep">{codeKreyol}</span>
             <h3 className="mt-4 font-display text-2xl font-bold text-primary lg:text-3xl">{codeTitle}</h3>
             <p className="mb-8 mt-3 leading-relaxed text-ink-soft">{codeDesc}</p>
-            <a
-              href={codeHref}
-              className="mt-auto inline-flex items-center gap-2 self-start rounded-full border-2 border-gold-deep px-6 py-3 font-display text-sm font-bold text-gold-deep transition-colors duration-200 hover:border-gold hover:bg-gold hover:text-primary"
-            >
-              {codeButton}
-              <Arrow />
-            </a>
+            <div className="mt-auto">
+              <Button variant="gold-outline" href={codeHref} size="sm" arrow>
+                {codeButton}
+              </Button>
+            </div>
           </article>
         </div>
       </div>

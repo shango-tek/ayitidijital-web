@@ -88,7 +88,7 @@ export function WorkOverview({
                 <h3 className="mt-auto pt-14 font-display text-2xl font-extrabold leading-tight tracking-tight text-white">
                   {card.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-white/60">{card.body}</p>
+                <p className="mt-3 text-[15px] leading-relaxed text-white/75">{card.body}</p>
                 <span className="mt-7 inline-flex items-center gap-2 font-display text-sm font-bold text-gold">
                   {card.cta}
                   <svg

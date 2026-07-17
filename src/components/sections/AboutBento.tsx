@@ -110,11 +110,8 @@ export function AboutBento({
               {lead}
             </p>
             <div className="mt-8">
-              <Button variant="gold" href={ctaHref}>
+              <Button variant="gold" href={ctaHref} arrow>
                 {cta}
-                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden="true" className="shrink-0">
-                  <path d="M5 12h14M13 6l6 6-6 6" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
               </Button>
             </div>
           </div>

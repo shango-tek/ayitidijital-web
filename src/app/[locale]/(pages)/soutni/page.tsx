@@ -1,6 +1,7 @@
 'use client'
 
 import { RoutePage } from '@/components/pages/RoutePage'
+import { Button } from '@/components/ui/Button'
 import { useLocale } from '@/components/i18n/LocaleProvider'
 
 const GITHUB = 'https://github.com/shango-tek/ayitidijital-web'
@@ -77,13 +78,11 @@ export default function SoutniPage() {
             >
               <h3 className="font-display text-lg font-bold text-primary">{title}</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-ink-soft">{body}</p>
-              <a
-                href={href}
-                {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
-                className="mt-5 inline-flex items-center gap-2 self-start rounded-full bg-gold px-5 py-2.5 font-display text-sm font-bold text-primary transition-transform duration-200 hover:-translate-y-0.5"
-              >
-                {cta}
-              </a>
+              <div className="mt-5">
+                <Button variant="gold" href={href} size="sm" external={external} arrow>
+                  {cta}
+                </Button>
+              </div>
             </article>
           ))}
         </div>

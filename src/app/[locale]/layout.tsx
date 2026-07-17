@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { Space_Grotesk, Hanken_Grotesk, IBM_Plex_Mono, Caveat, Playfair_Display } from 'next/font/google'
+import { Bricolage_Grotesque, Hanken_Grotesk, IBM_Plex_Mono, Caveat, Playfair_Display } from 'next/font/google'
 import '../globals.css'
 import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
@@ -10,10 +10,13 @@ import { LocaleProvider } from '../../components/i18n/LocaleProvider'
 
 /* Google fonts the design CSS expects, exposed as CSS variables that
    src/styles/*.css re-map onto --font-display / --font-body / --font-mono. */
-const spaceGrotesk = Space_Grotesk({
+/* Display face. Bricolage Grotesque — a contemporary humanist grotesque with
+   real character (slightly condensed, quirky terminals), so headings read as
+   deliberately set rather than defaulting to the ubiquitous Space Grotesk. */
+const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-space-grotesk',
+  weight: ['500', '600', '700', '800'],
+  variable: '--font-bricolage',
   display: 'swap',
 })
 
@@ -98,7 +101,7 @@ export default async function LocaleLayout({
     <html
       lang={lang}
       data-scroll-behavior="smooth"
-      className={`${spaceGrotesk.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} ${caveat.variable} ${playfair.variable}`}
+      className={`${bricolage.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} ${caveat.variable} ${playfair.variable}`}
       suppressHydrationWarning
     >
       <body id="top" suppressHydrationWarning>

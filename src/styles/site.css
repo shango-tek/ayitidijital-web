@@ -156,6 +156,8 @@ a{color:inherit}
 .btn-red:hover{box-shadow:5px 5px 0 rgba(244,239,230,.3)}
 .btn-gold{background:var(--color-gold);color:var(--navy)}
 .btn-gold:hover{box-shadow:5px 5px 0 rgba(242,162,12,.28)}
+.btn-gold-outline{background:transparent;border-color:var(--color-gold-deep);color:var(--color-gold-deep)}
+.btn-gold-outline:hover{background:var(--color-gold);border-color:var(--color-gold);color:var(--navy);box-shadow:5px 5px 0 rgba(242,162,12,.28)}
 .btn-sm{padding:.62rem 1.05rem;font-size:.88rem;border-radius:999px}
 .btn-pill{border-radius:999px}
 
