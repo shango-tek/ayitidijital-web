@@ -213,16 +213,20 @@ function Block({ block }: { block: LegalBlock }) {
         </dl>
       )
 
+    // Run-in list, not cards. These are clauses of a statutory document — card
+    // chrome (borders, fills, lift shadows) is product styling and reads as
+    // marketing here. The bold run-in title carries the scanning weight, with a
+    // small gold dot echoing the site's kicker.
     case 'points':
       return (
-        <ul className="grid gap-4 sm:grid-cols-3">
+        <ul className="flex flex-col gap-3">
           {block.items.map((p) => (
             <li
               key={p.title}
-              className="rounded-card border border-black/[0.06] bg-white p-5 shadow-[0_20px_60px_-40px_rgba(10,58,96,0.35)]"
+              className="relative pl-4 leading-relaxed before:absolute before:left-0 before:top-[0.65em] before:h-1 before:w-1 before:rounded-full before:bg-gold-deep/60"
             >
-              <p className="font-display font-bold leading-snug text-primary">{p.title}</p>
-              <p className="mt-2 text-sm leading-relaxed text-ink-soft">{p.body}</p>
+              <span className="font-semibold text-primary">{p.title}</span>{' '}
+              <span className="text-ink-soft">{p.body}</span>
             </li>
           ))}
         </ul>
