@@ -116,8 +116,53 @@
     "tocTitle": "Contents",
     "sections": [
       {
+        "id": "preambule",
+        "title": "Preamble",
+        "subtitle": "what this notice covers",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Thank you for your interest in Ayiti Dijital. You can read this site without disclosing any personal data whatsoever: we ask for none and collect none."
+          },
+          {
+            "kind": "text",
+            "body": "Should you one day wish to use a particular service of the association — writing to us, joining, subscribing to the newsletter — processing your data could become necessary. Where such processing is necessary and no legal basis covers it, we obtain your consent first."
+          },
+          {
+            "kind": "text",
+            "body": "This notice explains which data we process as controller, which data the processors we appoint handle — our host, for instance — and what rights you have. By “personal data” we mean information within the meaning of Art. 4(1) GDPR: a name, an email address, a postal address."
+          },
+          {
+            "kind": "subheading",
+            "title": "Scope"
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "This site",
+                "body": "ayitidijital.org, and any other site the association may come to operate."
+              },
+              {
+                "title": "Our public profiles",
+                "body": "Our presence on social networks, as far as we control it there."
+              },
+              {
+                "title": "Email correspondence",
+                "body": "Any exchange you begin with us at kontakt@ayitidijital.org."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "The association runs neither an online shop nor a mobile app, so those cases are not covered — they do not exist."
+          }
+        ],
+        "number": "01"
+      },
+      {
         "id": "en-bref",
-        "number": "01",
+        "number": "02",
         "title": "In short",
         "subtitle": "The essentials, in three lines",
         "blocks": [
@@ -142,7 +187,7 @@
       },
       {
         "id": "responsable",
-        "number": "02",
+        "number": "03",
         "title": "Data controller",
         "blocks": [
           {
@@ -166,7 +211,7 @@
       },
       {
         "id": "definitions",
-        "number": "03",
+        "number": "04",
         "title": "Definitions",
         "subtitle": "within the meaning of Art. 4 GDPR",
         "blocks": [
@@ -179,39 +224,59 @@
             "items": [
               {
                 "title": "Personal data",
-                "body": "Any information relating to an identified or identifiable natural person: a name, an address, an online identifier, an IP address."
+                "body": "Any information relating to an identified or identifiable natural person, directly or indirectly: a name, a number, location data, an online identifier (Art. 4(1))."
               },
               {
                 "title": "Data subject",
-                "body": "The natural person whose data is processed — in this case, you."
+                "body": "The identified or identifiable natural person whose data is processed — in this case, you."
               },
               {
                 "title": "Processing",
-                "body": "Any operation performed on data: collection, recording, consultation, disclosure, storage, erasure."
+                "body": "Any operation performed on data: collection, recording, organisation, storage, consultation, disclosure, erasure, destruction (Art. 4(2))."
+              },
+              {
+                "title": "Restriction of processing",
+                "body": "Marking stored data so as to limit its future processing (Art. 4(3))."
+              },
+              {
+                "title": "Profiling",
+                "body": "Automated processing to evaluate or predict personal aspects — behaviour, interests, economic situation, movements (Art. 4(4))."
+              },
+              {
+                "title": "Pseudonymisation",
+                "body": "Processing such that data can no longer be attributed to a person without additional information, kept separately (Art. 4(5))."
               },
               {
                 "title": "Controller",
-                "body": "Whoever decides the purposes and means of the processing. For this site, that is the association."
+                "body": "Whoever determines the purposes and means of processing (Art. 4(7)). For this site, the association."
               },
               {
                 "title": "Processor",
-                "body": "A third party processing data on our behalf and on our instructions — here, our host."
+                "body": "A third party processing data on the controller's behalf and on its instructions (Art. 4(8)) — here, our host."
+              },
+              {
+                "title": "Recipient",
+                "body": "Any body to which data is disclosed, whether a third party or not; authorities acting under a specific inquiry are not recipients (Art. 4(9))."
+              },
+              {
+                "title": "Third party",
+                "body": "Any body other than the data subject, the controller, the processor, and persons authorised to process the data under their authority (Art. 4(10))."
               },
               {
                 "title": "Consent",
-                "body": "A freely given, specific, informed and unambiguous indication that you agree to a processing operation."
+                "body": "A freely given, specific, informed and unambiguous indication that you agree to a processing operation (Art. 4(11))."
               }
             ]
           },
           {
             "kind": "note",
-            "body": "We define only the terms actually used on this page. Profiling and pseudonymisation are absent: we do neither."
+            "body": "These are the regulation's own definitions, restated here for clarity; they describe the vocabulary, not our practices. We carry out neither profiling nor pseudonymisation."
           }
         ]
       },
       {
         "id": "bases-legales",
-        "number": "04",
+        "number": "05",
         "title": "Legal bases",
         "subtitle": "Art. 6 GDPR",
         "blocks": [
@@ -248,7 +313,7 @@
       },
       {
         "id": "hebergement",
-        "number": "05",
+        "number": "06",
         "title": "Hosting, server logs and transfers outside the EU",
         "blocks": [
           {
@@ -263,7 +328,7 @@
       },
       {
         "id": "securite",
-        "number": "06",
+        "number": "07",
         "title": "Transport security",
         "blocks": [
           {
@@ -274,7 +339,7 @@
       },
       {
         "id": "cookies",
-        "number": "07",
+        "number": "08",
         "title": "Cookies and local storage",
         "blocks": [
           {
@@ -285,7 +350,7 @@
       },
       {
         "id": "mesure",
-        "number": "08",
+        "number": "09",
         "title": "Analytics",
         "blocks": [
           {
@@ -296,7 +361,7 @@
       },
       {
         "id": "externes",
-        "number": "09",
+        "number": "10",
         "title": "Fonts and external content",
         "blocks": [
           {
@@ -307,7 +372,7 @@
       },
       {
         "id": "reseaux-sociaux",
-        "number": "10",
+        "number": "11",
         "title": "Social media",
         "blocks": [
           {
@@ -322,7 +387,7 @@
       },
       {
         "id": "formulaires",
-        "number": "11",
+        "number": "12",
         "title": "Forms",
         "blocks": [
           {
@@ -333,7 +398,7 @@
       },
       {
         "id": "conservation",
-        "number": "12",
+        "number": "13",
         "title": "Retention",
         "blocks": [
           {
@@ -348,7 +413,7 @@
       },
       {
         "id": "droits",
-        "number": "13",
+        "number": "14",
         "title": "Your rights",
         "subtitle": "under the GDPR",
         "blocks": [
@@ -401,7 +466,7 @@
       },
       {
         "id": "autorite",
-        "number": "14",
+        "number": "15",
         "title": "Supervisory authority",
         "blocks": [
           {
@@ -441,7 +506,7 @@
       },
       {
         "id": "contact",
-        "number": "15",
+        "number": "16",
         "title": "Privacy contact",
         "blocks": [
           {

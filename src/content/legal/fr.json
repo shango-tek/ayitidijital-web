@@ -116,8 +116,53 @@
     "tocTitle": "Sommaire",
     "sections": [
       {
+        "id": "preambule",
+        "title": "Préambule",
+        "subtitle": "ce que couvre cette déclaration",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Nous vous remercions de l'intérêt que vous portez à Ayiti Dijital. La consultation de ce site est possible sans communiquer la moindre donnée personnelle : nous n'en demandons aucune et n'en recueillons aucune."
+          },
+          {
+            "kind": "text",
+            "body": "Si vous souhaitez un jour recourir à un service particulier de l'association — nous écrire, adhérer, vous abonner à l'infolettre — un traitement de vos données pourrait devenir nécessaire. Lorsqu'un tel traitement est nécessaire et qu'aucune base légale ne le fonde, nous recueillons votre consentement au préalable."
+          },
+          {
+            "kind": "text",
+            "body": "Cette déclaration explique quelles données nous traitons en tant que responsable, quelles données traitent les sous-traitants que nous mandatons — notre hébergeur, par exemple — et de quels droits vous disposez. Par « données personnelles », nous entendons les informations au sens de l'art. 4, point 1, du RGPD : un nom, une adresse e-mail, une adresse postale."
+          },
+          {
+            "kind": "subheading",
+            "title": "Champ d'application"
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Ce site",
+                "body": "Le site ayitidijital.org, ainsi que tout autre site que l'association viendrait à exploiter."
+              },
+              {
+                "title": "Nos profils publics",
+                "body": "Nos présences sur les réseaux sociaux, dans la limite de ce que nous y maîtrisons."
+              },
+              {
+                "title": "Nos échanges par e-mail",
+                "body": "La correspondance que vous engagez avec nous à kontakt@ayitidijital.org."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "L'association n'édite ni boutique en ligne ni application mobile : ces cas ne sont donc pas couverts, faute d'exister."
+          }
+        ],
+        "number": "01"
+      },
+      {
         "id": "en-bref",
-        "number": "01",
+        "number": "02",
         "title": "En bref",
         "subtitle": "L'essentiel, en trois lignes",
         "blocks": [
@@ -142,7 +187,7 @@
       },
       {
         "id": "responsable",
-        "number": "02",
+        "number": "03",
         "title": "Responsable du traitement",
         "blocks": [
           {
@@ -166,7 +211,7 @@
       },
       {
         "id": "definitions",
-        "number": "03",
+        "number": "04",
         "title": "Définitions",
         "subtitle": "au sens de l'art. 4 RGPD",
         "blocks": [
@@ -179,39 +224,59 @@
             "items": [
               {
                 "title": "Données personnelles",
-                "body": "Toute information se rapportant à une personne physique identifiée ou identifiable : un nom, une adresse, un identifiant en ligne, une adresse IP."
+                "body": "Toute information se rapportant à une personne physique identifiée ou identifiable, directement ou indirectement : un nom, un numéro, des données de localisation, un identifiant en ligne (art. 4, 1)."
               },
               {
                 "title": "Personne concernée",
-                "body": "La personne physique dont les données sont traitées — en l'occurrence, vous."
+                "body": "La personne physique identifiée ou identifiable dont les données sont traitées — en l'occurrence, vous."
               },
               {
                 "title": "Traitement",
-                "body": "Toute opération portant sur des données : collecte, enregistrement, consultation, communication, conservation, effacement."
+                "body": "Toute opération portant sur des données : collecte, enregistrement, organisation, conservation, consultation, communication, effacement, destruction (art. 4, 2)."
+              },
+              {
+                "title": "Limitation du traitement",
+                "body": "Le marquage de données conservées afin d'en limiter le traitement futur (art. 4, 3)."
+              },
+              {
+                "title": "Profilage",
+                "body": "Un traitement automatisé visant à évaluer ou prédire des aspects personnels — comportement, intérêts, situation économique, déplacements (art. 4, 4)."
+              },
+              {
+                "title": "Pseudonymisation",
+                "body": "Un traitement tel que les données ne puissent plus être rattachées à une personne sans information supplémentaire, conservée séparément (art. 4, 5)."
               },
               {
                 "title": "Responsable du traitement",
-                "body": "Celui qui décide des finalités et des moyens du traitement. Pour ce site, c'est l'association."
+                "body": "Celui qui décide des finalités et des moyens du traitement (art. 4, 7). Pour ce site, c'est l'association."
               },
               {
                 "title": "Sous-traitant",
-                "body": "Un tiers qui traite des données pour notre compte et sur nos instructions — ici, notre hébergeur."
+                "body": "Un tiers qui traite des données pour le compte du responsable et sur ses instructions (art. 4, 8) — ici, notre hébergeur."
+              },
+              {
+                "title": "Destinataire",
+                "body": "Toute entité à laquelle des données sont communiquées, qu'elle soit tiers ou non ; les autorités agissant dans le cadre d'une enquête ne sont pas des destinataires (art. 4, 9)."
+              },
+              {
+                "title": "Tiers",
+                "body": "Toute entité autre que la personne concernée, le responsable, le sous-traitant et les personnes autorisées à traiter les données sous leur autorité (art. 4, 10)."
               },
               {
                 "title": "Consentement",
-                "body": "Une manifestation de volonté libre, spécifique, éclairée et univoque par laquelle vous acceptez un traitement."
+                "body": "Une manifestation de volonté libre, spécifique, éclairée et univoque par laquelle vous acceptez un traitement (art. 4, 11)."
               }
             ]
           },
           {
             "kind": "note",
-            "body": "Nous ne définissons ici que les termes réellement employés sur cette page. Le profilage et la pseudonymisation n'y figurent pas : nous ne faisons ni l'un ni l'autre."
+            "body": "Ces définitions sont celles du règlement, reproduites ici pour la clarté ; elles décrivent le vocabulaire, non nos pratiques. Nous ne faisons ni profilage ni pseudonymisation."
           }
         ]
       },
       {
         "id": "bases-legales",
-        "number": "04",
+        "number": "05",
         "title": "Bases légales",
         "subtitle": "art. 6 RGPD",
         "blocks": [
@@ -248,7 +313,7 @@
       },
       {
         "id": "hebergement",
-        "number": "05",
+        "number": "06",
         "title": "Hébergement, journaux et transfert hors UE",
         "blocks": [
           {
@@ -263,7 +328,7 @@
       },
       {
         "id": "securite",
-        "number": "06",
+        "number": "07",
         "title": "Sécurité de la transmission",
         "blocks": [
           {
@@ -274,7 +339,7 @@
       },
       {
         "id": "cookies",
-        "number": "07",
+        "number": "08",
         "title": "Cookies et stockage local",
         "blocks": [
           {
@@ -285,7 +350,7 @@
       },
       {
         "id": "mesure",
-        "number": "08",
+        "number": "09",
         "title": "Mesure d'audience",
         "blocks": [
           {
@@ -296,7 +361,7 @@
       },
       {
         "id": "externes",
-        "number": "09",
+        "number": "10",
         "title": "Polices et contenus externes",
         "blocks": [
           {
@@ -307,7 +372,7 @@
       },
       {
         "id": "reseaux-sociaux",
-        "number": "10",
+        "number": "11",
         "title": "Réseaux sociaux",
         "blocks": [
           {
@@ -322,7 +387,7 @@
       },
       {
         "id": "formulaires",
-        "number": "11",
+        "number": "12",
         "title": "Formulaires",
         "blocks": [
           {
@@ -333,7 +398,7 @@
       },
       {
         "id": "conservation",
-        "number": "12",
+        "number": "13",
         "title": "Durée de conservation",
         "blocks": [
           {
@@ -348,7 +413,7 @@
       },
       {
         "id": "droits",
-        "number": "13",
+        "number": "14",
         "title": "Vos droits",
         "subtitle": "au titre du RGPD",
         "blocks": [
@@ -401,7 +466,7 @@
       },
       {
         "id": "autorite",
-        "number": "14",
+        "number": "15",
         "title": "Autorité de contrôle",
         "blocks": [
           {
@@ -441,7 +506,7 @@
       },
       {
         "id": "contact",
-        "number": "15",
+        "number": "16",
         "title": "Contact protection des données",
         "blocks": [
           {

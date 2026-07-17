@@ -116,8 +116,53 @@
     "tocTitle": "Tab matyè",
     "sections": [
       {
+        "id": "preambule",
+        "title": "Preyanbil",
+        "subtitle": "sa deklarasyon sa a kouvri",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Nou di ou mèsi pou enterè ou pote pou Ayiti Dijital. Ou ka li sit sa a san ou pa bay okenn done pèsonèl : nou pa mande okenn e nou pa ranmase okenn."
+          },
+          {
+            "kind": "text",
+            "body": "Si yon jou ou ta vle sèvi ak yon sèvis patikilye asosyasyon an — ekri nou, vin manm, abòne w nan enfòlèt la — li ta ka nesesè pou nou trete done ou. Lè yon tretman konsa nesesè e pa gen okenn baz legal ki kouvri l, nou mande konsantman ou anvan."
+          },
+          {
+            "kind": "text",
+            "body": "Deklarasyon sa a esplike ki done nou trete kòm responsab, ki done sou-tretan nou mande yo trete — ebèjè nou, pa egzanp — ak ki dwa ou genyen. Lè nou di « done pèsonèl », nou vle di enfòmasyon dapre atik 4, pwen 1, RGPD la : yon non, yon adrès imèl, yon adrès postal."
+          },
+          {
+            "kind": "subheading",
+            "title": "Chan aplikasyon"
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Sit sa a",
+                "body": "ayitidijital.org, ansanm ak nenpòt lòt sit asosyasyon an ta vin egzeplwate."
+              },
+              {
+                "title": "Pwofil piblik nou yo",
+                "body": "Prezans nou sou rezo sosyal yo, nan limit sa nou kontwole la."
+              },
+              {
+                "title": "Echanj pa imèl",
+                "body": "Nenpòt korespondans ou kòmanse ak nou nan kontakt@ayitidijital.org."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Asosyasyon an pa gen ni boutik an liy ni aplikasyon mobil : ka sa yo pa kouvri, paske yo pa egziste."
+          }
+        ],
+        "number": "01"
+      },
+      {
         "id": "en-bref",
-        "number": "01",
+        "number": "02",
         "title": "An kout",
         "subtitle": "Esansyèl la, an twa liy",
         "blocks": [
@@ -142,7 +187,7 @@
       },
       {
         "id": "responsable",
-        "number": "02",
+        "number": "03",
         "title": "Responsab tretman",
         "blocks": [
           {
@@ -166,7 +211,7 @@
       },
       {
         "id": "definitions",
-        "number": "03",
+        "number": "04",
         "title": "Definisyon",
         "subtitle": "dapre atik 4 RGPD",
         "blocks": [
@@ -179,39 +224,59 @@
             "items": [
               {
                 "title": "Done pèsonèl",
-                "body": "Nenpòt enfòmasyon sou yon moun ki idantifye oswa ki ka idantifye : yon non, yon adrès, yon idantifyan sou entènèt, yon adrès IP."
+                "body": "Nenpòt enfòmasyon sou yon moun ki idantifye oswa ki ka idantifye, dirèkteman oswa endirèkteman : yon non, yon nimewo, done kote w ye, yon idantifyan sou entènèt (atik 4, 1)."
               },
               {
                 "title": "Moun ki konsène",
-                "body": "Moun nan done l ap trete a — nan ka sa a, ou menm."
+                "body": "Moun ki idantifye oswa ki ka idantifye a, done l ap trete a — nan ka sa a, ou menm."
               },
               {
                 "title": "Tretman",
-                "body": "Nenpòt operasyon sou done : kolekte, anrejistre, konsilte, kominike, konsève, efase."
+                "body": "Nenpòt operasyon sou done : kolekte, anrejistre, òganize, konsève, konsilte, kominike, efase, detwi (atik 4, 2)."
+              },
+              {
+                "title": "Limitasyon tretman",
+                "body": "Make done ki konsève pou limite tretman yo alavni (atik 4, 3)."
+              },
+              {
+                "title": "Pwofilaj",
+                "body": "Yon tretman otomatik pou evalye oswa prevwa aspè pèsonèl — konpòtman, enterè, sitiyasyon ekonomik, deplasman (atik 4, 4)."
+              },
+              {
+                "title": "Pseudonimizasyon",
+                "body": "Yon tretman kote done yo pa ka rattache ak yon moun san yon enfòmasyon anplis ki konsève apa (atik 4, 5)."
               },
               {
                 "title": "Responsab tretman",
-                "body": "Moun ki deside pou ki rezon ak ki jan done yo trete. Pou sit sa a, se asosyasyon an."
+                "body": "Moun ki deside finalite ak mwayen tretman an (atik 4, 7). Pou sit sa a, se asosyasyon an."
               },
               {
                 "title": "Sou-tretan",
-                "body": "Yon tyès pati k ap trete done pou kont nou e dapre enstriksyon nou — isit la, ebèjè nou."
+                "body": "Yon tyès pati k ap trete done pou kont responsab la e dapre enstriksyon li (atik 4, 8) — isit la, ebèjè nou."
+              },
+              {
+                "title": "Destinatè",
+                "body": "Nenpòt antite yo kominike done bay, kit li se yon tyès pati kit li pa ; otorite k ap fè yon envestigasyon presi pa destinatè (atik 4, 9)."
+              },
+              {
+                "title": "Tyès pati",
+                "body": "Nenpòt antite ki pa moun ki konsène a, responsab la, sou-tretan an, ak moun ki gen dwa trete done yo anba otorite yo (atik 4, 10)."
               },
               {
                 "title": "Konsantman",
-                "body": "Yon volonte lib, presi, enfòme e klè kote ou aksepte yon tretman."
+                "body": "Yon volonte lib, presi, enfòme e klè kote ou aksepte yon tretman (atik 4, 11)."
               }
             ]
           },
           {
             "kind": "note",
-            "body": "Nou defini sèlman mo nou vrèman itilize sou paj sa a. Pwofilaj ak pseudonimizasyon pa la : nou pa fè ni youn ni lòt."
+            "body": "Definisyon sa yo se sa regleman an bay, nou repwodui yo isit la pou klète ; yo dekri vokabilè a, se pa pratik nou. Nou pa fè ni pwofilaj ni pseudonimizasyon."
           }
         ]
       },
       {
         "id": "bases-legales",
-        "number": "04",
+        "number": "05",
         "title": "Baz legal",
         "subtitle": "atik 6 RGPD",
         "blocks": [
@@ -248,7 +313,7 @@
       },
       {
         "id": "hebergement",
-        "number": "05",
+        "number": "06",
         "title": "Ebèjman, jounal ak transfè deyò Inyon Ewopeyen",
         "blocks": [
           {
@@ -263,7 +328,7 @@
       },
       {
         "id": "securite",
-        "number": "06",
+        "number": "07",
         "title": "Sekirite transmisyon",
         "blocks": [
           {
@@ -274,7 +339,7 @@
       },
       {
         "id": "cookies",
-        "number": "07",
+        "number": "08",
         "title": "Cookies ak depo lokal",
         "blocks": [
           {
@@ -285,7 +350,7 @@
       },
       {
         "id": "mesure",
-        "number": "08",
+        "number": "09",
         "title": "Mezi odyans",
         "blocks": [
           {
@@ -296,7 +361,7 @@
       },
       {
         "id": "externes",
-        "number": "09",
+        "number": "10",
         "title": "Lèt ak kontni ekstèn",
         "blocks": [
           {
@@ -307,7 +372,7 @@
       },
       {
         "id": "reseaux-sociaux",
-        "number": "10",
+        "number": "11",
         "title": "Rezo sosyal",
         "blocks": [
           {
@@ -322,7 +387,7 @@
       },
       {
         "id": "formulaires",
-        "number": "11",
+        "number": "12",
         "title": "Fòm yo",
         "blocks": [
           {
@@ -333,7 +398,7 @@
       },
       {
         "id": "conservation",
-        "number": "12",
+        "number": "13",
         "title": "Dire konsèvasyon",
         "blocks": [
           {
@@ -348,7 +413,7 @@
       },
       {
         "id": "droits",
-        "number": "13",
+        "number": "14",
         "title": "Dwa ou yo",
         "subtitle": "dapre RGPD",
         "blocks": [
@@ -401,7 +466,7 @@
       },
       {
         "id": "autorite",
-        "number": "14",
+        "number": "15",
         "title": "Otorite kontwòl",
         "blocks": [
           {
@@ -441,7 +506,7 @@
       },
       {
         "id": "contact",
-        "number": "15",
+        "number": "16",
         "title": "Kontak pwoteksyon done",
         "blocks": [
           {
