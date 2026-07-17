@@ -17,9 +17,18 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Non", "value": "Ayiti Dijital" },
-              { "label": "Fòm jiridik", "value": "Asosyasyon dwa alman k ap fèt (Verein in Gründung)" },
-              { "label": "Syèj", "value": "München, Deutschland" }
+              {
+                "label": "Non",
+                "value": "Ayiti Dijital"
+              },
+              {
+                "label": "Fòm jiridik",
+                "value": "Asosyasyon dwa alman k ap fèt (Verein in Gründung)"
+              },
+              {
+                "label": "Syèj",
+                "value": "Ursberger Str. 15, 81673 München, Deutschland"
+              }
             ]
           },
           {
@@ -36,8 +45,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "1. Vorstand", "value": "Glory Pierrette" },
-              { "label": "2. Vorstand", "value": "Berlens Legagneur" }
+              {
+                "label": "1. Vorstand",
+                "value": "Glory Pierrette"
+              },
+              {
+                "label": "2. Vorstand",
+                "value": "Berlens Legagneur"
+              }
             ]
           },
           {
@@ -54,8 +69,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Adrès imèl", "value": "kontakt@ayitidijital.org" },
-              { "label": "Adrès postal", "value": "Ayiti Dijital, München, Deutschland" }
+              {
+                "label": "Adrès imèl",
+                "value": "kontakt@ayitidijital.org"
+              },
+              {
+                "label": "Adrès postal",
+                "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
+              }
             ]
           }
         ]
@@ -137,9 +158,18 @@
           {
             "kind": "points",
             "items": [
-              { "title": "Nou pa trase ou.", "body": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans." },
-              { "title": "Pa gen kontni tyès pati.", "body": "Imaj ak lèt yo sèvi depi pwòp domèn nou. Lè w ap gade sit sa a, navigatè w pa kontakte okenn lòt sèvè." },
-              { "title": "Pa gen koleksyon.", "body": "Pou kounye a, okenn fòm sou sit sa a pa transmèt ni konsève done." }
+              {
+                "title": "Nou pa trase ou.",
+                "body": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans."
+              },
+              {
+                "title": "Pa gen kontni tyès pati.",
+                "body": "Imaj ak lèt yo sèvi depi pwòp domèn nou. Lè w ap gade sit sa a, navigatè w pa kontakte okenn lòt sèvè."
+              },
+              {
+                "title": "Pa gen koleksyon.",
+                "body": "Pou kounye a, okenn fòm sou sit sa a pa transmèt ni konsève done."
+              }
             ]
           }
         ]
@@ -152,8 +182,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Responsab", "value": "Ayiti Dijital (Verein in Gründung), München, Deutschland" },
-              { "label": "Kontak", "value": "kontakt@ayitidijital.org" }
+              {
+                "label": "Responsab",
+                "value": "Ayiti Dijital (Verein in Gründung), Ursberger Str. 15, 81673 München, Deutschland"
+              },
+              {
+                "label": "Kontak",
+                "value": "kontakt@ayitidijital.org"
+              }
             ]
           },
           {
@@ -226,12 +262,30 @@
           {
             "kind": "points",
             "items": [
-              { "title": "Dwa aksè", "body": "Jwenn yon kopi done nou kenbe sou ou." },
-              { "title": "Dwa rektifikasyon", "body": "Korije nenpòt done ki pa egzak oswa enkonplè." },
-              { "title": "Dwa pou efase", "body": "Mande sipresyon done ou yo, sòf si yon obligasyon legal di kontrè." },
-              { "title": "Dwa limitasyon", "body": "Limite tretman done ou yo nan kèk ka." },
-              { "title": "Dwa potabilite", "body": "Resevwa done ou yo nan yon fòma estriktire e reitilizab." },
-              { "title": "Dwa opozisyon", "body": "Opoze tretman done ou yo nenpòt lè." }
+              {
+                "title": "Dwa aksè",
+                "body": "Jwenn yon kopi done nou kenbe sou ou."
+              },
+              {
+                "title": "Dwa rektifikasyon",
+                "body": "Korije nenpòt done ki pa egzak oswa enkonplè."
+              },
+              {
+                "title": "Dwa pou efase",
+                "body": "Mande sipresyon done ou yo, sòf si yon obligasyon legal di kontrè."
+              },
+              {
+                "title": "Dwa limitasyon",
+                "body": "Limite tretman done ou yo nan kèk ka."
+              },
+              {
+                "title": "Dwa potabilite",
+                "body": "Resevwa done ou yo nan yon fòma estriktire e reitilizab."
+              },
+              {
+                "title": "Dwa opozisyon",
+                "body": "Opoze tretman done ou yo nenpòt lè."
+              }
             ]
           },
           {
@@ -249,7 +303,10 @@
             "kind": "text",
             "body": "Pou nenpòt kesyon sou pwoteksyon done ou, egzèsis dwa ou, yon plent oswa yon demann, ekri nou dirèkteman."
           },
-          { "kind": "email", "value": "kontakt@ayitidijital.org" }
+          {
+            "kind": "email",
+            "value": "kontakt@ayitidijital.org"
+          }
         ]
       }
     ]

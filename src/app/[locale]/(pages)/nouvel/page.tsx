@@ -6,7 +6,7 @@ export default function NouvelPage() {
   return (
     <RoutePage
       path="/nouvel"
-      image="/blog/collaboration.webp"
+      image="/headers/nouvel.webp"
     />
   )
 }

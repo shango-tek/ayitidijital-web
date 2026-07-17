@@ -15,7 +15,7 @@ export default function SouNouPage() {
   const items = souNou?.children ?? []
 
   return (
-    <RoutePage path="/sou-nou" image="/about-home.webp">
+    <RoutePage path="/sou-nou">
       <div className="page-wrap">
         <div className="page-sections">
           {items.map((item) => {

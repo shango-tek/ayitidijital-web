@@ -11,10 +11,14 @@ export interface PageHeaderProps {
   subtitle?: string
   /**
    * Background photo, frosted behind the heading. Heavily blurred, so a small
-   * image is fine. MUST be a local asset under /public — never a remote URL:
-   * the header renders eagerly, so a third-party host would receive every
-   * visitor's IP before they interact with anything. Omit it for a clean dark
-   * band (what the statutory pages use).
+   * image is fine.
+   *
+   * MUST be a local asset under /public — never a remote URL. The header
+   * renders eagerly, so a third-party host would receive every visitor's IP
+   * before they interact with anything, which would also make the privacy
+   * policy's "no third-party content" claim false. The photos in
+   * /public/headers are self-hosted copies of Unsplash images (Unsplash
+   * License: free use, no attribution required).
    */
   image?: string
 }
@@ -38,7 +42,7 @@ export function PageHeader({
   strokeWord,
   titleRest,
   subtitle = '',
-  image,
+  image = '/headers/default.webp',
 }: PageHeaderProps) {
   return (
     <section className="page-header relative isolate flex overflow-hidden bg-[#0a0a0f] min-h-[26rem] lg:min-h-[34rem] pt-32 pb-14 lg:pb-20">

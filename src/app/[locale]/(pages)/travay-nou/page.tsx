@@ -14,7 +14,7 @@ export default function TravayNouPage() {
   return (
     <RoutePage
       path="/travay-nou"
-      image="/ecosystem/lexhaiti.webp"
+      image="/headers/travay-nou.webp"
     >
       <WhatWeDo content={c} />
     </RoutePage>

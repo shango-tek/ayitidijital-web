@@ -17,9 +17,18 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Name", "value": "Ayiti Dijital" },
-              { "label": "Legal form", "value": "German association in formation (Verein in Gründung)" },
-              { "label": "Registered seat", "value": "München, Deutschland" }
+              {
+                "label": "Name",
+                "value": "Ayiti Dijital"
+              },
+              {
+                "label": "Legal form",
+                "value": "German association in formation (Verein in Gründung)"
+              },
+              {
+                "label": "Registered seat",
+                "value": "Ursberger Str. 15, 81673 München, Deutschland"
+              }
             ]
           },
           {
@@ -36,8 +45,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "1. Vorstand", "value": "Glory Pierrette" },
-              { "label": "2. Vorstand", "value": "Berlens Legagneur" }
+              {
+                "label": "1. Vorstand",
+                "value": "Glory Pierrette"
+              },
+              {
+                "label": "2. Vorstand",
+                "value": "Berlens Legagneur"
+              }
             ]
           },
           {
@@ -54,8 +69,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Email address", "value": "kontakt@ayitidijital.org" },
-              { "label": "Postal address", "value": "Ayiti Dijital, München, Deutschland" }
+              {
+                "label": "Email address",
+                "value": "kontakt@ayitidijital.org"
+              },
+              {
+                "label": "Postal address",
+                "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
+              }
             ]
           }
         ]
@@ -137,9 +158,18 @@
           {
             "kind": "points",
             "items": [
-              { "title": "We don't track you.", "body": "No cookies, no third-party pixels, no fingerprinting, no analytics." },
-              { "title": "No third-party content.", "body": "Images and fonts are served from our own domain. Browsing this site, your browser contacts no other server." },
-              { "title": "No collection.", "body": "No form on this site transmits or stores any data at present." }
+              {
+                "title": "We don't track you.",
+                "body": "No cookies, no third-party pixels, no fingerprinting, no analytics."
+              },
+              {
+                "title": "No third-party content.",
+                "body": "Images and fonts are served from our own domain. Browsing this site, your browser contacts no other server."
+              },
+              {
+                "title": "No collection.",
+                "body": "No form on this site transmits or stores any data at present."
+              }
             ]
           }
         ]
@@ -152,8 +182,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Controller", "value": "Ayiti Dijital (Verein in Gründung), München, Deutschland" },
-              { "label": "Contact", "value": "kontakt@ayitidijital.org" }
+              {
+                "label": "Controller",
+                "value": "Ayiti Dijital (Verein in Gründung), Ursberger Str. 15, 81673 München, Deutschland"
+              },
+              {
+                "label": "Contact",
+                "value": "kontakt@ayitidijital.org"
+              }
             ]
           },
           {
@@ -226,12 +262,30 @@
           {
             "kind": "points",
             "items": [
-              { "title": "Right of access", "body": "Obtain a copy of the data we hold about you." },
-              { "title": "Right to rectification", "body": "Correct any inaccurate or incomplete data." },
-              { "title": "Right to erasure", "body": "Request deletion of your data, unless a legal obligation requires otherwise." },
-              { "title": "Right to restriction", "body": "Restrict the processing of your data in certain cases." },
-              { "title": "Right to portability", "body": "Receive your data in a structured, reusable format." },
-              { "title": "Right to object", "body": "Object to the processing of your data at any time." }
+              {
+                "title": "Right of access",
+                "body": "Obtain a copy of the data we hold about you."
+              },
+              {
+                "title": "Right to rectification",
+                "body": "Correct any inaccurate or incomplete data."
+              },
+              {
+                "title": "Right to erasure",
+                "body": "Request deletion of your data, unless a legal obligation requires otherwise."
+              },
+              {
+                "title": "Right to restriction",
+                "body": "Restrict the processing of your data in certain cases."
+              },
+              {
+                "title": "Right to portability",
+                "body": "Receive your data in a structured, reusable format."
+              },
+              {
+                "title": "Right to object",
+                "body": "Object to the processing of your data at any time."
+              }
             ]
           },
           {
@@ -249,7 +303,10 @@
             "kind": "text",
             "body": "For any question about the protection of your data, exercising your rights, a complaint or a request, write to us directly."
           },
-          { "kind": "email", "value": "kontakt@ayitidijital.org" }
+          {
+            "kind": "email",
+            "value": "kontakt@ayitidijital.org"
+          }
         ]
       }
     ]

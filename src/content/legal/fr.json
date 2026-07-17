@@ -17,9 +17,18 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Nom", "value": "Ayiti Dijital" },
-              { "label": "Forme juridique", "value": "Association de droit allemand en cours de fondation (Verein in Gründung)" },
-              { "label": "Siège", "value": "München, Deutschland" }
+              {
+                "label": "Nom",
+                "value": "Ayiti Dijital"
+              },
+              {
+                "label": "Forme juridique",
+                "value": "Association de droit allemand en cours de fondation (Verein in Gründung)"
+              },
+              {
+                "label": "Siège",
+                "value": "Ursberger Str. 15, 81673 München, Deutschland"
+              }
             ]
           },
           {
@@ -36,8 +45,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "1. Vorstand", "value": "Glory Pierrette" },
-              { "label": "2. Vorstand", "value": "Berlens Legagneur" }
+              {
+                "label": "1. Vorstand",
+                "value": "Glory Pierrette"
+              },
+              {
+                "label": "2. Vorstand",
+                "value": "Berlens Legagneur"
+              }
             ]
           },
           {
@@ -54,8 +69,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Adresse e-mail", "value": "kontakt@ayitidijital.org" },
-              { "label": "Adresse postale", "value": "Ayiti Dijital, München, Deutschland" }
+              {
+                "label": "Adresse e-mail",
+                "value": "kontakt@ayitidijital.org"
+              },
+              {
+                "label": "Adresse postale",
+                "value": "Ayiti Dijital, Ursberger Str. 15, 81673 München, Deutschland"
+              }
             ]
           }
         ]
@@ -137,9 +158,18 @@
           {
             "kind": "points",
             "items": [
-              { "title": "Nous ne vous traçons pas.", "body": "Aucun cookie, aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience." },
-              { "title": "Aucun contenu tiers.", "body": "Les images et les polices sont servies depuis notre propre domaine. En consultant ce site, votre navigateur ne contacte aucun autre serveur." },
-              { "title": "Aucune collecte.", "body": "Aucun formulaire de ce site ne transmet ni ne conserve de données pour le moment." }
+              {
+                "title": "Nous ne vous traçons pas.",
+                "body": "Aucun cookie, aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience."
+              },
+              {
+                "title": "Aucun contenu tiers.",
+                "body": "Les images et les polices sont servies depuis notre propre domaine. En consultant ce site, votre navigateur ne contacte aucun autre serveur."
+              },
+              {
+                "title": "Aucune collecte.",
+                "body": "Aucun formulaire de ce site ne transmet ni ne conserve de données pour le moment."
+              }
             ]
           }
         ]
@@ -152,8 +182,14 @@
           {
             "kind": "dl",
             "rows": [
-              { "label": "Responsable", "value": "Ayiti Dijital (Verein in Gründung), München, Deutschland" },
-              { "label": "Contact", "value": "kontakt@ayitidijital.org" }
+              {
+                "label": "Responsable",
+                "value": "Ayiti Dijital (Verein in Gründung), Ursberger Str. 15, 81673 München, Deutschland"
+              },
+              {
+                "label": "Contact",
+                "value": "kontakt@ayitidijital.org"
+              }
             ]
           },
           {
@@ -226,12 +262,30 @@
           {
             "kind": "points",
             "items": [
-              { "title": "Droit d'accès", "body": "Obtenir copie des données vous concernant que nous détenons." },
-              { "title": "Droit de rectification", "body": "Corriger toute donnée inexacte ou incomplète." },
-              { "title": "Droit à l'effacement", "body": "Demander la suppression de vos données, sauf obligation légale contraire." },
-              { "title": "Droit à la limitation", "body": "Restreindre le traitement de vos données dans certains cas." },
-              { "title": "Droit à la portabilité", "body": "Recevoir vos données dans un format structuré et réutilisable." },
-              { "title": "Droit d'opposition", "body": "Vous opposer au traitement de vos données à tout moment." }
+              {
+                "title": "Droit d'accès",
+                "body": "Obtenir copie des données vous concernant que nous détenons."
+              },
+              {
+                "title": "Droit de rectification",
+                "body": "Corriger toute donnée inexacte ou incomplète."
+              },
+              {
+                "title": "Droit à l'effacement",
+                "body": "Demander la suppression de vos données, sauf obligation légale contraire."
+              },
+              {
+                "title": "Droit à la limitation",
+                "body": "Restreindre le traitement de vos données dans certains cas."
+              },
+              {
+                "title": "Droit à la portabilité",
+                "body": "Recevoir vos données dans un format structuré et réutilisable."
+              },
+              {
+                "title": "Droit d'opposition",
+                "body": "Vous opposer au traitement de vos données à tout moment."
+              }
             ]
           },
           {
@@ -249,7 +303,10 @@
             "kind": "text",
             "body": "Pour toute question concernant la protection de vos données, l'exercice de vos droits, une réclamation ou une demande, écrivez-nous directement."
           },
-          { "kind": "email", "value": "kontakt@ayitidijital.org" }
+          {
+            "kind": "email",
+            "value": "kontakt@ayitidijital.org"
+          }
         ]
       }
     ]

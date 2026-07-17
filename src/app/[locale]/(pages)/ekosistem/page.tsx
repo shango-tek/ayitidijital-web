@@ -6,7 +6,7 @@ export default function EkosistemPage() {
   return (
     <RoutePage
       path="/ekosistem"
-      image="/ecosystem/civic-data.webp"
+      image="/headers/ekosistem.webp"
     />
   )
 }
