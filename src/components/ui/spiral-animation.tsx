@@ -194,7 +194,12 @@ class AnimationController {
         const ctx = this.ctx
         if (!ctx) return
 
-        ctx.fillStyle = 'black'
+        // #0a0a0f, not black: this is the site's one dark surface value (hero,
+        // page-header bands, footer). It MUST stay identical to the card fill
+        // behind this canvas — the canvas is rotated and scaled 1.55, so any
+        // mismatch shows up as coloured wedges at the corners where the spun
+        // canvas doesn't reach. See spiral-galaxy.tsx.
+        ctx.fillStyle = '#0a0a0f'
         ctx.fillRect(0, 0, this.size, this.size)
 
         ctx.save()

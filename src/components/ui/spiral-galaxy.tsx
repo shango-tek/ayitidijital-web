@@ -119,10 +119,20 @@ export function SpiralGalaxy({
         />
         {/* Rounded dark card — same 0.5rem inset + 2rem radius as the hero, so the
             spiral reads as a card floating on the paper background, not a full-bleed
-            band. overflow-hidden clips the starfield + zooming spiral to the corners. */}
+            band. overflow-hidden clips the starfield + zooming spiral to the corners.
+
+            #0a0a0f, not black: the site has exactly one dark surface value, shared
+            by the hero, the page-header bands and the footer — this was the only
+            true #000 left.
+
+            This fill MUST match `ctx.fillStyle` in spiral-animation.tsx. The canvas
+            repaints its own background every frame and is rendered rotated + scaled
+            1.55, so the card only shows through at the corners the spun canvas
+            misses. The two reading identically is what hides that seam; give them
+            different values and you get coloured wedges at the corners. */}
         <motion.div
           style={{ clipPath: cardClip }}
-          className="absolute inset-2 flex items-center justify-center overflow-hidden rounded-[2rem] bg-black"
+          className="absolute inset-2 flex items-center justify-center overflow-hidden rounded-[2rem] bg-[#0a0a0f]"
         >
         {/* Layer 1 — 3D starfield: scroll-scrubbed depth, co-rotating with the
             word spiral (same anticlockwise direction, slower → parallax depth) */}
@@ -131,6 +141,19 @@ export function SpiralGalaxy({
             <SpiralAnimation progress={starTime} />
           </motion.div>
         </motion.div>
+
+        {/* Navy bloom — the hero's wash (same geometry, from the top), which is how
+            every other dark surface on the site carries brand colour.
+
+            It sits ABOVE the canvas, not behind it: the canvas is opaque and
+            repaints itself each frame, so a bloom on the card would be hidden
+            except at the rotated corners — i.e. it would BE the seam. Kept low
+            (0.22 vs the hero's 0.26) because here it passes over the starfield,
+            and the stars are faint to begin with. */}
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(125%_85%_at_50%_-12%,rgba(18,36,107,0.22)_0%,transparent_58%)]"
+        />
 
         {/* Layer 2 — text spiral, zooming in front */}
         <motion.div
