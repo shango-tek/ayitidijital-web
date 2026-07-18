@@ -100,6 +100,33 @@
 }
 
 /* ------------------------------------------------------------------
+   Interactive controls get the hand cursor.
+
+   `<a href>` already does, from the browser. `<button>` does NOT — the
+   browser default is an arrow, and Tailwind v4's preflight keeps it that
+   way — so only the buttons carrying hand-written CSS (.mnav-toggle,
+   .mnav-langtrigger) had one. Everything built with utility classes
+   (carousel chevrons, FAQ and legal accordion rows, project filter chips,
+   the newsletter submit, back-to-top) pointed an arrow at the reader
+   while the link beside it pointed a hand.
+
+   Unlayered on purpose: preflight lives in @layer base, and unlayered CSS
+   outranks any layer, so this holds without !important.
+   ------------------------------------------------------------------ */
+button,
+summary,
+[role='button'],
+label:has(> input),
+label[for] {
+  cursor: pointer;
+}
+button:disabled,
+button[aria-disabled='true'],
+[role='button'][aria-disabled='true'] {
+  cursor: not-allowed;
+}
+
+/* ------------------------------------------------------------------
    Preloader — the growing brand spiral. The <Preloader> client component
    flips `data-fade` on to dismiss it (see components/layout/Preloader.tsx).
    ------------------------------------------------------------------ */
