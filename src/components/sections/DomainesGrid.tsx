@@ -1,5 +1,4 @@
 import { SectionHeader } from '../ui/SectionHeader'
-import { SectionPanel } from '../ui/SectionPanel'
 
 export interface Domaine {
   name: string
@@ -38,7 +37,7 @@ const sdgColor = (sdg: string) => SDG_COLORS[(sdg || '').split('/')[0].trim()] ?
  */
 export function DomainesGrid({ id, label, title, subtitle, sdgPrefix, items }: DomainesGridProps) {
   return (
-    <SectionPanel id={id} gate="with-spiral">
+    <section id={id} className="bg-white py-16 md:py-20 lg:py-[100px]">
       <div className="mx-auto max-w-[90rem] px-5 md:px-10">
         <SectionHeader variant="split" size="md" label={label} title={title} subtitle={subtitle} />
 
@@ -100,6 +99,6 @@ export function DomainesGrid({ id, label, title, subtitle, sdgPrefix, items }: D
           })}
         </div>
       </div>
-    </SectionPanel>
+    </section>
   )
 }

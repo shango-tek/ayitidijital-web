@@ -18,20 +18,22 @@ import type { ReactNode } from 'react'
  * that padding INSIDE the card and the page's vertical rhythm is untouched.
  *
  * ── Where it goes, and why it moves ──────────────────────────────────────────
- * The rule is "never more than two white sections in a row", and the panel is
- * the tie-breaker of last resort: the hero, newsletter and footer already break
- * the page for free, and so does the spiral — but only on desktop. So the
- * longest white run is in a different place depending on the spiral, and ONE
- * panel, dropped in the middle of that run, is enough either way:
+ * The rule is "never more than two white sections in a row". Only the hero, the
+ * footer and — on desktop only — the spiral break the page for free, so with the
+ * newsletter card gone from the home page there is a long white run to carve up,
+ * and where it needs carving depends on whether the spiral is there:
  *
- *   with spiral     dark · w · w · SPIRAL · w · SAND · w · NAVY · w · w · dark
- *                                          └ domenn, the middle of eko/domenn/jounal
- *   without spiral  dark · w · w · SAND · w · w · NAVY · w · w · dark
- *                                  └ ekosistem, the middle of apropo…jounal
+ *   with spiral     dark · w · w · SPIRAL · w · w · SAND · w · w · dark
+ *   without spiral  dark · w · SAND · w · w · SAND · w · w · dark
  *
- * Hence the `gate`: DomainesGrid is a panel only under `spiral:`, and
- * EcosystemCarousel only when it is NOT. Never both, never neither — which is
- * why the `spiral:` variant and HomeView's matchMedia must stay in sync.
+ * So JournalSection is a panel always (it splits the long tail either way), and
+ * EcosystemCarousel is one only when the spiral is absent and the head of the
+ * page would otherwise run four white sections deep. DomainesGrid — "Nos
+ * thématiques" — is deliberately NOT one: it sat between the two and the beige
+ * behind its SDG cards was doing nothing the white ground doesn't do better.
+ *
+ * The `spiral:` variant and HomeView's matchMedia must stay in sync, or the
+ * ecosystem panel appears on desktop where it is not wanted.
  */
 type Gate = 'always' | 'with-spiral' | 'without-spiral'
 

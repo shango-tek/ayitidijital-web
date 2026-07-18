@@ -2,6 +2,7 @@
 
 import { useRef } from 'react'
 import { SectionHeader } from '../ui/SectionHeader'
+import { SectionPanel } from '../ui/SectionPanel'
 import { SectionCTA } from '../ui/SectionCTA'
 
 export interface JournalPost {
@@ -47,7 +48,7 @@ export function JournalSection({
   }
 
   return (
-    <section id={id} className="bg-white py-16 md:py-20 lg:py-[100px]">
+    <SectionPanel id={id}>
       <div className="mx-auto max-w-[90rem] px-5 md:px-10">
         <SectionHeader
           variant="split"
@@ -133,6 +134,6 @@ export function JournalSection({
           <SectionCTA tone="light" linkLabel={viewAll} link={viewAllHref} />
         </div>
       </div>
-    </section>
+    </SectionPanel>
   )
 }

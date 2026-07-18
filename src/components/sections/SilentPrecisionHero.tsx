@@ -298,7 +298,10 @@ export function SilentPrecisionHero({
                             </div>
                             <div
                                 className="flex flex-row items-center justify-center gap-x-2 sm:gap-x-4 lg:gap-x-6 flex-wrap">
-                                <span className="font-display italic font-medium">{title.with}</span>
+                                {/* upright, like the "&" below it — the italics in this
+                                    headline belong to the display word and the two serif
+                                    accents, not to the connectives */}
+                                <span className="font-display font-medium">{title.with}</span>
                                 <span className="font-serif italic font-semibold">{title.vision}</span>
                                 <span className="font-display font-medium">{title.and}</span>
                                 <span className="font-serif italic font-semibold">{title.action}</span>

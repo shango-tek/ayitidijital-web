@@ -10,7 +10,6 @@ import { DomainesGrid } from '@/components/sections/DomainesGrid'
 import { JournalSection } from '@/components/sections/JournalSection'
 import { FaqSection } from '@/components/sections/FaqSection'
 import { PasseALaction } from '@/components/sections/PasseALaction'
-import { NewsletterSection } from '@/components/sections/NewsletterSection'
 import { FloatingNav } from '@/components/layout/FloatingNav'
 import { MobileNav } from '@/components/layout/MobileNav'
 import { MissionMarquee } from '@/components/ui/MissionMarquee'
@@ -161,9 +160,6 @@ export function HomeView() {
             viewAllHref={`/${locale}/nouvel`}
             posts={c.journal.posts.map((p, i) => ({ ...p, href: `/${locale}/nouvel#post-${i + 1}` }))}
           />
-
-          {/* Newsletter — full-width rounded card, sits right under the journal */}
-          <NewsletterSection content={c.newsletter} />
 
           {/* FAQ */}
           <FaqSection
