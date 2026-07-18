@@ -45,7 +45,7 @@ export function RadiantNavbar({
   const { locale: active, setLocale } = useLocale()
   const cur = langs.find((o) => o.code === active) ?? langs[0]
 
-  // Prefix internal paths ("/travay-nou", "/sou-nou#ekip") with the active
+  // Prefix internal paths ("/travay-nou", "/prensip") with the active
   // locale so links resolve to "/ht/travay-nou". Hash-only anchors ("#top") and
   // absolute URLs (http…) are left untouched.
   const toHref = (h: string) =>
@@ -72,7 +72,6 @@ export function RadiantNavbar({
                   <HoverMenu align="left" trigger={<>{l.label}<Chevron /></>}>
                     {l.children.map((c) => (
                       <Link key={c.href} href={toHref(c.href)} role="menuitem">
-                        <span className="hm-dot" aria-hidden="true" />
                         {c.label}
                       </Link>
                     ))}

@@ -167,6 +167,25 @@ export interface SiteContent {
    *  are the `pillars` bodies above — this carries the paragraph under each, plus
    *  the origin story and the team framing. Kept separate from `pillars` so the
    *  home page's short cards stay short. */
+  /** /prensip — the convictions page: eyebrow, lead, four numbered principles. */
+  principlesPage: {
+    label: string
+    lead: string
+    items: { title: string; body: string }[]
+  }
+  /** /ekip — the team page. The board itself is not locale content: it is named
+   *  in the imprint, so it lives in the page. */
+  teamPage: { label: string; lead: string; note: string }
+  /** /kontak — every channel we actually have. No phone: none has been supplied,
+   *  and inventing one on a statutory-adjacent page is not an option. */
+  contactPage: {
+    label: string
+    lead: string
+    emailLabel: string
+    postLabel: string
+    legalLabel: string
+    legalBody: string
+  }
   aboutPage: {
     missionLabel: string
     missionBody: string
@@ -306,9 +325,9 @@ const ht: SiteContent = {
       label: 'Sou nou',
       href: '/sou-nou',
       children: [
-        { label: 'Vizyon & misyon', href: '/sou-nou#vizyon' },
-        { label: 'Prensip nou yo', href: '/sou-nou#prensip' },
-        { label: 'Ekip', href: '/sou-nou#ekip' },
+        { label: 'Vizyon & misyon', href: '/sou-nou' },
+        { label: 'Prensip nou yo', href: '/prensip' },
+        { label: 'Ekip', href: '/ekip' },
         // { label: 'Karyè', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -462,6 +481,29 @@ const ht: SiteContent = {
       { name: 'Deviz', body: 'Chanjman nimerik Ayiti a dwe soti nan Ayiti li menm.' },
     ],
   },
+  principlesPage: {
+    label: 'Konviksyon nou yo',
+    lead: "Pi lwen pase pwojè nou yo, gen prensip. Yo defini kijan nou travay, sa nou refize konpwomèt, ak tras nou vle kite nan ekosistèm nimerik ayisyen an.",
+    items: [
+      { title: 'Ouvèti & transparans', body: "Tou sa nou bati ouvè pa default : piblik, oditab epi reitilizab. Kòd la, done yo ak desizyon yo ouvè pa default — paske konfyans bati sou transparans, pa janm sou sekrè." },
+      { title: 'Souverènte nimerik', body: "Ayiti dwe metrize enfrastrikti nimerik li ak done li. Nou bati zouti Ayisyen kontwole, ebèje epi fè evolye, pou redui depandans epi mete desizyon an pi pre kominote yo." },
+      { title: 'Aksesiblite & enklizyon', body: "Enfòmasyon piblik la se pou tout moun. Nou konsevwa san baryè fòma, lang oswa koneksyon, epi nou bati ak ekip divès — paske yon zouti sivik gen valè sèlman si li sèvi tout moun toutbon." },
+      { title: 'Dirabilite & byen komen', body: "Nou bati pou dire. Chak pwojè dwe siviv fondatè li yo, chita sou estanda ouvè epi nouri yon byen komen nimerik ki pwofite jenerasyon k ap vini yo, pa kèk moun sèlman." },
+    ],
+  },
+  teamPage: {
+    label: 'Ekip la',
+    lead: "Moun ki responsab devan lalwa pou Ayiti Dijital, jan yo nonmen yo nan enfòmasyon legal la.",
+    note: 'Chak manm gen dwa reprezante asosyasyon an pou kont li (§ 26 BGB).',
+  },
+  contactPage: {
+    label: 'Kontakte nou',
+    lead: "Yon kesyon, yon pwopozisyon patenarya, oswa yon pwojè ou vle enkibe ? Ekri nou — nou li tout mesaj.",
+    emailLabel: 'Imèl',
+    postLabel: 'Adrès postal',
+    legalLabel: 'Enfòmasyon legal',
+    legalBody: "Pou detay sou asosyasyon an, responsab yo ak fason nou trete done ou yo.",
+  },
   aboutPage: {
     missionLabel: 'Misyon',
     missionBody: "Kòm yon hub inovasyon, misyon nou se konsevwa enfrastrikti nimerik ki gen itilite piblik epi ofri yon ekosistèm enkibasyon konplè pou etidyan ak kreyatè. Nou transfòme lide brit an inovasyon ki ka kanpe, pou dinamize ekosistèm nasyonal la nan yon fason ki dire.",
@@ -599,9 +641,9 @@ const ht: SiteContent = {
     {
       heading: 'Sou nou',
       links: [
-        { label: 'Vizyon & misyon', href: '/sou-nou#vizyon' },
-        { label: 'Prensip nou yo', href: '/sou-nou#prensip' },
-        { label: 'Ekip', href: '/sou-nou#ekip' },
+        { label: 'Vizyon & misyon', href: '/sou-nou' },
+        { label: 'Prensip nou yo', href: '/prensip' },
+        { label: 'Ekip', href: '/ekip' },
         // { label: 'Karyè', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -610,7 +652,7 @@ const ht: SiteContent = {
       links: [
         { label: 'Fè yon don', href: '/soutni' },
         { label: 'Vin nan kominote a', href: '/kominote' },
-        { label: 'Kontak', href: 'mailto:contact@ayitidijital.org' },
+        { label: 'Kontak', href: '/kontak' },
       ],
     },
     {
@@ -675,9 +717,9 @@ const fr: SiteContent = {
       label: 'À propos',
       href: '/sou-nou',
       children: [
-        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
-        { label: 'Nos principes', href: '/sou-nou#prensip' },
-        { label: 'Équipe', href: '/sou-nou#ekip' },
+        { label: 'Vision & mission', href: '/sou-nou' },
+        { label: 'Nos principes', href: '/prensip' },
+        { label: 'Équipe', href: '/ekip' },
         // { label: 'Carrières', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -831,6 +873,29 @@ const fr: SiteContent = {
       { name: 'Devise', body: "La transformation numérique d'Haïti doit venir d'Haïti." },
     ],
   },
+  principlesPage: {
+    label: 'Nos convictions',
+    lead: "Au-delà de nos projets, des principes. Ils définissent comment nous travaillons, ce que nous refusons de compromettre, et la trace que nous voulons laisser dans l'écosystème numérique haïtien.",
+    items: [
+      { title: 'Ouverture & transparence', body: "Tout ce que nous construisons est ouvert par défaut : public, auditable et réutilisable. Le code, les données et les décisions sont ouverts par défaut — parce que la confiance se construit sur la transparence, jamais sur le secret." },
+      { title: 'Souveraineté numérique', body: "Haïti doit maîtriser son infrastructure numérique et ses données. Nous bâtissons des outils que des Haïtiens contrôlent, hébergent et font évoluer, pour réduire la dépendance et ancrer la décision au plus près des communautés." },
+      { title: 'Accessibilité & inclusion', body: "L'information publique appartient à tous. Nous concevons sans barrière de format, de langue ou de connectivité, et nous construisons avec des équipes diverses — car un outil civique n'a de valeur que s'il sert réellement tout le monde." },
+      { title: 'Durabilité & bien commun', body: "Nous bâtissons pour durer. Chaque projet doit survivre à ses fondateurs, reposer sur des standards ouverts et nourrir un bien commun numérique qui profite aux générations futures, pas à quelques-uns." },
+    ],
+  },
+  teamPage: {
+    label: "L'équipe",
+    lead: "Les personnes juridiquement responsables d'Ayiti Dijital, telles qu'elles sont nommées dans les mentions légales.",
+    note: 'Chaque membre peut représenter l’association seul (§ 26 BGB).',
+  },
+  contactPage: {
+    label: 'Nous écrire',
+    lead: "Une question, une proposition de partenariat, ou un projet à incuber ? Écrivez-nous — nous lisons chaque message.",
+    emailLabel: 'E-mail',
+    postLabel: 'Adresse postale',
+    legalLabel: 'Informations légales',
+    legalBody: "Pour les détails sur l'association, ses responsables et le traitement de vos données.",
+  },
   aboutPage: {
     missionLabel: 'Mission',
     missionBody: "En tant que hub d'innovation, notre mission est de concevoir des infrastructures numériques d'intérêt public et d'offrir un écosystème d'incubation complet aux étudiants et créateurs. Nous transformons les idées brutes en innovations viables pour dynamiser durablement l'écosystème national.",
@@ -968,9 +1033,9 @@ const fr: SiteContent = {
     {
       heading: 'À propos',
       links: [
-        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
-        { label: 'Nos principes', href: '/sou-nou#prensip' },
-        { label: 'Équipe', href: '/sou-nou#ekip' },
+        { label: 'Vision & mission', href: '/sou-nou' },
+        { label: 'Nos principes', href: '/prensip' },
+        { label: 'Équipe', href: '/ekip' },
         // { label: 'Carrières', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -979,7 +1044,7 @@ const fr: SiteContent = {
       links: [
         { label: 'Faire un don', href: '/soutni' },
         { label: 'Rejoindre la communauté', href: '/kominote' },
-        { label: 'Contact', href: 'mailto:contact@ayitidijital.org' },
+        { label: 'Contact', href: '/kontak' },
       ],
     },
     {
@@ -1044,9 +1109,9 @@ const en: SiteContent = {
       label: 'About',
       href: '/sou-nou',
       children: [
-        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
-        { label: 'Our principles', href: '/sou-nou#prensip' },
-        { label: 'Team', href: '/sou-nou#ekip' },
+        { label: 'Vision & mission', href: '/sou-nou' },
+        { label: 'Our principles', href: '/prensip' },
+        { label: 'Team', href: '/ekip' },
         // { label: 'Careers', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -1200,6 +1265,29 @@ const en: SiteContent = {
       { name: 'Motto', body: "Haiti's digital transformation must come from Haiti." },
     ],
   },
+  principlesPage: {
+    label: 'What we stand for',
+    lead: "Beyond our projects, principles. They define how we work, what we refuse to compromise on, and the mark we want to leave on Haiti's digital ecosystem.",
+    items: [
+      { title: 'Openness & transparency', body: "Everything we build is open by default: public, auditable and reusable. The code, the data and the decisions are open by default — because trust is built on transparency, never on secrecy." },
+      { title: 'Digital sovereignty', body: "Haiti must own its digital infrastructure and its data. We build tools that Haitians control, host and evolve, to reduce dependence and keep decisions close to the communities they affect." },
+      { title: 'Accessibility & inclusion', body: "Public information belongs to everyone. We design without barriers of format, language or connectivity, and we build with diverse teams — because a civic tool is only worth something if it genuinely serves everyone." },
+      { title: 'Durability & the commons', body: "We build to last. Every project must outlive its founders, rest on open standards, and feed a digital commons that benefits future generations rather than a few." },
+    ],
+  },
+  teamPage: {
+    label: 'The team',
+    lead: "The people legally accountable for Ayiti Dijital, as named in the imprint.",
+    note: 'Each member may represent the association individually (§ 26 BGB).',
+  },
+  contactPage: {
+    label: 'Get in touch',
+    lead: "A question, a partnership proposal, or a project to incubate? Write to us — we read every message.",
+    emailLabel: 'Email',
+    postLabel: 'Postal address',
+    legalLabel: 'Legal information',
+    legalBody: "For details on the association, who is accountable, and how your data is handled.",
+  },
   aboutPage: {
     missionLabel: 'Mission',
     missionBody: "As an innovation hub, our mission is to design digital infrastructure in the public interest and to offer students and creators a complete incubation ecosystem. We turn raw ideas into viable innovations, to energise the national ecosystem for the long run.",
@@ -1337,9 +1425,9 @@ const en: SiteContent = {
     {
       heading: 'About',
       links: [
-        { label: 'Vision & mission', href: '/sou-nou#vizyon' },
-        { label: 'Our principles', href: '/sou-nou#prensip' },
-        { label: 'Team', href: '/sou-nou#ekip' },
+        { label: 'Vision & mission', href: '/sou-nou' },
+        { label: 'Our principles', href: '/prensip' },
+        { label: 'Team', href: '/ekip' },
         // { label: 'Careers', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -1348,7 +1436,7 @@ const en: SiteContent = {
       links: [
         { label: 'Donate', href: '/soutni' },
         { label: 'Join the community', href: '/kominote' },
-        { label: 'Contact', href: 'mailto:contact@ayitidijital.org' },
+        { label: 'Contact', href: '/kontak' },
       ],
     },
     {

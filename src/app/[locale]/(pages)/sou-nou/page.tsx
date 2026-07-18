@@ -4,24 +4,10 @@ import { motion, useReducedMotion } from 'framer-motion'
 import { RoutePage } from '@/components/pages/RoutePage'
 import { useLocale } from '@/components/i18n/LocaleProvider'
 
-/** The Vorstand, as publicly named in the imprint (§ 5 DDG requires it there). */
-const BOARD = [
-  { name: 'Glory Pierrette', role: { ht: 'Prezidan', fr: 'Président', en: 'Chair' } },
-  {
-    name: 'Berlens Legagneur',
-    role: { ht: 'Vis-prezidan', fr: 'Vice-président', en: 'Deputy chair' },
-  },
-] as const
-
-const T = {
-  ht: { boardNote: 'Chak manm gen dwa reprezante asosyasyon an pou kont li (§ 26 BGB).' },
-  fr: { boardNote: 'Chaque membre peut représenter l’association seul (§ 26 BGB).' },
-  en: { boardNote: 'Each member may represent the association individually (§ 26 BGB).' },
-} as const
-
 /**
- * "Sou nou" — Mission / Vision / Devise, the origin story, then the board.
- * Anchors (#vizyon, #prensip, #ekip) are the ones the nav dropdown points at.
+ * "Sou nou" — Mission / Vision / Devise, then the origin story. The principles
+ * and the board have their own routes now (/prensip, /ekip), so neither is
+ * restated here where the two copies could drift.
  *
  * The three opening panels are staggered rather than aligned: each starts lower
  * than the one before it, so the eye reads them as a sequence instead of three
@@ -34,8 +20,7 @@ const T = {
  * gaps rather than a stair.
  */
 export default function SouNouPage() {
-  const { content: c, locale } = useLocale()
-  const t = T[locale]
+  const { content: c } = useLocale()
   const a = c.aboutPage
   const [mission, vision, devise] = c.pillars.items
   const reduce = useReducedMotion()
@@ -180,34 +165,9 @@ export default function SouNouPage() {
         </div>
       </section>
 
-      {/* ── The board ─────────────────────────────────────────────────── */}
-      <section id="ekip" className="scroll-mt-28 bg-white px-2 pb-16 md:pb-20 lg:pb-[100px]">
-        <div className="rounded-feature bg-sand px-5 py-16 md:px-10 md:py-20">
-          <div className="mx-auto max-w-[90rem]">
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-              {a.teamLabel}
-            </span>
-            <h2 className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-primary">
-              {a.teamTitle}
-            </h2>
-
-            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:max-w-3xl">
-              {BOARD.map((m) => (
-                <div
-                  key={m.name}
-                  className="rounded-card border border-black/[0.06] bg-white p-6 shadow-[0_20px_60px_-40px_rgba(10,58,96,0.35)]"
-                >
-                  <p className="font-display text-lg font-bold text-primary">{m.name}</p>
-                  <p className="mt-1 font-mono text-[11px] uppercase tracking-[0.14em] text-gold-deep">
-                    {m.role[locale]}
-                  </p>
-                </div>
-              ))}
-            </div>
-            <p className="mt-6 text-sm leading-relaxed text-ink-soft/85">{t.boardNote}</p>
-          </div>
-        </div>
-      </section>
+      {/* The board used to close this page. It has its own route now (/ekip), and
+          stating it twice would let the two copies drift — so this page ends on
+          the story and the nav sends you to the team. */}
     </RoutePage>
   )
 }

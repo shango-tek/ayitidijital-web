@@ -472,18 +472,7 @@
     background: rgba(18, 36, 107, .06)
 }
 
-.hm-dot {
-    width: 5px;
-    height: 5px;
-    border-radius: 50%;
-    background: var(--red);
-    flex: none;
-    margin-right: .15rem
-}
 
-.hm-panel-inner a:has(.hm-dot) {
-    justify-content: flex-start
-}
 
 .hm-code {
     font: 600 .72rem var(--font-mono);
