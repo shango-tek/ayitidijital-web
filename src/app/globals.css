@@ -39,6 +39,21 @@
   --radius-feature: 2rem;
 }
 
+/* `spiral:` — true exactly when the home page renders the spiral section.
+   The spiral is the page's mid-page dark break, so which section carries the
+   warm SectionPanel depends on whether it is there (see SectionPanel).
+
+   KEEP IN SYNC with the matchMedia string in HomeView, which decides whether to
+   mount the spiral at all. The two must agree or the page ends up with two
+   panels or none. It is a media query here, and JS there, because the panel must
+   be right in the server-rendered HTML (no hydration flash) while the spiral must
+   not MOUNT on a phone at all — hiding it in CSS would still run its canvas. */
+@custom-variant spiral {
+  @media (min-width: 1024px) and (orientation: landscape) and (hover: hover) and (pointer: fine) {
+    @slot;
+  }
+}
+
 /* ------------------------------------------------------------------
    Font wiring — the design CSS (site.css / radiant-parts.css) references
    the display / body / mono families via the --font-display / --font-body /

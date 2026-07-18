@@ -38,7 +38,7 @@ const sdgColor = (sdg: string) => SDG_COLORS[(sdg || '').split('/')[0].trim()] ?
  */
 export function DomainesGrid({ id, label, title, subtitle, sdgPrefix, items }: DomainesGridProps) {
   return (
-    <SectionPanel id={id}>
+    <SectionPanel id={id} gate="with-spiral">
       <div className="mx-auto max-w-[90rem] px-5 md:px-10">
         <SectionHeader variant="split" size="md" label={label} title={title} subtitle={subtitle} />
 

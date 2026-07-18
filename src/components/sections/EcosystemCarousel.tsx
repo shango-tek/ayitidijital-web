@@ -4,6 +4,7 @@ import type { ReactNode } from 'react'
 import { useRef } from 'react'
 import { cn } from '@/lib/utils'
 import { SectionHeader } from '../ui/SectionHeader'
+import { SectionPanel } from '../ui/SectionPanel'
 import { SectionCTA } from '../ui/SectionCTA'
 
 export interface EcosystemProject {
@@ -86,7 +87,7 @@ export function EcosystemCarousel({
   }
 
   return (
-    <section id={id} className="relative overflow-hidden bg-white py-16 md:py-20 lg:py-[100px]">
+    <SectionPanel id={id} gate="without-spiral" className="relative">
       {/* Header — outline word + rest left, lead right (shared split header) */}
       <div className="mx-auto mb-12 max-w-[90rem] px-5 md:px-10 lg:mb-14">
         <SectionHeader
@@ -175,6 +176,6 @@ export function EcosystemCarousel({
       <div className="mx-auto mt-8 max-w-[90rem] px-5 md:px-10">
         <SectionCTA tone="light" caption={outro} linkLabel={viewAll} link={viewAllHref} />
       </div>
-    </section>
+    </SectionPanel>
   )
 }

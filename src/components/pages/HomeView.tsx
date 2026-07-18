@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useState } from 'react'
 import { SilentPrecisionHero } from '@/components/sections/SilentPrecisionHero'
 import { AboutBento } from '@/components/sections/AboutBento'
 import { WorkOverview } from '@/components/sections/WorkOverview'
@@ -24,6 +25,32 @@ import { langs } from '@/content/site'
  */
 export function HomeView() {
   const { content: c, locale } = useLocale()
+
+  // The spiral is a heavy canvas moment — great with a mouse on a wide screen,
+  // but a continuous starfield rAF is a poor, battery-hungry fit on touch
+  // devices, and the sequence is composed for a landscape stage.
+  //
+  // Width alone was not enough: iPad Pro 12.9" in PORTRAIT is exactly 1024px
+  // wide, so it passed a bare `min-width: 1024px` and got the whole thing.
+  // Three conditions, all required:
+  //   min-width  — enough room for the stage at all
+  //   landscape  — excludes every tablet held upright, whatever its width
+  //   hover/fine — excludes touch entirely (a touchscreen laptop still reports
+  //                a fine pointer for its mouse, so those keep it)
+  //
+  // KEEP IN SYNC with the `spiral:` custom variant in globals.css, which moves
+  // the warm SectionPanel between EcosystemCarousel and DomainesGrid depending
+  // on whether this section is here to break the page.
+  const [showSpiral, setShowSpiral] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia(
+      '(min-width: 1024px) and (orientation: landscape) and (hover: hover) and (pointer: fine)',
+    )
+    const update = () => setShowSpiral(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
 
   return (
     <>
@@ -81,10 +108,10 @@ export function HomeView() {
           />
 
           {/* Spiral galaxy — 3D starfield + word-spiral + ambient word-field, fused.
-              On every device: it goes full-height in portrait, and it is also the
-              page's mid-page dark break, which is what keeps the white run short
-              on a phone. See SpiralGalaxy for how it paces itself. */}
-          <SpiralGalaxy words={c.marqueeWords} centerWords={c.spiralCenterWords} />
+              Desktop landscape only — see showSpiral above. Where it IS shown it
+              doubles as the page's mid-page dark break, which is why the warm
+              panel moves to a different section when it is absent. */}
+          {showSpiral && <SpiralGalaxy words={c.marqueeWords} centerWords={c.spiralCenterWords} />}
 
           {/* Explore our ecosystem — incubated-projects carousel (white bg) */}
           <EcosystemCarousel

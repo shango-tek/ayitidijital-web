@@ -82,20 +82,6 @@ export function SpiralGalaxy({
   const [scrub, setScrub] = useState(false)
   const scrubbing = useRef(false)
 
-  // Click-to-scrub is for pointers only. On a phone the card fills the screen,
-  // so a stray tap would silently grow the page by three screens and jump — a
-  // nasty surprise with no visible affordance. A mouse user gets `cursor-pointer`
-  // as the hint; a touch user just watches it play. (A touchscreen laptop still
-  // reports a fine pointer for its mouse, so those keep it.)
-  const [canScrub, setCanScrub] = useState(false)
-  useEffect(() => {
-    const mq = window.matchMedia('(hover: hover) and (pointer: fine)')
-    const update = () => setCanScrub(mq.matches)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
-
   // Fires as soon as the card is meaningfully on screen — NOT once it is fully
   // in view. Waiting for full visibility would mean the sequence only ever plays
   // with the card already parked; instead the entry itself is the cue, and the
@@ -177,7 +163,7 @@ export function SpiralGalaxy({
   })
 
   const enterScrub = () => {
-    if (!canScrub || reducedMotion || scrubbing.current) return
+    if (reducedMotion || scrubbing.current) return
     scrubbing.current = true
     setScrub(true)
   }
@@ -261,17 +247,8 @@ export function SpiralGalaxy({
       {/* Stage — one screen, in normal flow, until a click pins it.
           White with the same ambient gold + navy glows as the "Passe à l'action"
           section, so the portal blooms out of a soft warm/cool wash rather than
-          flat paper.
-
-          LANDSCAPE 88vh, PORTRAIT full height. In landscape the 12vh shortfall
-          lets the next section peek so the page still reads as scrollable. In
-          portrait there is no such worry — the viewport is tall and narrow, the
-          circle is width-constrained, and giving it the whole screen is the only
-          way it reads as a portal rather than a letterbox.
-
-          dvh, not vh: on a phone `100vh` is the toolbar-less height, so a vh
-          stage would sit taller than the visible viewport and could never come
-          fully into view.
+          flat paper. 88vh rather than a full screen so the next section peeks
+          and the page still reads as scrollable.
 
           No min-height — a floor taller than a short viewport would keep the
           section from ever satisfying the in-view trigger. */}
@@ -280,9 +257,7 @@ export function SpiralGalaxy({
         className={
           scrub
             ? 'sticky top-0 h-[100dvh] overflow-hidden bg-white'
-            : `relative h-[88vh] portrait:h-[100dvh] overflow-hidden bg-white${
-                canScrub && !reducedMotion ? ' cursor-pointer' : ''
-              }`
+            : `relative h-[88vh] overflow-hidden bg-white${reducedMotion ? '' : ' cursor-pointer'}`
         }
       >
         <span
@@ -367,12 +342,9 @@ export function SpiralGalaxy({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
-              // Floor lowered from 1.05rem so the vw term stays in charge on
-              // small phones: at 320px the old floor held the line at 16.8px,
-              // which overflowed the card by 9px — and since this is
-              // whitespace-nowrap inside an overflow-hidden card, "Imaginer" and
-              // "Transformer" were clipped at both edges rather than shrinking.
-              // Only ever mattered once the spiral started shipping to phones.
+              // Floor sits below the vw term at every width the spiral is shown
+              // at, so the three-word line always scales rather than being
+              // clipped — it is whitespace-nowrap inside an overflow-hidden card.
               className="flex items-center justify-center whitespace-nowrap px-4 font-display text-[clamp(0.9rem,4.8vw,4.5rem)] font-extrabold uppercase leading-none tracking-tight text-gold drop-shadow-[0_4px_34px_rgba(0,0,0,0.85)]"
             >
               {centerWords.map((w, i) => {
