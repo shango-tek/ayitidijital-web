@@ -485,6 +485,20 @@
     background: var(--paper);
     overflow: hidden;
   }
+  /* The page header becomes a card, like every other dark surface here.
+     At this size the hero panel, the newsletter and the footer are all 8px-inset
+     2rem-radius cards; the header was the only full-bleed square-cornered one,
+     which read as an oversight rather than a choice — and its hard bottom edge
+     cut straight into the white body.
+
+     Squaring everything instead was the other option, and it is worse: the
+     shell's rounded top is not decoration, it is the same colour as the open
+     menu panel and shows through those corners so the page reads as sliding out
+     from under it. Losing that costs a relationship; gaining this costs nothing. */
+  .page-header {
+    margin: .5rem;
+    border-radius: 2rem;
+  }
   .hp .hp-bg { inset: 0; border-radius: 0 }
   .hp-inner { padding-top: 5.75rem }
   /* precision hero stays an inset, rounded card here too (space top/left/right) so
