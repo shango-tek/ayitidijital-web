@@ -26,9 +26,9 @@ import { langs } from '@/content/site'
 export function HomeView() {
   const { content: c, locale } = useLocale()
 
-  // The spiral is a heavy, scroll-pinned canvas moment — great with a mouse on a
-  // wide screen, but a 400vh scroll-jack + starfield rAF is a poor,
-  // battery-hungry fit on touch devices.
+  // The spiral is a heavy canvas moment — great with a mouse on a wide screen,
+  // but a continuous starfield rAF (plus the click-to-pin scrub it offers) is a
+  // poor, battery-hungry fit on touch devices.
   //
   // Width alone was not enough: iPad Pro 12.9" in PORTRAIT is exactly 1024px
   // wide, so it passed a bare `min-width: 1024px` and got the whole scroll-jack.
@@ -105,7 +105,13 @@ export function HomeView() {
 
           {/* Spiral galaxy — 3D starfield + word-spiral + ambient word-field, fused.
               Desktop only (≥1024px) — see showSpiral above. */}
-          {showSpiral && <SpiralGalaxy words={c.marqueeWords} centerWords={c.spiralCenterWords} />}
+          {showSpiral && (
+            <SpiralGalaxy
+              words={c.marqueeWords}
+              centerWords={c.spiralCenterWords}
+              scrubLabel={c.spiralScrubLabel}
+            />
+          )}
 
           {/* Explore our ecosystem — incubated-projects carousel (white bg) */}
           <EcosystemCarousel

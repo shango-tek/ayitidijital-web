@@ -6,6 +6,7 @@ import {
   AnimatePresence,
   animate,
   useInView,
+  useScroll,
   useMotionValue,
   useTransform,
   useMotionValueEvent,
@@ -26,6 +27,8 @@ export interface SpiralGalaxyProps {
   words?: string[]
   targetChars?: number
   centerWords?: string[]
+  /** Label for the opt-in button that hands pacing over to the reader's scroll. */
+  scrubLabel?: string
 }
 
 /**
@@ -33,18 +36,25 @@ export interface SpiralGalaxyProps {
  * background, the text spiral zooming + rotating in front of it, and the
  * alternating word (Imagine / Transform / Build) in the eye.
  *
- * Plays once, on its own clock, when it scrolls into view — see `progress`
- * below. It is deliberately NOT a scroll-pinned section any more: the sequence
- * is unchanged, but it occupies one screen instead of charging four.
+ * Two modes, one choreography:
+ *   default — one screen in normal flow; the sequence plays on its own clock
+ *             every time the card scrolls fully into view.
+ *   scrub   — opt-in on click: the section grows to 400vh, the card pins, and
+ *             the reader's scroll drives the sequence frame by frame.
+ *
+ * The pinned scrub used to be the ONLY mode, which charged every reader four
+ * screens of scroll to deliver three words. Now it is there for whoever wants
+ * it, and free for everyone who doesn't.
  */
 export function SpiralGalaxy({
   words = DEFAULT_WORDS,
   targetChars = 300,
   centerWords = DEFAULT_CENTER_WORDS,
+  scrubLabel,
 }: SpiralGalaxyProps) {
   // Spell the brand words around the spiral (separated by a middot).
   const text = words.join(' · ') + ' · '
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLElement>(null)
 
   // Progress fraction after which the eye switches from rolling single words to
   // the finale (all three verbs at once).
@@ -65,18 +75,95 @@ export function SpiralGalaxy({
      the card now staying put, running to 1 would leave the finale sitting on an
      almost-black field. 0.85 lands exactly on the end of the plateau. */
   const progress = useMotionValue(0)
-  const inView = useInView(ref, { once: true, amount: 0.55 })
   const reducedMotion = useReducedMotion()
 
+  // Opt-in pinned mode. `scrub` drives the markup; `scrubbing` is the same flag
+  // readable from inside scroll listeners without re-subscribing them.
+  const [scrub, setScrub] = useState(false)
+  const scrubbing = useRef(false)
+
+  // Fires only once the card is COMPLETELY in view ('all'), not part-way — the
+  // portal should bloom while you're looking at the whole circle, not while it's
+  // still half off-screen. `once` is deliberately off so it can replay.
+  const inView = useInView(ref, { amount: 'all' })
+
+  // Armed = "a fresh play is allowed". Spent on each play, re-armed only once
+  // the section has left the viewport DOWNWARD (see below) — so the sequence
+  // replays every time you come down the page onto it, but doesn't restart
+  // while it is still on screen.
+  const armed = useRef(true)
+
   useEffect(() => {
-    if (!inView) return
+    if (scrub || !inView || !armed.current) return
+    armed.current = false
     if (reducedMotion) {
       progress.set(0.85) // honour the preference: show the resolved end state
       return
     }
+    progress.set(0) // always start from the closed portal
     const controls = animate(progress, 0.85, { duration: 6.5, ease: 'easeOut' })
+    // Also stops the tween when `scrub` flips — the click hands over mid-play.
     return () => controls.stop()
-  }, [inView, reducedMotion, progress])
+  }, [scrub, inView, reducedMotion, progress])
+
+  // Re-arm + rewind once the section sits entirely BELOW the viewport, i.e. the
+  // reader has scrolled back up above it. Next time they come down onto it, it
+  // plays again from the start. Scrolling PAST it downward leaves the finale
+  // standing, so it never rewinds under you as it exits the top.
+  useEffect(() => {
+    const onScroll = () => {
+      const el = ref.current
+      if (!el || el.getBoundingClientRect().top <= window.innerHeight) return
+      if (!armed.current) {
+        armed.current = true
+        progress.set(0) // back to the initial state, ready to fire on re-entry
+      }
+      // Leaving it behind also drops the pinned mode, so the section is back to
+      // one screen and autoplays again on the next approach.
+      if (scrubbing.current) {
+        scrubbing.current = false
+        setScrub(false)
+      }
+    }
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    window.addEventListener('resize', onScroll)
+    return () => {
+      window.removeEventListener('scroll', onScroll)
+      window.removeEventListener('resize', onScroll)
+    }
+  }, [progress])
+
+  /* --- Click → the old pinned scrub ---------------------------------------- */
+  const { scrollYProgress } = useScroll({ target: ref, offset: ['start start', 'end end'] })
+  useMotionValueEvent(scrollYProgress, 'change', (v) => {
+    if (scrubbing.current) progress.set(v)
+  })
+
+  const enterScrub = () => {
+    if (reducedMotion || scrubbing.current) return
+    scrubbing.current = true
+    setScrub(true)
+  }
+
+  // Once pinned, put the reader at the scroll position that MATCHES the frame
+  // they just clicked on, rather than at the section's top. The click then reads
+  // as "the sequence stopped and my wheel took over" — scroll up rewinds it,
+  // scroll down carries on — instead of snapping the card shut and replaying.
+  // The 312vh the section just grew by is all below the pin, so nothing they are
+  // looking at moves.
+  //
+  // 'instant', NOT 'auto': `behavior: 'auto'` means "defer to CSS", and this site
+  // sets `html { scroll-behavior: smooth }` — so 'auto' would animate the jump,
+  // and an in-flight smooth scroll fights the reader's own wheel input, which is
+  // the very thing the scrub hands over to them.
+  useEffect(() => {
+    const el = ref.current
+    if (!scrub || !el) return
+    const sectionTop = window.scrollY + el.getBoundingClientRect().top
+    const scrubRange = Math.max(0, el.offsetHeight - window.innerHeight)
+    window.scrollTo({ top: sectionTop + progress.get() * scrubRange, behavior: 'instant' })
+  }, [scrub, progress])
 
   // Text spiral: zoom + rotate with scroll — but only up to the finale. The end
   // values are the ORIGINAL full-scroll motion (scale 5.5 / rotate -320 over the
@@ -134,13 +221,24 @@ export function SpiralGalaxy({
   const n = chars.length
 
   return (
-    <section ref={ref} className="relative bg-white">
-      {/* Stage — one screen, in normal flow (it used to be a 400vh sticky pin).
+    <section ref={ref} className={scrub ? 'relative h-[400vh] bg-white' : 'relative bg-white'}>
+      {/* Stage — one screen, in normal flow, until a click pins it.
           White with the same ambient gold + navy glows as the "Passe à l'action"
           section, so the portal blooms out of a soft warm/cool wash rather than
           flat paper. 88vh rather than a full screen so the next section peeks
-          and the page still reads as scrollable. */}
-      <div className="relative h-[88vh] min-h-[34rem] overflow-hidden bg-white">
+          and the page still reads as scrollable.
+
+          No min-height: the autoplay trigger requires the section to be FULLY in
+          view, which a floor taller than a short viewport would make impossible.
+          88vh is by definition always shorter than the viewport. */}
+      <div
+        onClick={enterScrub}
+        className={
+          scrub
+            ? 'sticky top-0 h-screen overflow-hidden bg-white'
+            : `relative h-[88vh] overflow-hidden bg-white${reducedMotion ? '' : ' cursor-pointer'}`
+        }
+      >
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-gold/[0.07] blur-3xl"
@@ -266,6 +364,20 @@ export function SpiralGalaxy({
 
         {/* inner hairline ring — matches the hero card's inset edge */}
         <div className="pointer-events-none absolute inset-0 z-20 rounded-[2rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)]" />
+
+        {/* The opt-in into the pinned scrub. It lives INSIDE the clipped card so
+            it is revealed by the portal along with everything else, and so it is
+            only ever read against the dark surface. The whole stage is clickable
+            too — this is the keyboard-reachable, labelled version of that. */}
+        {!scrub && !reducedMotion && scrubLabel ? (
+          <button
+            type="button"
+            onClick={enterScrub}
+            className="absolute bottom-6 left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.15em] text-white/70 backdrop-blur-sm transition hover:border-gold/60 hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
+          >
+            {scrubLabel}
+          </button>
+        ) : null}
         </motion.div>
       </div>
     </section>
