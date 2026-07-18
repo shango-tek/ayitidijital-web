@@ -146,6 +146,10 @@ a{color:inherit}
 .btn{display:inline-flex;align-items:center;gap:.55rem;font:600 .95rem/1.1 var(--font-display);padding:.95rem 1.45rem;border-radius:999px;border:2px solid transparent;text-decoration:none;cursor:pointer;transition:transform .13s ease,box-shadow .13s ease,background-color .13s ease,border-color .13s ease,color .13s ease}
 .btn:hover{transform:translate(-2px,-2px)}
 .btn:active{transform:translate(0,0);box-shadow:none}
+/* In-flight submits: visibly inert, and the signature hover lift is suppressed
+   so a disabled button never looks like it is still offering to be pressed. */
+.btn:disabled{opacity:.6;cursor:not-allowed}
+.btn:disabled:hover{transform:none;box-shadow:none}
 .btn-sand{background:var(--sand);color:var(--navy)}
 .btn-sand:hover{box-shadow:5px 5px 0 rgba(169,186,240,.38)}
 .btn-ghost{border-color:rgba(244,239,230,.42);color:#fff}

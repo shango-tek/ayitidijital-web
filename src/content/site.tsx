@@ -195,7 +195,13 @@ export interface SiteContent {
     optional: string
     send: string
     sending: string
+    /** Shown when an endpoint took the message. */
     sent: string
+    /** Shown when the visitor's own mail client was opened instead — they still
+     *  have to press send, so this cannot say "we have your message". */
+    handoff: string
+    error: string
+    again: string
     formNote: string
   }
   aboutPage: {
@@ -523,7 +529,10 @@ const ht: SiteContent = {
     optional: 'opsyonèl',
     send: 'Voye',
     sending: 'N ap voye…',
-    sent: 'Mèsi — n ap reponn ou.',
+    sent: 'Mèsi — nou resevwa mesaj ou, n ap reponn.',
+    handoff: "Pwogram imèl ou dwe louvri ak mesaj la pare. Voye l epi n ap reponn ou.",
+    error: "Nou pa rive voye l. Ekri nou dirèkteman nan contact@ayitidijital.org.",
+    again: 'Ekri yon lòt mesaj',
     formNote: "Fòm nan louvri yon mesaj deja ranpli nan pwòp pwogram imèl ou : se ou menm ki voye l.",
   },
   aboutPage: {
@@ -925,7 +934,10 @@ const fr: SiteContent = {
     optional: 'facultatif',
     send: 'Envoyer',
     sending: 'Envoi…',
-    sent: 'Merci — nous vous répondons.',
+    sent: 'Merci — nous avons votre message, nous vous répondons.',
+    handoff: "Votre logiciel de messagerie s'est ouvert avec le message prêt. Envoyez-le et nous vous répondrons.",
+    error: "L'envoi n'a pas abouti. Écrivez-nous directement à contact@ayitidijital.org.",
+    again: 'Écrire un autre message',
     formNote: "Le formulaire ouvre un message pré-rempli dans votre propre logiciel de messagerie : c'est vous qui l'envoyez.",
   },
   aboutPage: {
@@ -1327,7 +1339,10 @@ const en: SiteContent = {
     optional: 'optional',
     send: 'Send',
     sending: 'Sending…',
-    sent: "Thanks — we'll get back to you.",
+    sent: "Thanks — we have your message and we'll get back to you.",
+    handoff: 'Your mail program should have opened with the message ready. Send it and we will reply.',
+    error: "That didn't go through. Write to us directly at contact@ayitidijital.org.",
+    again: 'Write another message',
     formNote: 'The form opens a pre-filled message in your own mail program: you are the one who sends it.',
   },
   aboutPage: {

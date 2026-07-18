@@ -25,6 +25,8 @@ interface ActionButton extends CommonProps {
   href?: undefined
   type?: 'button' | 'submit'
   onClick?: () => void
+  /** Submits are disabled while in flight, so the primitive has to support it. */
+  disabled?: boolean
   external?: never
 }
 
@@ -80,7 +82,12 @@ export function Button(props: ButtonProps) {
   }
 
   return (
-    <button className={classes} type={props.type ?? 'button'} onClick={props.onClick}>
+    <button
+      className={classes}
+      type={props.type ?? 'button'}
+      onClick={props.onClick}
+      disabled={props.disabled}
+    >
       {inner}
     </button>
   )

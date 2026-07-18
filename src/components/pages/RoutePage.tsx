@@ -30,7 +30,12 @@ export function RoutePage({
   children?: ReactNode
 }) {
   const c = useContent()
-  const entry: NavLink | undefined = c.navLinks.find((l) => l.href === path)
+  // Search the dropdown children too, not just top-level entries. /prensip and
+  // /ekip live under "Sou nou", so a top-level-only lookup fell through to the
+  // fallback and printed the raw path — "/prensip" — as the page heading.
+  const entry: NavLink | undefined =
+    c.navLinks.find((l) => l.href === path) ??
+    c.navLinks.flatMap((l) => l.children ?? []).find((child) => child.href === path)
   const title = titleProp ?? entry?.label ?? path
 
   // Split the heading so the first word gets the italic outlined treatment.

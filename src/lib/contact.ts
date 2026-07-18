@@ -23,7 +23,16 @@ export interface ContactFields {
   message: string
 }
 
-export async function submitContact(fields: ContactFields): Promise<void> {
+/**
+ * Which path the submit took. The caller needs this because the two outcomes
+ * are genuinely different things to tell someone: `sent` means we have the
+ * message, `handoff` means their mail client is open with it and they still
+ * have to press send. Saying "thanks, we'll reply" after a handoff would be a
+ * lie the visitor discovers only when nobody answers.
+ */
+export type ContactOutcome = 'sent' | 'handoff'
+
+export async function submitContact(fields: ContactFields): Promise<ContactOutcome> {
   const email = fields.email.trim()
   const message = fields.message.trim()
   if (!email || !message) throw new Error('email and message required')
@@ -35,7 +44,7 @@ export async function submitContact(fields: ContactFields): Promise<void> {
       body: JSON.stringify(fields),
     })
     if (!res.ok) throw new Error(`contact POST failed: ${res.status}`)
-    return
+    return 'sent'
   }
 
   const name = [fields.firstName, fields.lastName].filter(Boolean).join(' ').trim()
@@ -44,4 +53,5 @@ export async function submitContact(fields: ContactFields): Promise<void> {
     [name && `${name}`, email, '', message].filter((l) => l !== undefined && l !== '').join('\n'),
   )
   window.location.href = `mailto:${CONTACT}?subject=${subject}&body=${body}`
+  return 'handoff'
 }
