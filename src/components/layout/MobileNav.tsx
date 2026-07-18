@@ -105,6 +105,10 @@ export function MobileNav() {
   const [openSubs, setOpenSubs] = useState<Set<string>>(() => new Set())
   const followLabel = locale === 'fr' ? 'Suivez-nous' : locale === 'en' ? 'Follow us' : 'Swiv nou'
   const close = () => setOpen(false)
+  // Nav hrefs are authored locale-less ("/travay-nou"); routes live under
+  // "/[locale]". Without this every link in this menu 404s — the desktop navbar
+  // has always prefixed them (RadiantNavbar's toHref), this one never did.
+  const toHref = (h: string) => (h.startsWith('/') ? `/${locale}${h}` : h)
   const toggleSub = (href: string) =>
     setOpenSubs((prev) => {
       const next = new Set(prev)
@@ -127,7 +131,7 @@ export function MobileNav() {
               <div className="mnav-pgleft">
                 <PlusGridItem className="mnav-pgitem">
                   <div className="mnav-row">
-                    <a href="#top" className="mnav-logo" aria-label={content.brandName} onClick={close}>
+                    <a href={`/${locale}`} className="mnav-logo" aria-label={content.brandName} onClick={close}>
                       <LanbiMark size={44} />
                       <span className="mnav-brand">{content.brandName}</span>
                     </a>
@@ -165,8 +169,8 @@ export function MobileNav() {
                   <div className="mnav-pgleft">
                     <PlusGridItem className="mnav-pgitem">
                       <div className="mnav-row">
-              <a href="#top" className="mnav-logo" aria-label={content.brandName} onClick={close}>
-                <LanbiMark light size={44} />
+              <a href={`/${locale}`} className="mnav-logo" aria-label={content.brandName} onClick={close}>
+                <LanbiMark size={44} />
                 <span className="mnav-brand">{content.brandName}</span>
               </a>
               <div className="mnav-actions">
@@ -200,7 +204,7 @@ export function MobileNav() {
                       <div className="mnav-cellhead">
                         {/* the label always navigates; a separate chevron toggles the
                             sub-links (accordion), so the overview page stays reachable */}
-                        <a href={l.href} className="mnav-link" onClick={close}>
+                        <a href={toHref(l.href)} className="mnav-link" onClick={close}>
                           <span>{l.label}</span>
                           {!kids && (
                             <svg className="mnav-link-arrow" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -225,7 +229,7 @@ export function MobileNav() {
                           <div className="mnav-subinner">
                             <div className="mnav-sub">
                               {kids.map((c) => (
-                                <a key={c.href} href={c.href} className="mnav-sublink" onClick={close}>
+                                <a key={c.href} href={toHref(c.href)} className="mnav-sublink" onClick={close}>
                                   {c.label}
                                 </a>
                               ))}

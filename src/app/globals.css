@@ -58,11 +58,13 @@
    wastes the width, tall and narrow enough that the desktop layout crowds it,
    and the one shape where the spiral is absent but the page is still roomy.
 
-   min-width 768 keeps phones out (they get the mobile layout, which is right for
-   them); no max-width, because iPad Pro 12.9" portrait is 1024px wide and needs
-   this just as much as a 768px iPad does. */
+   700, NOT the 768 `md` breakpoint: iPad mini portrait is 744 CSS px and iPad
+   10.2" is 810, so a 768 floor silently dropped the smallest iPads back to the
+   phone layout. 700 clears every phone in portrait (the widest is ~440) while
+   catching every iPad. No max-width either, because iPad Pro 12.9" portrait is
+   1024px wide and needs this just as much as a mini does. */
 @custom-variant tablet-portrait {
-  @media (min-width: 768px) and (orientation: portrait) {
+  @media (min-width: 700px) and (orientation: portrait) {
     @slot;
   }
 }
@@ -246,13 +248,17 @@
 .mnav-bar .mnav-toggle { color: var(--navy) }
 .mnav-bar .mnav-toggle:hover { background: rgba(18, 36, 107, .08) }
 
-/* PANEL — grows in flow (grid-rows), navy */
+/* PANEL — grows in flow (grid-rows), white.
+   Was navy; the whole panel is now a light surface, so every child that was
+   coloured for a dark background is re-stated below in navy / ink-soft. The one
+   thing that carries over unchanged is the red hover arrow — the brand accent
+   reads on both. */
 .mnav-panel {
   position: relative;
   z-index: 50;
   display: grid;
   grid-template-rows: 0fr;
-  background: var(--navy);
+  background: #fff;
   transition: grid-template-rows .5s cubic-bezier(.32, .72, 0, 1);
 }
 .mnav-open .mnav-panel { grid-template-rows: 1fr }
@@ -260,13 +266,17 @@
 /* padding-top matches the closed bar's — both header rows now carry the PlusGrid
    (which adds ~9px of its own row padding), so the logo holds still on open */
 .mnav-panel-content { padding: 1.1rem 0 2.75rem }
-/* PlusGrid recoloured light so the line + plus marks read on the navy panel */
-.mnav-panel .pg-rule-t1, .mnav-panel .pg-rule-t2 { border-top-color: rgba(255, 255, 255, .17) }
-.mnav-panel .pg-row:last-child .pg-rule-b1, .mnav-panel .pg-row:last-child .pg-rule-b2 { border-bottom-color: rgba(255, 255, 255, .17) }
-.mnav-panel .pg-ico { fill: rgba(255, 255, 255, .24) }
-.mnav-panel .mnav-brand { color: #fff }
-.mnav-panel .mnav-toggle { color: #fff }
-.mnav-panel .mnav-toggle:hover { background: rgba(255, 255, 255, .12) }
+/* PlusGrid frame + header, in the same navy the CLOSED bar already uses, so the
+   header does not change colour when the menu opens */
+.mnav-panel .pg-rule-t1, .mnav-panel .pg-rule-t2 { border-top-color: rgba(18, 36, 107, .14) }
+.mnav-panel .pg-row:last-child .pg-rule-b1, .mnav-panel .pg-row:last-child .pg-rule-b2 { border-bottom-color: rgba(18, 36, 107, .14) }
+.mnav-panel .pg-ico { fill: rgba(18, 36, 107, .22) }
+.mnav-panel .mnav-brand { color: var(--navy) }
+.mnav-panel .mnav-toggle { color: var(--navy) }
+.mnav-panel .mnav-toggle:hover { background: rgba(18, 36, 107, .08) }
+.mnav-panel .mnav-langtrigger { color: var(--navy) }
+.mnav-panel .mnav-langtrigger:hover { background: rgba(18, 36, 107, .08) }
+.mnav-panel .mnav-chev { color: var(--navy) }
 
 /* language dropdown (open header) */
 /* header sits above the menu below it, so the open language dropdown (which
@@ -339,22 +349,22 @@
   padding: 0;
   display: grid;
   grid-template-columns: 1fr;
-  border-bottom: 1px solid rgba(255, 255, 255, .14);
+  border-bottom: 1px solid rgba(18, 36, 107, .13);
 }
 .mnav-cell {
   position: relative;
   padding: 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, .14);
+  border-top: 1px solid rgba(18, 36, 107, .13);
   transition: background-color .18s ease;
 }
-.mnav-cell:hover { background: rgba(255, 255, 255, .05) }
+.mnav-cell:hover { background: rgba(18, 36, 107, .04) }
 /* the OPEN menu never shows the plus-grid frame (phone + tablet); the closed bar
    keeps it. So every cell keeps its top hairline and the grid owns its top edge. */
 .mnav-panel .pg-rule,
 .mnav-panel .pg-ico { display: none }
 @media (min-width: 640px) {
   .mnav-list { grid-template-columns: 1fr 1fr }
-  .mnav-cell:nth-child(even) { border-left: 1px solid rgba(255, 255, 255, .14) }
+  .mnav-cell:nth-child(even) { border-left: 1px solid rgba(18, 36, 107, .13) }
   /* more breathing room between the header and the grid */
   .mnav-menu { margin-top: 2.75rem }
   /* uniform-height cells with vertically-centred content */
@@ -371,7 +381,7 @@
   gap: .65rem;
   font: 500 clamp(2.1rem, 9vw, 2.75rem)/1 var(--font-display);
   letter-spacing: -.02em;
-  color: #fff;
+  color: var(--navy);
   text-decoration: none;
   transition: transform .24s cubic-bezier(.32, .72, 0, 1);
 }
@@ -398,11 +408,11 @@
   border: 0;
   background: none;
   border-radius: 999px;
-  color: rgba(255, 255, 255, .7);
+  color: rgba(18, 36, 107, .55);
   cursor: pointer;
   transition: background-color .13s ease, color .13s ease;
 }
-.mnav-subtoggle:hover { background: rgba(255, 255, 255, .1); color: #fff }
+.mnav-subtoggle:hover { background: rgba(18, 36, 107, .08); color: var(--navy) }
 .mnav-subtoggle .mnav-chev { width: 1.15rem; height: 1.15rem; transition: transform .28s cubic-bezier(.32, .72, 0, 1) }
 .mnav-subtoggle[aria-expanded="true"] .mnav-chev { transform: rotate(180deg) }
 .mnav-subwrap {
@@ -416,11 +426,11 @@
 @media (prefers-reduced-motion: reduce) { .mnav-subwrap { transition: none } }
 .mnav-sublink {
   font: 500 1rem/1.5 var(--font-body);
-  color: rgba(255, 255, 255, .58);
+  color: var(--ink-soft);
   text-decoration: none;
   transition: color .14s ease;
 }
-.mnav-sublink:hover { color: #fff }
+.mnav-sublink:hover { color: var(--navy) }
 
 /* foot — support CTA + Studio-style follow-us social row */
 .mnav-foot { margin-top: 2.75rem; display: flex; flex-direction: column; align-items: flex-start; gap: 2.25rem }
@@ -438,12 +448,12 @@
   font: 600 .8rem/1 var(--font-display);
   letter-spacing: .17em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, .55);
+  color: var(--ink-soft);
 }
 .mnav-social { display: flex; gap: 1.55rem; margin: 0; padding: 0; list-style: none }
 .mnav-social-link {
   display: inline-flex;
-  color: #fff;
+  color: var(--navy);
   opacity: .78;
   transition: opacity .15s ease, transform .18s ease;
 }
@@ -461,10 +471,13 @@
   .hp .rn-header,
   .precision-hero .rn-header { display: none }
   .floatnav { display: none }
-  /* navy sits BEHIND the content card, so the card's rounded top corners reveal
-     the menu colour — at rest as two subtle notches, and when the menu opens the
-     same navy grows to the full panel, so the card reads as sliding out of it. */
-  body { background: var(--navy) }
+  /* The menu colour sits BEHIND the content card, so the card's rounded top
+     corners reveal it — at rest as two subtle notches, and when the menu opens
+     the same colour grows to the full panel, so the card reads as sliding out
+     of it. MUST track .mnav-panel's background: it was navy when the panel was,
+     and left a navy sliver down each side of the open white panel until it
+     followed it to white. */
+  body { background: #fff }
   .mshell {
     position: relative;
     border-top-left-radius: 2rem;

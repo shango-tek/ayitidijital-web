@@ -1,3 +1,6 @@
+'use client'
+
+import { useRef } from 'react'
 import { SectionHeader } from '../ui/SectionHeader'
 import { SectionCTA } from '../ui/SectionCTA'
 
@@ -37,6 +40,12 @@ export function JournalSection({
   viewAllHref,
   posts,
 }: JournalSectionProps) {
+  const trackRef = useRef<HTMLDivElement>(null)
+  // Same nudge distance as the ecosystem carousel, so both tracks step alike.
+  const scroll = (dir: 1 | -1) => {
+    trackRef.current?.scrollBy({ left: dir * 380, behavior: 'smooth' })
+  }
+
   return (
     <section id={id} className="bg-white py-16 md:py-20 lg:py-[100px]">
       <div className="mx-auto max-w-[90rem] px-5 md:px-10">
@@ -54,7 +63,9 @@ export function JournalSection({
             screen, the third peeking past the right edge to advertise the swipe.
             Three squeezed columns don't fit that width, and two-up leaves the
             third post stranded alone on a second row. */}
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-7 tablet-portrait:flex tablet-portrait:snap-x tablet-portrait:snap-mandatory tablet-portrait:overflow-x-auto tablet-portrait:pb-1 tablet-portrait:[scrollbar-width:none] tablet-portrait:[&::-webkit-scrollbar]:hidden">
+        <div
+          ref={trackRef}
+          className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-7 tablet-portrait:flex tablet-portrait:snap-x tablet-portrait:snap-mandatory tablet-portrait:overflow-x-auto tablet-portrait:pb-1 tablet-portrait:[scrollbar-width:none] tablet-portrait:[&::-webkit-scrollbar]:hidden">
           {posts.map((post) => (
             <a
               key={post.title}
@@ -95,6 +106,25 @@ export function JournalSection({
                 </span>
               </div>
             </a>
+          ))}
+        </div>
+
+        {/* Prev / next — only where the grid above is actually a scrolling track.
+            Identical markup and nudge distance to the ecosystem carousel's, so
+            the two tracks look and behave the same. */}
+        <div className="mt-6 hidden items-center justify-center gap-3 tablet-portrait:flex">
+          {([-1, 1] as const).map((dir) => (
+            <button
+              key={dir}
+              type="button"
+              onClick={() => scroll(dir)}
+              aria-label={dir === -1 ? 'Previous' : 'Next'}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-primary/20 text-primary/40 transition-colors duration-200 hover:border-accent hover:text-accent"
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+                <path strokeLinecap="round" strokeLinejoin="round" d={dir === -1 ? 'M15 19l-7-7 7-7' : 'M9 5l7 7-7 7'} />
+              </svg>
+            </button>
           ))}
         </div>
 
