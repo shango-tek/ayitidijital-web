@@ -377,7 +377,7 @@
         "blocks": [
           {
             "kind": "text",
-            "body": "The newsletter forms on this site are not yet connected to a delivery service: anything entered is neither transmitted nor stored. Once those forms go live, this page will be updated before any data is collected."
+            "body": "The contact form sends nothing to our servers: it opens a pre-filled message in your own mail program, which you send yourself. We then handle that email as ordinary correspondence (see “Data protection contact”). The newsletter forms are not yet connected to a sending service: the information entered is neither transmitted nor stored. As soon as one of these forms transmits data to our servers, this page will be updated before any collection."
           }
         ]
       },

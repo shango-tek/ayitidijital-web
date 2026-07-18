@@ -377,7 +377,7 @@
         "blocks": [
           {
             "kind": "text",
-            "body": "Les formulaires d'infolettre présents sur ce site ne sont pas encore raccordés à un service d'envoi : les informations saisies ne sont ni transmises ni conservées. Dès que ces formulaires seront actifs, cette page sera mise à jour avant toute collecte."
+            "body": "Le formulaire de contact n'envoie rien à nos serveurs : il ouvre un message pré-rempli dans votre propre logiciel de messagerie, que vous envoyez vous-même. Nous traitons ensuite cet e-mail comme toute correspondance (voir « Contact protection des données »). Les formulaires d'infolettre ne sont pas encore raccordés à un service d'envoi : les informations saisies ne sont ni transmises ni conservées. Dès qu'un de ces formulaires transmettra des données à nos serveurs, cette page sera mise à jour avant toute collecte."
           }
         ]
       },

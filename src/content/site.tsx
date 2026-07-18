@@ -185,6 +185,18 @@ export interface SiteContent {
     postLabel: string
     legalLabel: string
     legalBody: string
+    /** Contact form. Only email + message are required: a visitor should not
+     *  have to hand over a full name to ask a question. */
+    formLabel: string
+    firstName: string
+    lastName: string
+    emailField: string
+    message: string
+    optional: string
+    send: string
+    sending: string
+    sent: string
+    formNote: string
   }
   aboutPage: {
     missionLabel: string
@@ -503,6 +515,16 @@ const ht: SiteContent = {
     postLabel: 'Adrès postal',
     legalLabel: 'Enfòmasyon legal',
     legalBody: "Pou detay sou asosyasyon an, responsab yo ak fason nou trete done ou yo.",
+    formLabel: 'Voye nou yon mesaj',
+    firstName: 'Prenon',
+    lastName: 'Siyati',
+    emailField: 'Imèl',
+    message: 'Mesaj ou',
+    optional: 'opsyonèl',
+    send: 'Voye',
+    sending: 'N ap voye…',
+    sent: 'Mèsi — n ap reponn ou.',
+    formNote: "Fòm nan louvri yon mesaj deja ranpli nan pwòp pwogram imèl ou : se ou menm ki voye l.",
   },
   aboutPage: {
     missionLabel: 'Misyon',
@@ -895,6 +917,16 @@ const fr: SiteContent = {
     postLabel: 'Adresse postale',
     legalLabel: 'Informations légales',
     legalBody: "Pour les détails sur l'association, ses responsables et le traitement de vos données.",
+    formLabel: 'Écrivez-nous',
+    firstName: 'Prénom',
+    lastName: 'Nom',
+    emailField: 'E-mail',
+    message: 'Votre message',
+    optional: 'facultatif',
+    send: 'Envoyer',
+    sending: 'Envoi…',
+    sent: 'Merci — nous vous répondons.',
+    formNote: "Le formulaire ouvre un message pré-rempli dans votre propre logiciel de messagerie : c'est vous qui l'envoyez.",
   },
   aboutPage: {
     missionLabel: 'Mission',
@@ -1287,6 +1319,16 @@ const en: SiteContent = {
     postLabel: 'Postal address',
     legalLabel: 'Legal information',
     legalBody: "For details on the association, who is accountable, and how your data is handled.",
+    formLabel: 'Write to us',
+    firstName: 'First name',
+    lastName: 'Last name',
+    emailField: 'Email',
+    message: 'Your message',
+    optional: 'optional',
+    send: 'Send',
+    sending: 'Sending…',
+    sent: "Thanks — we'll get back to you.",
+    formNote: 'The form opens a pre-filled message in your own mail program: you are the one who sends it.',
   },
   aboutPage: {
     missionLabel: 'Mission',

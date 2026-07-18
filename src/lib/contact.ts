@@ -1,0 +1,47 @@
+/**
+ * Contact form submission — the same construction as the newsletter, and honest
+ * for the same reason.
+ *
+ *  - If NEXT_PUBLIC_CONTACT_ENDPOINT is set, POST the fields there and treat a
+ *    2xx as success.
+ *  - Otherwise, open a pre-filled message in the visitor's own mail client.
+ *
+ * The fallback is not a degraded mode — it is privacy-favourable. Nothing
+ * reaches our servers at all: the text goes into the visitor's mail program and
+ * they send it themselves, so there is no collection to disclose beyond the
+ * ordinary email correspondence that follows. The privacy policy's "Formulaires"
+ * section says exactly this; if you wire an endpoint, that section has to be
+ * updated in the same change, because then the site IS collecting.
+ */
+const ENDPOINT = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? ''
+const CONTACT = 'contact@ayitidijital.org'
+
+export interface ContactFields {
+  firstName?: string
+  lastName?: string
+  email: string
+  message: string
+}
+
+export async function submitContact(fields: ContactFields): Promise<void> {
+  const email = fields.email.trim()
+  const message = fields.message.trim()
+  if (!email || !message) throw new Error('email and message required')
+
+  if (ENDPOINT) {
+    const res = await fetch(ENDPOINT, {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify(fields),
+    })
+    if (!res.ok) throw new Error(`contact POST failed: ${res.status}`)
+    return
+  }
+
+  const name = [fields.firstName, fields.lastName].filter(Boolean).join(' ').trim()
+  const subject = encodeURIComponent(name ? `Kontak — ${name}` : 'Kontak')
+  const body = encodeURIComponent(
+    [name && `${name}`, email, '', message].filter((l) => l !== undefined && l !== '').join('\n'),
+  )
+  window.location.href = `mailto:${CONTACT}?subject=${subject}&body=${body}`
+}
