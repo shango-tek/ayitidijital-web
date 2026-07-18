@@ -49,12 +49,17 @@ export function JournalSection({
           subtitle={subtitle}
         />
 
-        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-7">
+        {/* A grid everywhere except a tablet held upright, where it becomes the
+            same snap-scrolling track as the ecosystem carousel: two posts on
+            screen, the third peeking past the right edge to advertise the swipe.
+            Three squeezed columns don't fit that width, and two-up leaves the
+            third post stranded alone on a second row. */}
+        <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:mt-16 lg:grid-cols-3 lg:gap-7 tablet-portrait:flex tablet-portrait:snap-x tablet-portrait:snap-mandatory tablet-portrait:overflow-x-auto tablet-portrait:pb-1 tablet-portrait:[scrollbar-width:none] tablet-portrait:[&::-webkit-scrollbar]:hidden">
           {posts.map((post) => (
             <a
               key={post.title}
               href={post.href}
-              className="group flex flex-col overflow-hidden rounded-card border border-black/[0.06] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_30px_70px_-40px_rgba(10,58,96,0.45)]"
+              className="group flex flex-col overflow-hidden rounded-card border border-black/[0.06] bg-white transition-all duration-300 hover:-translate-y-1 hover:border-accent/40 hover:shadow-[0_30px_70px_-40px_rgba(10,58,96,0.45)] tablet-portrait:w-[46%] tablet-portrait:shrink-0 tablet-portrait:snap-start"
             >
               {/* Visual */}
               <div className="relative aspect-[16/10] overflow-hidden bg-gradient-to-br from-primary to-primary-deep">

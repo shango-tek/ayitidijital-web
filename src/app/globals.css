@@ -54,6 +54,19 @@
   }
 }
 
+/* `tablet-portrait:` — a tablet held upright. Wide enough that the phone layout
+   wastes the width, tall and narrow enough that the desktop layout crowds it,
+   and the one shape where the spiral is absent but the page is still roomy.
+
+   min-width 768 keeps phones out (they get the mobile layout, which is right for
+   them); no max-width, because iPad Pro 12.9" portrait is 1024px wide and needs
+   this just as much as a 768px iPad does. */
+@custom-variant tablet-portrait {
+  @media (min-width: 768px) and (orientation: portrait) {
+    @slot;
+  }
+}
+
 /* ------------------------------------------------------------------
    Font wiring — the design CSS (site.css / radiant-parts.css) references
    the display / body / mono families via the --font-display / --font-body /

@@ -50,13 +50,22 @@ export function WorkOverview({
           subtitle={subtitle}
         />
 
-        {/* three pillar cards */}
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16 lg:gap-8">
+        {/* Three pillar cards. Three-up everywhere except a tablet held upright,
+            where thirds of a ~700px column are too narrow for the card's stacked
+            label / title / body: two on the first row, the third spanning the
+            full width beneath them. */}
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 lg:mt-16 lg:gap-8 tablet-portrait:grid-cols-2">
           {cards.map((card, i) => (
             <a
               key={card.label}
               href={card.href}
-              className="group relative flex min-h-[23rem] flex-col overflow-hidden rounded-card bg-gradient-to-br from-[#152c78] to-[var(--color-primary-deep)] p-8 shadow-[0_30px_70px_-45px_rgba(10,20,60,0.65)] ring-1 ring-white/[0.08] transition-transform duration-300 hover:-translate-y-1.5 md:min-h-[25rem] md:p-9"
+              className={`group relative flex min-h-[23rem] flex-col overflow-hidden rounded-card bg-gradient-to-br from-[#152c78] to-[var(--color-primary-deep)] p-8 shadow-[0_30px_70px_-45px_rgba(10,20,60,0.65)] ring-1 ring-white/[0.08] transition-transform duration-300 hover:-translate-y-1.5 md:min-h-[25rem] md:p-9${
+                // The spanning card is twice as wide, so the 25rem floor built
+                // for a narrow column leaves it half empty — its label sits at
+                // the top and `mt-auto` pins the rest to the bottom, so the
+                // slack all lands in the middle as one big hole.
+                i === 2 ? ' tablet-portrait:col-span-2 tablet-portrait:min-h-[18rem]' : ''
+              }`}
             >
               {/* soft top-light for depth (replaces the grid) */}
               <span

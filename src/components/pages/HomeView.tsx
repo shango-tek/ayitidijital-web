@@ -14,6 +14,7 @@ import { NewsletterSection } from '@/components/sections/NewsletterSection'
 import { FloatingNav } from '@/components/layout/FloatingNav'
 import { MobileNav } from '@/components/layout/MobileNav'
 import { MissionMarquee } from '@/components/ui/MissionMarquee'
+import { ScrollTopFab } from '@/components/ui/ScrollTopFab'
 import { FlickeringFooter } from '@/components/ui/flickering-footer'
 import { useLocale } from '@/components/i18n/LocaleProvider'
 import { langs } from '@/content/site'
@@ -56,6 +57,10 @@ export function HomeView() {
     <>
       {/* Studio-style mobile / tablet menu (< 1024px) + desktop floating nav */}
       <MobileNav />
+
+      {/* Back to top — tablet portrait only, from the end of "what we do" until
+          the footer (which carries its own) comes into view. */}
+      <ScrollTopFab afterId="travay-nou" label={c.scrollTopLabel} />
       <FloatingNav brandName={c.brandName} links={c.navLinks} langs={langs} supportLabel={c.supportLabel} />
 
       <div className="mshell">
