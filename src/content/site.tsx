@@ -158,9 +158,6 @@ export interface SiteContent {
   /** The three aspirational verbs shown in the spiral's eye — they roll one at a
    *  time as you scroll, then resolve into all three together at the end. */
   spiralCenterWords: [string, string, string]
-  /** Label on the spiral's opt-in button: the sequence plays by itself, but
-   *  clicking pins the card and hands the pacing over to your scroll. */
-  spiralScrubLabel: string
   /** "Beyond digital" mission intro under the hero: eyebrow, headline (gold period),
    *  lead, CTA label, and photo alt text. */
   about: { label: string; title: string; strokeWord?: string; lead: string; cta: string; imageAlt: string }
@@ -431,7 +428,6 @@ const ht: SiteContent = {
     'ENPAK',
   ],
   spiralCenterWords: ['Imajine', 'Bati', 'Transfòme'],
-  spiralScrubLabel: 'Klike pou eksplore',
   about: {
     label: 'Pi lwen pase dijital',
     title: 'Kreye yon enpak dirab.',
@@ -763,7 +759,6 @@ const fr: SiteContent = {
     'IMPACT',
   ],
   spiralCenterWords: ['Imaginer', 'Bâtir', 'Transformer'],
-  spiralScrubLabel: 'Cliquez pour explorer',
   about: {
     label: 'Au-delà du numérique',
     title: 'Créer un impact durable.',
@@ -1095,7 +1090,6 @@ const en: SiteContent = {
     'IMPACT',
   ],
   spiralCenterWords: ['Imagine', 'Build', 'Transform'],
-  spiralScrubLabel: 'Click to explore',
   about: {
     label: 'Beyond digitalization',
     title: 'Create lasting impact.',

@@ -27,8 +27,6 @@ export interface SpiralGalaxyProps {
   words?: string[]
   targetChars?: number
   centerWords?: string[]
-  /** Label for the opt-in button that hands pacing over to the reader's scroll. */
-  scrubLabel?: string
 }
 
 /**
@@ -37,20 +35,20 @@ export interface SpiralGalaxyProps {
  * alternating word (Imagine / Transform / Build) in the eye.
  *
  * Two modes, one choreography:
- *   default — one screen in normal flow; the sequence plays on its own clock
- *             every time the card scrolls fully into view.
- *   scrub   — opt-in on click: the section grows to 400vh, the card pins, and
- *             the reader's scroll drives the sequence frame by frame.
+ *   default — one screen in normal flow. Scrolling onto the card centres it in
+ *             the viewport and plays the sequence on its own clock.
+ *   scrub   — click anywhere on the card to STOP that playback: the section
+ *             grows to 400vh, the card pins, and the reader finishes the
+ *             sequence themselves at whatever pace they like.
  *
  * The pinned scrub used to be the ONLY mode, which charged every reader four
- * screens of scroll to deliver three words. Now it is there for whoever wants
- * it, and free for everyone who doesn't.
+ * screens of scroll to deliver three words. Now it is there for whoever reaches
+ * for it, and free for everyone who doesn't.
  */
 export function SpiralGalaxy({
   words = DEFAULT_WORDS,
   targetChars = 300,
   centerWords = DEFAULT_CENTER_WORDS,
-  scrubLabel,
 }: SpiralGalaxyProps) {
   // Spell the brand words around the spiral (separated by a middot).
   const text = words.join(' · ') + ' · '
@@ -60,15 +58,16 @@ export function SpiralGalaxy({
   // the finale (all three verbs at once).
   const FINALE_START = 0.82
 
-  /* --- Time-driven, not scroll-pinned --------------------------------------
+  /* --- One value, two ways of driving it -----------------------------------
      This used to be a 400vh sticky section whose whole choreography was scrubbed
      by scrollYProgress — four screens of forced scrolling to deliver three
-     words. It now plays ONCE, on its own clock, when the section comes into
-     view, and occupies a single screen in normal flow.
+     words. It now plays on its own clock, in a single screen of normal flow,
+     each time the reader comes down onto it; a click stops the playback and
+     hands this same value back to scrollYProgress so they can finish it by hand.
 
      Every useTransform below is unchanged and simply reads this value instead of
-     scrollYProgress, so the visual sequence is identical — it just no longer
-     costs the reader four screens of scroll.
+     scrollYProgress directly, so the visual sequence is identical either way —
+     it just no longer costs every reader four screens of scroll.
 
      It runs to 0.85, not 1: past 0.82 the finale has resolved, and the tail of
      `starOpacity` (0.85 → 1) was a fade-out for the card scrolling away. With
@@ -77,15 +76,18 @@ export function SpiralGalaxy({
   const progress = useMotionValue(0)
   const reducedMotion = useReducedMotion()
 
-  // Opt-in pinned mode. `scrub` drives the markup; `scrubbing` is the same flag
-  // readable from inside scroll listeners without re-subscribing them.
+  // Hand-driven mode, entered by clicking the card. `scrub` drives the markup;
+  // `scrubbing` is the same flag, readable from inside scroll listeners without
+  // having to re-subscribe them on every change.
   const [scrub, setScrub] = useState(false)
   const scrubbing = useRef(false)
 
-  // Fires only once the card is COMPLETELY in view ('all'), not part-way — the
-  // portal should bloom while you're looking at the whole circle, not while it's
-  // still half off-screen. `once` is deliberately off so it can replay.
-  const inView = useInView(ref, { amount: 'all' })
+  // Fires as soon as the card is meaningfully on screen — NOT once it is fully
+  // in view. Waiting for full visibility would mean the sequence only ever plays
+  // with the card already parked; instead the entry itself is the cue, and the
+  // handler below centres the card before it plays. `once` is deliberately off
+  // so it can replay.
+  const inView = useInView(ref, { amount: 0.55 })
 
   // Armed = "a fresh play is allowed". Spent on each play, re-armed only once
   // the section has left the viewport DOWNWARD (see below) — so the sequence
@@ -97,12 +99,27 @@ export function SpiralGalaxy({
     if (scrub || !inView || !armed.current) return
     armed.current = false
     if (reducedMotion) {
-      progress.set(0.85) // honour the preference: show the resolved end state
+      // Honour the preference: resolve to the end state, and don't move the page
+      // under someone who asked for less motion.
+      progress.set(0.85)
       return
     }
+
+    // Bring the card to the middle of the viewport as it plays, so the sequence
+    // is never half off-screen. Smooth, and Chromium abandons a programmatic
+    // smooth scroll the moment the reader scrolls themselves — so this places
+    // the card for someone arriving at it without trapping anyone passing by.
+    const el = ref.current
+    if (el) {
+      const centred =
+        window.scrollY + el.getBoundingClientRect().top - (window.innerHeight - el.offsetHeight) / 2
+      window.scrollTo({ top: Math.max(0, centred), behavior: 'smooth' })
+    }
+
     progress.set(0) // always start from the closed portal
     const controls = animate(progress, 0.85, { duration: 6.5, ease: 'easeOut' })
-    // Also stops the tween when `scrub` flips — the click hands over mid-play.
+    // Also stops the tween when `scrub` flips — the click halts the playback and
+    // hands the rest of the sequence to the reader.
     return () => controls.stop()
   }, [scrub, inView, reducedMotion, progress])
 
@@ -364,20 +381,6 @@ export function SpiralGalaxy({
 
         {/* inner hairline ring — matches the hero card's inset edge */}
         <div className="pointer-events-none absolute inset-0 z-20 rounded-[2rem] shadow-[inset_0_0_0_1px_rgba(255,255,255,0.1)]" />
-
-        {/* The opt-in into the pinned scrub. It lives INSIDE the clipped card so
-            it is revealed by the portal along with everything else, and so it is
-            only ever read against the dark surface. The whole stage is clickable
-            too — this is the keyboard-reachable, labelled version of that. */}
-        {!scrub && !reducedMotion && scrubLabel ? (
-          <button
-            type="button"
-            onClick={enterScrub}
-            className="absolute bottom-6 left-1/2 z-30 -translate-x-1/2 rounded-full border border-white/20 bg-white/[0.06] px-4 py-2 font-mono text-[11px] uppercase tracking-[0.15em] text-white/70 backdrop-blur-sm transition hover:border-gold/60 hover:text-gold focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-gold"
-          >
-            {scrubLabel}
-          </button>
-        ) : null}
         </motion.div>
       </div>
     </section>

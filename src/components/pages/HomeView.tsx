@@ -105,13 +105,7 @@ export function HomeView() {
 
           {/* Spiral galaxy — 3D starfield + word-spiral + ambient word-field, fused.
               Desktop only (≥1024px) — see showSpiral above. */}
-          {showSpiral && (
-            <SpiralGalaxy
-              words={c.marqueeWords}
-              centerWords={c.spiralCenterWords}
-              scrubLabel={c.spiralScrubLabel}
-            />
-          )}
+          {showSpiral && <SpiralGalaxy words={c.marqueeWords} centerWords={c.spiralCenterWords} />}
 
           {/* Explore our ecosystem — incubated-projects carousel (white bg) */}
           <EcosystemCarousel
