@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { cn } from '@/lib/utils'
 import { SectionHeader } from '../ui/SectionHeader'
+import { SectionPanel } from '../ui/SectionPanel'
 
 export interface FaqItem {
   q: string
@@ -23,7 +24,7 @@ export function FaqSection({ id, label, strokeWord, titleRest, subtitle, items }
   const [open, setOpen] = useState(0)
 
   return (
-    <section id={id} className="bg-white py-16 md:py-20 lg:py-[100px]">
+    <SectionPanel id={id}>
       <div className="mx-auto max-w-[90rem] px-5 md:px-10">
         <SectionHeader
           variant="split"
@@ -40,7 +41,11 @@ export function FaqSection({ id, label, strokeWord, titleRest, subtitle, items }
             return (
               <div
                 key={item.q}
-                className="overflow-hidden rounded-2xl border border-black/[0.07] bg-[#F7F9FC] transition-colors"
+                // White, not the old #F7F9FC: the rows sit on the warm sand
+                // panel now, and a cool grey-blue on warm beige reads as muddy.
+                // White rows lift off it cleanly — the same white-cards-on-sand
+                // logic as the Domaines grid.
+                className="overflow-hidden rounded-2xl border border-black/[0.07] bg-white transition-colors"
               >
                 <h3>
                   <button
@@ -80,6 +85,6 @@ export function FaqSection({ id, label, strokeWord, titleRest, subtitle, items }
           })}
         </div>
       </div>
-    </section>
+    </SectionPanel>
   )
 }
