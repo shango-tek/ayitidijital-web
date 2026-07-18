@@ -1,12 +1,15 @@
 'use client'
 
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import {
   motion,
   AnimatePresence,
-  useScroll,
+  animate,
+  useInView,
+  useMotionValue,
   useTransform,
   useMotionValueEvent,
+  useReducedMotion,
 } from 'framer-motion'
 import { SpiralAnimation } from './spiral-animation'
 
@@ -27,9 +30,12 @@ export interface SpiralGalaxyProps {
 
 /**
  * The fusion: the 3D-projected starfield (spiral-animation) as the deep
- * background, the scroll-scrubbed text spiral zooming + rotating in front of it,
- * and the alternating word (Imagine / Transform / Build) in the eye. Everything
- * shares one pinned scroll section.
+ * background, the text spiral zooming + rotating in front of it, and the
+ * alternating word (Imagine / Transform / Build) in the eye.
+ *
+ * Plays once, on its own clock, when it scrolls into view — see `progress`
+ * below. It is deliberately NOT a scroll-pinned section any more: the sequence
+ * is unchanged, but it occupies one screen instead of charging four.
  */
 export function SpiralGalaxy({
   words = DEFAULT_WORDS,
@@ -39,42 +45,66 @@ export function SpiralGalaxy({
   // Spell the brand words around the spiral (separated by a middot).
   const text = words.join(' · ') + ' · '
   const ref = useRef<HTMLDivElement>(null)
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ['start start', 'end end'],
-  })
 
-  // Scroll fraction after which the eye switches from rolling single words to the
-  // finale (all three verbs at once).
+  // Progress fraction after which the eye switches from rolling single words to
+  // the finale (all three verbs at once).
   const FINALE_START = 0.82
+
+  /* --- Time-driven, not scroll-pinned --------------------------------------
+     This used to be a 400vh sticky section whose whole choreography was scrubbed
+     by scrollYProgress — four screens of forced scrolling to deliver three
+     words. It now plays ONCE, on its own clock, when the section comes into
+     view, and occupies a single screen in normal flow.
+
+     Every useTransform below is unchanged and simply reads this value instead of
+     scrollYProgress, so the visual sequence is identical — it just no longer
+     costs the reader four screens of scroll.
+
+     It runs to 0.85, not 1: past 0.82 the finale has resolved, and the tail of
+     `starOpacity` (0.85 → 1) was a fade-out for the card scrolling away. With
+     the card now staying put, running to 1 would leave the finale sitting on an
+     almost-black field. 0.85 lands exactly on the end of the plateau. */
+  const progress = useMotionValue(0)
+  const inView = useInView(ref, { once: true, amount: 0.55 })
+  const reducedMotion = useReducedMotion()
+
+  useEffect(() => {
+    if (!inView) return
+    if (reducedMotion) {
+      progress.set(0.85) // honour the preference: show the resolved end state
+      return
+    }
+    const controls = animate(progress, 0.85, { duration: 6.5, ease: 'easeOut' })
+    return () => controls.stop()
+  }, [inView, reducedMotion, progress])
 
   // Text spiral: zoom + rotate with scroll — but only up to the finale. The end
   // values are the ORIGINAL full-scroll motion (scale 5.5 / rotate -320 over the
   // whole section) sampled at FINALE_START, so the spin keeps its original speed and
   // then FREEZES the instant the three verbs resolve — the finale reads as a still
   // climax and the remaining scroll just unpins the card and scrolls the section up.
-  const scale = useTransform(scrollYProgress, [0, FINALE_START], [1.2, 4.73])
-  const rotate = useTransform(scrollYProgress, [0, FINALE_START], [0, -262])
+  const scale = useTransform(progress, [0, FINALE_START], [1.2, 4.73])
+  const rotate = useTransform(progress, [0, FINALE_START], [0, -262])
   // Starfield co-rotates the SAME way (anticlockwise) but slower and linearly, so
   // the two layers read as one vortex with depth between them — not a flat, glued
   // lockstep, and not the jerky eased turn the starfield does on its own. (Counter-
   // rotating adds energy but fights the calm inward pull toward the center word.)
-  const starRotate = useTransform(scrollYProgress, [0, FINALE_START], [0, -115])
+  const starRotate = useTransform(progress, [0, FINALE_START], [0, -115])
   // Spiral fades in at the start, then STAYS visible (no fade-out) — it freezes
   // behind the three words at the finale and rides up with the card as it scrolls
   // away, a richer backdrop than fading to black. NOTE: use the function form — a
   // 2-stop range starting at 0 doesn't clamp past its input here (it snaps back to
   // the start value, blanking the spiral), the same framer quirk as the clip-path.
-  const textOpacity = useTransform(scrollYProgress, (p) => Math.min(1, p / 0.06))
+  const textOpacity = useTransform(progress, (p) => Math.min(1, p / 0.06))
   // Starfield breathes in behind, dimmed so it reads as depth, not competition.
-  const starOpacity = useTransform(scrollYProgress, [0, 0.12, 0.85, 1], [0.1, 0.55, 0.55, 0.08])
+  const starOpacity = useTransform(progress, [0, 0.12, 0.85, 1], [0.1, 0.55, 0.55, 0.08])
   // Circular "portal" reveal: the card opens from a small circle over the eye and
   // blooms out to fill the whole rounded card — a quick beat at the very start,
   // then holds fully open for the rest of the section (incl. the 3-word finale).
   // NOTE: animate a numeric radius (numbers clamp past the input range; interpolating
   // the `circle()` string directly snaps back to the start value beyond 0.15, which
   // re-clipped the finale) and build the clip-path string from it.
-  const clipRadius = useTransform(scrollYProgress, [0, 0.15], [20, 85])
+  const clipRadius = useTransform(progress, [0, 0.15], [20, 85])
   const cardClip = useTransform(clipRadius, (r) => `circle(${r}% at 50% 50%)`)
 
   // Scroll-scrub the starfield's own animation so it's locked to the scroll like
@@ -87,7 +117,7 @@ export function SpiralGalaxy({
   // to the finale — all three at once — for the last stretch.
   const [idx, setIdx] = useState(0)
   const [finale, setFinale] = useState(false)
-  useMotionValueEvent(scrollYProgress, 'change', (p) => {
+  useMotionValueEvent(progress, 'change', (p) => {
     // Freeze the starfield scrub at the finale too, so nothing keeps moving.
     starTime.current = 0.36 + 0.54 * Math.min(p, FINALE_START)
     if (p >= FINALE_START) {
@@ -104,11 +134,13 @@ export function SpiralGalaxy({
   const n = chars.length
 
   return (
-    <section ref={ref} className="relative h-[400vh] bg-white">
-      {/* Sticky stage — white with the same ambient gold + navy glows as the
-          "Passe à l'action" section, so the portal blooms out of a soft warm/cool
-          wash rather than flat paper. */}
-      <div className="sticky top-0 h-screen overflow-hidden bg-white">
+    <section ref={ref} className="relative bg-white">
+      {/* Stage — one screen, in normal flow (it used to be a 400vh sticky pin).
+          White with the same ambient gold + navy glows as the "Passe à l'action"
+          section, so the portal blooms out of a soft warm/cool wash rather than
+          flat paper. 88vh rather than a full screen so the next section peeks
+          and the page still reads as scrollable. */}
+      <div className="relative h-[88vh] min-h-[34rem] overflow-hidden bg-white">
         <span
           aria-hidden="true"
           className="pointer-events-none absolute -right-24 -top-24 h-[34rem] w-[34rem] rounded-full bg-gold/[0.07] blur-3xl"
