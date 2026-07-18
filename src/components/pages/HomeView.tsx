@@ -26,13 +26,22 @@ import { langs } from '@/content/site'
 export function HomeView() {
   const { content: c, locale } = useLocale()
 
-  // The spiral is a heavy, scroll-pinned canvas moment — great on desktop, but a
-  // 400vh scroll-jack + starfield rAF is a poor, battery-hungry fit on touch
-  // devices. Mount it only on ≥1024px (the same breakpoint as the desktop nav) so
-  // phones/tablets skip it entirely (no canvas, no rAF, no extra scroll).
+  // The spiral is a heavy, scroll-pinned canvas moment — great with a mouse on a
+  // wide screen, but a 400vh scroll-jack + starfield rAF is a poor,
+  // battery-hungry fit on touch devices.
+  //
+  // Width alone was not enough: iPad Pro 12.9" in PORTRAIT is exactly 1024px
+  // wide, so it passed a bare `min-width: 1024px` and got the whole scroll-jack.
+  // Three conditions now, all required:
+  //   min-width  — enough room for the pinned stage at all
+  //   landscape  — excludes every tablet held upright, whatever its width
+  //   hover/fine — excludes touch entirely (a touchscreen laptop still reports
+  //                a fine pointer for its mouse, so those keep it)
   const [showSpiral, setShowSpiral] = useState(false)
   useEffect(() => {
-    const mq = window.matchMedia('(min-width: 1024px)')
+    const mq = window.matchMedia(
+      '(min-width: 1024px) and (orientation: landscape) and (hover: hover) and (pointer: fine)',
+    )
     const update = () => setShowSpiral(mq.matches)
     update()
     mq.addEventListener('change', update)
