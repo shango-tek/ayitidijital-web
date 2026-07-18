@@ -163,6 +163,24 @@ export interface SiteContent {
   about: { label: string; title: string; strokeWord?: string; lead: string; cta: string; imageAlt: string }
   /** "Who we are" pillars — Mission / Vision / Devise. */
   pillars: { label: string; items: { name: string; body: string }[] }
+  /** The About page's long-form content. The Mission / Vision / Devise headlines
+   *  are the `pillars` bodies above — this carries the paragraph under each, plus
+   *  the origin story and the team framing. Kept separate from `pillars` so the
+   *  home page's short cards stay short. */
+  aboutPage: {
+    missionLabel: string
+    missionBody: string
+    visionLabel: string
+    visionBody: string
+    deviseLabel: string
+    /** Eyebrow + headline over the numbered origin story. */
+    storyLabel: string
+    storyTitle: string
+    /** Five stages, in order. The numbering is chronological, not decorative. */
+    story: { kicker: string; title: string; body: string }[]
+    teamLabel: string
+    teamTitle: string
+  }
   /** "What we do" overview — eyebrow, split title (outline word + rest), lead, three
    *  Bati / Enkibe / Konekte pillar cards, and an end-row CTA. */
   whatWeDo: {
@@ -443,6 +461,44 @@ const ht: SiteContent = {
       { name: 'Vizyon', body: 'Kolòn vètebral nimerik Ayiti.' },
       { name: 'Deviz', body: 'Chanjman nimerik Ayiti a dwe soti nan Ayiti li menm.' },
     ],
+  },
+  aboutPage: {
+    missionLabel: 'Misyon',
+    missionBody: "Kòm yon hub inovasyon, misyon nou se konsevwa enfrastrikti nimerik ki gen itilite piblik epi ofri yon ekosistèm enkibasyon konplè pou etidyan ak kreyatè. Nou transfòme lide brit an inovasyon ki ka kanpe, pou dinamize ekosistèm nasyonal la nan yon fason ki dire.",
+    visionLabel: 'Vizyon',
+    visionBody: "Bati yon nasyon ki souvren teknolojikman, kote chak sitwayen gen aksè lib ak done ki gen itilite piblik, kote enstitisyon yo apiye sou sistèm transparan, epi kote inovasyon lokal ranplase depandans teknolojik.",
+    deviseLabel: 'Deviz',
+    storyLabel: 'Istwa nou',
+    storyTitle: "Depi yon konsta rive nan yon mouvman.",
+    story: [
+      {
+        kicker: 'Konsta a',
+        title: 'Enfòmasyon piblik la, san aksè',
+        body: "Tèks lwa ou pa ka jwenn, done gaye toupatou, sèvis nimerik ki pa la : pou sitwayen yo, jwenn enfòmasyon ki gen itilite piblik te rete yon gwo defi.",
+      },
+      {
+        kicker: 'Estriktirasyon an',
+        title: 'Nesans Hub la',
+        body: "Ayiti Dijital pran yon kad enterè jeneral, panse pou pote enfrastrikti teknolojik nan tout transparans, pa Ayiti epi pou Ayiti.",
+      },
+      {
+        kicker: 'Premye pwojè a',
+        title: 'LexHaiti mete dwa a anliy',
+        body: "Plis pase 2 400 tèks jiridik (Konstitisyon, kòd, lwa) vin lib pou konsilte. Prèv konkrè ke enfrastrikti piblik nimerik posib.",
+      },
+      {
+        kicker: 'Elajisman an',
+        title: 'Yon ekosistèm k ap enkibe',
+        body: "Tranzisyon vè yon modèl hub konplè. Ouvèti pwogram nou yo pou akeyi epi pwopilse pwojè ak start-up (komèsyal, sosyal, sivik) nouvèl jenerasyon an.",
+      },
+      {
+        kicker: 'Vizyon an',
+        title: 'Yon nasyon nimerik souvren',
+        body: "Elaji enfrastrikti yo, fòme talan yo, libere potansyèl antreprenarial la : mouvman an lanse pou bati yon otonomi teknolojik ki dire.",
+      },
+    ],
+    teamLabel: 'Ekip la',
+    teamTitle: 'Moun ki responsab yo',
   },
   whatWeDo: {
     label: 'Sa nou fè',
@@ -775,6 +831,44 @@ const fr: SiteContent = {
       { name: 'Devise', body: "La transformation numérique d'Haïti doit venir d'Haïti." },
     ],
   },
+  aboutPage: {
+    missionLabel: 'Mission',
+    missionBody: "En tant que hub d'innovation, notre mission est de concevoir des infrastructures numériques d'intérêt public et d'offrir un écosystème d'incubation complet aux étudiants et créateurs. Nous transformons les idées brutes en innovations viables pour dynamiser durablement l'écosystème national.",
+    visionLabel: 'Vision',
+    visionBody: "Bâtir une nation technologiquement souveraine où chaque citoyen accède librement aux données d'intérêt public, où les institutions s'appuient sur des systèmes transparents, et où l'innovation locale remplace la dépendance technologique.",
+    deviseLabel: 'Devise',
+    storyLabel: 'Istwa nou',
+    storyTitle: "D'un constat à un mouvement.",
+    story: [
+      {
+        kicker: 'Le constat',
+        title: "L'information publique, inaccessible",
+        body: "Textes de loi introuvables, données dispersées, services numériques absents : pour les citoyens, l'accès à l'information d'intérêt public restait un défi majeur.",
+      },
+      {
+        kicker: 'La structuration',
+        title: 'La naissance du Hub',
+        body: "Ayiti Dijital se dote d'un cadre d'intérêt général, pensé pour porter des infrastructures technologiques en toute transparence, par et pour Haïti.",
+      },
+      {
+        kicker: 'Le premier projet',
+        title: 'LexHaiti met le droit en ligne',
+        body: "Plus de 2 400 textes juridiques (Constitution, codes, lois) deviennent librement consultables. La preuve concrète que l'infrastructure publique numérique est possible.",
+      },
+      {
+        kicker: "L'élargissement",
+        title: 'Un écosystème en incubation',
+        body: "Transition vers un modèle de hub complet. Ouverture de nos programmes pour accueillir et propulser les projets et start-ups (commerciaux, sociaux, civiques) de la nouvelle génération.",
+      },
+      {
+        kicker: 'La vision',
+        title: 'Une nation numérique souveraine',
+        body: "Étendre les infrastructures, former les talents, libérer le potentiel entrepreneurial : le mouvement est lancé pour bâtir une autonomie technologique durable.",
+      },
+    ],
+    teamLabel: "L'équipe",
+    teamTitle: 'Les personnes responsables',
+  },
   whatWeDo: {
     label: 'Ce que nous faisons',
     strokeWord: 'Découvre',
@@ -1105,6 +1199,44 @@ const en: SiteContent = {
       { name: 'Vision', body: "Haiti's digital backbone." },
       { name: 'Motto', body: "Haiti's digital transformation must come from Haiti." },
     ],
+  },
+  aboutPage: {
+    missionLabel: 'Mission',
+    missionBody: "As an innovation hub, our mission is to design digital infrastructure in the public interest and to offer students and creators a complete incubation ecosystem. We turn raw ideas into viable innovations, to energise the national ecosystem for the long run.",
+    visionLabel: 'Vision',
+    visionBody: "To build a technologically sovereign nation where every citizen has free access to data held in the public interest, where institutions run on transparent systems, and where local innovation replaces technological dependence.",
+    deviseLabel: 'Motto',
+    storyLabel: 'Istwa nou',
+    storyTitle: 'From an observation to a movement.',
+    story: [
+      {
+        kicker: 'The observation',
+        title: 'Public information, out of reach',
+        body: "Statutes nobody could find, data scattered across sources, digital services absent: for citizens, reaching information held in the public interest remained a real obstacle.",
+      },
+      {
+        kicker: 'The structure',
+        title: 'The Hub is founded',
+        body: "Ayiti Dijital gives itself a public-interest framing, built to carry technological infrastructure transparently — by Haiti and for Haiti.",
+      },
+      {
+        kicker: 'The first project',
+        title: 'LexHaiti puts the law online',
+        body: "More than 2,400 legal texts (the Constitution, the codes, the statutes) become freely searchable. Concrete proof that public digital infrastructure is possible.",
+      },
+      {
+        kicker: 'The widening',
+        title: 'An ecosystem in incubation',
+        body: "The shift to a full hub model. Our programmes open up to host and propel the next generation's projects and start-ups — commercial, social and civic alike.",
+      },
+      {
+        kicker: 'The vision',
+        title: 'A sovereign digital nation',
+        body: "Extend the infrastructure, train the talent, unlock the entrepreneurial potential: the movement is under way to build lasting technological autonomy.",
+      },
+    ],
+    teamLabel: 'The team',
+    teamTitle: 'The people accountable',
   },
   whatWeDo: {
     label: 'What we do',

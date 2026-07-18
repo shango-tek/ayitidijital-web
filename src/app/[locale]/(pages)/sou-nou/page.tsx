@@ -13,55 +13,127 @@ const BOARD = [
 ] as const
 
 const T = {
-  ht: { principlesTitle: 'Sa ki gide nou', boardTitle: 'Vorstand la', boardNote: 'Chak manm gen dwa reprezante asosyasyon an pou kont li (§ 26 BGB).' },
-  fr: { principlesTitle: 'Ce qui nous guide', boardTitle: 'Le Vorstand', boardNote: 'Chaque membre peut représenter l’association seul (§ 26 BGB).' },
-  en: { principlesTitle: 'What guides us', boardTitle: 'The Vorstand', boardNote: 'Each member may represent the association individually (§ 26 BGB).' },
+  ht: { boardNote: 'Chak manm gen dwa reprezante asosyasyon an pou kont li (§ 26 BGB).' },
+  fr: { boardNote: 'Chaque membre peut représenter l’association seul (§ 26 BGB).' },
+  en: { boardNote: 'Each member may represent the association individually (§ 26 BGB).' },
 } as const
 
 /**
- * "Sou nou" — the three About anchors (#vizyon, #prensip, #ekip) the nav
- * dropdown points at.
+ * "Sou nou" — Mission / Vision / Devise, the origin story, then the board.
+ * Anchors (#vizyon, #prensip, #ekip) are the ones the nav dropdown points at.
  *
- * Each section previously repeated `heroDescription.short` as filler, which
- * printed the same sentence four times on one page. They now carry real
- * content: the Mission / Vision / Devise pillars, and the board as named in the
- * imprint.
+ * The three opening panels are staggered rather than aligned: each starts lower
+ * than the one before it, so the eye reads them as a sequence instead of three
+ * equal columns. That is the disposition from the reference; the surfaces are
+ * the site's own (sand, navy, white) rather than the reference's green and
+ * yellow, and they keep the standard card radius instead of bleeding to the
+ * page edges.
+ *
+ * The stagger is desktop-only — stacked in one column it would read as uneven
+ * gaps rather than a stair.
  */
 export default function SouNouPage() {
   const { content: c, locale } = useLocale()
   const t = T[locale]
+  const a = c.aboutPage
   const [mission, vision, devise] = c.pillars.items
 
   return (
     <RoutePage path="/sou-nou" subtitle={c.about.lead}>
-      <div className="page-wrap">
-        <div className="page-sections">
-          {/* Vision & mission */}
-          <section id="vizyon" className="page-section">
-            <h2>{c.about.title.replace(/\.\s*$/, '')}</h2>
-            <div className="mt-6 grid gap-6 sm:grid-cols-2">
-              {[mission, vision].filter(Boolean).map((p) => (
-                <div key={p.name}>
-                  <h3 className="font-display text-lg font-bold text-primary">{p.name}</h3>
-                  <p className="mt-2 leading-relaxed text-ink-soft">{p.body}</p>
+      {/* ── Mission · Vision · Devise ─────────────────────────────────── */}
+      <section id="vizyon" className="scroll-mt-28 bg-white px-2 pb-4 pt-16 md:pt-20">
+        <div className="mx-auto grid max-w-[90rem] gap-4 px-3 md:px-8 lg:grid-cols-3 lg:items-start">
+          {/* Mission — sand, the top of the stair */}
+          <article className="rounded-card bg-sand p-8 md:p-10 lg:min-h-[26rem]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
+              {a.missionLabel}
+            </span>
+            <h2 className="mt-4 font-display text-[clamp(1.6rem,3.2vw,2.25rem)] font-extrabold leading-tight tracking-tight text-primary">
+              {mission?.body}
+            </h2>
+            <p className="mt-5 leading-relaxed text-ink-soft">{a.missionBody}</p>
+          </article>
+
+          {/* Vision — navy, one step down. Gold eyebrow, because this is the one
+              dark surface in the row. */}
+          <article className="rounded-card bg-primary p-8 md:p-10 lg:mt-16 lg:min-h-[26rem]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold">
+              {a.visionLabel}
+            </span>
+            <h2 className="mt-4 font-display text-[clamp(1.6rem,3.2vw,2.25rem)] font-extrabold leading-tight tracking-tight text-white">
+              {vision?.body}
+            </h2>
+            <p className="mt-5 leading-relaxed text-white/70">{a.visionBody}</p>
+          </article>
+
+          {/* Devise — white and bordered rather than filled, so the row ends
+              quietly instead of with a third slab. */}
+          <article
+            id="prensip"
+            className="scroll-mt-28 rounded-card border border-black/[0.08] bg-white p-8 shadow-[0_20px_60px_-40px_rgba(10,58,96,0.35)] md:p-10 lg:mt-32 lg:min-h-[26rem]"
+          >
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
+              {a.deviseLabel}
+            </span>
+            <h2 className="mt-4 font-display text-[clamp(1.6rem,3.2vw,2.25rem)] font-extrabold leading-tight tracking-tight text-primary">
+              {devise?.body}
+            </h2>
+            <p className="mt-5 leading-relaxed text-ink-soft">{c.whatWeDo.subtitle}</p>
+          </article>
+        </div>
+      </section>
+
+      {/* ── Istwa nou — the origin story ──────────────────────────────── */}
+      <section id="istwa" className="scroll-mt-28 bg-white py-16 md:py-20 lg:py-[100px]">
+        <div className="mx-auto max-w-[90rem] px-5 md:px-10">
+          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
+            {a.storyLabel}
+          </span>
+          <h2 className="mt-3 max-w-3xl font-display text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-primary">
+            {a.storyTitle}
+          </h2>
+
+          {/* A real chronology, so the numbers carry information rather than
+              decorate. The hairline between stages is the through-line. */}
+          <ol className="mt-12 lg:mt-16">
+            {a.story.map((step, i) => (
+              <li
+                key={step.title}
+                className="grid gap-x-8 gap-y-3 border-t border-black/[0.09] py-8 md:grid-cols-[5rem_1fr] lg:grid-cols-[7rem_15rem_1fr] lg:py-10"
+              >
+                <span
+                  aria-hidden="true"
+                  className="font-display text-3xl font-extrabold leading-none text-primary/20 lg:text-4xl"
+                >
+                  {String(i + 1).padStart(2, '0')}
+                </span>
+                <h3 className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep lg:pt-2">
+                  {step.kicker}
+                </h3>
+                <div className="md:col-start-2 lg:col-start-3">
+                  <p className="font-display text-xl font-bold leading-snug tracking-tight text-primary lg:text-2xl">
+                    {step.title}
+                  </p>
+                  <p className="mt-3 max-w-2xl leading-relaxed text-ink-soft">{step.body}</p>
                 </div>
-              ))}
-            </div>
-          </section>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
 
-          {/* Principles — the devise, plus the pillar framing */}
-          <section id="prensip" className="page-section">
-            <h2>{t.principlesTitle}</h2>
-            {devise ? (
-              <p className="page-lede">{devise.body}</p>
-            ) : null}
-            <p className="mt-4 max-w-3xl leading-relaxed text-ink-soft">{c.whatWeDo.subtitle}</p>
-          </section>
+      {/* ── The board ─────────────────────────────────────────────────── */}
+      <section id="ekip" className="scroll-mt-28 bg-white px-2 pb-16 md:pb-20 lg:pb-[100px]">
+        <div className="rounded-feature bg-sand px-5 py-16 md:px-10 md:py-20">
+          <div className="mx-auto max-w-[90rem]">
+            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
+              {a.teamLabel}
+            </span>
+            <h2 className="mt-3 font-display text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-primary">
+              {a.teamTitle}
+            </h2>
 
-          {/* Team — the Vorstand, already public in the imprint */}
-          <section id="ekip" className="page-section">
-            <h2>{t.boardTitle}</h2>
-            <div className="mt-6 grid gap-5 sm:grid-cols-2">
+            <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:max-w-3xl">
               {BOARD.map((m) => (
                 <div
                   key={m.name}
@@ -74,10 +146,10 @@ export default function SouNouPage() {
                 </div>
               ))}
             </div>
-            <p className="mt-5 text-sm leading-relaxed text-ink-soft/85">{t.boardNote}</p>
-          </section>
+            <p className="mt-6 text-sm leading-relaxed text-ink-soft/85">{t.boardNote}</p>
+          </div>
         </div>
-      </div>
+      </section>
     </RoutePage>
   )
 }
