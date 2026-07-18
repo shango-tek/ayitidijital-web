@@ -82,12 +82,31 @@ export function SpiralGalaxy({
   const [scrub, setScrub] = useState(false)
   const scrubbing = useRef(false)
 
+  // Click-to-scrub is for pointers only. On a phone the card fills the screen,
+  // so a stray tap would silently grow the page by three screens and jump — a
+  // nasty surprise with no visible affordance. A mouse user gets `cursor-pointer`
+  // as the hint; a touch user just watches it play. (A touchscreen laptop still
+  // reports a fine pointer for its mouse, so those keep it.)
+  const [canScrub, setCanScrub] = useState(false)
+  useEffect(() => {
+    const mq = window.matchMedia('(hover: hover) and (pointer: fine)')
+    const update = () => setCanScrub(mq.matches)
+    update()
+    mq.addEventListener('change', update)
+    return () => mq.removeEventListener('change', update)
+  }, [])
+
   // Fires as soon as the card is meaningfully on screen — NOT once it is fully
   // in view. Waiting for full visibility would mean the sequence only ever plays
   // with the card already parked; instead the entry itself is the cue, and the
   // handler below centres the card before it plays. `once` is deliberately off
   // so it can replay.
   const inView = useInView(ref, { amount: 0.55 })
+
+  // A looser "anywhere near the viewport" test, used only to park the starfield's
+  // frame loop while the section is far away. One screen of margin either side so
+  // it is already running by the time any of it is visible.
+  const near = useInView(ref, { margin: '100% 0px 100% 0px' })
 
   // Armed = "a fresh play is allowed". Spent on each play, re-armed only once
   // the section has left the viewport DOWNWARD (see below) — so the sequence
@@ -158,7 +177,7 @@ export function SpiralGalaxy({
   })
 
   const enterScrub = () => {
-    if (reducedMotion || scrubbing.current) return
+    if (!canScrub || reducedMotion || scrubbing.current) return
     scrubbing.current = true
     setScrub(true)
   }
@@ -242,18 +261,28 @@ export function SpiralGalaxy({
       {/* Stage — one screen, in normal flow, until a click pins it.
           White with the same ambient gold + navy glows as the "Passe à l'action"
           section, so the portal blooms out of a soft warm/cool wash rather than
-          flat paper. 88vh rather than a full screen so the next section peeks
-          and the page still reads as scrollable.
+          flat paper.
 
-          No min-height: the autoplay trigger requires the section to be FULLY in
-          view, which a floor taller than a short viewport would make impossible.
-          88vh is by definition always shorter than the viewport. */}
+          LANDSCAPE 88vh, PORTRAIT full height. In landscape the 12vh shortfall
+          lets the next section peek so the page still reads as scrollable. In
+          portrait there is no such worry — the viewport is tall and narrow, the
+          circle is width-constrained, and giving it the whole screen is the only
+          way it reads as a portal rather than a letterbox.
+
+          dvh, not vh: on a phone `100vh` is the toolbar-less height, so a vh
+          stage would sit taller than the visible viewport and could never come
+          fully into view.
+
+          No min-height — a floor taller than a short viewport would keep the
+          section from ever satisfying the in-view trigger. */}
       <div
         onClick={enterScrub}
         className={
           scrub
-            ? 'sticky top-0 h-screen overflow-hidden bg-white'
-            : `relative h-[88vh] overflow-hidden bg-white${reducedMotion ? '' : ' cursor-pointer'}`
+            ? 'sticky top-0 h-[100dvh] overflow-hidden bg-white'
+            : `relative h-[88vh] portrait:h-[100dvh] overflow-hidden bg-white${
+                canScrub && !reducedMotion ? ' cursor-pointer' : ''
+              }`
         }
       >
         <span
@@ -285,7 +314,7 @@ export function SpiralGalaxy({
             word spiral (same anticlockwise direction, slower → parallax depth) */}
         <motion.div style={{ opacity: starOpacity }} className="absolute inset-0">
           <motion.div style={{ rotate: starRotate, scale: 1.55 }} className="absolute inset-0">
-            <SpiralAnimation progress={starTime} />
+            <SpiralAnimation progress={starTime} active={near} />
           </motion.div>
         </motion.div>
 
@@ -338,7 +367,13 @@ export function SpiralGalaxy({
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.4 }}
-              className="flex items-center justify-center whitespace-nowrap px-4 font-display text-[clamp(1.05rem,4.8vw,4.5rem)] font-extrabold uppercase leading-none tracking-tight text-gold drop-shadow-[0_4px_34px_rgba(0,0,0,0.85)]"
+              // Floor lowered from 1.05rem so the vw term stays in charge on
+              // small phones: at 320px the old floor held the line at 16.8px,
+              // which overflowed the card by 9px — and since this is
+              // whitespace-nowrap inside an overflow-hidden card, "Imaginer" and
+              // "Transformer" were clipped at both edges rather than shrinking.
+              // Only ever mattered once the spiral started shipping to phones.
+              className="flex items-center justify-center whitespace-nowrap px-4 font-display text-[clamp(0.9rem,4.8vw,4.5rem)] font-extrabold uppercase leading-none tracking-tight text-gold drop-shadow-[0_4px_34px_rgba(0,0,0,0.85)]"
             >
               {centerWords.map((w, i) => {
                 // Alternate solid / outline (like the Motion example), starting solid.

@@ -400,7 +400,10 @@ class Star {
     }
 }
 
-export function SpiralAnimation({ progress }: { progress?: { current: number } } = {}) {
+export function SpiralAnimation({
+    progress,
+    active = true,
+}: { progress?: { current: number }; active?: boolean } = {}) {
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const animationRef = useRef<AnimationController | null>(null)
     // SSR-safe: window is not available on the server, so start at 0 and measure
@@ -451,28 +454,40 @@ export function SpiralAnimation({ progress }: { progress?: { current: number } }
         const controller = new AnimationController(canvas, ctx, dpr, size, !!progress)
         animationRef.current = controller
 
-        // Scroll-driven: scrub `time` from the parent's progress ref each frame,
-        // rendering only when it changes (so it's frozen when not scrolling).
-        let raf = 0
-        if (progress) {
-            let last = -1
-            const tick = () => {
-                const p = progress.current
-                if (p !== last) {
-                    last = p
-                    controller.renderAt(p)
-                }
-                raf = requestAnimationFrame(tick)
-            }
-            raf = requestAnimationFrame(tick)
-        }
-
         return () => {
-            cancelAnimationFrame(raf)
             controller.destroy()
             animationRef.current = null
         }
     }, [dimensions, progress])
+
+    // Scroll-driven: scrub `time` from the parent's progress ref each frame,
+    // rendering only when it changes (so it's frozen when not scrolling).
+    //
+    // `active` gates the loop. The spiral used to be desktop-only, so a rAF
+    // running for the whole page lifetime cost little; it now renders on every
+    // phone, where an always-scheduled frame keeps the compositor awake for the
+    // entire visit. The parent flips this off once the section is well clear of
+    // the viewport.
+    //
+    // Kept in its OWN effect, deliberately: gating it inside the effect above
+    // would tear down and re-seed the whole starfield every time you scrolled
+    // past, instead of just parking the frame loop.
+    useEffect(() => {
+        if (!progress || !active) return
+        let raf = 0
+        let last = -1
+        const tick = () => {
+            const controller = animationRef.current
+            const p = progress.current
+            if (controller && p !== last) {
+                last = p
+                controller.renderAt(p)
+            }
+            raf = requestAnimationFrame(tick)
+        }
+        raf = requestAnimationFrame(tick)
+        return () => cancelAnimationFrame(raf)
+    }, [active, progress, dimensions])
 
     return (
         <div className="relative w-full h-full overflow-hidden">

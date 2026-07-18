@@ -1,5 +1,4 @@
 import { SectionHeader } from '../ui/SectionHeader'
-import { SectionPanel } from '../ui/SectionPanel'
 import { SectionCTA } from '../ui/SectionCTA'
 
 export interface WorkCard {
@@ -40,7 +39,7 @@ export function WorkOverview({
   viewAllHref,
 }: WorkOverviewProps) {
   return (
-    <SectionPanel id={id}>
+    <section id={id} className="bg-white py-16 md:py-20 lg:py-[100px]">
       <div className="mx-auto max-w-[90rem] px-5 md:px-10">
         <SectionHeader
           variant="split"
@@ -113,6 +112,6 @@ export function WorkOverview({
           <SectionCTA caption={outro} linkLabel={viewAll} link={viewAllHref} tone="light" />
         </div>
       </div>
-    </SectionPanel>
+    </section>
   )
 }
