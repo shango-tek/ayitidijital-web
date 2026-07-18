@@ -4,11 +4,16 @@ import { RoutePage } from '@/components/pages/RoutePage'
 import { useLocale } from '@/components/i18n/LocaleProvider'
 
 /**
- * The board, as publicly named in the imprint (§ 5 DDG requires it there).
- * Not locale content: these are legal facts about real people, so they live in
- * one place and only the role label is translated.
+ * The people behind Ayiti Dijital, in two groups that are deliberately not
+ * merged.
+ *
+ * The Vorstand is vertretungsberechtigt under § 26 BGB and is named in the
+ * imprint because § 5 DDG requires it. Coordination is not: it carries no power
+ * of representation, and it is not an imprint matter. Listing all three under
+ * one heading would put the § 26 note over a person it does not apply to — so
+ * the groups stay apart and the note sits with the Vorstand.
  */
-const BOARD = [
+const VORSTAND = [
   { name: 'Glory Pierrette', role: { ht: 'Prezidan', fr: 'Président', en: 'Chair' } },
   {
     name: 'Berlens Legagneur',
@@ -16,14 +21,26 @@ const BOARD = [
   },
 ] as const
 
-/**
- * "Ekip" — the team. Moved off /sou-nou when it earned its own route, so the
- * board is stated once on the site rather than in two places that can drift.
- *
- * Deliberately only the board: everyone else who works on Ayiti Dijital would
- * need their own consent to be listed here (§ 22 KunstUrhG for any photo), so
- * this page grows when real people agree to be on it, not before.
- */
+const COORDINATION = [
+  {
+    name: 'Corvil D. Telsaint',
+    role: { ht: 'Koòdonatè', fr: 'Coordonnateur', en: 'Coordinator' },
+  },
+] as const
+
+type Member = { name: string; role: Record<'ht' | 'fr' | 'en', string> }
+
+function MemberCard({ member, locale }: { member: Member; locale: 'ht' | 'fr' | 'en' }) {
+  return (
+    <article className="rounded-card border border-black/[0.06] bg-white p-8 shadow-[0_20px_60px_-40px_rgba(10,58,96,0.35)]">
+      <h3 className="font-display text-xl font-bold text-primary">{member.name}</h3>
+      <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-gold-deep">
+        {member.role[locale]}
+      </p>
+    </article>
+  )
+}
+
 export default function EkipPage() {
   const { content: c, locale } = useLocale()
   const t = c.teamPage
@@ -36,21 +53,28 @@ export default function EkipPage() {
             {t.label}
           </span>
 
-          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:max-w-4xl">
-            {BOARD.map((m) => (
-              <article
-                key={m.name}
-                className="rounded-card border border-black/[0.06] bg-white p-8 shadow-[0_20px_60px_-40px_rgba(10,58,96,0.35)]"
-              >
-                <h2 className="font-display text-xl font-bold text-primary">{m.name}</h2>
-                <p className="mt-1.5 font-mono text-[11px] uppercase tracking-[0.14em] text-gold-deep">
-                  {m.role[locale]}
-                </p>
-              </article>
+          {/* Vorstand */}
+          <h2 className="mt-10 font-display text-2xl font-extrabold tracking-tight text-primary lg:mt-14">
+            {t.boardLabel}
+          </h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:max-w-4xl">
+            {VORSTAND.map((m) => (
+              <MemberCard key={m.name} member={m} locale={locale} />
             ))}
           </div>
 
-          <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-soft/85">{t.note}</p>
+          {/* Coordination — its own heading, so the § 26 note below the board
+              does not read as covering it. */}
+          <h2 className="mt-12 font-display text-2xl font-extrabold tracking-tight text-primary lg:mt-16">
+            {t.coordinationLabel}
+          </h2>
+          <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:max-w-4xl">
+            {COORDINATION.map((m) => (
+              <MemberCard key={m.name} member={m} locale={locale} />
+            ))}
+          </div>
+
+          <p className="mt-8 max-w-2xl text-sm leading-relaxed text-ink-soft/85">{t.note}</p>
         </div>
       </section>
     </RoutePage>

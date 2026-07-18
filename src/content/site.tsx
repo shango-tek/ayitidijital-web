@@ -175,7 +175,16 @@ export interface SiteContent {
   }
   /** /ekip — the team page. The board itself is not locale content: it is named
    *  in the imprint, so it lives in the page. */
-  teamPage: { label: string; lead: string; note: string }
+  teamPage: {
+    label: string
+    lead: string
+    /** The two groups are kept apart on purpose: only the Vorstand is
+     *  vertretungsberechtigt, so the § 26 BGB note must not appear to cover the
+     *  coordinator. */
+    boardLabel: string
+    coordinationLabel: string
+    note: string
+  }
   /** /kontak — every channel we actually have. No phone: none has been supplied,
    *  and inventing one on a statutory-adjacent page is not an option. */
   contactPage: {
@@ -512,7 +521,9 @@ const ht: SiteContent = {
   teamPage: {
     label: 'Ekip la',
     lead: "Moun ki responsab devan lalwa pou Ayiti Dijital, jan yo nonmen yo nan enfòmasyon legal la.",
-    note: 'Chak manm gen dwa reprezante asosyasyon an pou kont li (§ 26 BGB).',
+    boardLabel: 'Vorstand la',
+    coordinationLabel: 'Koòdinasyon',
+    note: 'Chak manm Vorstand la gen dwa reprezante asosyasyon an pou kont li (§ 26 BGB). Koòdinasyon an pa gen dwa reprezantasyon.',
   },
   contactPage: {
     label: 'Kontakte nou',
@@ -917,7 +928,9 @@ const fr: SiteContent = {
   teamPage: {
     label: "L'équipe",
     lead: "Les personnes juridiquement responsables d'Ayiti Dijital, telles qu'elles sont nommées dans les mentions légales.",
-    note: 'Chaque membre peut représenter l’association seul (§ 26 BGB).',
+    boardLabel: 'Le Vorstand',
+    coordinationLabel: 'Coordination',
+    note: "Chaque membre du Vorstand peut représenter l’association seul (§ 26 BGB). La coordination n’a pas de pouvoir de représentation.",
   },
   contactPage: {
     label: 'Nous écrire',
@@ -1322,7 +1335,9 @@ const en: SiteContent = {
   teamPage: {
     label: 'The team',
     lead: "The people legally accountable for Ayiti Dijital, as named in the imprint.",
-    note: 'Each member may represent the association individually (§ 26 BGB).',
+    boardLabel: 'The Vorstand',
+    coordinationLabel: 'Coordination',
+    note: 'Each Vorstand member may represent the association individually (§ 26 BGB). Coordination carries no power of representation.',
   },
   contactPage: {
     label: 'Get in touch',
