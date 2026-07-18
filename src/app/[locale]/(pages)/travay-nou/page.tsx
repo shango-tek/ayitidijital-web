@@ -14,6 +14,7 @@ export default function TravayNouPage() {
   return (
     <RoutePage
       path="/travay-nou"
+      subtitle={c.whatWeDo.subtitle}
       image="/headers/travay-nou.webp"
     >
       <WhatWeDo content={c} />

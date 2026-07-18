@@ -136,8 +136,10 @@ export function HomeView() {
             subtitle={c.journal.subtitle}
             readMore={c.journal.readMore}
             viewAll={c.journal.viewAll}
-            viewAllHref={`/${locale}/jounal`}
-            posts={c.journal.posts.map((p) => ({ ...p, href: `/${locale}/jounal` }))}
+            // /jounal was never a route — these four links 404'd. The news page
+            // is /nouvel; each post anchors to its card there.
+            viewAllHref={`/${locale}/nouvel`}
+            posts={c.journal.posts.map((p, i) => ({ ...p, href: `/${locale}/nouvel#post-${i + 1}` }))}
           />
 
           {/* Newsletter — full-width rounded card, sits right under the journal */}
