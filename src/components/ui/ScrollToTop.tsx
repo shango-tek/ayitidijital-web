@@ -16,9 +16,10 @@ interface ScrollToTopProps {
  * the very first pixel of every page — including sitting on top of body copy —
  * and offered to scroll you to a top you were already at.
  *
- * `data-scrolled` is the fix: it goes true once you are a full screen down, and
- * ONLY the phone media query acts on it. Everywhere else this button is a normal
- * in-footer element and the attribute is inert, so nothing else changes.
+ * `data-scrolled` is the fix: it is true only for the stretch of the page where
+ * a floating control earns its place — a full screen down, and not yet at the
+ * footer. ONLY the phone media query acts on it; everywhere else this button is
+ * a normal in-footer element and the attribute is inert.
  */
 export function ScrollToTop({ label }: ScrollToTopProps) {
   const [scrolled, setScrolled] = useState(false)
@@ -28,7 +29,14 @@ export function ScrollToTop({ label }: ScrollToTopProps) {
     const onScroll = () => {
       // One viewport down: far enough that "back to top" is a real offer, and
       // early enough to be there when you want it.
-      const next = window.scrollY > window.innerHeight
+      const past = window.scrollY > window.innerHeight
+      // …and gone again once the footer arrives, so it stops floating over the
+      // footer's own content at the one point in the page where it is redundant.
+      const footer = document.getElementById('flickering-footer')
+      const footerInView = footer
+        ? footer.getBoundingClientRect().top < window.innerHeight
+        : false
+      const next = past && !footerInView
       // Runs on every scroll frame — only touch React state on a transition.
       if (next !== isScrolled.current) {
         isScrolled.current = next
