@@ -485,20 +485,6 @@
     background: var(--paper);
     overflow: hidden;
   }
-  /* The page header becomes a card, like every other dark surface here.
-     At this size the hero panel, the newsletter and the footer are all 8px-inset
-     2rem-radius cards; the header was the only full-bleed square-cornered one,
-     which read as an oversight rather than a choice — and its hard bottom edge
-     cut straight into the white body.
-
-     Squaring everything instead was the other option, and it is worse: the
-     shell's rounded top is not decoration, it is the same colour as the open
-     menu panel and shows through those corners so the page reads as sliding out
-     from under it. Losing that costs a relationship; gaining this costs nothing. */
-  .page-header {
-    margin: .5rem;
-    border-radius: 2rem;
-  }
   .hp .hp-bg { inset: 0; border-radius: 0 }
   .hp-inner { padding-top: 5.75rem }
   /* precision hero stays an inset, rounded card here too (space top/left/right) so
@@ -545,10 +531,30 @@
 /* The navbar OVERLAYS the dark PageHeader band (same look as the home hero):
    absolute + transparent + white-on-dark. It scrolls with the page (not sticky),
    so it always sits over the dark band at the top of each sub-page. */
+/* The page header is a card, at every width — like every other dark surface on
+   the site. Measured at 1425px, the home page's are all 8px-inset 2rem-radius
+   cards: hero panel 1409x868, spiral 1409x776, newsletter 1409x432, footer
+   1409x765. The page header was the lone full-bleed square-cornered one
+   (0,0 1425x544), which read as an oversight rather than a choice, and its hard
+   bottom edge cut straight into the body.
+
+   The alternative — squaring everything — is worse below 1024, where the shell's
+   rounded top is not decoration: it is the same colour as the open menu panel
+   and shows through those corners so the page reads as sliding out from under
+   it. Better to make one surface agree with four than four with one. */
+.page-header {
+  margin: .5rem;
+  border-radius: 2rem;
+}
 .site-header {
   position: absolute;
   inset: 0 0 auto 0;
   z-index: 50;
+  /* 2rem, so the navbar lands INSIDE the header card rather than straddling its
+     rounded corners: .5rem of card inset + 1.5rem, which is exactly how the home
+     hero's nav is inset (its .precision-hero-inner padding sits inside the same
+     .5rem card). Both resolve to 32px from the viewport edge. */
+  padding-inline: 2rem;
 }
 /* centre the navbar to the same max width the in-hero one uses */
 .site-header .rn-header {
