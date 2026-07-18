@@ -105,12 +105,20 @@ export function PageHeader({
         </h1>
 
         {subtitle ? (
-          // A notch smaller on phones. `max-w-xl` is what keeps this to four or
-          // five lines on wider screens, and it stops constraining below 576px —
-          // so the longest lede on the site (/sou-nou, 341 chars) ran to ten
-          // lines and pushed the band to 62% of the screen. 16px brings it to
-          // nine and 54%, without hiding any of the text.
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/65 max-sm:text-base">{subtitle}</p>
+          // Two lines on phones, then ellipsis. `max-w-xl` is what holds this to
+          // four or five lines on wider screens and it stops constraining below
+          // 576px, so the longest lede (/sou-nou, 341 chars) ran to ten and took
+          // 62% of the screen. Clamping is a real trade: the tail is still in the
+          // DOM — screen readers and crawlers get all of it — but a sighted phone
+          // reader cannot reach it, so a page whose lede carries something they
+          // need should have that text in the body too.
+          //
+          // The 16px stays, and now costs nothing: with the clamp fixing the line
+          // count, `min-h-[20rem]` sets the height on every page regardless, so
+          // the smaller size buys ~10 more characters per line before the cut.
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/65 max-sm:line-clamp-2 max-sm:text-base">
+            {subtitle}
+          </p>
         ) : null}
       </div>
     </section>

@@ -5,40 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5cc3ebc1-3445-4bdd-98a1-51e9744c057d" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/public/video-scroll-indicator.svg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/ShadcnHelperSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/ShadcnHelperSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/[locale]/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/[locale]/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/app/globals.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/brand/LanbiMark.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/brand/LanbiMark.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/brand/RadiantLogo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/brand/SpiralWatermark.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/FloatingNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/FloatingNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/FooterWatermark.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/KonbitFooter.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/MobileNav.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/MobileNav.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/RadiantNavbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/layout/RadiantNavbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/layout/SiteFooter.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/pages/HomeView.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/pages/HomeView.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/CosmicBackground.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/HeroPanel.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/NewsletterSection.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/NewsletterSection.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/ProjectsGrid.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/ProjectsGrid.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/sections/SilentPrecisionHero.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/sections/SilentPrecisionHero.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/Button.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/ui/Button.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/LangDropdown.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/PricingCard.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/liquid-glass-button.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/liquid-glass-demo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/magic-dust-demo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/magic-dust-shader.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/ui/neon-button-demo.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/content/site.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/content/site.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/konbit-footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/konbit-footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/silent-precision.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/silent-precision.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/styles/site.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/styles/site.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -214,7 +181,7 @@
       <workItem from="1783428099544" duration="8328000" />
       <workItem from="1783493867665" duration="4389000" />
       <workItem from="1783782121015" duration="5431000" />
-      <workItem from="1783924836921" duration="4347000" />
+      <workItem from="1783924836921" duration="5557000" />
     </task>
     <servers />
   </component>
