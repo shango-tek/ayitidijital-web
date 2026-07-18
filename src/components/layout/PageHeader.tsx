@@ -45,7 +45,11 @@ export function PageHeader({
   image = '/headers/default.webp',
 }: PageHeaderProps) {
   return (
-    <section className="page-header relative isolate flex overflow-hidden bg-[#0a0a0f] min-h-[26rem] lg:min-h-[34rem] pt-32 pb-14 lg:pb-20">
+    // Phones get a shorter band. At 375x812 the stock sizing made this 416px —
+    // 51% of the screen — for 204px of actual text, with an 89px hole between
+    // the navbar and the title. The trim is all padding, no content: 356px and
+    // 44%, and the gap reads as deliberate spacing (45px) rather than a gap.
+    <section className="page-header relative isolate flex overflow-hidden bg-[#0a0a0f] min-h-[26rem] lg:min-h-[34rem] pt-32 pb-14 lg:pb-20 max-sm:min-h-[20rem] max-sm:pt-28 max-sm:pb-10">
       {/* Frosted background photo (kept visible — the glass blur shows). Omitted
           entirely when no image is passed, leaving the gradients + watermark. */}
       {image ? (
@@ -101,7 +105,12 @@ export function PageHeader({
         </h1>
 
         {subtitle ? (
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/65">{subtitle}</p>
+          // A notch smaller on phones. `max-w-xl` is what keeps this to four or
+          // five lines on wider screens, and it stops constraining below 576px —
+          // so the longest lede on the site (/sou-nou, 341 chars) ran to ten
+          // lines and pushed the band to 62% of the screen. 16px brings it to
+          // nine and 54%, without hiding any of the text.
+          <p className="mt-5 max-w-xl text-lg leading-relaxed text-white/65 max-sm:text-base">{subtitle}</p>
         ) : null}
       </div>
     </section>
