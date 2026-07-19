@@ -164,6 +164,27 @@
   }
 }
 
+/* Phones, and tablets held upright: a third off the hero.
+   80vh was almost entirely empty here — the heading, the lead and the gaps
+   between them come to ~224px of the 650px the card occupied on a 812px phone,
+   the rest being the min-height and a 6.5rem bottom pad sized for a desktop
+   card. 54vh lands on two thirds of the old height at both shapes (a 812px
+   phone: 650 -> 438; a 1133px tablet: 906 -> 612) and still leaves the content
+   room to breathe, so nothing is cramped — only the emptiness is gone.
+
+   The query reads "narrower than a tablet, or a tablet-and-up held upright",
+   which is exactly the two shapes asked for; landscape tablets and desktops
+   keep the full-height card. */
+@media (max-width: 699px), (min-width: 700px) and (orientation: portrait) {
+  .precision-hero-inner {
+    min-height: 54vh;
+    padding-bottom: 2.5rem;
+  }
+  /* the heading sat 4rem below the navbar; at this height that gap was doing
+     nothing but pushing the lead off the fold */
+  .precision-hero-content { padding-bottom: 0; }
+}
+
 
 .precision-grain::before {
   content: "";
