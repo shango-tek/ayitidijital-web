@@ -355,6 +355,7 @@ const ht: SiteContent = {
         { label: 'Vizyon & misyon', href: '/sou-nou' },
         { label: 'Prensip nou yo', href: '/prensip' },
         { label: 'Ekip', href: '/ekip' },
+        { label: 'Kontak', href: '/kontak' },
         // { label: 'Karyè', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -686,6 +687,7 @@ const ht: SiteContent = {
         { label: 'Vizyon & misyon', href: '/sou-nou' },
         { label: 'Prensip nou yo', href: '/prensip' },
         { label: 'Ekip', href: '/ekip' },
+        { label: 'Kontak', href: '/kontak' },
         // { label: 'Karyè', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -762,6 +764,7 @@ const fr: SiteContent = {
         { label: 'Vision & mission', href: '/sou-nou' },
         { label: 'Nos principes', href: '/prensip' },
         { label: 'Équipe', href: '/ekip' },
+        { label: 'Contact', href: '/kontak' },
         // { label: 'Carrières', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -1093,6 +1096,7 @@ const fr: SiteContent = {
         { label: 'Vision & mission', href: '/sou-nou' },
         { label: 'Nos principes', href: '/prensip' },
         { label: 'Équipe', href: '/ekip' },
+        { label: 'Contact', href: '/kontak' },
         // { label: 'Carrières', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -1169,6 +1173,7 @@ const en: SiteContent = {
         { label: 'Vision & mission', href: '/sou-nou' },
         { label: 'Our principles', href: '/prensip' },
         { label: 'Team', href: '/ekip' },
+        { label: 'Contact', href: '/kontak' },
         // { label: 'Careers', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
@@ -1500,6 +1505,7 @@ const en: SiteContent = {
         { label: 'Vision & mission', href: '/sou-nou' },
         { label: 'Our principles', href: '/prensip' },
         { label: 'Team', href: '/ekip' },
+        { label: 'Contact', href: '/kontak' },
         // { label: 'Careers', href: '/sou-nou#karye' }, // TODO: re-enable when the Careers page is ready
       ],
     },
