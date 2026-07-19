@@ -222,8 +222,14 @@ export interface SiteContent {
     /** Eyebrow + headline over the numbered origin story. */
     storyLabel: string
     storyTitle: string
-    /** Five stages, in order. The numbering is chronological, not decorative. */
-    story: { kicker: string; title: string; body: string }[]
+    /** Five stages, in order. The numbering is chronological, not decorative.
+     *  `status` is where each stage stands today — inferred from what the rest
+     *  of the site states (LexHaiti is listed Actif; the incubated projects are
+     *  in development), so it needs a sanity check whenever that changes. */
+    story: { kicker: string; title: string; body: string; status: 'done' | 'current' | 'upcoming' }[]
+    /** Labels for those three states. A chronology is not a project board, so
+     *  these are their own words rather than the ecosystem's Actif/Bientôt. */
+    storyStatus: { done: string; current: string; upcoming: string }
     teamLabel: string
     teamTitle: string
   }
@@ -560,28 +566,34 @@ const ht: SiteContent = {
         kicker: 'Konsta a',
         title: 'Enfòmasyon piblik la, san aksè',
         body: "Tèks lwa ou pa ka jwenn, done gaye toupatou, sèvis nimerik ki pa la : pou sitwayen yo, jwenn enfòmasyon ki gen itilite piblik te rete yon gwo defi.",
+        status: 'done',
       },
       {
         kicker: 'Estriktirasyon an',
         title: 'Nesans Hub la',
         body: "Ayiti Dijital pran yon kad enterè jeneral, panse pou pote enfrastrikti teknolojik nan tout transparans, pa Ayiti epi pou Ayiti.",
+        status: 'done',
       },
       {
         kicker: 'Premye pwojè a',
         title: 'LexHaiti mete dwa a anliy',
         body: "Plis pase 2 400 tèks jiridik (Konstitisyon, kòd, lwa) vin lib pou konsilte. Prèv konkrè ke enfrastrikti piblik nimerik posib.",
+        status: 'done',
       },
       {
         kicker: 'Elajisman an',
         title: 'Yon ekosistèm k ap enkibe',
         body: "Tranzisyon vè yon modèl hub konplè. Ouvèti pwogram nou yo pou akeyi epi pwopilse pwojè ak start-up (komèsyal, sosyal, sivik) nouvèl jenerasyon an.",
+        status: 'current',
       },
       {
         kicker: 'Vizyon an',
         title: 'Yon nasyon nimerik souvren',
         body: "Elaji enfrastrikti yo, fòme talan yo, libere potansyèl antreprenarial la : mouvman an lanse pou bati yon otonomi teknolojik ki dire.",
+        status: 'upcoming',
       },
     ],
+    storyStatus: { done: 'Fèt', current: 'Ap fèt', upcoming: 'K ap vini' },
     teamLabel: 'Ekip la',
     teamTitle: 'Moun ki responsab yo',
   },
@@ -969,28 +981,34 @@ const fr: SiteContent = {
         kicker: 'Le constat',
         title: "L'information publique, inaccessible",
         body: "Textes de loi introuvables, données dispersées, services numériques absents : pour les citoyens, l'accès à l'information d'intérêt public restait un défi majeur.",
+        status: 'done',
       },
       {
         kicker: 'La structuration',
         title: 'La naissance du Hub',
         body: "Ayiti Dijital se dote d'un cadre d'intérêt général, pensé pour porter des infrastructures technologiques en toute transparence, par et pour Haïti.",
+        status: 'done',
       },
       {
         kicker: 'Le premier projet',
         title: 'LexHaiti met le droit en ligne',
         body: "Plus de 2 400 textes juridiques (Constitution, codes, lois) deviennent librement consultables. La preuve concrète que l'infrastructure publique numérique est possible.",
+        status: 'done',
       },
       {
         kicker: "L'élargissement",
         title: 'Un écosystème en incubation',
         body: "Transition vers un modèle de hub complet. Ouverture de nos programmes pour accueillir et propulser les projets et start-ups (commerciaux, sociaux, civiques) de la nouvelle génération.",
+        status: 'current',
       },
       {
         kicker: 'La vision',
         title: 'Une nation numérique souveraine',
         body: "Étendre les infrastructures, former les talents, libérer le potentiel entrepreneurial : le mouvement est lancé pour bâtir une autonomie technologique durable.",
+        status: 'upcoming',
       },
     ],
+    storyStatus: { done: 'Accompli', current: 'En cours', upcoming: 'À venir' },
     teamLabel: "L'équipe",
     teamTitle: 'Les personnes responsables',
   },
@@ -1378,28 +1396,34 @@ const en: SiteContent = {
         kicker: 'The observation',
         title: 'Public information, out of reach',
         body: "Statutes nobody could find, data scattered across sources, digital services absent: for citizens, reaching information held in the public interest remained a real obstacle.",
+        status: 'done',
       },
       {
         kicker: 'The structure',
         title: 'The Hub is founded',
         body: "Ayiti Dijital gives itself a public-interest framing, built to carry technological infrastructure transparently — by Haiti and for Haiti.",
+        status: 'done',
       },
       {
         kicker: 'The first project',
         title: 'LexHaiti puts the law online',
         body: "More than 2,400 legal texts (the Constitution, the codes, the statutes) become freely searchable. Concrete proof that public digital infrastructure is possible.",
+        status: 'done',
       },
       {
         kicker: 'The widening',
         title: 'An ecosystem in incubation',
         body: "The shift to a full hub model. Our programmes open up to host and propel the next generation's projects and start-ups — commercial, social and civic alike.",
+        status: 'current',
       },
       {
         kicker: 'The vision',
         title: 'A sovereign digital nation',
         body: "Extend the infrastructure, train the talent, unlock the entrepreneurial potential: the movement is under way to build lasting technological autonomy.",
+        status: 'upcoming',
       },
     ],
+    storyStatus: { done: 'Done', current: 'Under way', upcoming: 'Ahead' },
     teamLabel: 'The team',
     teamTitle: 'The people accountable',
   },
