@@ -147,18 +147,6 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
         className={cn('relative w-full overflow-hidden bg-white py-16 md:py-20 lg:py-[100px]', className)}
         {...props}
       >
-        {/* the original's grid, at brand navy rather than an undefined token */}
-        <div aria-hidden="true" className="pointer-events-none absolute inset-0 z-0 opacity-[0.045]">
-          <svg className="h-full w-full" fill="none">
-            <defs>
-              <pattern id="team-grid" x="0" y="0" width="24" height="24" patternUnits="userSpaceOnUse">
-                <path d="M24 0L0 0 0 24" fill="none" stroke="var(--color-primary)" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#team-grid)" />
-          </svg>
-        </div>
-
         <div className="relative z-10 mx-auto max-w-[90rem] px-5 md:px-10">
           {eyebrow && (
             <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
@@ -169,21 +157,22 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
             <p className="mt-4 max-w-2xl leading-relaxed text-ink-soft">{description}</p>
           )}
 
-          {groups.map((group, gi) => (
-            <div key={group.label} className={gi === 0 ? 'mt-10 lg:mt-14' : 'mt-12 lg:mt-16'}>
-              <h3 className="font-display text-2xl font-extrabold tracking-tight text-primary">
-                {group.label}
-              </h3>
-              <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-                {group.members.map((member, mi) => (
-                  <MemberCard key={member.name} member={member} index={gi + mi} />
-                ))}
-              </div>
-              {gi === 0 && note && (
-                <p className="mt-6 max-w-2xl text-sm leading-relaxed text-ink-soft/85">{note}</p>
-              )}
-            </div>
-          ))}
+          {/* One row on a computer, whatever group a person is in. The groups
+              are still real — they are why the note below exists — but they no
+              longer need their own headings to stay accurate: the note names
+              the Vorstand explicitly and states that coordination carries no
+              power of representation, so it cannot be read as covering someone
+              it does not apply to. */}
+          <div className="mt-10 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-3">
+            {groups
+              .flatMap((group) => group.members)
+              .map((member, i) => (
+                <MemberCard key={member.name} member={member} index={i} />
+              ))}
+          </div>
+          {note && (
+            <p className="mt-6 max-w-3xl text-sm leading-relaxed text-ink-soft/85">{note}</p>
+          )}
         </div>
       </section>
     )
