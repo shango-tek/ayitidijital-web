@@ -2,6 +2,7 @@
 
 import { motion, useReducedMotion } from 'framer-motion'
 import { RoutePage } from '@/components/pages/RoutePage'
+import { Kicker } from '@/components/ui/Kicker'
 import { useContent } from '@/components/i18n/LocaleProvider'
 
 /**
@@ -40,9 +41,7 @@ export default function PrensipPage() {
     <RoutePage path="/prensip" subtitle={p.lead}>
       <section className="bg-white py-16 md:py-20 lg:py-[100px]">
         <div className="mx-auto max-w-[90rem] px-5 md:px-10">
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-            {p.label}
-          </span>
+          <Kicker label={p.label} red />
 
           {/* Same floor as Istwa nou: whileInView writes its start state into the
               server HTML, so without JS this page would be an empty column. */}

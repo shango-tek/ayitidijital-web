@@ -1,6 +1,7 @@
 'use client'
 
 import { RoutePage } from '@/components/pages/RoutePage'
+import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Timeline } from '@/components/ui/Timeline'
 import { useLocale } from '@/components/i18n/LocaleProvider'
 
@@ -78,12 +79,10 @@ export default function SouNouPage() {
       {/* ── Istwa nou — the origin story ──────────────────────────────── */}
       <section id="istwa" className="scroll-mt-28 bg-white py-16 md:py-20 lg:py-[100px]">
         <div className="mx-auto max-w-[90rem] px-5 md:px-10">
-          <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-            {a.storyLabel}
-          </span>
-          <h2 className="mt-3 max-w-3xl font-display text-[clamp(1.75rem,4vw,2.75rem)] font-extrabold leading-tight tracking-tight text-primary">
-            {a.storyTitle}
-          </h2>
+          {/* The shared section header, like every other section on the site —
+              three tilted pixels, display title, gold period. This was
+              hand-rolled before and quietly lost the mark. */}
+          <SectionHeader label={a.storyLabel} title={a.storyTitle} />
 
           <div className="mt-12 lg:mt-16">
             <Timeline items={timelineItems} statusLabels={a.storyStatus} />

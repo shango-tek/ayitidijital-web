@@ -1,5 +1,6 @@
 import * as React from 'react'
 import { cn } from '@/lib/utils'
+import { Kicker } from './Kicker'
 
 /**
  * Team section — the supplied shadcn component, rebuilt on this project's design
@@ -149,9 +150,7 @@ export const TeamSection = React.forwardRef<HTMLDivElement, TeamSectionProps>(
       >
         <div className="relative z-10 mx-auto max-w-[90rem] px-5 md:px-10">
           {eyebrow && (
-            <span className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-              {eyebrow}
-            </span>
+            <Kicker label={eyebrow} red />
           )}
           {description && (
             <p className="mt-4 max-w-2xl leading-relaxed text-ink-soft">{description}</p>
