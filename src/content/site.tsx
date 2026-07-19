@@ -202,6 +202,9 @@ export interface SiteContent {
     firstName: string
     lastName: string
     emailField: string
+    /** Optional: the visitor's own number, if they want a call back. There is
+     *  still no number for US — none has been supplied. */
+    phoneField: string
     message: string
     optional: string
     send: string
@@ -552,6 +555,7 @@ const ht: SiteContent = {
     firstName: 'Prenon',
     lastName: 'Siyati',
     emailField: 'Imèl',
+    phoneField: 'Telefòn',
     message: 'Mesaj ou',
     optional: 'opsyonèl',
     send: 'Voye',
@@ -974,6 +978,7 @@ const fr: SiteContent = {
     firstName: 'Prénom',
     lastName: 'Nom',
     emailField: 'E-mail',
+    phoneField: 'Téléphone',
     message: 'Votre message',
     optional: 'facultatif',
     send: 'Envoyer',
@@ -1396,6 +1401,7 @@ const en: SiteContent = {
     firstName: 'First name',
     lastName: 'Last name',
     emailField: 'Email',
+    phoneField: 'Phone',
     message: 'Your message',
     optional: 'optional',
     send: 'Send',

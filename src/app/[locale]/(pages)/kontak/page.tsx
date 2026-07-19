@@ -1,35 +1,34 @@
 'use client'
 
 import { useRef, useState } from 'react'
+import { Mail, MapPin, Scale } from 'lucide-react'
 import { RoutePage } from '@/components/pages/RoutePage'
 import { Button } from '@/components/ui/Button'
 import { useLocale } from '@/components/i18n/LocaleProvider'
 import { submitContact, type ContactOutcome } from '@/lib/contact'
 
 /**
- * "Kontak" — the page the FAQ has been promising in all three languages while
- * the footer only ever offered a mailto:.
+ * "Kontak" — split panel: the channels on a sand ground, the form on white,
+ * inside one rounded card so the split reads as this site's material rather
+ * than a full-bleed band.
  *
- * Design notes, because two of them are rules rather than taste:
+ * There is no phone row. The reference layout has one; we do not have a number,
+ * none has ever been supplied, and this page sits beside the statutory pages
+ * where an invented one would be worst. The form still offers a phone FIELD —
+ * that number belongs to the visitor, not to us.
  *
- *  - The submit is NAVY, not red. The navbar carries a red "Soutni" button on
- *    every page, and red on this site is one-per-view — two of them and neither
- *    reads as the primary action. Navy is the standard-action variant.
- *  - The channels are one sand panel with hairline rows, not three stacked
- *    cards. Three shadowed boxes competed with the form for attention; the form
- *    is what the page is for.
+ * The submit is navy, not red: the navbar carries a red "Soutni" on every page
+ * and red here is one-per-view.
  *
- * The form is real: it POSTs to NEXT_PUBLIC_CONTACT_ENDPOINT when one is
- * configured, and otherwise opens a pre-filled message in the visitor's own
- * mail client. Those are different outcomes and the confirmation says which
- * happened — "we have your message" would be false after a handoff, and the
- * visitor would only find out when nobody replied.
+ * The form POSTs to NEXT_PUBLIC_CONTACT_ENDPOINT when configured, and otherwise
+ * opens a pre-filled message in the visitor's own mail client. Those are
+ * different outcomes and the confirmation says which happened.
  */
 const EMAIL = 'contact@ayitidijital.org'
 const POST = ['Ayiti Dijital', 'Ursberger Str. 15', '81673 München', 'Deutschland']
 
 const fieldCls =
-  'w-full rounded-xl border border-black/[0.12] bg-white px-4 py-3 text-ink transition-colors placeholder:text-ink-soft/45 hover:border-black/20 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/15'
+  'w-full rounded-xl border border-black/[0.12] bg-white px-4 py-3 text-ink transition-colors placeholder:text-ink-soft/40 hover:border-black/20 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/15'
 const labelCls = 'mb-2 flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft'
 const optionalCls = 'font-sans text-[11px] normal-case tracking-normal text-ink-soft/55'
 
@@ -50,40 +49,98 @@ export default function KontakPage() {
         firstName: String(data.get('firstName') ?? '').trim(),
         lastName: String(data.get('lastName') ?? '').trim(),
         email: String(data.get('email') ?? '').trim(),
+        phone: String(data.get('phone') ?? '').trim(),
         message: String(data.get('message') ?? '').trim(),
       })
       setStatus({ kind: 'done', outcome })
     } catch {
-      // Keep the values so the message is not lost — the error tells them the
-      // address to use instead, and they can copy their text out of the field.
       setStatus({ kind: 'error' })
     }
   }
 
-  const done = status.kind === 'done'
   const privacyHref = `/${locale}/konfidansyalite`
   const imprintLabel =
     c.footerColumns.flatMap((col) => col.links).find((l) => l.href.includes('enfomasyon-legal'))?.label ?? 'Impressum'
 
   return (
-    // /kontak is reached from the footer rather than the nav, so RoutePage has
-    // no entry to take a heading from — pass it explicitly.
     <RoutePage path="/kontak" title={k.label} subtitle={k.lead}>
-      <section className="bg-white py-16 md:py-20 lg:py-[100px]">
-        <div className="mx-auto max-w-[90rem] px-5 md:px-10">
-          <div className="grid gap-4 lg:grid-cols-[1.45fr_1fr] lg:items-start">
-            {/* ── The form: the reason the page exists, so it leads ─────── */}
-            <div className="rounded-card border border-black/[0.08] bg-white p-8 shadow-[0_20px_60px_-40px_rgba(10,58,96,0.35)] md:p-10">
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-                {k.formLabel}
+      <section className="bg-white px-2 py-16 md:py-20 lg:py-[100px]">
+        <div className="mx-auto max-w-[90rem]">
+          <div className="grid overflow-hidden rounded-feature lg:grid-cols-[0.9fr_1.1fr]">
+            {/* ── Channels ─────────────────────────────────────────────── */}
+            <div className="bg-sand p-8 md:p-12 lg:p-14">
+              <h2 className="font-display text-[clamp(1.75rem,4vw,2.5rem)] font-extrabold leading-tight tracking-tight text-primary">
+                {k.label}
               </h2>
+              <p className="mt-4 max-w-sm leading-relaxed text-ink-soft">{k.lead}</p>
 
-              {done ? (
-                /* The form is replaced rather than left standing — a filled-in
-                   form under a confirmation invites an accidental duplicate. */
-                /* role=status so this is announced when it replaces the form —
-                   the live region that was inside the form goes away with it. */
-                <div className="mt-6" role="status">
+              <ul className="mt-10 flex flex-col gap-7">
+                <li className="flex gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-primary shadow-[0_10px_30px_-18px_rgba(10,58,96,0.5)]">
+                    <Mail className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft/70">
+                      {k.emailLabel}
+                    </p>
+                    <a
+                      href={`mailto:${EMAIL}`}
+                      className="mt-1 block break-all font-display font-bold text-primary underline decoration-gold-deep/40 underline-offset-4 transition-colors hover:text-gold-deep"
+                    >
+                      {EMAIL}
+                    </a>
+                  </div>
+                </li>
+
+                <li className="flex gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-primary shadow-[0_10px_30px_-18px_rgba(10,58,96,0.5)]">
+                    <MapPin className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft/70">
+                      {k.postLabel}
+                    </p>
+                    <address className="mt-1 not-italic leading-relaxed text-ink">
+                      {POST.map((line) => (
+                        <span key={line} className="block">
+                          {line}
+                        </span>
+                      ))}
+                    </address>
+                  </div>
+                </li>
+
+                <li className="flex gap-4">
+                  <span className="grid h-11 w-11 shrink-0 place-items-center rounded-xl bg-white text-primary shadow-[0_10px_30px_-18px_rgba(10,58,96,0.5)]">
+                    <Scale className="h-5 w-5" aria-hidden="true" />
+                  </span>
+                  <div className="min-w-0">
+                    <p className="font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft/70">
+                      {k.legalLabel}
+                    </p>
+                    <div className="mt-1 flex flex-wrap gap-x-5 gap-y-1">
+                      <a
+                        href={`/${locale}/enfomasyon-legal`}
+                        className="font-display text-sm font-bold text-primary underline decoration-gold-deep/40 underline-offset-4 transition-colors hover:text-gold-deep"
+                      >
+                        {imprintLabel}
+                      </a>
+                      <a
+                        href={privacyHref}
+                        className="font-display text-sm font-bold text-primary underline decoration-gold-deep/40 underline-offset-4 transition-colors hover:text-gold-deep"
+                      >
+                        {c.newsletter.privacy.label}
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </div>
+
+            {/* ── Form ─────────────────────────────────────────────────── */}
+            <div className="border border-black/[0.07] bg-white p-8 md:p-12 lg:border-l-0 lg:p-14">
+              {status.kind === 'done' ? (
+                <div role="status" className="flex h-full flex-col justify-center">
                   <p className="font-display text-xl font-bold leading-snug text-primary">
                     {status.outcome === 'sent' ? k.sent : k.handoff}
                   </p>
@@ -102,7 +159,7 @@ export default function KontakPage() {
                   </div>
                 </div>
               ) : (
-                <form ref={formRef} onSubmit={handleSubmit} noValidate={false} className="mt-6 flex flex-col gap-5">
+                <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
                   <div className="grid gap-5 sm:grid-cols-2">
                     <div>
                       <label className={labelCls} htmlFor="firstName">
@@ -128,14 +185,20 @@ export default function KontakPage() {
                   </div>
 
                   <div>
+                    <label className={labelCls} htmlFor="phone">
+                      {k.phoneField}
+                      <span className={optionalCls}>{k.optional}</span>
+                    </label>
+                    <input id="phone" name="phone" type="tel" autoComplete="tel" className={fieldCls} />
+                  </div>
+
+                  <div>
                     <label className={labelCls} htmlFor="message">
                       {k.message}
                     </label>
-                    <textarea id="message" name="message" required rows={7} className={`${fieldCls} resize-y`} />
+                    <textarea id="message" name="message" required rows={6} className={`${fieldCls} resize-y`} />
                   </div>
 
-                  {/* What pressing the button will actually do, said before it is
-                      pressed rather than explained afterwards. */}
                   <p className="text-sm leading-relaxed text-ink-soft/85">
                     {k.formNote}{' '}
                     <a
@@ -146,13 +209,16 @@ export default function KontakPage() {
                     </a>
                   </p>
 
-                  <div className="flex flex-wrap items-center gap-4">
-                    <Button variant="navy" pill type="submit" arrow disabled={status.kind === 'sending'}>
-                      {status.kind === 'sending' ? k.sending : k.send}
-                    </Button>
-                  </div>
+                  <Button
+                    variant="navy"
+                    pill
+                    type="submit"
+                    disabled={status.kind === 'sending'}
+                    className="w-full justify-center"
+                  >
+                    {status.kind === 'sending' ? k.sending : k.send}
+                  </Button>
 
-                  {/* Announced, not just displayed. */}
                   <p aria-live="polite" className="sr-only">
                     {status.kind === 'sending' ? k.sending : ''}
                   </p>
@@ -164,53 +230,6 @@ export default function KontakPage() {
                 </form>
               )}
             </div>
-
-            {/* ── Other ways through: one panel, hairline rows ──────────── */}
-            <aside className="rounded-card bg-sand p-8 md:p-10">
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-                {k.emailLabel}
-              </h2>
-              <a
-                href={`mailto:${EMAIL}`}
-                className="mt-2 inline-block break-all font-display text-lg font-bold text-primary underline decoration-gold-deep/40 underline-offset-4 transition-colors hover:text-gold-deep"
-              >
-                {EMAIL}
-              </a>
-
-              <hr className="my-7 border-black/[0.09]" />
-
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-                {k.postLabel}
-              </h2>
-              <address className="mt-2 not-italic leading-relaxed text-ink-soft">
-                {POST.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </address>
-
-              <hr className="my-7 border-black/[0.09]" />
-
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-gold-deep">
-                {k.legalLabel}
-              </h2>
-              <p className="mt-2 leading-relaxed text-ink-soft">{k.legalBody}</p>
-              <div className="mt-4 flex flex-wrap gap-x-6 gap-y-2">
-                <a
-                  href={`/${locale}/enfomasyon-legal`}
-                  className="font-display text-sm font-bold text-primary underline decoration-gold-deep/40 underline-offset-4 transition-colors hover:text-gold-deep"
-                >
-                  {imprintLabel}
-                </a>
-                <a
-                  href={privacyHref}
-                  className="font-display text-sm font-bold text-primary underline decoration-gold-deep/40 underline-offset-4 transition-colors hover:text-gold-deep"
-                >
-                  {c.newsletter.privacy.label}
-                </a>
-              </div>
-            </aside>
           </div>
         </div>
       </section>

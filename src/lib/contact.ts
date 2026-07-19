@@ -20,6 +20,8 @@ export interface ContactFields {
   firstName?: string
   lastName?: string
   email: string
+  /** Optional — a number to call back on, supplied by the visitor. */
+  phone?: string
   message: string
 }
 
@@ -50,7 +52,7 @@ export async function submitContact(fields: ContactFields): Promise<ContactOutco
   const name = [fields.firstName, fields.lastName].filter(Boolean).join(' ').trim()
   const subject = encodeURIComponent(name ? `Kontak — ${name}` : 'Kontak')
   const body = encodeURIComponent(
-    [name && `${name}`, email, '', message].filter((l) => l !== undefined && l !== '').join('\n'),
+    [name, email, fields.phone, '', message].filter(Boolean).join('\n'),
   )
   window.location.href = `mailto:${CONTACT}?subject=${subject}&body=${body}`
   return 'handoff'
