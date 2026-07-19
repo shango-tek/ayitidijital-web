@@ -113,6 +113,29 @@
    Unlayered on purpose: preflight lives in @layer base, and unlayered CSS
    outranks any layer, so this holds without !important.
    ------------------------------------------------------------------ */
+/* ------------------------------------------------------------------
+   Phone hero headline.
+
+   The hero H1 was set at clamp(1.35rem, 6.5vw, 3rem) — 24.4px on a 375px
+   phone, which made it SMALLER than the H1 on every sub-page (the page
+   header floors at 2.25rem = 36px). The hero should carry the largest
+   type on the site, and it carried the smallest: 13% of the card was
+   heading and the other 70% was empty dark.
+
+   11vw puts it at 41px on a 375px phone — three lines, a third of the
+   card — and the 3rem cap makes it meet `sm:text-5xl` (48px) exactly at
+   the 640px breakpoint, so there is no jump where the utility takes over.
+
+   Unlayered on purpose: silent-precision.css lives in @layer base, and a
+   rule there would lose to the Tailwind arbitrary-value utility on the
+   element. Phones only — the tablet hero is already right.
+   ------------------------------------------------------------------ */
+@media (max-width: 699px) {
+  .precision-hero h1 {
+    font-size: clamp(2.25rem, 11vw, 3rem);
+  }
+}
+
 button,
 summary,
 [role='button'],
