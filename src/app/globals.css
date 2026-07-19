@@ -130,16 +130,19 @@
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  column-gap: 0.5rem;
+  column-gap: 0.25em;
 }
 .hero-rest { display: contents; }
-.hero-tail {
-  flex-basis: 100%;
+.hero-line {
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  column-gap: 0.5rem;
+  align-items: baseline;
+  column-gap: 0.25em;
+  white-space: nowrap;
+}
+/* zero-height full-basis item = a forced line break in a wrapping flex row */
+.hero-break {
+  flex-basis: 100%;
+  height: 0;
 }
 
 /* Phone: "Façonner" turns vertical and stands alongside the horizontal
@@ -161,7 +164,10 @@
     font-size: clamp(2rem, 10.5vw, 3rem);
   }
   .hero-shape {
+    /* vertical-rl reads top-to-bottom; the half turn flips it so the word climbs
+       bottom-to-top, which is the easier direction to read a rotated word. */
     writing-mode: vertical-rl;
+    transform: rotate(180deg);
     line-height: 1;
     flex: none;
     /* the real size is set from JS, which measures the block beside it; this is
@@ -175,17 +181,9 @@
     justify-content: center;
     text-align: left;
     min-width: 0;
-    /* Half the width is what makes the tail wrap to four lines, and four lines
-       is what makes the vertical word come out the same size as the horizontal
-       text rather than a fraction of it: a word set vertically runs ~4.5x its
-       font size, a line of text is ~1.08x. Narrower block, taller block, bigger
-       word. Measured: 4 lines -> the two land within 3% of each other. */
-    max-width: 50%;
   }
-  .hero-tail {
-    flex-basis: auto;
-    justify-content: flex-start;
-  }
+  /* the desktop line break has no job here — each line is already its own */
+  .hero-break { display: none; }
 }
 
 button,

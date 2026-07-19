@@ -345,13 +345,27 @@ export function SilentPrecisionHero({
                         <h1 className="tahoe-glass-text hero-title px-1 w-full text-[clamp(1.35rem,6.5vw,3rem)] sm:text-5xl md:text-7xl lg:text-[clamp(4.25rem,7vw,7.25rem)] leading-[1.08]">
                             <span ref={shapeRef} className="hero-shape font-display italic font-medium">{title.shaping}</span>
                             <span ref={restRef} className="hero-rest">
-                                <span className="font-sans font-extrabold tracking-tighter">{title.tomorrow}</span>
-                                <span className="hero-tail">
-                                    {/* upright, like the "&" beside it — the italics in this
+                                {/* Three explicit lines, so the phone break points are the
+                                    same in every language instead of falling where the text
+                                    happens to wrap:
+                                      Demen / ak Vizyon / & Aksyon
+                                      l'Avenir / avec Vision / & Action.
+                                      Tomorrow / with Vision / & Action. */}
+                                <span className="hero-line">
+                                    <span className="font-sans font-extrabold tracking-tighter">{title.tomorrow}</span>
+                                </span>
+                                {/* zero-height flex break: on desktop it forces the wrap that
+                                    the old second <div> used to make, so lines 2 and 3 share
+                                    one row there. Removed on phone, where each line is its own. */}
+                                <span className="hero-break" aria-hidden="true" />
+                                <span className="hero-line">
+                                    {/* upright, like the "&" below — the italics in this
                                         headline belong to the display word and the two serif
                                         accents, not to the connectives */}
                                     <span className="font-display font-medium">{title.with}</span>
                                     <span className="font-serif italic font-semibold">{title.vision}</span>
+                                </span>
+                                <span className="hero-line">
                                     <span className="font-display font-medium">{title.and}</span>
                                     <span className="font-serif italic font-semibold">{title.action}</span>
                                 </span>
