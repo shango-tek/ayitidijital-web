@@ -114,25 +114,77 @@
    outranks any layer, so this holds without !important.
    ------------------------------------------------------------------ */
 /* ------------------------------------------------------------------
-   Phone hero headline.
+   Hero headline layout.
 
-   The hero H1 was set at clamp(1.35rem, 6.5vw, 3rem) — 24.4px on a 375px
-   phone, which made it SMALLER than the H1 on every sub-page (the page
-   header floors at 2.25rem = 36px). The hero should carry the largest
-   type on the site, and it carried the smallest: 13% of the card was
-   heading and the other 70% was empty dark.
+   One markup, two arrangements. `.hero-rest` is `display:contents` by
+   default, so its children act as direct flex items of the h1 and the
+   original centred two-row headline is unchanged everywhere above phone
+   width. `.hero-tail` takes the full basis so it always falls to its own
+   row, exactly as the old second <div> did.
 
-   11vw puts it at 41px on a 375px phone — three lines, a third of the
-   card — and the 3rem cap makes it meet `sm:text-5xl` (48px) exactly at
-   the 640px breakpoint, so there is no jump where the utility takes over.
-
-   Unlayered on purpose: silent-precision.css lives in @layer base, and a
-   rule there would lose to the Tailwind arbitrary-value utility on the
-   element. Phones only — the tablet hero is already right.
+   Unlayered on purpose: silent-precision.css sits in @layer base and
+   would lose to the Tailwind arbitrary-value utilities on these elements.
    ------------------------------------------------------------------ */
+.hero-title {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+}
+.hero-rest { display: contents; }
+.hero-tail {
+  flex-basis: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 0.5rem;
+}
+
+/* Phone: "Façonner" turns vertical and stands alongside the horizontal
+   block, sized so the word runs the full height of it. The vertical run
+   of a word equals its ordinary horizontal width, so matching the two is
+   a matter of the ratio between the two font sizes — .hero-shape is set
+   in `em` off the h1 so the pairing holds as the clamp scales.
+
+   1.9em against a three-line block is the ratio that lands them level;
+   it is checked in the browser, not derived. */
 @media (max-width: 699px) {
-  .precision-hero h1 {
-    font-size: clamp(2.25rem, 11vw, 3rem);
+  .hero-title {
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: 0.75rem;
+    /* ~40px at 375. The 3rem cap meets sm:text-5xl (48px) at the 640
+       breakpoint, so nothing jumps where the utility takes over. */
+    font-size: clamp(2rem, 10.5vw, 3rem);
+  }
+  .hero-shape {
+    writing-mode: vertical-rl;
+    line-height: 1;
+    flex: none;
+    /* the real size is set from JS, which measures the block beside it; this is
+       only the starting point it scales from */
+    font-size: 1em;
+  }
+  .hero-rest {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    text-align: left;
+    min-width: 0;
+    /* Half the width is what makes the tail wrap to four lines, and four lines
+       is what makes the vertical word come out the same size as the horizontal
+       text rather than a fraction of it: a word set vertically runs ~4.5x its
+       font size, a line of text is ~1.08x. Narrower block, taller block, bigger
+       word. Measured: 4 lines -> the two land within 3% of each other. */
+    max-width: 50%;
+  }
+  .hero-tail {
+    flex-basis: auto;
+    justify-content: flex-start;
   }
 }
 

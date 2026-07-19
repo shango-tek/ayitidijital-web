@@ -190,6 +190,48 @@ export function SilentPrecisionHero({
     const canvasRef = useRef<HTMLCanvasElement>(null)
     const wrapRef = useRef<HTMLDivElement>(null)
     const [isLoaded, setIsLoaded] = useState(false)
+    const shapeRef = useRef<HTMLSpanElement>(null)
+    const restRef = useRef<HTMLSpanElement>(null)
+
+    /* Phone headline: set the vertical word to exactly the height of the
+       horizontal block beside it.
+       A vertical word's run is its ordinary text width, so the two are related
+       by a single ratio — but not a ratio I can hardcode, because the words
+       differ per locale ("Façonner" / "Fasonnen" / "Shaping") and so do the
+       tails, which changes how many lines the block wraps to. So it is
+       measured: read both boxes, scale the word by their ratio. The
+       relationship is linear, so one pass lands it exactly.
+       Above phone width the layout is the original two centred rows and the
+       inline size is cleared, letting the stylesheet's clamp take back over. */
+    useEffect(() => {
+        const mq = window.matchMedia('(max-width: 699px)')
+
+        const fit = () => {
+            const shape = shapeRef.current
+            const rest = restRef.current
+            if (!shape || !rest) return
+            if (!mq.matches) {
+                shape.style.fontSize = ''
+                return
+            }
+            shape.style.fontSize = ''
+            const target = rest.getBoundingClientRect().height
+            const natural = shape.getBoundingClientRect().height
+            if (!target || !natural) return
+            const current = parseFloat(getComputedStyle(shape).fontSize)
+            shape.style.fontSize = `${current * (target / natural)}px`
+        }
+
+        fit()
+        // Fonts land after first paint; a webfont swap changes both boxes.
+        document.fonts?.ready.then(fit).catch(() => {})
+        window.addEventListener('resize', fit)
+        mq.addEventListener('change', fit)
+        return () => {
+            window.removeEventListener('resize', fit)
+            mq.removeEventListener('change', fit)
+        }
+    }, [title])
 
     useEffect(() => {
         setIsLoaded(true)
@@ -274,7 +316,10 @@ export function SilentPrecisionHero({
                 <div className="precision-orb w-[40rem] h-[40rem] -top-40 -left-40"
                      style={{background: 'radial-gradient(circle, var(--lanbi-blue-ondark) 0%, transparent 70%)'}}></div>
                 <div className="precision-orb w-[36rem] h-[36rem] -bottom-40 -right-32"
-                     style={{background: 'radial-gradient(circle, var(--color-periwinkle) 0%, transparent 70%)', opacity: 0.25}}></div>
+                     style={{
+                         background: 'radial-gradient(circle, var(--color-periwinkle) 0%, transparent 70%)',
+                         opacity: 0.25
+                     }}></div>
 
                 {/* Pixel canvas background */}
                 <div className="absolute inset-0 z-0 pointer-events-none">
@@ -290,59 +335,64 @@ export function SilentPrecisionHero({
                     {/* Tahoe glass header */}
                     <div
                         className="relative z-10 flex flex-col items-center justify-center text-center order-2 md:order-2 mt-16 sm:mt-12 md:mt-0 pointer-events-none w-full">
-                        <h1 className="tahoe-glass-text flex flex-col items-center justify-center px-1 w-full text-[clamp(1.35rem,6.5vw,3rem)] sm:text-5xl md:text-7xl lg:text-[clamp(4.25rem,7vw,7.25rem)] leading-[1.08]">
-                            <div
-                                className="flex flex-row items-center justify-center gap-x-2 sm:gap-x-4 lg:gap-x-6 flex-wrap">
-                                <span className="font-display italic font-medium">{title.shaping}</span>
+                        {/* Flat-ish structure so one markup serves both layouts (see
+                            `.hero-title` in globals.css):
+                              - phone: "Façonner" set vertically, running the full
+                                height of the horizontal block beside it
+                              - everywhere else: the original two centred rows, with
+                                `.hero-rest` collapsing via `display:contents` so its
+                                children become direct flex items of the h1 again */}
+                        <h1 className="tahoe-glass-text hero-title px-1 w-full text-[clamp(1.35rem,6.5vw,3rem)] sm:text-5xl md:text-7xl lg:text-[clamp(4.25rem,7vw,7.25rem)] leading-[1.08]">
+                            <span ref={shapeRef} className="hero-shape font-display italic font-medium">{title.shaping}</span>
+                            <span ref={restRef} className="hero-rest">
                                 <span className="font-sans font-extrabold tracking-tighter">{title.tomorrow}</span>
-                            </div>
-                            <div
-                                className="flex flex-row items-center justify-center gap-x-2 sm:gap-x-4 lg:gap-x-6 flex-wrap">
-                                {/* upright, like the "&" below it — the italics in this
-                                    headline belong to the display word and the two serif
-                                    accents, not to the connectives */}
-                                <span className="font-display font-medium">{title.with}</span>
-                                <span className="font-serif italic font-semibold">{title.vision}</span>
-                                <span className="font-display font-medium">{title.and}</span>
-                                <span className="font-serif italic font-semibold">{title.action}</span>
-                            </div>
+                                <span className="hero-tail">
+                                    {/* upright, like the "&" beside it — the italics in this
+                                        headline belong to the display word and the two serif
+                                        accents, not to the connectives */}
+                                    <span className="font-display font-medium">{title.with}</span>
+                                    <span className="font-serif italic font-semibold">{title.vision}</span>
+                                    <span className="font-display font-medium">{title.and}</span>
+                                    <span className="font-serif italic font-semibold">{title.action}</span>
+                                </span>
+                            </span>
                         </h1>
                     </div>
 
                     {/* Center: description + mobile marquee */}
-                    <div
-                        className="relative z-10 flex flex-col items-center justify-center text-center mt-6 md:mt-0 order-3 md:order-3 px-1 w-full pointer-events-none">
-                        {/* full copy on tablet / desktop */}
-                        <p className="hidden md:block text-xl lg:text-2xl font-light text-precision-fg/80 md:max-w-3xl lg:max-w-4xl px-1 leading-relaxed">
-                            {description.full}
-                        </p>
-                        {/* condensed copy on mobile — keeps the block to ~3 lines */}
-                        <p className="md:hidden text-base sm:text-lg font-light text-precision-fg/80 max-w-[95%] sm:max-w-lg px-1 leading-relaxed">
-                            {description.short}
-                        </p>
-                    </div>
+                    {/*<div*/}
+                    {/*    className="relative z-10 flex flex-col items-center justify-center text-center mt-6 md:mt-0 order-3 md:order-3 px-1 w-full pointer-events-none">*/}
+                    {/*    /!* full copy on tablet / desktop *!/*/}
+                    {/*    <p className="hidden md:block text-xl lg:text-2xl font-light text-precision-fg/80 md:max-w-3xl lg:max-w-4xl px-1 leading-relaxed">*/}
+                    {/*        {description.full}*/}
+                    {/*    </p>*/}
+                    {/*    /!* condensed copy on mobile — keeps the block to ~3 lines *!/*/}
+                    {/*    <p className="md:hidden text-base sm:text-lg font-light text-precision-fg/80 max-w-[95%] sm:max-w-lg px-1 leading-relaxed">*/}
+                    {/*        {description.short}*/}
+                    {/*    </p>*/}
+                    {/*</div>*/}
                 </div>
 
-                <ScrollIndicator href="#apropo" />
+                <ScrollIndicator href="#apropo"/>
 
                 {/* Desktop marquee */}
-          {/*      <div*/}
-          {/*          className={`precision-reveal hidden md:flex absolute bottom-8 left-0 right-0 w-full z-10 pointer-events-auto flex-col items-center justify-center gap-4 order-5 md:order-5 ${isLoaded ? 'is-loaded' : ''}`}>*/}
-          {/*<span className="text-xs uppercase tracking-wider font-medium select-none text-precision-muted">*/}
-          {/*  Trusted by industry leaders*/}
-          {/*</span>*/}
-          {/*          <div*/}
-          {/*              className="relative w-full max-w-5xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">*/}
-          {/*              <div className="flex w-max gap-16 py-3 animate-precision-marquee">*/}
-          {/*                  <div className="flex gap-16 items-center">*/}
-          {/*                      {BRAND_LOGOS.map((Logo, i) => <Logo key={`d1-${i}`}/>)}*/}
-          {/*                  </div>*/}
-          {/*                  <div className="flex gap-16 items-center" aria-hidden="true">*/}
-          {/*                      {BRAND_LOGOS.map((Logo, i) => <Logo key={`d2-${i}`}/>)}*/}
-          {/*                  </div>*/}
-          {/*              </div>*/}
-          {/*          </div>*/}
-          {/*      </div>*/}
+                {/*      <div*/}
+                {/*          className={`precision-reveal hidden md:flex absolute bottom-8 left-0 right-0 w-full z-10 pointer-events-auto flex-col items-center justify-center gap-4 order-5 md:order-5 ${isLoaded ? 'is-loaded' : ''}`}>*/}
+                {/*<span className="text-xs uppercase tracking-wider font-medium select-none text-precision-muted">*/}
+                {/*  Trusted by industry leaders*/}
+                {/*</span>*/}
+                {/*          <div*/}
+                {/*              className="relative w-full max-w-5xl overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_15%,white_85%,transparent)]">*/}
+                {/*              <div className="flex w-max gap-16 py-3 animate-precision-marquee">*/}
+                {/*                  <div className="flex gap-16 items-center">*/}
+                {/*                      {BRAND_LOGOS.map((Logo, i) => <Logo key={`d1-${i}`}/>)}*/}
+                {/*                  </div>*/}
+                {/*                  <div className="flex gap-16 items-center" aria-hidden="true">*/}
+                {/*                      {BRAND_LOGOS.map((Logo, i) => <Logo key={`d2-${i}`}/>)}*/}
+                {/*                  </div>*/}
+                {/*              </div>*/}
+                {/*          </div>*/}
+                {/*      </div>*/}
             </div>
         </section>
     )
