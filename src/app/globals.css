@@ -133,12 +133,12 @@
   column-gap: 0.25em;
 }
 .hero-rest { display: contents; }
-.hero-line {
-  display: flex;
-  align-items: baseline;
-  column-gap: 0.25em;
-  white-space: nowrap;
-}
+/* Off phone the lines dissolve too, so every word is a direct flex item of the
+   h1 exactly as it was before the grouping existed. Grouping them into line
+   boxes made "with Vision" and "& Action." centre independently, which left
+   them 5px out of alignment on desktop — the serif line box is taller than the
+   display one. `contents` removes the boxes and the problem with them. */
+.hero-line { display: contents; }
 /* zero-height full-basis item = a forced line break in a wrapping flex row */
 .hero-break {
   flex-basis: 100%;
@@ -182,6 +182,13 @@
     justify-content: center;
     text-align: left;
     min-width: 0;
+  }
+  /* here the lines are real: each becomes its own nowrap row in the column */
+  .hero-line {
+    display: flex;
+    align-items: baseline;
+    column-gap: 0.25em;
+    white-space: nowrap;
   }
   /* the desktop line break has no job here — each line is already its own */
   .hero-break { display: none; }

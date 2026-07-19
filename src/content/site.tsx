@@ -356,7 +356,7 @@ const footerSocials: SocialLink[] = [
 const ht: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Sipòte',
-  heroTitle: { shaping: 'Fasonnen', tomorrow: 'Demen', with: 'ak', vision: 'Vizyon', and: '&', action: 'Aksyon', phoneLines: [['tomorrow'], ['with', 'vision'], ['and', 'action']] },
+  heroTitle: { shaping: 'Fasonnen', tomorrow: 'Demen', with: 'Avèk', vision: 'Vizyon', and: '&', action: 'Aksyon', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']] },
   scrollTopLabel: 'Tounen anlè',
   heroDescription: {
     full: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv, konpetans ak zouti open source ki pou tout moun.",
@@ -1202,7 +1202,7 @@ const fr: SiteContent = {
 const en: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Support',
-  heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with', 'vision'], ['and', 'action']] },
+  heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']] },
   scrollTopLabel: 'Back to top',
   heroDescription: {
     full: "Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools that belong to everyone.",
