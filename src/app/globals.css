@@ -144,25 +144,37 @@
   flex-basis: 100%;
   height: 0;
 }
+/* A part with a phone-only spelling (see `phone` on heroTitle) ships both; one
+   is hidden at every width, never both, so the measured block always reflects
+   the word on screen. */
+.hero-word-phone { display: none; }
 
-/* Phone: "Façonner" turns vertical and stands alongside the horizontal
-   block, sized so the word runs the full height of it. The vertical run
-   of a word equals its ordinary horizontal width, so matching the two is
-   a matter of the ratio between the two font sizes — .hero-shape is set
-   in `em` off the h1 so the pairing holds as the clamp scales.
+/* Phone only: "Façonner" turns vertical and stands alongside the horizontal
+   block, sized so the word runs the full height of it. The vertical run of a
+   word equals its ordinary horizontal width, so the two are related by a single
+   ratio — but one that shifts with the language, so it is measured in JS rather
+   than written here (see the `fit` effect in SilentPrecisionHero; its
+   matchMedia must match this query).
 
-   1.9em against a three-line block is the ratio that lands them level;
-   it is checked in the browser, not derived. */
+   Tried on upright tablets too and rolled back: what reads as a deliberate
+   arrangement in a 375px card reads as a small cluster adrift in a 744–1180px
+   one, and sizing the type up to compensate did not rescue it. Tablets keep the
+   two centred rows. */
 @media (max-width: 699px) {
   .hero-title {
     flex-wrap: nowrap;
     align-items: center;
     justify-content: center;
     column-gap: 0.75rem;
-    /* ~47px at 375. The 3rem cap is deliberate: it meets sm:text-5xl (48px) at
-       the 640 breakpoint, so nothing jumps where the utility takes over. Raising
-       it further would need that utility raised in step. */
-    font-size: clamp(2.4rem, 12.5vw, 3rem);
+    /* 40px at 320, ~47px at 375, ~54px at 430. The cap is set so 12.5vw reaches
+       it at 448px — past the widest phone in circulation — because a cap that
+       bites earlier freezes the type while the screen keeps growing, and the
+       headline shrinks against the card on every large phone. It does mean the
+       640–699 band sits at the cap, but nothing ships at those widths except
+       unfolded foldables, and at 700 the arrangement changes wholesale anyway:
+       the vertical word turns horizontal and the block becomes two rows, so
+       there is no size continuity to preserve across that boundary. */
+    font-size: clamp(2.4rem, 12.5vw, 3.5rem);
   }
   .hero-shape {
     /* vertical-rl reads top-to-bottom; the half turn flips it so the word climbs
@@ -192,6 +204,8 @@
   }
   /* the desktop line break has no job here — each line is already its own */
   .hero-break { display: none; }
+  .hero-word-phone { display: inline; }
+  .hero-word-wide { display: none; }
 }
 
 button,

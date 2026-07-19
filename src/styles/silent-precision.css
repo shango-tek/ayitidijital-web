@@ -36,7 +36,7 @@
   min-height: 80vh;
   display: flex;
   flex-direction: column;
-  padding: 0 1.5rem 6.5rem;
+  padding: 0 1.5rem;
 }
 
 .precision-hero .rn-header {
@@ -129,11 +129,19 @@
 }
 
 
+/* The headline sits centred in the band between the navbar's plus-grid and the
+   scroll-down button. `flex: 1` gives it everything under the navbar; the
+   bottom padding hands the button's band back, since the button is absolutely
+   positioned and would otherwise be centred *over*. Exactly the button's own
+   footprint and not a pixel more — `bottom: 2rem` + a `2rem` tall pill — so the
+   gap above the headline and the gap below it come out equal. Overridden at
+   1024, where the pill grows to 3rem. */
 .precision-hero-content {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-bottom: 4rem;
 }
 
 @media (min-width: 1024px) {
@@ -144,16 +152,10 @@
        under 100vh so its rounded bottom edge stays fully visible above the fold
        instead of sitting flush against (and cut off by) the viewport bottom */
     min-height: calc(100vh - 1.5rem);
-    /* drop the big bottom padding (it was for the removed marquee) so the
-       centered content sits in the true middle between the nav plus-grid and the
-       card's bottom edge, rather than being pulled upward */
-    padding-bottom: 0;
   }
-  /* The ScrollIndicator is absolutely positioned, so the flex content otherwise
-     centres over the FULL height (incl. the button's band) and lands too low.
-     Reserve that bottom band so the text centres between the nav plus-grid and
-     the scroll-to-bottom button. */
-  .precision-hero-content { padding-bottom: 5.5rem; }
+  /* the scroll button's pill is 3rem tall here rather than 2rem, so its band
+     grows by the same rem (see the base rule) */
+  .precision-hero-content { padding-bottom: 5rem; }
 }
 
 /* touch tablets in landscape (e.g. iPad): fill the whole viewport height — the
@@ -174,13 +176,16 @@
    Phones are deliberately NOT here: they keep the full-height card, and the
    emptiness is answered instead by the vertical-headline layout (see
    `.hero-title` in globals.css), which fills the card with type rather than
-   shrinking the card around it. */
+   shrinking the card around it. That layout is phone-only — it was tried here
+   and rolled back.
+
+   No padding here: the button's band is reserved on .precision-hero-content by
+   the base rule, so the headline stays centred between navbar and button at
+   whatever height the card ends up. */
 @media (min-width: 700px) and (orientation: portrait) {
   .precision-hero-inner {
     min-height: 54vh;
-    padding-bottom: 2.5rem;
   }
-  .precision-hero-content { padding-bottom: 0; }
 }
 
 
