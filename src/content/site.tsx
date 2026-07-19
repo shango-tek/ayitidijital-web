@@ -185,6 +185,8 @@ export interface SiteContent {
     coordinationLabel: string
     note: string
   }
+  /** The 404 page. */
+  notFound: { code: string; title: string; lead: string; home: string; explore: string }
   /** /kontak — every channel we actually have. No phone: none has been supplied,
    *  and inventing one on a statutory-adjacent page is not an option. */
   contactPage: {
@@ -531,6 +533,13 @@ const ht: SiteContent = {
     boardLabel: 'Vorstand la',
     coordinationLabel: 'Koòdinasyon',
     note: 'Chak manm Vorstand la gen dwa reprezante asosyasyon an pou kont li (§ 26 BGB). Koòdinasyon an pa gen dwa reprezantasyon.',
+  },
+  notFound: {
+    code: '404',
+    title: 'Paj sa a pa egziste',
+    lead: "Paj ou t ap chèche a ka deplase oswa li pa janm te la. Ann retounen sou bon chemen an.",
+    home: 'Tounen nan akèy',
+    explore: 'Eksplore ekosistèm nan',
   },
   contactPage: {
     label: 'Kontakte nou',
@@ -947,6 +956,13 @@ const fr: SiteContent = {
     coordinationLabel: 'Coordination',
     note: "Chaque membre du Vorstand peut représenter l’association seul (§ 26 BGB). La coordination n’a pas de pouvoir de représentation.",
   },
+  notFound: {
+    code: '404',
+    title: "Cette page n'existe pas",
+    lead: "La page que vous cherchiez a peut-être été déplacée, ou n'a jamais existé. Reprenons le fil.",
+    home: "Retour à l'accueil",
+    explore: "Explorer l'écosystème",
+  },
   contactPage: {
     label: 'Nous écrire',
     lead: "Une question, une proposition de partenariat, ou un projet à incuber ? Écrivez-nous — nous lisons chaque message.",
@@ -1361,6 +1377,13 @@ const en: SiteContent = {
     boardLabel: 'The Vorstand',
     coordinationLabel: 'Coordination',
     note: 'Each Vorstand member may represent the association individually (§ 26 BGB). Coordination carries no power of representation.',
+  },
+  notFound: {
+    code: '404',
+    title: 'This page does not exist',
+    lead: "The page you were looking for may have moved, or may never have existed. Let's get you back on track.",
+    home: 'Back to home',
+    explore: 'Explore the ecosystem',
   },
   contactPage: {
     label: 'Get in touch',
