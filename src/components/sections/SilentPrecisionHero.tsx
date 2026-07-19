@@ -1,10 +1,11 @@
 'use client'
 
-import {useEffect, useRef, useState} from 'react'
+import {Fragment, useEffect, useRef, useState} from 'react'
 import {RadiantNavbar} from '../layout/RadiantNavbar'
 import {ScrollIndicator} from '../ui/ScrollIndicator'
 import type {LangOption} from '../ui/LangSwitcher'
 import type {NavLink} from '../layout/SiteNav'
+import type {HeroTitlePart} from '@/content/site'
 
 /* -----------------------------------------------------------------------------
  * PIXEL CANVAS — staggered outward ripple
@@ -96,6 +97,15 @@ function createPixel(
     return p
 }
 
+/** Each headline part keeps its own face, whichever line it lands on. */
+const HERO_PART_CLASS: Record<HeroTitlePart, string> = {
+    tomorrow: 'font-sans font-extrabold tracking-tighter',
+    with: 'font-display font-medium',
+    vision: 'font-serif italic font-semibold',
+    and: 'font-display font-medium',
+    action: 'font-serif italic font-semibold',
+}
+
 const BRAND_LOGOS = [
     // Tailwind CSS
     () => (
@@ -173,6 +183,8 @@ export interface SilentPrecisionHeroProps {
         vision: string
         and: string
         action: string
+        /** Phone line grouping, per language — see `heroTitle` in content/site. */
+        phoneLines: HeroTitlePart[][]
     }
     /** Sub-headline paragraph: full copy for tablet/desktop, condensed for phone. */
     description: { full: string; short: string }
@@ -345,30 +357,28 @@ export function SilentPrecisionHero({
                         <h1 className="tahoe-glass-text hero-title px-1 w-full text-[clamp(1.35rem,6.5vw,3rem)] sm:text-5xl md:text-7xl lg:text-[clamp(4.25rem,7vw,7.25rem)] leading-[1.08]">
                             <span ref={shapeRef} className="hero-shape font-display italic font-medium">{title.shaping}</span>
                             <span ref={restRef} className="hero-rest">
-                                {/* Three explicit lines, so the phone break points are the
-                                    same in every language instead of falling where the text
-                                    happens to wrap:
-                                      Demen / ak Vizyon / & Aksyon
-                                      l'Avenir / avec Vision / & Action.
-                                      Tomorrow / with Vision / & Action. */}
-                                <span className="hero-line">
-                                    <span className="font-sans font-extrabold tracking-tighter">{title.tomorrow}</span>
-                                </span>
-                                {/* zero-height flex break: on desktop it forces the wrap that
-                                    the old second <div> used to make, so lines 2 and 3 share
-                                    one row there. Removed on phone, where each line is its own. */}
-                                <span className="hero-break" aria-hidden="true" />
-                                <span className="hero-line">
-                                    {/* upright, like the "&" below — the italics in this
-                                        headline belong to the display word and the two serif
-                                        accents, not to the connectives */}
-                                    <span className="font-display font-medium">{title.with}</span>
-                                    <span className="font-serif italic font-semibold">{title.vision}</span>
-                                </span>
-                                <span className="hero-line">
-                                    <span className="font-display font-medium">{title.and}</span>
-                                    <span className="font-serif italic font-semibold">{title.action}</span>
-                                </span>
+                                {/* Lines come from content (`phoneLines`) because where they
+                                    break is a per-language call. Each part keeps its own face:
+                                    the sans for the noun, serif italic for the two accents,
+                                    and the connectives upright in the display face — the
+                                    italics here belong to the display word and the accents,
+                                    not to "with" and "&". */}
+                                {title.phoneLines.map((line, i) => (
+                                    <Fragment key={i}>
+                                        {/* zero-height full-basis item: on desktop it forces the
+                                            wrap the old second <div> used to make, so everything
+                                            after the first line shares one row. display:none on
+                                            phone, where each line already stands alone. */}
+                                        {i === 1 && <span className="hero-break" aria-hidden="true" />}
+                                        <span className="hero-line">
+                                            {line.map((part) => (
+                                                <span key={part} className={HERO_PART_CLASS[part]}>
+                                                    {title[part]}
+                                                </span>
+                                            ))}
+                                        </span>
+                                    </Fragment>
+                                ))}
                             </span>
                         </h1>
                     </div>

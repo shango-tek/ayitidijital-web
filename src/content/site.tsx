@@ -119,6 +119,8 @@ export interface KonbitFooterContent {
   proverb: string
 }
 
+export type HeroTitlePart = 'tomorrow' | 'with' | 'vision' | 'and' | 'action'
+
 export interface SiteContent {
   brandName: string
   /** Skip-to-content link text. */
@@ -137,6 +139,13 @@ export interface SiteContent {
     vision: string
     and: string
     action: string
+    /** How the horizontal block breaks on phones, one array per line. The
+     *  grouping is a typographic call per language, not a layout constant —
+     *  French wants "avec" and "Vision" on their own lines, Kreyòl and English
+     *  read better paired — so it lives with the words rather than in the
+     *  component. Desktop ignores it: the first line joins the vertical word's
+     *  row, the rest flow together on the second. */
+    phoneLines: HeroTitlePart[][]
   }
   /** Footer "back to top" scroll button label. */
   scrollTopLabel: string
@@ -347,7 +356,7 @@ const footerSocials: SocialLink[] = [
 const ht: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Sipòte',
-  heroTitle: { shaping: 'Fasonnen', tomorrow: 'Demen', with: 'ak', vision: 'Vizyon', and: '&', action: 'Aksyon' },
+  heroTitle: { shaping: 'Fasonnen', tomorrow: 'Demen', with: 'ak', vision: 'Vizyon', and: '&', action: 'Aksyon', phoneLines: [['tomorrow'], ['with', 'vision'], ['and', 'action']] },
   scrollTopLabel: 'Tounen anlè',
   heroDescription: {
     full: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv, konpetans ak zouti open source ki pou tout moun.",
@@ -770,7 +779,7 @@ const ht: SiteContent = {
 const fr: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Soutenir',
-  heroTitle: { shaping: 'Façonner', tomorrow: "l'Avenir", with: 'avec', vision: 'Vision', and: '&', action: 'Action.' },
+  heroTitle: { shaping: 'Façonner', tomorrow: "l'Avenir", with: 'avec', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']] },
   scrollTopLabel: 'Haut de page',
   heroDescription: {
     full: "Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives, compétences et outils open source qui appartiennent à tous.",
@@ -1193,7 +1202,7 @@ const fr: SiteContent = {
 const en: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Support',
-  heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.' },
+  heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with', 'vision'], ['and', 'action']] },
   scrollTopLabel: 'Back to top',
   heroDescription: {
     full: "Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools that belong to everyone.",
