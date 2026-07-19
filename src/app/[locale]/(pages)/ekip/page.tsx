@@ -1,8 +1,8 @@
-'use client'
-
 import { RoutePage } from '@/components/pages/RoutePage'
 import { TeamSection } from '@/components/ui/TeamSection'
-import { useLocale } from '@/components/i18n/LocaleProvider'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
+import { routeMetadata } from '../_metadata'
 
 /**
  * The people behind Ayiti Dijital, in two groups that are deliberately not
@@ -33,12 +33,19 @@ const COORDINATION = [
   },
 ] as const
 
-export default function EkipPage() {
-  const { content: c, locale } = useLocale()
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/ekip', locale)
+}
+
+export default async function EkipPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params
+  const locale = toLocale(localeParam)
+  const c = getSiteContent(locale)
   const t = c.teamPage
 
   return (
-    <RoutePage path="/ekip" subtitle={t.lead}>
+    <RoutePage content={c} path="/ekip" subtitle={t.lead}>
       <TeamSection
         eyebrow={t.label}
         note={t.note}

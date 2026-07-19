@@ -4,9 +4,9 @@ import { Bricolage_Grotesque, Hanken_Grotesk, IBM_Plex_Mono, Caveat, Playfair_Di
 import '../globals.css'
 import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
+import { getLegalContent } from '@/content/legal'
 import { Preloader } from '../../components/layout/Preloader'
 import { CookieBanner } from '../../components/ui/CookieBanner'
-import { LocaleProvider } from '../../components/i18n/LocaleProvider'
 
 /* Google fonts the design CSS expects, exposed as CSS variables that
    src/styles/*.css re-map onto --font-display / --font-body / --font-mono. */
@@ -52,6 +52,10 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
+/* Absolute base for canonical/hreflang/OG URLs. Vercel exposes the deployment
+   host but not the production domain, so the canonical origin is explicit. */
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://ayitidijital.org'
+
 /** Statically render all three locales at build time. */
 export function generateStaticParams() {
   return LOCALES.map((locale) => ({ locale }))
@@ -67,11 +71,34 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  const content = getSiteContent(isLocale(locale) ? locale : 'ht')
+  const lang: Locale = isLocale(locale) ? locale : 'ht'
+  const content = getSiteContent(lang)
   return {
+    metadataBase: new URL(SITE_URL),
     title: content.metaTitle,
     description: content.metaDescription,
     manifest: '/site.webmanifest',
+    // Three parallel translations of the same pages: without these a crawler
+    // reads /ht/sou-nou, /fr/sou-nou and /en/sou-nou as duplicates rather than
+    // alternates, and picks one arbitrarily.
+    alternates: {
+      canonical: `/${lang}`,
+      languages: Object.fromEntries(LOCALES.map((l) => [l, `/${l}`])),
+    },
+    openGraph: {
+      type: 'website',
+      siteName: content.brandName,
+      locale: lang,
+      alternateLocale: LOCALES.filter((l) => l !== lang),
+      title: content.metaTitle,
+      description: content.metaDescription,
+      url: `/${lang}`,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: content.metaTitle,
+      description: content.metaDescription,
+    },
     icons: {
       icon: [
         { url: '/favicon.svg', type: 'image/svg+xml' },
@@ -106,12 +133,10 @@ export default async function LocaleLayout({
     >
       <body id="top" suppressHydrationWarning>
         <Preloader />
-        <LocaleProvider initialLocale={lang}>
-          {children}
-          {/* Dormant until an analytics provider is configured — see
-              src/lib/analytics.ts */}
-          <CookieBanner />
-        </LocaleProvider>
+        {children}
+        {/* Dormant until an analytics provider is configured — see
+            src/lib/analytics.ts */}
+        <CookieBanner locale={lang} copy={getLegalContent(lang).consent} />
       </body>
     </html>
   )

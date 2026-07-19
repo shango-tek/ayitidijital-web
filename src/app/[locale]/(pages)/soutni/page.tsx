@@ -1,8 +1,8 @@
-'use client'
-
 import { RoutePage } from '@/components/pages/RoutePage'
 import { Button } from '@/components/ui/Button'
-import { useLocale } from '@/components/i18n/LocaleProvider'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
+import { routeMetadata } from '../_metadata'
 
 const GITHUB = 'https://github.com/shango-tek/ayitidijital-web'
 const MAIL = 'contact@ayitidijital.org'
@@ -56,12 +56,25 @@ const T = {
  * financial support currently goes through direct contact — rather than a fake
  * donate button.
  */
-export default function SoutniPage() {
-  const { locale } = useLocale()
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/soutni', locale, T[toLocale(locale)].title)
+}
+
+export default async function SoutniPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params
+  const locale = toLocale(localeParam)
+  const c = getSiteContent(locale)
   const t = T[locale]
 
   return (
-    <RoutePage path="/soutni" title={t.title} subtitle={t.sub} image="/headers/travay-nou.webp">
+    <RoutePage
+      content={c}
+      path="/soutni"
+      title={t.title}
+      subtitle={t.sub}
+      image="/headers/travay-nou.webp"
+    >
       <div className="page-wrap">
         <p className="max-w-3xl font-display text-[clamp(1.2rem,2.2vw,1.6rem)] font-medium leading-[1.4] tracking-tight text-primary">
           {t.intro}

@@ -1,9 +1,11 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { useLocale } from '@/components/i18n/LocaleProvider'
-import { getLegalContent } from '@/content/legal'
+import type { getLegalContent } from '@/content/legal'
 import { CONSENT_REQUIRED, readConsent, writeConsent } from '@/lib/analytics'
+import type { Locale } from '@/i18n'
+
+type ConsentCopy = ReturnType<typeof getLegalContent>['consent']
 
 /**
  * Consent banner. Appears ONLY in cookie mode (see src/lib/analytics.ts) and
@@ -25,9 +27,7 @@ import { CONSENT_REQUIRED, readConsent, writeConsent } from '@/lib/analytics'
  * inert until the choice is 'granted' — loading it first and asking after is
  * not consent.
  */
-export function CookieBanner() {
-  const { locale } = useLocale()
-  const c = getLegalContent(locale).consent
+export function CookieBanner({ locale, copy: c }: { locale: Locale; copy: ConsentCopy }) {
   const [decided, setDecided] = useState(true) // assume decided → render nothing until checked
 
   useEffect(() => {

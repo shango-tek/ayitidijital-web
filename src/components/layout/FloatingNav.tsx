@@ -2,8 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { RadiantNavbar } from './RadiantNavbar'
-import type { LangOption } from '../ui/LangSwitcher'
-import type { NavLink } from './SiteNav'
+import type { LangOption, NavLink } from '@/content/types'
 
 export interface FloatingNavProps {
   brandName: string

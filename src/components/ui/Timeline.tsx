@@ -1,6 +1,5 @@
 'use client'
 
-import * as React from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { CheckCircle, Clock, Circle } from 'lucide-react'
 import { cn } from '@/lib/utils'

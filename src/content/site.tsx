@@ -1,12 +1,16 @@
 import type { ReactNode } from 'react'
-import type { LangOption } from '../components/ui/LangSwitcher'
-import type { NavLink } from '../components/layout/SiteNav'
-import type { HeroCta } from '../components/sections/HeroBroadcast'
-import type { StatItem } from '../components/sections/StatsBand'
-import type { Project } from '../components/sections/ProjectsGrid'
-import type { HubDefinition, HubProgram } from '../components/sections/HubPrograms'
-import type { DiasporaCtaAction } from '../components/sections/DiasporaCta'
-import type { SitemapColumn, SocialLink } from '../components/layout/SitemapFooter'
+import type {
+  LangOption,
+  NavLink,
+  HeroCta,
+  StatItem,
+  Project,
+  HubDefinition,
+  HubProgram,
+  DiasporaCtaAction,
+  SitemapColumn,
+  SocialLink,
+} from './types'
 import type { Locale } from '../i18n'
 
 /* ------------------------------------------------------------------ *
@@ -146,6 +150,11 @@ export interface SiteContent {
      *  component. Desktop ignores it: the first line joins the vertical word's
      *  row, the rest flow together on the second. */
     phoneLines: HeroTitlePart[][]
+    /** Words swapped in only on the phone layout, where the block is stacked
+     *  and a shorter word sits better. Parts left out keep their usual word;
+     *  both spellings ship in the markup and the media query picks one, so
+     *  there is no swap to hydrate or re-measure. */
+    phone?: Partial<Record<HeroTitlePart, string>>
   }
   /** Footer "back to top" scroll button label. */
   scrollTopLabel: string
@@ -670,7 +679,7 @@ const ht: SiteContent = {
     readMore: 'Li atik la',
     viewAll: 'Tout atik yo',
     posts: [
-      { category: 'Pwojè', date: '12 me 2026', title: 'LexHaiti lanse : aksè nan dwa pou tout moun', image: '/blog/lexhaiti-hero.jpg' },
+      { category: 'Pwojè', date: '12 me 2026', title: 'LexHaiti lanse : aksè nan dwa pou tout moun', image: '/blog/lexhaiti-hero.webp' },
       { category: 'Kominote', date: '28 avr. 2026', title: 'Fòme pwochen jenerasyon batisè yo', image: '/blog/collaboration.webp' },
       { category: 'Lide', date: '9 avr. 2026', title: 'Poukisa done ouvè enpòtan pou Ayiti', image: '/blog/analytics.webp' },
     ],
@@ -1093,7 +1102,7 @@ const fr: SiteContent = {
     readMore: "Lire l'article",
     viewAll: 'Tous les articles',
     posts: [
-      { category: 'Projet', date: '12 mai 2026', title: "Lancement de LexHaiti : l'accès au droit pour tous", image: '/blog/lexhaiti-hero.jpg' },
+      { category: 'Projet', date: '12 mai 2026', title: "Lancement de LexHaiti : l'accès au droit pour tous", image: '/blog/lexhaiti-hero.webp' },
       { category: 'Communauté', date: '28 avr. 2026', title: 'Former la prochaine génération de bâtisseurs', image: '/blog/collaboration.webp' },
       { category: 'Idées', date: '9 avr. 2026', title: 'Pourquoi les données ouvertes comptent pour Haïti', image: '/blog/analytics.webp' },
     ],
@@ -1202,7 +1211,7 @@ const fr: SiteContent = {
 const en: SiteContent = {
   brandName: 'Ayiti Dijital',
   supportLabel: 'Support',
-  heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']] },
+  heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']], phone: { tomorrow: 'Future' } },
   scrollTopLabel: 'Back to top',
   heroDescription: {
     full: "Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools that belong to everyone.",
@@ -1516,7 +1525,7 @@ const en: SiteContent = {
     readMore: 'Read article',
     viewAll: 'All articles',
     posts: [
-      { category: 'Project', date: 'May 12, 2026', title: 'LexHaiti launches: access to law for everyone', image: '/blog/lexhaiti-hero.jpg' },
+      { category: 'Project', date: 'May 12, 2026', title: 'LexHaiti launches: access to law for everyone', image: '/blog/lexhaiti-hero.webp' },
       { category: 'Community', date: 'Apr 28, 2026', title: 'Training the next generation of builders', image: '/blog/collaboration.webp' },
       { category: 'Ideas', date: 'Apr 9, 2026', title: 'Why open data matters for Haiti', image: '/blog/analytics.webp' },
     ],

@@ -1,13 +1,14 @@
 'use client'
 
 import { useEffect, useRef, useState } from 'react'
+import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import { LanbiMark } from '../brand/LanbiMark'
 import { SocialIcon } from '../brand/SocialIcon'
 import { Button } from '../ui/Button'
 import { PlusGrid, PlusGridRow, PlusGridItem } from '../ui/PlusGrid'
-import { useLocale } from '../i18n/LocaleProvider'
-import { langs } from '@/content/site'
-import type { Locale } from '@/i18n'
+import type { LangOption, NavLink, SocialLink } from '@/content/types'
+import { switchLocalePath, type Locale } from '@/i18n'
 
 const MenuIcon = () => (
   <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -33,8 +34,8 @@ const Chevron = () => (
  * and the open panel header. Each instance owns its open-state + outside-click
  * handling; the glass panel matches the desktop switcher.
  */
-function LangDropdown() {
-  const { locale, setLocale } = useLocale()
+function LangDropdown({ locale, langs }: { locale: Locale; langs: LangOption[] }) {
+  const pathname = usePathname()
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const cur = langs.find((o) => o.code === locale) ?? langs[0]
@@ -70,18 +71,15 @@ function LangDropdown() {
         <ul className="mnav-langmenu" role="listbox" aria-label="Lang">
           {langs.map((o) => (
             <li key={o.code} role="option" aria-selected={o.code === locale}>
-              <button
-                type="button"
+              <Link
+                href={pathname ? switchLocalePath(pathname, o.code as Locale) : `/${o.code}`}
                 lang={o.lang}
                 className={o.code === locale ? 'is-current' : undefined}
-                onClick={() => {
-                  setLocale(o.code as Locale)
-                  setOpen(false)
-                }}
+                onClick={() => setOpen(false)}
               >
                 <span>{o.name ?? o.label}</span>
                 <span className="mnav-langcode">{o.label}</span>
-              </button>
+              </Link>
             </li>
           ))}
         </ul>
@@ -99,8 +97,21 @@ function LangDropdown() {
  *   • the navy PANEL animates height 0 → auto (CSS grid-rows) in normal flow,
  *     pushing the rounded-top content card (the whole page) down to reveal it.
  */
-export function MobileNav() {
-  const { content, locale } = useLocale()
+export function MobileNav({
+  locale,
+  brandName,
+  links,
+  langs,
+  supportLabel,
+  socials,
+}: {
+  locale: Locale
+  brandName: string
+  links: NavLink[]
+  langs: LangOption[]
+  supportLabel: string
+  socials: SocialLink[]
+}) {
   const [open, setOpen] = useState(false)
   const [openSubs, setOpenSubs] = useState<Set<string>>(() => new Set())
   const followLabel = locale === 'fr' ? 'Suivez-nous' : locale === 'en' ? 'Follow us' : 'Swiv nou'
@@ -131,12 +142,12 @@ export function MobileNav() {
               <div className="mnav-pgleft">
                 <PlusGridItem className="mnav-pgitem">
                   <div className="mnav-row">
-                    <a href={`/${locale}`} className="mnav-logo" aria-label={content.brandName} onClick={close}>
+                    <a href={`/${locale}`} className="mnav-logo" aria-label={brandName} onClick={close}>
                       <LanbiMark size={44} />
-                      <span className="mnav-brand">{content.brandName}</span>
+                      <span className="mnav-brand">{brandName}</span>
                     </a>
                     <div className="mnav-actions">
-                      <LangDropdown />
+                      <LangDropdown locale={locale} langs={langs} />
                       <button
                         type="button"
                         className="mnav-toggle"
@@ -169,12 +180,12 @@ export function MobileNav() {
                   <div className="mnav-pgleft">
                     <PlusGridItem className="mnav-pgitem">
                       <div className="mnav-row">
-              <a href={`/${locale}`} className="mnav-logo" aria-label={content.brandName} onClick={close}>
+              <a href={`/${locale}`} className="mnav-logo" aria-label={brandName} onClick={close}>
                 <LanbiMark size={44} />
-                <span className="mnav-brand">{content.brandName}</span>
+                <span className="mnav-brand">{brandName}</span>
               </a>
               <div className="mnav-actions">
-                <LangDropdown />
+                <LangDropdown locale={locale} langs={langs} />
                 <button
                   type="button"
                   className="mnav-toggle"
@@ -196,7 +207,7 @@ export function MobileNav() {
                 (Studio-style). "Sou nou" carries its sub-links. */}
             <nav className="mnav-menu" aria-label="Navigasyon">
               <ul className="mnav-list">
-                {content.navLinks.map((l) => {
+                {links.map((l) => {
                   const kids = l.children && l.children.length > 0 ? l.children : null
                   const subOpen = openSubs.has(l.href)
                   return (
@@ -246,12 +257,12 @@ export function MobileNav() {
             {/* Foot — support CTA, then a Studio-style "Follow us" social row. */}
             <div className="mnav-foot container">
               <Button variant="red" pill href={`/${locale}/soutni`} className="mnav-support-btn">
-                {content.supportLabel}
+                {supportLabel}
               </Button>
               <div className="mnav-follow">
                 <h2 className="mnav-follow-title">{followLabel}</h2>
                 <ul className="mnav-social">
-                  {content.footerSocials.map((s) => (
+                  {socials.map((s) => (
                     <li key={s.label}>
                       <a
                         href={s.href}

@@ -7,10 +7,8 @@ import { PlusGrid, PlusGridItem, PlusGridRow } from '../ui/PlusGrid'
 import { LanbiMark } from '../brand/LanbiMark'
 import { HoverMenu } from '../ui/HoverMenu'
 import { Button } from '../ui/Button'
-import { useLocale } from '../i18n/LocaleProvider'
-import type { LangOption } from '../ui/LangSwitcher'
-import type { NavLink } from './SiteNav'
-import { switchLocalePath, type Locale } from '../../i18n'
+import type { LangOption, NavLink } from '@/content/types'
+import { localeFromPathname, switchLocalePath, type Locale } from '../../i18n'
 
 const Chevron = () => (
   <svg className="hm-chev" viewBox="0 0 16 16" fill="none" aria-hidden="true">
@@ -42,7 +40,9 @@ export function RadiantNavbar({
   supportLabel = 'Sipòte',
 }: RadiantNavbarProps) {
   const pathname = usePathname()
-  const { locale: active, setLocale } = useLocale()
+  // Derived from the URL rather than held in state: the URL is the single source
+  // of truth for the locale now that switching languages is a navigation.
+  const active = localeFromPathname(pathname ?? '/')
   const cur = langs.find((o) => o.code === active) ?? langs[0]
 
   // Prefix internal paths ("/travay-nou", "/prensip") with the active
@@ -101,19 +101,15 @@ export function RadiantNavbar({
                 {langs.map((o) => {
                   const target = pathname ? switchLocalePath(pathname, o.code as Locale) : `/${o.code}`
                   return (
-                    <a
+                    <Link
                       key={o.code}
                       href={target}
                       lang={o.lang}
                       role="menuitem"
                       aria-current={o.code === active ? 'true' : undefined}
-                      onClick={(e) => {
-                        e.preventDefault()
-                        setLocale(o.code as Locale)
-                      }}
                     >
                       {o.label}
-                    </a>
+                    </Link>
                   )
                 })}
               </HoverMenu>

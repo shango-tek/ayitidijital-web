@@ -1,10 +1,7 @@
-'use client'
-
-import { useEffect, useState } from 'react'
 import { SilentPrecisionHero } from '@/components/sections/SilentPrecisionHero'
 import { AboutBento } from '@/components/sections/AboutBento'
 import { WorkOverview } from '@/components/sections/WorkOverview'
-import { SpiralGalaxy } from '@/components/ui/spiral-galaxy'
+import { SpiralStage } from '@/components/sections/SpiralStage'
 import { EcosystemCarousel } from '@/components/sections/EcosystemCarousel'
 import { DomainesGrid } from '@/components/sections/DomainesGrid'
 import { JournalSection } from '@/components/sections/JournalSection'
@@ -15,47 +12,30 @@ import { MobileNav } from '@/components/layout/MobileNav'
 import { MissionMarquee } from '@/components/ui/MissionMarquee'
 import { ScrollTopFab } from '@/components/ui/ScrollTopFab'
 import { FlickeringFooter } from '@/components/ui/flickering-footer'
-import { useLocale } from '@/components/i18n/LocaleProvider'
-import { langs } from '@/content/site'
+import { langs, type SiteContent } from '@/content/site'
+import type { Locale } from '@/i18n'
 
 /**
  * The home page. Section order mirrors the Ayiti Dijital landing flow:
  * hero → kinetic spiral → impact → what-we-do → ecosystem (+ end-row CTA) →
- * community → newsletter → footer. Switching language re-renders in place.
+ * community → newsletter → footer.
+ *
+ * A server component: the content arrives as a prop from the route, so none of
+ * this markup or the content module reaches the browser. The only client state
+ * the page has left is the spiral's media-query gate, in {@link SpiralStage}.
  */
-export function HomeView() {
-  const { content: c, locale } = useLocale()
-
-  // The spiral is a heavy canvas moment — great with a mouse on a wide screen,
-  // but a continuous starfield rAF is a poor, battery-hungry fit on touch
-  // devices, and the sequence is composed for a landscape stage.
-  //
-  // Width alone was not enough: iPad Pro 12.9" in PORTRAIT is exactly 1024px
-  // wide, so it passed a bare `min-width: 1024px` and got the whole thing.
-  // Three conditions, all required:
-  //   min-width  — enough room for the stage at all
-  //   landscape  — excludes every tablet held upright, whatever its width
-  //   hover/fine — excludes touch entirely (a touchscreen laptop still reports
-  //                a fine pointer for its mouse, so those keep it)
-  //
-  // KEEP IN SYNC with the `spiral:` custom variant in globals.css, which moves
-  // the warm SectionPanel between EcosystemCarousel and DomainesGrid depending
-  // on whether this section is here to break the page.
-  const [showSpiral, setShowSpiral] = useState(false)
-  useEffect(() => {
-    const mq = window.matchMedia(
-      '(min-width: 1024px) and (orientation: landscape) and (hover: hover) and (pointer: fine)',
-    )
-    const update = () => setShowSpiral(mq.matches)
-    update()
-    mq.addEventListener('change', update)
-    return () => mq.removeEventListener('change', update)
-  }, [])
-
+export function HomeView({ content: c, locale }: { content: SiteContent; locale: Locale }) {
   return (
     <>
       {/* Studio-style mobile / tablet menu (< 1024px) + desktop floating nav */}
-      <MobileNav />
+      <MobileNav
+        locale={locale}
+        brandName={c.brandName}
+        links={c.navLinks}
+        langs={langs}
+        supportLabel={c.supportLabel}
+        socials={c.footerSocials}
+      />
 
       {/* Back to top — tablet portrait only, from the end of "what we do" until
           the footer (which carries its own) comes into view. */}
@@ -75,7 +55,6 @@ export function HomeView() {
             banner={c.heroPanel.banner}
             supportLabel={c.supportLabel}
             title={c.heroTitle}
-            description={c.heroDescription}
           />
 
           {/* About — bento: intro (badge + headline + lead + CTA) on the left,
@@ -112,10 +91,10 @@ export function HomeView() {
           />
 
           {/* Spiral galaxy — 3D starfield + word-spiral + ambient word-field, fused.
-              Desktop landscape only — see showSpiral above. Where it IS shown it
+              Desktop landscape only — see SpiralStage for the gate. Where it IS shown it
               doubles as the page's mid-page dark break, which is why the warm
               panel moves to a different section when it is absent. */}
-          {showSpiral && <SpiralGalaxy words={c.marqueeWords} centerWords={c.spiralCenterWords} />}
+          <SpiralStage words={c.marqueeWords} centerWords={c.spiralCenterWords} />
 
           {/* Explore our ecosystem — incubated-projects carousel (white bg) */}
           <EcosystemCarousel
@@ -192,6 +171,7 @@ export function HomeView() {
 
         {/* Footer */}
         <FlickeringFooter
+          locale={locale}
           brandName={c.brandName}
           content={c.konbitFooter}
           columns={c.footerColumns}

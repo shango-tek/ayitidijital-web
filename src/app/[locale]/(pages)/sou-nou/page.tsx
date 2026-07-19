@@ -1,9 +1,9 @@
-'use client'
-
 import { RoutePage } from '@/components/pages/RoutePage'
 import { SectionHeader } from '@/components/ui/SectionHeader'
 import { Timeline } from '@/components/ui/Timeline'
-import { useLocale } from '@/components/i18n/LocaleProvider'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
+import { routeMetadata } from '../_metadata'
 
 /**
  * "Sou nou" — Mission / Vision / Devise, then the origin story. The principles
@@ -20,8 +20,15 @@ import { useLocale } from '@/components/i18n/LocaleProvider'
  * The stagger is desktop-only — stacked in one column it would read as uneven
  * gaps rather than a stair.
  */
-export default function SouNouPage() {
-  const { content: c } = useLocale()
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/sou-nou', locale)
+}
+
+export default async function SouNouPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const lang = toLocale(locale)
+  const c = getSiteContent(lang)
   const a = c.aboutPage
   const [mission, vision, devise] = c.pillars.items
   const timelineItems = a.story.map((step) => ({
@@ -32,7 +39,7 @@ export default function SouNouPage() {
   }))
 
   return (
-    <RoutePage path="/sou-nou" subtitle={c.about.lead}>
+    <RoutePage content={c} path="/sou-nou" subtitle={c.about.lead}>
       {/* ── Mission · Vision · Devise ─────────────────────────────────── */}
       <section id="vizyon" className="scroll-mt-28 bg-white px-2 pb-4 pt-16 md:pt-20">
         <div className="mx-auto grid max-w-[90rem] gap-4 px-3 md:px-8 lg:grid-cols-3 lg:items-start">

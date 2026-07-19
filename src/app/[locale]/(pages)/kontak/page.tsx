@@ -1,11 +1,9 @@
-'use client'
-
-import { useRef, useState } from 'react'
 import { Mail, MapPin, Scale } from 'lucide-react'
 import { RoutePage } from '@/components/pages/RoutePage'
-import { Button } from '@/components/ui/Button'
-import { useLocale } from '@/components/i18n/LocaleProvider'
-import { submitContact, type ContactOutcome } from '@/lib/contact'
+import { ContactForm } from '@/components/sections/ContactForm'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
+import { routeMetadata } from '../_metadata'
 
 /**
  * "Kontak" — split panel: the channels on a sand ground, the form on white,
@@ -27,43 +25,22 @@ import { submitContact, type ContactOutcome } from '@/lib/contact'
 const EMAIL = 'contact@ayitidijital.org'
 const POST = ['Ayiti Dijital', 'Ursberger Str. 15', '81673 München', 'Deutschland']
 
-const fieldCls =
-  'w-full rounded-xl border border-black/[0.12] bg-white px-4 py-3 text-ink transition-colors placeholder:text-ink-soft/40 hover:border-black/20 focus:border-primary/60 focus:outline-none focus:ring-2 focus:ring-primary/15'
-const labelCls = 'mb-2 flex items-baseline gap-2 font-mono text-[11px] uppercase tracking-[0.16em] text-ink-soft'
-const optionalCls = 'font-sans text-[11px] normal-case tracking-normal text-ink-soft/55'
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/kontak', locale, getSiteContent(toLocale(locale)).contactPage.label)
+}
 
-type Status = { kind: 'idle' | 'sending' } | { kind: 'done'; outcome: ContactOutcome } | { kind: 'error' }
-
-export default function KontakPage() {
-  const { content: c, locale } = useLocale()
+export default async function KontakPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const c = getSiteContent(toLocale(locale))
   const k = c.contactPage
-  const [status, setStatus] = useState<Status>({ kind: 'idle' })
-  const formRef = useRef<HTMLFormElement>(null)
-
-  async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
-    e.preventDefault()
-    const data = new FormData(e.currentTarget)
-    setStatus({ kind: 'sending' })
-    try {
-      const outcome = await submitContact({
-        firstName: String(data.get('firstName') ?? '').trim(),
-        lastName: String(data.get('lastName') ?? '').trim(),
-        email: String(data.get('email') ?? '').trim(),
-        phone: String(data.get('phone') ?? '').trim(),
-        message: String(data.get('message') ?? '').trim(),
-      })
-      setStatus({ kind: 'done', outcome })
-    } catch {
-      setStatus({ kind: 'error' })
-    }
-  }
 
   const privacyHref = `/${locale}/konfidansyalite`
   const imprintLabel =
     c.footerColumns.flatMap((col) => col.links).find((l) => l.href.includes('enfomasyon-legal'))?.label ?? 'Impressum'
 
   return (
-    <RoutePage path="/kontak" title={k.label} subtitle={k.lead}>
+    <RoutePage content={c} path="/kontak" title={k.label} subtitle={k.lead}>
       <section className="bg-white px-2 py-16 md:py-20 lg:py-[100px]">
         <div className="mx-auto max-w-[90rem]">
           <div className="grid overflow-hidden rounded-feature lg:grid-cols-[0.9fr_1.1fr]">
@@ -139,96 +116,11 @@ export default function KontakPage() {
 
             {/* ── Form ─────────────────────────────────────────────────── */}
             <div className="border border-black/[0.07] bg-white p-8 md:p-12 lg:border-l-0 lg:p-14">
-              {status.kind === 'done' ? (
-                <div role="status" className="flex h-full flex-col justify-center">
-                  <p className="font-display text-xl font-bold leading-snug text-primary">
-                    {status.outcome === 'sent' ? k.sent : k.handoff}
-                  </p>
-                  <div className="mt-6">
-                    <Button
-                      variant="gold-outline"
-                      pill
-                      type="button"
-                      onClick={() => {
-                        setStatus({ kind: 'idle' })
-                        formRef.current?.reset()
-                      }}
-                    >
-                      {k.again}
-                    </Button>
-                  </div>
-                </div>
-              ) : (
-                <form ref={formRef} onSubmit={handleSubmit} className="flex flex-col gap-5">
-                  <div className="grid gap-5 sm:grid-cols-2">
-                    <div>
-                      <label className={labelCls} htmlFor="firstName">
-                        {k.firstName}
-                        <span className={optionalCls}>{k.optional}</span>
-                      </label>
-                      <input id="firstName" name="firstName" type="text" autoComplete="given-name" className={fieldCls} />
-                    </div>
-                    <div>
-                      <label className={labelCls} htmlFor="lastName">
-                        {k.lastName}
-                        <span className={optionalCls}>{k.optional}</span>
-                      </label>
-                      <input id="lastName" name="lastName" type="text" autoComplete="family-name" className={fieldCls} />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label className={labelCls} htmlFor="email">
-                      {k.emailField}
-                    </label>
-                    <input id="email" name="email" type="email" required autoComplete="email" className={fieldCls} />
-                  </div>
-
-                  <div>
-                    <label className={labelCls} htmlFor="phone">
-                      {k.phoneField}
-                      <span className={optionalCls}>{k.optional}</span>
-                    </label>
-                    <input id="phone" name="phone" type="tel" autoComplete="tel" className={fieldCls} />
-                  </div>
-
-                  <div>
-                    <label className={labelCls} htmlFor="message">
-                      {k.message}
-                    </label>
-                    <textarea id="message" name="message" required rows={6} className={`${fieldCls} resize-y`} />
-                  </div>
-
-                  <p className="text-sm leading-relaxed text-ink-soft/85">
-                    {k.formNote}{' '}
-                    <a
-                      href={privacyHref}
-                      className="font-medium text-gold-deep underline underline-offset-2 transition-colors hover:text-primary"
-                    >
-                      {c.newsletter.privacy.label}
-                    </a>
-                  </p>
-
-                  <Button
-                    variant="navy"
-                    pill
-                    type="submit"
-                    disabled={status.kind === 'sending'}
-                    className="w-full justify-center"
-                  >
-                    {status.kind === 'sending' ? k.sending : k.send}
-                  </Button>
-
-                  <p aria-live="polite" className="sr-only">
-                    {status.kind === 'sending' ? k.sending : ''}
-                  </p>
-                  {status.kind === 'error' && (
-                    <p role="alert" className="rounded-xl border border-accent/30 bg-accent/[0.06] px-4 py-3 text-sm leading-relaxed text-ink">
-                      {k.error}
-                    </p>
-                  )}
-                </form>
-              )}
+              <ContactForm
+                copy={k}
+                privacyHref={privacyHref}
+                privacyLabel={c.newsletter.privacy.label}
+              />
             </div>
           </div>
         </div>

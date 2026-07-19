@@ -9,7 +9,7 @@ import { useEffect, useState } from 'react'
  * site. It must NOT play when moving between our own pages.
  *
  * A module-level flag isn't enough on its own, because several internal links
- * are still plain <a> (footer, mobile menu, SiteNav) rather than next/link — so
+ * are still plain <a> (footer, mobile menu, the footer and mobile menu) rather than next/link — so
  * those navigations are real browser loads that reboot the app and reset any
  * module state. Hence the Navigation Timing check below, which distinguishes a
  * reload from a same-origin navigation even across a full document load.

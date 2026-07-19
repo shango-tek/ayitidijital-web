@@ -1,19 +1,17 @@
 "use client";
 
-import { ChevronRightIcon } from "@radix-ui/react-icons";
 import { ClassValue, clsx } from "clsx";
 import * as Color from "color-bits";
-import Link from "next/link";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
 import { LanbiMark } from "@/components/brand/LanbiMark";
 import { SocialIcon } from "@/components/brand/SocialIcon";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { PlusGrid, PlusGridItem, PlusGridRow } from "@/components/ui/PlusGrid";
-import { useLocale } from "@/components/i18n/LocaleProvider";
 import { submitNewsletter } from "@/lib/newsletter";
 import type { KonbitFooterContent } from "@/content/site";
-import type { SitemapColumn, SocialLink } from "@/components/layout/SitemapFooter";
+import type { SitemapColumn, SocialLink } from "@/content/types";
+import type { Locale } from "@/i18n";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
@@ -1091,6 +1089,8 @@ export interface FlickeringFooterProps {
   flickerText?: string;
   /** Label for the "back to top" button (localized). */
   scrollTopLabel?: string;
+  /** Active locale — used to prefix the locale-less sitemap hrefs. */
+  locale: Locale;
 }
 
 const KfPlus = ({ className }: { className?: string }) => (
@@ -1119,11 +1119,11 @@ export const FlickeringFooter = ({
   marquee,
   flickerText = "N ap bati lavni pou yon Ayiti Dijital",
   scrollTopLabel,
+  locale,
 }: FlickeringFooterProps) => {
   const tablet = useMediaQuery("(max-width: 1024px)");
   const [done, setDone] = useState(false);
   const legal = columns[columns.length - 1];
-  const { locale } = useLocale();
 
   // Sitemap hrefs are authored locale-less (`/sou-nou`) so one content entry
   // serves ht/fr/en; the routes themselves live under `/[locale]`. Prefix the

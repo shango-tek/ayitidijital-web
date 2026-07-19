@@ -1,8 +1,8 @@
-'use client'
-
 import { RoutePage } from '@/components/pages/RoutePage'
 import { Button } from '@/components/ui/Button'
-import { useLocale } from '@/components/i18n/LocaleProvider'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
+import { routeMetadata } from '../_metadata'
 
 const GITHUB = 'https://github.com/shango-tek/ayitidijital-web'
 const MAIL = 'contact@ayitidijital.org'
@@ -49,12 +49,25 @@ const T = {
  * the association, and connect the ecosystem. All CTAs are real (the public
  * repo, and the association's contact address) — no placeholder links.
  */
-export default function KominotePage() {
-  const { locale, content } = useLocale()
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/kominote', locale, T[toLocale(locale)].title)
+}
+
+export default async function KominotePage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale: localeParam } = await params
+  const locale = toLocale(localeParam)
+  const content = getSiteContent(locale)
   const t = T[locale]
 
   return (
-    <RoutePage path="/kominote" title={t.title} subtitle={t.sub} image="/headers/nouvel.webp">
+    <RoutePage
+      content={content}
+      path="/kominote"
+      title={t.title}
+      subtitle={t.sub}
+      image="/headers/nouvel.webp"
+    >
       <div className="page-wrap">
         <div className="grid gap-10 lg:grid-cols-[minmax(0,20rem)_1fr] lg:gap-16">
           {/* Left rail — the diaspora framing + cities */}

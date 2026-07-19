@@ -1,8 +1,8 @@
-'use client'
-
 import { RoutePage } from '@/components/pages/RoutePage'
-import { useLocale } from '@/components/i18n/LocaleProvider'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
 import { cn } from '@/lib/utils'
+import { routeMetadata } from '../_metadata'
 
 /** Stable per-project slug, derived from the image filename (already unique). */
 function slugOf(image: string): string {
@@ -22,12 +22,20 @@ const statusClass = (k: 'active' | 'dev' | 'soon') =>
  * go. Each project is now a real anchored card (id = its slug), so a home card
  * links to /ekosistem#<slug> and lands on that project.
  */
-export default function EkosistemPage() {
-  const { content: c } = useLocale()
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/ekosistem', locale)
+}
+
+export default async function EkosistemPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const lang = toLocale(locale)
+  const c = getSiteContent(lang)
   const eco = c.ecosystem
 
   return (
     <RoutePage
+      content={c}
       path="/ekosistem"
       title={eco.titleRest}
       subtitle={eco.subtitle}

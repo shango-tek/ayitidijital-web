@@ -1,7 +1,7 @@
-'use client'
-
 import { RoutePage } from '@/components/pages/RoutePage'
-import { useLocale } from '@/components/i18n/LocaleProvider'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
+import { routeMetadata } from '../_metadata'
 
 /**
  * "Nouvèl & evènman" — the news page. Was an empty RoutePage (header, no body),
@@ -12,12 +12,19 @@ import { useLocale } from '@/components/i18n/LocaleProvider'
  * Posts have no individual article pages yet, so the cards are not links — an
  * honest dead end beats three cards that all reopen the same page.
  */
-export default function NouvelPage() {
-  const { content: c } = useLocale()
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/nouvel', locale)
+}
+
+export default async function NouvelPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const lang = toLocale(locale)
+  const c = getSiteContent(lang)
   const j = c.journal
 
   return (
-    <RoutePage path="/nouvel" subtitle={j.subtitle} image="/headers/nouvel.webp">
+    <RoutePage content={c} path="/nouvel" subtitle={j.subtitle} image="/headers/nouvel.webp">
       <div className="page-wrap">
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {j.posts.map((post, i) => (
