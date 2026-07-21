@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import type { SiteContent } from '@/content/site'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SectionPanel } from '@/components/ui/SectionPanel'
 import { cn } from '@/lib/utils'
 
 type StatusKey = 'active' | 'dev' | 'coming'
@@ -110,8 +111,15 @@ export function WhatWeDo({ content: c }: { content: SiteContent }) {
       </section>
 
       {/* ── Nos programmes ────────────────────────────────────── */}
-      <section className="border-t border-black/[0.06] bg-white">
-        <div className="mx-auto max-w-[90rem] px-5 md:px-10 py-16 lg:py-24">
+      {/* The warm panel, for the same two reasons it is used on the home page:
+          it breaks a white run that otherwise ran the length of this page, and
+          it puts an edge under the white programme cards. It also lands on a
+          real content boundary — programmes are not projects — so the surface
+          change reinforces the split rather than decorating it.
+          The panel supplies the gutter and the vertical padding, and replaces
+          the hairline this section used to carry. */}
+      <SectionPanel>
+        <div className="mx-auto max-w-[90rem] px-5 md:px-10">
           <SectionHeader
             variant="stacked"
             size="sm"
@@ -153,7 +161,7 @@ export function WhatWeDo({ content: c }: { content: SiteContent }) {
             ))}
           </div>
         </div>
-      </section>
+      </SectionPanel>
     </div>
   )
 }

@@ -1,6 +1,7 @@
 import { RoutePage } from '@/components/pages/RoutePage'
 import { PrinciplesList } from '@/components/sections/PrinciplesList'
 import { Kicker } from '@/components/ui/Kicker'
+import { SectionPanel } from '@/components/ui/SectionPanel'
 import { getSiteContent } from '@/content/site'
 import { toLocale } from '@/i18n'
 import { routeMetadata } from '../_metadata'
@@ -25,7 +26,12 @@ export default async function PrensipPage({ params }: { params: Promise<{ locale
 
   return (
     <RoutePage content={c} path="/prensip" subtitle={p.lead}>
-      <section className="bg-white py-16 md:py-20 lg:py-[100px]">
+      {/* The warm panel here for a different reason than elsewhere: not to give
+          cards an edge — there are none — but because this is the flattest
+          surface on the site. The four principles are text rows separated by
+          hairlines, so the page was 1170px of unbroken white, and a values page
+          is the last one that should read as a default document. */}
+      <SectionPanel>
         <div className="mx-auto max-w-[90rem] px-5 md:px-10">
           <Kicker label={p.label} red />
 
@@ -41,7 +47,7 @@ export default async function PrensipPage({ params }: { params: Promise<{ locale
 
           <PrinciplesList items={p.items} />
         </div>
-      </section>
+      </SectionPanel>
     </RoutePage>
   )
 }

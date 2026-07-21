@@ -1,5 +1,6 @@
 import { RoutePage } from '@/components/pages/RoutePage'
 import { SectionHeader } from '@/components/ui/SectionHeader'
+import { SectionPanel } from '@/components/ui/SectionPanel'
 import { Timeline } from '@/components/ui/Timeline'
 import { getSiteContent } from '@/content/site'
 import { toLocale } from '@/i18n'
@@ -84,7 +85,11 @@ export default async function SouNouPage({ params }: { params: Promise<{ locale:
       </section>
 
       {/* ── Istwa nou — the origin story ──────────────────────────────── */}
-      <section id="istwa" className="scroll-mt-28 bg-white py-16 md:py-20 lg:py-[100px]">
+      {/* On the warm panel, not white: this is the page's long tail (the
+          timeline alone runs past a screen), and the timeline's cards are white,
+          so a sand ground is what gives them an edge to sit on — the same
+          reason the home page's Journal cards sit on one. */}
+      <SectionPanel id="istwa" className="scroll-mt-28">
         <div className="mx-auto max-w-[90rem] px-5 md:px-10">
           {/* The shared section header, like every other section on the site —
               three tilted pixels, display title, gold period. This was
@@ -95,7 +100,7 @@ export default async function SouNouPage({ params }: { params: Promise<{ locale:
             <Timeline items={timelineItems} statusLabels={a.storyStatus} />
           </div>
         </div>
-      </section>
+      </SectionPanel>
 
       {/* The board used to close this page. It has its own route now (/ekip), and
           stating it twice would let the two copies drift — so this page ends on
