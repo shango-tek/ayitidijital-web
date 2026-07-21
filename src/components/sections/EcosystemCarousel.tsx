@@ -87,7 +87,7 @@ export function EcosystemCarousel({
   }
 
   return (
-    <SectionPanel id={id} gate="without-spiral" className="relative">
+    <SectionPanel id={id} className="relative">
       {/* Header — outline word + rest left, lead right (shared split header) */}
       <div className="mx-auto mb-12 max-w-[90rem] px-5 md:px-10 lg:mb-14">
         <SectionHeader

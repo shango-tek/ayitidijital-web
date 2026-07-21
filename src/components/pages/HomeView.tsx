@@ -1,7 +1,6 @@
 import { SilentPrecisionHero } from '@/components/sections/SilentPrecisionHero'
 import { AboutBento } from '@/components/sections/AboutBento'
 import { WorkOverview } from '@/components/sections/WorkOverview'
-import { SpiralStage } from '@/components/sections/SpiralStage'
 import { EcosystemCarousel } from '@/components/sections/EcosystemCarousel'
 import { DomainesGrid } from '@/components/sections/DomainesGrid'
 import { JournalSection } from '@/components/sections/JournalSection'
@@ -17,12 +16,12 @@ import type { Locale } from '@/i18n'
 
 /**
  * The home page. Section order mirrors the Ayiti Dijital landing flow:
- * hero → kinetic spiral → impact → what-we-do → ecosystem (+ end-row CTA) →
- * community → newsletter → footer.
+ * hero → impact → what-we-do → ecosystem (+ end-row CTA) → thematics →
+ * journal → faq → call to action → footer.
  *
  * A server component: the content arrives as a prop from the route, so none of
- * this markup or the content module reaches the browser. The only client state
- * the page has left is the spiral's media-query gate, in {@link SpiralStage}.
+ * this markup or the content module reaches the browser. Interactivity lives in
+ * the sections that need it, not here.
  */
 export function HomeView({ content: c, locale }: { content: SiteContent; locale: Locale }) {
   return (
@@ -90,13 +89,7 @@ export function HomeView({ content: c, locale }: { content: SiteContent; locale:
             viewAllHref={`/${locale}/travay-nou`}
           />
 
-          {/* Spiral galaxy — 3D starfield + word-spiral + ambient word-field, fused.
-              Desktop landscape only — see SpiralStage for the gate. Where it IS shown it
-              doubles as the page's mid-page dark break, which is why the warm
-              panel moves to a different section when it is absent. */}
-          <SpiralStage words={c.marqueeWords} centerWords={c.spiralCenterWords} />
-
-          {/* Explore our ecosystem — incubated-projects carousel (white bg) */}
+          {/* Explore our ecosystem — incubated-projects carousel (sand panel) */}
           <EcosystemCarousel
             id="ekosistem"
             label={c.ecosystem.label}

@@ -15,6 +15,32 @@ const SpiralGalaxy = dynamic(() =>
 /**
  * Gate for the home page's kinetic spiral.
  *
+ * ── DORMANT ──────────────────────────────────────────────────────────────────
+ * Nothing renders this. It was removed from the home page deliberately, and the
+ * code is kept so the sequence can be brought back without rebuilding it.
+ *
+ * Why it went: ~950 lines and a 39 KB gzipped chunk (the sole reason `gsap` is a
+ * dependency) reached only desktop-with-a-mouse, and its eight orbiting words
+ * are the same `marqueeWords` the footer already shows. The only copy unique to
+ * it was the three centre verbs.
+ *
+ * To restore, three edits — they are coupled and half-restoring gives a home
+ * page with two sand panels in a row:
+ *   1. Render <SpiralStage words={c.marqueeWords} centerWords={c.spiralCenterWords} />
+ *      in HomeView, between WorkOverview and EcosystemCarousel.
+ *   2. Re-add the `spiral:` custom variant to globals.css, matching the
+ *      matchMedia string below exactly.
+ *   3. Re-gate SectionPanel so EcosystemCarousel's panel is suppressed wherever
+ *      the spiral renders — it exists to break a white run the spiral would
+ *      otherwise break itself. See the note in SectionPanel.
+ *
+ * Two defects to fix if it does come back: the per-character text spiral in
+ * spiral-galaxy.tsx is not `aria-hidden`, so a screen reader walks 180+ single
+ * character spans; and spiral-animation.tsx runs its rAF loop regardless of
+ * `prefers-reduced-motion` (spiral-galaxy honours the preference, its child
+ * does not).
+ * ─────────────────────────────────────────────────────────────────────────────
+ *
  * The spiral is a heavy canvas moment — great with a mouse on a wide screen,
  * but a continuous starfield rAF is a poor, battery-hungry fit on touch
  * devices, and the sequence is composed for a landscape stage.
@@ -27,12 +53,8 @@ const SpiralGalaxy = dynamic(() =>
  *   hover/fine — excludes touch entirely (a touchscreen laptop still reports
  *                a fine pointer for its mouse, so those keep it)
  *
- * KEEP IN SYNC with the `spiral:` custom variant in globals.css, which moves
- * the warm SectionPanel between EcosystemCarousel and DomainesGrid depending
- * on whether this section is here to break the page.
- *
- * This is the only reason the home page needs any client state at all, which
- * is why it is a component of its own rather than a flag on HomeView.
+ * Kept as a component of its own because it is the only client state the home
+ * page would need — HomeView itself stays a Server Component either way.
  */
 export function SpiralStage({
   words,

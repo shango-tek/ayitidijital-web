@@ -17,56 +17,37 @@ import type { ReactNode } from 'react'
  * neighbouring white sections' own `py-16 … lg:py-[100px]`, so the panel keeps
  * that padding INSIDE the card and the page's vertical rhythm is untouched.
  *
- * ── Where it goes, and why it moves ──────────────────────────────────────────
- * The rule is "never more than two white sections in a row". Only the hero, the
- * footer and — on desktop only — the spiral break the page for free, so with the
- * newsletter card gone from the home page there is a long white run to carve up,
- * and where it needs carving depends on whether the spiral is there:
+ * ── Where it goes ────────────────────────────────────────────────────────────
+ * The rule is "never more than two white sections in a row". Only the hero and
+ * the footer break the page for free, so the long white run between them needs
+ * carving twice:
  *
- *   with spiral     dark · w · w · SPIRAL · w · w · SAND · w · w · dark
- *   without spiral  dark · w · SAND · w · w · SAND · w · w · dark
+ *   dark · w · w · SAND · w · SAND · w · w · dark
  *
- * So JournalSection is a panel always (it splits the long tail either way), and
- * EcosystemCarousel is one only when the spiral is absent and the head of the
- * page would otherwise run four white sections deep. DomainesGrid — "Nos
- * thématiques" — is deliberately NOT one: it sat between the two and the beige
+ * EcosystemCarousel and JournalSection carry the two panels. DomainesGrid —
+ * "Nos thématiques" — sits between them and is deliberately NOT one: the beige
  * behind its SDG cards was doing nothing the white ground doesn't do better.
  *
- * The `spiral:` variant and HomeView's matchMedia must stay in sync, or the
- * ecosystem panel appears on desktop where it is not wanted.
+ * This was once conditional. The spiral used to supply a third, dark break on
+ * desktop, so the ecosystem panel was suppressed there to avoid over-carving —
+ * a `spiral:` CSS variant that had to stay in lockstep with a matchMedia string
+ * in HomeView. The spiral is no longer rendered (see SpiralStage), so the two
+ * panels are unconditional and that whole mechanism is gone.
  */
-type Gate = 'always' | 'with-spiral' | 'without-spiral'
-
-const GATE: Record<Gate, { gutter: string; surface: string }> = {
-  always: {
-    gutter: 'px-2',
-    surface: 'rounded-feature bg-sand',
-  },
-  'with-spiral': {
-    gutter: 'spiral:px-2',
-    surface: 'spiral:rounded-feature spiral:bg-sand',
-  },
-  'without-spiral': {
-    gutter: 'px-2 spiral:px-0',
-    surface: 'rounded-feature bg-sand spiral:rounded-none spiral:bg-transparent',
-  },
-}
-
 export function SectionPanel({
   id,
-  gate = 'always',
   className = '',
   children,
 }: {
   id?: string
-  gate?: Gate
   className?: string
   children: ReactNode
 }) {
-  const g = GATE[gate]
   return (
-    <section id={id} className={`bg-white ${g.gutter} ${className}`}>
-      <div className={`overflow-hidden ${g.surface} py-16 md:py-20 lg:py-[100px]`}>{children}</div>
+    <section id={id} className={`bg-white px-2 ${className}`}>
+      <div className="overflow-hidden rounded-feature bg-sand py-16 md:py-20 lg:py-[100px]">
+        {children}
+      </div>
     </section>
   )
 }

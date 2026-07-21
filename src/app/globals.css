@@ -39,24 +39,8 @@
   --radius-feature: 2rem;
 }
 
-/* `spiral:` — true exactly when the home page renders the spiral section.
-   The spiral is the page's mid-page dark break, so which section carries the
-   warm SectionPanel depends on whether it is there (see SectionPanel).
-
-   KEEP IN SYNC with the matchMedia string in HomeView, which decides whether to
-   mount the spiral at all. The two must agree or the page ends up with two
-   panels or none. It is a media query here, and JS there, because the panel must
-   be right in the server-rendered HTML (no hydration flash) while the spiral must
-   not MOUNT on a phone at all — hiding it in CSS would still run its canvas. */
-@custom-variant spiral {
-  @media (min-width: 1024px) and (orientation: landscape) and (hover: hover) and (pointer: fine) {
-    @slot;
-  }
-}
-
 /* `tablet-portrait:` — a tablet held upright. Wide enough that the phone layout
-   wastes the width, tall and narrow enough that the desktop layout crowds it,
-   and the one shape where the spiral is absent but the page is still roomy.
+   wastes the width, tall and narrow enough that the desktop layout crowds it.
 
    700, NOT the 768 `md` breakpoint: iPad mini portrait is 744 CSS px and iPad
    10.2" is 810, so a 768 floor silently dropped the smallest iPads back to the
