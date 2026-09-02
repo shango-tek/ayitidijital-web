@@ -16,15 +16,19 @@ import type { NextRequest } from 'next/server'
  * fully workable locally with nothing to bypass.
  *
  * Two more controls, for production:
- *   • Private preview — open any page with `?preview=<token>` once. It drops a
- *     cookie and lets you (and only you) see the real production site while the
- *     public sees the holding page. Token defaults below; override with the
- *     COMING_SOON_TOKEN env var.
+ *   • Private preview — set COMING_SOON_TOKEN in the production environment,
+ *     then open any page with `?preview=<that value>` once. It drops a cookie
+ *     and lets you (and only you) see the real production site while the public
+ *     sees the holding page. No token is baked into the source, so it cannot be
+ *     guessed from the repo; if the env var is unset the bypass is simply off
+ *     (fail closed).
  *   • Go live — set `COMING_SOON=off` in the production environment (Vercel →
  *     redeploy) or delete this file. Either reveals the whole site.
  */
 
-const TOKEN = process.env.COMING_SOON_TOKEN ?? 'lanbi-6f3a91'
+// Only ever set in the environment — never a committed default, so the preview
+// bypass stays private. Unset → no bypass.
+const TOKEN = process.env.COMING_SOON_TOKEN
 
 /* Active only on Vercel's production deployment, and only until switched off.
    Undefined VERCEL_ENV (local dev / local build) → never gated. */
@@ -44,7 +48,9 @@ export function proxy(request: NextRequest) {
   const { pathname, searchParams } = request.nextUrl
 
   // ?preview=<token> → set the cookie, strip the param, let this request through.
-  if (searchParams.get('preview') === TOKEN) {
+  // The `TOKEN &&` guard matters: without it, an unset TOKEN would make the
+  // cookie check `undefined === undefined` and open the gate to everyone.
+  if (TOKEN && searchParams.get('preview') === TOKEN) {
     const url = request.nextUrl.clone()
     url.searchParams.delete('preview')
     const res = NextResponse.redirect(url)
@@ -56,7 +62,7 @@ export function proxy(request: NextRequest) {
     })
     return res
   }
-  if (request.cookies.get('ad-preview')?.value === TOKEN) return NextResponse.next()
+  if (TOKEN && request.cookies.get('ad-preview')?.value === TOKEN) return NextResponse.next()
 
   if (ALLOW.test(pathname)) return NextResponse.next()
 
