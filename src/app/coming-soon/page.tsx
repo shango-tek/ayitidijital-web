@@ -13,7 +13,6 @@ import type { CSSProperties } from 'react'
 const STYLE = `
 @keyframes cs-rise { from { opacity: 0; transform: translateY(16px) } to { opacity: 1; transform: none } }
 @keyframes cs-glow { 0%, 100% { opacity: .42; transform: scale(1) } 50% { opacity: .8; transform: scale(1.07) } }
-@keyframes cs-pulse { 0%, 100% { opacity: .3; transform: scale(.78) } 50% { opacity: 1; transform: scale(1) } }
 @keyframes cs-drift-a { 0%, 100% { transform: translate(0, 0) } 50% { transform: translate(4%, -3%) } }
 @keyframes cs-drift-b { 0%, 100% { transform: translate(0, 0) } 50% { transform: translate(-4%, 3%) } }
 
@@ -24,12 +23,6 @@ const STYLE = `
   content: ""; position: absolute; inset: -38%; border-radius: 9999px; z-index: -1;
   background: radial-gradient(circle, color-mix(in srgb, var(--color-gold) 26%, transparent) 0%, transparent 68%);
   filter: blur(26px); animation: cs-glow 5.5s ease-in-out infinite;
-}
-
-.cs-dot {
-  width: 7px; height: 7px; border-radius: 9999px; background: var(--color-gold); flex: none;
-  box-shadow: 0 0 12px color-mix(in srgb, var(--color-gold) 75%, transparent);
-  animation: cs-pulse 2.6s ease-in-out infinite;
 }
 
 .cs-grain {
@@ -50,7 +43,7 @@ const STYLE = `
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .cs-rise, .cs-mark::before, .cs-dot, .cs-orb { animation: none }
+  .cs-rise, .cs-mark::before, .cs-orb { animation: none }
   .cs-rise { opacity: 1; transform: none }
 }
 `
@@ -84,10 +77,9 @@ export default function ComingSoonPage() {
         </h1>
 
         <p
-          className="cs-rise mt-8 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.32em] text-[color:var(--color-gold)] sm:text-sm"
+          className="cs-rise mt-8 font-mono text-xs uppercase tracking-[0.32em] text-[color:var(--color-gold)] sm:text-sm"
           style={{ '--d': '220ms' } as CSSProperties}
         >
-          <span className="cs-dot" aria-hidden="true" />
           En construction · Coming soon
         </p>
       </div>
