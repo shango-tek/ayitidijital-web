@@ -346,9 +346,10 @@
     position:fixed; top:auto; bottom:1.1rem; right:1rem; z-index:50;
     opacity:0; transform:translateY(.75rem); pointer-events:none;
   }
-  /* at the footer: docks into it as an in-footer button (white square on the
-     dark footer, from the base rule), like tablet/desktop */
-  .kf-scrolltop[data-mode="dock"]{ position:absolute; top:auto; bottom:15.2rem; right:1.25rem; opacity:1; }
+  /* at the footer: stays pinned bottom-right (fixed), NOT docked mid-footer —
+     on phones a floating bottom-right affordance is what's expected. */
+  .kf-scrolltop[data-mode="dock"]{ position:fixed; top:auto; bottom:1.1rem; right:1rem; z-index:50; opacity:1; }
+  .kf-scrolltop[data-mode="dock"] .kf-scrolltop-arrow{ background:var(--color-tum-ink); color:#fff; box-shadow:0 6px 18px rgba(0,0,0,.55); }
 }
 @media (prefers-reduced-motion:reduce){ .kf-scrolltop{ transition:none; } }
 

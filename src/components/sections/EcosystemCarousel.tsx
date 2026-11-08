@@ -91,7 +91,7 @@ export function EcosystemCarousel({
         } as CSSProperties)
 
   return (
-    <section id={id} className="relative overflow-hidden bg-lavender py-20 md:py-24 lg:py-32">
+    <section id={id} className="relative overflow-hidden bg-lavender py-10 md:py-24 lg:py-32">
       {/* Header */}
       <div className="mx-auto mb-8 max-w-[90rem] px-5 md:px-10 lg:mb-10">
         <Reveal>
