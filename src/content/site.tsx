@@ -295,6 +295,9 @@ export interface SiteContent {
       statusKey: 'active' | 'dev' | 'soon'
       icon: 'book' | 'data' | 'cap' | 'map' | 'chart' | 'heart'
       image: string
+      /** External project site; when set, the carousel's "See project" opens it
+          instead of the in-site ecosystem anchor. */
+      url?: string
     }[]
   }
   /** "Domaines d'action" - SDG-aligned theme cards (title, desc, SDG number, tag). */
@@ -458,7 +461,7 @@ const ht: SiteContent = {
       kr: 'Lwa ak jistis aksesib pou tout moun. Tout kò lejislatif ayisyen an - chèche, li, pataje - gratis.',
       tr: 'La loi haïtienne, consultable et citable en ligne.',
       trLang: 'fr',
-      link: { label: 'Vizite LexHaiti', href: '#' },
+      link: { label: 'Vizite LexHaiti', href: 'https://www.lexhaiti.org/' },
     },
     {
       icon: ProjectIcons.archive,
@@ -674,7 +677,7 @@ const ht: SiteContent = {
     outro: 'Dekouvri tout pwojè hub la enkibe yo.',
     viewAll: 'Wè tout pwojè yo',
     projects: [
-      { name: 'LexHaiti', tagline: 'Pòtay transparans jiridik, louvri epi verifyab', status: 'Aktif', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp' },
+      { name: 'LexHaiti', tagline: 'Pòtay transparans jiridik, louvri epi verifyab', status: 'Aktif', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp', url: 'https://www.lexhaiti.org/' },
       { name: 'Civic Data API', tagline: 'Done piblik ouvè pou Ayiti', status: 'An devlopman', statusKey: 'dev', icon: 'data', image: '/ecosystem/civic-data.webp' },
       { name: 'Civic Tech Academy', tagline: 'Fòme batisè demen yo', status: 'Byento', statusKey: 'soon', icon: 'cap', image: '/ecosystem/academy.webp' },
       { name: 'OpenHaïti Map', tagline: 'Katografi ouvè teritwa ayisyen an', status: 'An devlopman', statusKey: 'dev', icon: 'map', image: '/ecosystem/openhaiti-map.webp' },
@@ -892,7 +895,7 @@ const fr: SiteContent = {
       kr: 'Le droit et la justice accessibles à tous. Tout le corpus législatif haïtien - rechercher, lire, partager - gratuitement.',
       tr: 'La loi haïtienne, consultable et citable en ligne.',
       trLang: 'fr',
-      link: { label: 'Visiter LexHaiti', href: '#' },
+      link: { label: 'Visiter LexHaiti', href: 'https://www.lexhaiti.org/' },
     },
     {
       icon: ProjectIcons.archive,
@@ -1108,7 +1111,7 @@ const fr: SiteContent = {
     outro: 'Découvrez tous les projets incubés par le hub.',
     viewAll: 'Voir tous les projets',
     projects: [
-      { name: 'LexHaiti', tagline: 'Portail de transparence juridique, ouvert et auditable', status: 'Actif', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp' },
+      { name: 'LexHaiti', tagline: 'Portail de transparence juridique, ouvert et auditable', status: 'Actif', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp', url: 'https://www.lexhaiti.org/' },
       { name: 'Civic Data API', tagline: 'Données publiques ouvertes pour Haïti', status: 'En développement', statusKey: 'dev', icon: 'data', image: '/ecosystem/civic-data.webp' },
       { name: 'Civic Tech Academy', tagline: 'Former les bâtisseurs de demain', status: 'Bientôt', statusKey: 'soon', icon: 'cap', image: '/ecosystem/academy.webp' },
       { name: 'OpenHaïti Map', tagline: 'Cartographie ouverte du territoire haïtien', status: 'En développement', statusKey: 'dev', icon: 'map', image: '/ecosystem/openhaiti-map.webp' },
@@ -1327,7 +1330,7 @@ const en: SiteContent = {
       kr: 'Law and justice accessible to everyone. The entire Haitian legislative corpus - search, read, share - for free.',
       tr: 'Haitian law, searchable and citable online.',
       trLang: 'en',
-      link: { label: 'Visit LexHaiti', href: '#' },
+      link: { label: 'Visit LexHaiti', href: 'https://www.lexhaiti.org/' },
     },
     {
       icon: ProjectIcons.archive,
@@ -1543,7 +1546,7 @@ const en: SiteContent = {
     outro: 'Discover all the projects incubated by the hub.',
     viewAll: 'See all projects',
     projects: [
-      { name: 'LexHaiti', tagline: 'A legal transparency portal, open and auditable', status: 'Active', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp' },
+      { name: 'LexHaiti', tagline: 'A legal transparency portal, open and auditable', status: 'Active', statusKey: 'active', icon: 'book', image: '/ecosystem/lexhaiti.webp', url: 'https://www.lexhaiti.org/' },
       { name: 'Civic Data API', tagline: 'Open public data for Haiti', status: 'In development', statusKey: 'dev', icon: 'data', image: '/ecosystem/civic-data.webp' },
       { name: 'Civic Tech Academy', tagline: "Training tomorrow's builders", status: 'Coming soon', statusKey: 'soon', icon: 'cap', image: '/ecosystem/academy.webp' },
       { name: 'OpenHaïti Map', tagline: 'Open mapping of the Haitian territory', status: 'In development', statusKey: 'dev', icon: 'map', image: '/ecosystem/openhaiti-map.webp' },

@@ -6,6 +6,7 @@ import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
 import { getLegalContent } from '@/content/legal'
 import { Preloader } from '../../components/layout/Preloader'
+import { SmoothScroll } from '../../components/ui/SmoothScroll'
 import { CookieBanner } from '../../components/ui/CookieBanner'
 
 /* Google fonts the design CSS expects, exposed as CSS variables that
@@ -143,6 +144,7 @@ export default async function LocaleLayout({
     >
       <body id="top" suppressHydrationWarning>
         <Preloader />
+        <SmoothScroll />
         {children}
         {/* Dormant until an analytics provider is configured — see
             src/lib/analytics.ts */}

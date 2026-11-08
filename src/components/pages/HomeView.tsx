@@ -102,10 +102,10 @@ export function HomeView({ content: c, locale }: { content: SiteContent; locale:
             viewAllHref={`/${locale}/travay-nou`}
             projects={c.ecosystem.projects.map((p) => ({
               ...p,
-              // Each project's own slug (from its image filename) → its anchor on
-              // the ecosystem page, so six distinct projects don't all open the
-              // same URL.
-              href: `/${locale}/ekosistem#${p.image.split('/').pop()?.replace(/\.\w+$/, '') ?? ''}`,
+              // A project's own external site when it has one (e.g. LexHaiti);
+              // otherwise its slug (from its image filename) → its anchor on the
+              // ecosystem page, so six distinct projects don't all open the same URL.
+              href: p.url ?? `/${locale}/ekosistem#${p.image.split('/').pop()?.replace(/\.\w+$/, '') ?? ''}`,
             }))}
           />
 
