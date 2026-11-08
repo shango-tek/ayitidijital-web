@@ -4,7 +4,7 @@ import { toLocale } from '@/i18n'
 import { routeMetadata } from '../_metadata'
 
 /**
- * "Nouvèl & evènman" — the news page, in the UnternehmerTUM register. Each post
+ * "Nouvèl & evènman" — the news page, in the house register. Each post
  * is an anchored card (#post-1 …). Posts have no individual article pages yet,
  * so the cards are not links.
  */

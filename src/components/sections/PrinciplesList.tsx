@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from 'framer-motion'
 
 /**
  * The scroll-revealed principles list — the only part of /prensip that needs the
- * client. UnternehmerTUM register: oversized electric index numerals, Albert Sans
+ * client. house register: oversized electric index numerals, Albert Sans
  * (font-tum) titles, a hairline rule that draws in. Props unchanged.
  */
 export function PrinciplesList({ items }: { items: { title: string; body: string }[] }) {

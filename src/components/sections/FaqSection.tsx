@@ -19,7 +19,7 @@ export interface FaqSectionProps {
 }
 
 /**
- * FAQ — a white section over a sharp-cornered accordion in the UnternehmerTUM
+ * FAQ — a white section over a sharp-cornered accordion in the house
  * register: black-bordered cards, Albert Sans questions, an electric plus/close
  * tile. First item open. Open state and props are unchanged from the Sui version.
  */

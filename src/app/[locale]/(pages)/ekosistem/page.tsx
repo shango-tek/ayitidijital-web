@@ -17,7 +17,7 @@ const statusClass = (k: 'active' | 'dev' | 'soon') =>
       : 'border-white/15 bg-white/5 text-white/60'
 
 /**
- * "Écosystème" — the full incubated-projects list, in the UnternehmerTUM
+ * "Écosystème" — the full incubated-projects list, in the house
  * register. Each project is an anchored card (id = its slug), so a home card
  * links to /ekosistem#<slug> and lands on that project.
  */

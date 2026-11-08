@@ -6,7 +6,7 @@ import { cn } from '@/lib/utils'
 
 /**
  * Timeline — a self-drawing rail with staggered entries and status glyphs, in the
- * UnternehmerTUM register: sharp-cornered cards, Albert Sans, an electric rail and
+ * house register: sharp-cornered cards, Albert Sans, an electric rail and
  * current-state, near-black "done", muted "upcoming". Structure, motion and props
  * are unchanged.
  */

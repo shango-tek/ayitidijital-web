@@ -7,7 +7,7 @@ import { routeMetadata } from '../_metadata'
 
 /**
  * "Kontak" — split panel: the channels on a lavender ground, the form on white,
- * in the UnternehmerTUM register (Albert Sans, electric accents, sharp edges).
+ * in the house register (Albert Sans, electric accents, sharp edges).
  *
  * There is no phone row (no number has ever been supplied); the form still
  * offers a phone FIELD, which belongs to the visitor, not to us. The form POSTs

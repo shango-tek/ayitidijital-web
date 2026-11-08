@@ -354,8 +354,8 @@
 @media (prefers-reduced-motion:reduce){ .kf-scrolltop{ transition:none; } }
 
 /* ============================================================
-   UnternehmerTUM restyle (flat footer only): Albert Sans, electric
-   accents, sharp inner edges — matches the TUM body while keeping
+   house restyle (flat footer only): Albert Sans, electric
+   accents, sharp inner edges — matches the house body while keeping
    the dark ground + PlusGrid hairlines that already match the header.
    Appended last so these win over the flat-footer rules above.
    ============================================================ */

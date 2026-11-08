@@ -46,7 +46,7 @@ const T = {
 } as const
 
 /**
- * "Soutni" — the Support / donate destination, in the UnternehmerTUM register.
+ * "Soutni" — the Support / donate destination, in the house register.
  * There is no online payment set up, so this page is honest about it: real ways
  * to help (partner, contribute code, spread the word) with working links, and a
  * note that financial support currently goes through direct contact.

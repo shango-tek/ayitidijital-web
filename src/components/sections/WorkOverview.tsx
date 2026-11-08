@@ -32,7 +32,7 @@ const BLOCKS = [
 
 /**
  * "What we do" — the manifesto, and the page's loudest moment in the
- * UnternehmerTUM register. A white header, then the three Bati / Enkibe /
+ * house register. A white header, then the three Bati / Enkibe /
  * Konekte pillars as full-bleed alternating blocks (black → electric → white),
  * each with an oversized index numeral and a giant Kreyòl label. Props are
  * unchanged from the Sui version, so HomeView and all three locales keep

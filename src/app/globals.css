@@ -29,7 +29,7 @@
   --color-ink-soft: #89919F;       /* muted text — Sui grey */
   --color-paper: #000000;          /* page background — Sui black */
 
-  /* UnternehmerTUM body world — the landing sections below the (kept, dark Sui)
+  /* house body world — the landing sections below the (kept, dark Sui)
      hero live in this palette: white ground, one electric ultramarine action
      colour, lavender feature surface, near-black display ink, and the drapo red
      carried through as the secondary accent. Separate from the Sui nav/footer
@@ -229,8 +229,10 @@ h2, h3 { text-wrap: balance; }
     font-style: normal;
     font-weight: 500;
   }
-  /* Phone: the hero fills the full container — square, edge to edge, full height. */
-  .precision-hero-inner { min-height: 100dvh; }
+  /* Phone: the hero fills the full container — square, edge to edge, full height.
+     100vh is the fallback for browsers without dvh (older iOS Safari), so the
+     hero never collapses to content height; dvh refines it where supported. */
+  .precision-hero-inner { min-height: 100vh; min-height: 100dvh; }
 }
 
 button,
@@ -743,9 +745,9 @@ button[aria-disabled='true'],
 }
 
 /* ==================================================================
-   UnternehmerTUM — square everything: zero the remaining Sui radii
+   house — square everything: zero the remaining Sui radii
    site-wide (cards, chips, buttons, inputs, Tailwind rounded-* utilities)
-   so the whole app matches the sharp TUM body. Unlayered, so it beats the
+   so the whole app matches the sharp house body. Unlayered, so it beats the
    base design CSS and Tailwind utilities. Keeps the functional mobile-menu
    shell rounding and genuinely circular controls (rounded-full / the mark).
    ================================================================== */

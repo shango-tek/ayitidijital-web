@@ -375,7 +375,7 @@ a{color:inherit}
 @media (prefers-reduced-motion:reduce){.ns-cta:hover .ns-cta-ico svg{animation:none}}
 
 /* ==================================================================
-   UnternehmerTUM — restyle the sub-page Sui classes to match the TUM
+   house — restyle the sub-page Sui classes to match the house
    body (Albert Sans, electric + drapo accents). The home uses its own
    section markup (not .card/.pc/.kicker), so this only affects the
    legal / soutni / kominote / route pages. Radii are already zeroed by

@@ -2,7 +2,7 @@ import * as React from 'react'
 import { cn } from '@/lib/utils'
 
 /**
- * Team section — UnternehmerTUM register. Members render as sharp, double-lined
+ * Team section — house register. Members render as sharp, double-lined
  * photo placeholders for now (no names), on a white ground. Props are unchanged
  * so the page + all three locales keep working.
  */

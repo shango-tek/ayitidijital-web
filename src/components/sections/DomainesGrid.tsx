@@ -31,7 +31,7 @@ const SDG_COLORS: Record<string, string> = {
 const sdgColor = (sdg: string) => SDG_COLORS[(sdg || '').split('/')[0].trim()] ?? '#6B7280'
 
 /**
- * "Domaines d'action" — SDG-aligned theme cards in the UnternehmerTUM register:
+ * "Domaines d'action" — SDG-aligned theme cards in the house register:
  * a white section, sharp-cornered white cards with a black border, the UN SDG
  * colour badge, a faint watermark index, Albert Sans title and tag chips. Props
  * are unchanged from the Sui version.

@@ -43,7 +43,7 @@ const T = {
 } as const
 
 /**
- * "Kominote" — the Connect / Konekte pillar's home, in the UnternehmerTUM
+ * "Kominote" — the Connect / Konekte pillar's home, in the house
  * register: how to contribute code, join the association, and connect the
  * ecosystem. All CTAs are real (the public repo, the association's address).
  */

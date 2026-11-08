@@ -52,7 +52,7 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
-/* UnternehmerTUM body world. Albert Sans stands in for UTUM's proprietary Sharp
+/* house body world. Albert Sans stands in for UTUM's proprietary Sharp
    Sans — the same tight, high-x-height geometric grotesque — and is a Google
    variable font (100–900), so the landing body's giant 900 display and its 400
    reading text come from one self-hosted file. Used only by the sections below

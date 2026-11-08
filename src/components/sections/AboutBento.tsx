@@ -44,7 +44,7 @@ const ICONS: ReactNode[] = [
   </svg>,
 ]
 
-/** TUM feature card — sharp-cornered lavender panel with a black border; icon
+/** house feature card — sharp-cornered lavender panel with a black border; icon
     tile on top, label + body at the bottom. Lifts on hover and the tile goes
     electric. */
 function PillarCard({ icon, label, body }: { icon: ReactNode; label: string; body: string }) {
@@ -62,7 +62,7 @@ function PillarCard({ icon, label, body }: { icon: ReactNode; label: string; bod
 }
 
 /**
- * "Beyond digital" — UnternehmerTUM register: white ground, giant Albert Sans
+ * "Beyond digital" — house register: white ground, giant Albert Sans
  * headline with an electric emphasis word and a drapo-red period, and a
  * staggered bento of the three pillars (Mission / Vision / Devise) plus a photo.
  * Props are unchanged from the Sui version, so HomeView and all three locales

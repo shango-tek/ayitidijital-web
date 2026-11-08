@@ -24,7 +24,7 @@ export interface JournalSectionProps {
 }
 
 /**
- * "Le Journal" — blog teaser in the UnternehmerTUM register: a lavender section,
+ * "Le Journal" — blog teaser in the house register: a lavender section,
  * sharp-cornered white article cards with a black border, electric category
  * pills and read-more, Albert Sans throughout. The tablet-portrait snap track
  * and 380px nudge are unchanged from the Sui version, as are the props.

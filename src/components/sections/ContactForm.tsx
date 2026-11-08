@@ -12,7 +12,7 @@ const optionalCls = 'font-tum text-[11px] font-medium normal-case tracking-norma
 type Status = { kind: 'idle' | 'sending' } | { kind: 'done'; outcome: ContactOutcome } | { kind: 'error' }
 
 /**
- * The contact form — the only interactive part of /kontak. UnternehmerTUM
+ * The contact form — the only interactive part of /kontak. house
  * register: sharp-cornered fields with an electric focus, Albert Sans, an
  * electric submit. Submit logic, field names and outcomes are unchanged.
  */

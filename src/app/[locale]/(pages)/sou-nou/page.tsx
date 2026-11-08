@@ -6,7 +6,7 @@ import { routeMetadata } from '../_metadata'
 
 /**
  * "Sou nou" — Mission / Vision / Devise (staggered), then the origin-story
- * timeline, in the UnternehmerTUM register (Albert Sans, electric, sharp). The
+ * timeline, in the house register (Albert Sans, electric, sharp). The
  * principles and the board have their own routes (/prensip, /ekip).
  */
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

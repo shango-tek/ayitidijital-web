@@ -21,7 +21,7 @@ function Eyebrow({ label }: { label: string }) {
   )
 }
 
-/** TUM headline: emphasis on a `**marked**` word (or the last word if none),
+/** house headline: emphasis on a `**marked**` word (or the last word if none),
  *  serif-italic electric, with a trailing period in drapo red. */
 function Headline({ text }: { text: string }) {
   const t = text.trimEnd()
@@ -54,7 +54,7 @@ function Headline({ text }: { text: string }) {
 
 /**
  * "Travay Nou" (what we do) body — intro, a status-filterable projects grid, and
- * a programs grid with watermark numbers, in the UnternehmerTUM register:
+ * a programs grid with watermark numbers, in the house register:
  * alternating white / lavender grounds, Albert Sans, sharp cards, electric
  * accents. Filter state and copy sources are unchanged.
  */

@@ -39,7 +39,7 @@ const LOGOS: Record<string, string> = {
 }
 
 /**
- * "Explore our ecosystem" — the 21st `GlassyCarousel` coverflow in the TUM
+ * "Explore our ecosystem" — the 21st `GlassyCarousel` coverflow in the house
  * register, with OUR square prev/next buttons driving it. "brand" variant: dark
  * ink cards with the project logo (where we have one), a status pill, the name
  * and tagline overlaid. Clicking a side card slides to it; the centre card opens
