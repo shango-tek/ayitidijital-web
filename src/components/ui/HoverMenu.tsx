@@ -41,6 +41,14 @@ export function HoverMenu({ trigger, children, align = 'left', className, trigge
       onBlur={(e) => {
         if (!e.currentTarget.contains(e.relatedTarget as Node)) setOpen(false)
       }}
+      onKeyDown={(e) => {
+        // Keyboard users open the menu by focusing the trigger (onFocus above);
+        // Escape gives them a way back out without tabbing through every item.
+        if (e.key === 'Escape' && open) {
+          setOpen(false)
+          ;(e.currentTarget.querySelector('.hm-trigger') as HTMLElement | null)?.focus()
+        }
+      }}
     >
       <button type="button" className="hm-trigger" aria-haspopup="true" aria-expanded={open} aria-label={triggerAriaLabel}>
         {trigger}

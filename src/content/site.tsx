@@ -368,9 +368,9 @@ export const langs: LangOption[] = [
 ]
 
 const footerSocials: SocialLink[] = [
-  { label: 'Facebook', href: 'https://facebook.com', icon: 'facebook' },
+  { label: 'Facebook', href: 'https://www.facebook.com/profile.php?id=61590475531657', icon: 'facebook' },
   { label: 'X', href: 'https://x.com', icon: 'x' },
-  { label: 'Instagram', href: 'https://instagram.com', icon: 'instagram' },
+  { label: 'Instagram', href: 'https://www.instagram.com/ayiti.dijital', icon: 'instagram' },
   // Placeholder - swap href for the real WhatsApp channel invite link once live.
   { label: 'Canal WhatsApp', href: '#', icon: 'whatsapp' },
 ]
