@@ -5,7 +5,6 @@ import '../globals.css'
 import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
 import { getLegalContent } from '@/content/legal'
-import { Preloader } from '../../components/layout/Preloader'
 import { SmoothScroll } from '../../components/ui/SmoothScroll'
 import { CookieBanner } from '../../components/ui/CookieBanner'
 
@@ -143,17 +142,34 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body id="top" suppressHydrationWarning>
-        {/* Runs before the hero paints: on a genuine arrival it flags <html> so a
-            CSS cover is painted on the very first frame, so the loader is never
-            preceded by a flash of the hero. The React Preloader clears it once its
-            own panels have painted over it. Kept in sync with isGenuineArrival(). */}
+        {/* Server-rendered boot loader: it ships in the HTML, so it is in the very
+            first painted frame and the hero can never appear before it. The inline
+            script below runs the count-up, the curtain part and the removal; on a
+            non-genuine arrival (in-app or back/forward navigation) it hides the
+            loader before paint. No React state, no hydration handoff — the loader
+            is just HTML + one script. */}
+        <div id="preloader" aria-hidden="true" suppressHydrationWarning>
+          <div className="pl-panel pl-panel-left precision-grain">
+            <span className="pl-word tahoe-glass-text">Ayiti</span>
+          </div>
+          <div className="pl-panel pl-panel-right precision-grain">
+            <span className="pl-word tahoe-glass-text">Dijital</span>
+          </div>
+          <div className="pl-progress">
+            {/* The inline script animates these, so they legitimately differ from
+                the server HTML at hydration — tell React not to flag it. */}
+            <span className="pl-bar" suppressHydrationWarning />
+            <span className="pl-pct" suppressHydrationWarning>
+              0%
+            </span>
+          </div>
+        </div>
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){try{var n=performance.getEntriesByType('navigation')[0];var reload=n&&n.type==='reload';var bf=n&&n.type==='back_forward';var offsite=true;try{offsite=!document.referrer||new URL(document.referrer).origin!==location.origin}catch(e){}if(!bf&&(reload||offsite))document.documentElement.classList.add('ad-booting')}catch(e){document.documentElement.classList.add('ad-booting')}})();",
+              "(function(){var p=document.getElementById('preloader');if(!p)return;var g;try{var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='reload')g=true;else if(n&&n.type==='back_forward')g=false;else{try{g=!document.referrer||new URL(document.referrer).origin!==location.origin}catch(e){g=true}}}catch(e){g=true}if(!g){p.style.display='none';return}var F=1200,H=140,T=950,s=Date.now(),b=p.querySelector('.pl-bar'),c=p.querySelector('.pl-pct');(function k(){var x=Math.min(100,(Date.now()-s)/F*100);if(b)b.style.transform='scaleX('+(x/100)+')';if(c)c.textContent=Math.round(x)+'%';if(x<100)requestAnimationFrame(k)})();setTimeout(function(){p.setAttribute('data-parting','')},F+H);setTimeout(function(){p.style.display='none'},F+H+T)})();",
           }}
         />
-        <Preloader />
         <SmoothScroll />
         {children}
         {/* Dormant until an analytics provider is configured — see
