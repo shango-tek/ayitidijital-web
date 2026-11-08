@@ -514,7 +514,7 @@ button[aria-disabled='true'],
   margin: 0;
   padding: .4rem;
   list-style: none;
-  background: rgba(250, 249, 246, .55);
+  background: rgba(255, 255, 255, .94);
   -webkit-backdrop-filter: blur(26px) saturate(1.7);
   backdrop-filter: blur(26px) saturate(1.7);
   border: 1px solid rgba(255, 255, 255, .6);
@@ -522,7 +522,7 @@ button[aria-disabled='true'],
   box-shadow: 0 26px 46px rgba(18, 36, 107, .16), inset 0 1px 0 rgba(255, 255, 255, .55);
   animation: navFade .16s ease-out;
 }
-.mnav-langmenu button {
+.mnav-langmenu a {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -531,14 +531,15 @@ button[aria-disabled='true'],
   padding: .55rem .7rem;
   border-radius: 0;
   font: 500 .95rem var(--font-body);
-  color: var(--navy);
+  color: var(--color-tum-ink);
+  text-decoration: none;
   background: none;
   border: 0;
   cursor: pointer;
   transition: background-color .12s ease;
 }
-.mnav-langmenu button:hover { background: rgba(18, 36, 107, .06) }
-.mnav-langmenu button.is-current { font-weight: 700 }
+.mnav-langmenu a:hover { background: rgba(18, 36, 107, .06) }
+.mnav-langmenu a.is-current { font-weight: 700 }
 .mnav-langcode { font: 600 .78rem var(--font-display); color: var(--ink-soft) }
 
 /* Line-separated menu cells — simple hairline dividers, 1 col on phone, 2 on

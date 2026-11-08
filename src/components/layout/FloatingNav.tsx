@@ -71,7 +71,11 @@ export function FloatingNav({ heroSelector = '.precision-hero', ...nav }: Floati
   }, [heroSelector])
 
   return (
-    <div className={`floatnav${shown ? ' floatnav-shown' : ''}`} aria-hidden={!shown}>
+    <div
+      className={`floatnav${shown ? ' floatnav-shown' : ''}`}
+      aria-hidden={!shown}
+      inert={!shown ? true : undefined}
+    >
       <div className="floatnav-inner container">
         <RadiantNavbar {...nav} />
       </div>
