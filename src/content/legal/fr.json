@@ -1,0 +1,536 @@
+{
+  "imprint": {
+    "title": "Mentions légales",
+    "description": "Mentions légales d'Ayiti Dijital (Verein in Gründung), conformément au § 5 DDG.",
+    "eyebrow": "Mentions légales",
+    "h1": "Mentions Légales",
+    "lead": "Informations obligatoires sur l'éditeur de ce site, conformément au § 5 DDG (Digitale-Dienste-Gesetz, loi allemande sur les services numériques).",
+    "lastUpdatedLabel": "Dernière mise à jour",
+    "lastUpdatedValue": "17 juillet 2026",
+    "tocTitle": "Sommaire",
+    "sections": [
+      {
+        "id": "general",
+        "number": "01",
+        "title": "Généralités",
+        "blocks": [
+          {
+            "kind": "address",
+            "lines": [
+              "Ayiti Dijital",
+              "Verein in Gründung",
+              "Ursberger Str. 15",
+              "81673 München",
+              "Deutschland"
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "L'association n'est pas encore inscrite au registre des associations : il n'y a donc ni numéro VR ni numéro de TVA à indiquer. Ces mentions seront ajoutées dès l'inscription auprès de l'Amtsgericht München."
+          },
+          {
+            "kind": "subheading",
+            "title": "Représentée par"
+          },
+          {
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (Vorstandsvorsitzender)",
+              "Berlens Legagneur (stellvertretender Vorsitzender)"
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Chaque membre du Vorstand est habilité à représenter l'association seul (Einzelvertretungsbefugnis), conformément au § 26 BGB."
+          },
+          {
+            "kind": "subheading",
+            "title": "Contact"
+          },
+          {
+            "kind": "address",
+            "lines": [
+              "contact@ayitidijital.org"
+            ]
+          },
+          {
+            "kind": "subheading",
+            "title": "Responsable du contenu au sens du § 18 al. 2 MStV"
+          },
+          {
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (Vorstandsvorsitzender)",
+              "Adresse comme ci-dessus"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "responsabilite",
+        "number": "02",
+        "title": "Responsabilité des contenus",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "En tant que prestataire, nous sommes responsables de nos propres contenus sur ces pages conformément au droit commun (§ 7 al. 1 DDG). Nous ne sommes en revanche pas tenus de surveiller les informations de tiers que nous transmettons ou stockons, ni de rechercher activement des circonstances révélant une activité illicite (§§ 8 à 10 DDG). Les obligations de retrait ou de blocage prévues par le droit commun demeurent réservées ; une telle responsabilité ne peut toutefois être engagée qu'à compter de la connaissance d'une infraction concrète. Dès que nous en avons connaissance, nous retirons le contenu concerné sans délai."
+          }
+        ]
+      },
+      {
+        "id": "liens",
+        "number": "03",
+        "title": "Responsabilité des liens",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Ce site contient des liens vers des sites externes sur le contenu desquels nous n'avons aucune influence. Nous ne pouvons donc offrir aucune garantie quant à ces contenus tiers : leur exploitant ou éditeur en est toujours seul responsable. Ces sites ont été vérifiés au moment de la mise en lien et aucun contenu illicite n'y était alors décelable. Un contrôle permanent n'est pas raisonnablement exigible sans indice concret d'infraction ; dès que nous en avons connaissance, nous retirons le lien sans délai."
+          }
+        ]
+      },
+      {
+        "id": "droits-auteur",
+        "number": "04",
+        "title": "Droits d'auteur",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sauf mention contraire, les contenus et œuvres créés par l'association sur ce site sont publiés sous licence Creative Commons CC BY-SA 4.0. Vous pouvez donc les reproduire, les modifier et les diffuser, y compris à des fins commerciales, à deux conditions : créditer Ayiti Dijital et partager vos versions dérivées sous la même licence."
+          },
+          {
+            "kind": "text",
+            "body": "Les contenus qui n'ont pas été créés par l'association restent soumis aux droits de leurs auteurs et sont signalés comme tels ; c'est notamment le cas des marques, logos et photographies de tiers, que la licence ci-dessus ne couvre pas. Si vous constatez malgré tout une atteinte au droit d'auteur, signalez-le nous : dès que nous en avons connaissance, nous retirons le contenu concerné sans délai."
+          }
+        ]
+      }
+    ],
+    "expandAllLabel": "Tout déplier",
+    "collapseAllLabel": "Tout replier"
+  },
+  "privacy": {
+    "title": "Confidentialité",
+    "description": "Politique de confidentialité d'Ayiti Dijital. Aucun cookie, aucun traçage, aucune collecte.",
+    "eyebrow": "Confidentialité",
+    "h1": "Politique de Confidentialité",
+    "lead": "Nous vous remercions de l'intérêt que vous portez à Ayiti Dijital. La consultation de ce site est possible sans communiquer la moindre donnée personnelle : nous n'en demandons aucune et n'en recueillons aucune.",
+    "lastUpdatedLabel": "Dernière mise à jour",
+    "lastUpdatedValue": "17 juillet 2026",
+    "tocTitle": "Sommaire",
+    "sections": [
+      {
+        "id": "champ",
+        "title": "Champ d'application",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Ce site",
+                "body": "Le site ayitidijital.org, ainsi que tout autre site que l'association viendrait à exploiter."
+              },
+              {
+                "title": "Nos profils publics",
+                "body": "Nos présences sur les réseaux sociaux, dans la limite de ce que nous y maîtrisons."
+              },
+              {
+                "title": "Nos échanges par e-mail",
+                "body": "La correspondance que vous engagez avec nous à contact@ayitidijital.org."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "L'association n'édite ni boutique en ligne ni application mobile : ces cas ne sont donc pas couverts, faute d'exister."
+          }
+        ],
+        "number": "01"
+      },
+      {
+        "id": "en-bref",
+        "number": "02",
+        "title": "En bref",
+        "subtitle": "L'essentiel, en trois lignes",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Nous ne vous traçons pas.",
+                "body": "Aucun cookie, aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience."
+              },
+              {
+                "title": "Aucun contenu tiers.",
+                "body": "Les images et les polices sont servies depuis notre propre domaine. En consultant ce site, votre navigateur ne contacte aucun autre serveur."
+              },
+              {
+                "title": "Aucune collecte.",
+                "body": "Aucun formulaire de ce site ne transmet ni ne conserve de données pour le moment."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "responsable",
+        "number": "03",
+        "title": "Responsable du traitement",
+        "blocks": [
+          {
+            "kind": "dl",
+            "rows": [
+              {
+                "label": "Responsable",
+                "value": "Ayiti Dijital (Verein in Gründung), Ursberger Str. 15, 81673 München, Deutschland"
+              },
+              {
+                "label": "Contact",
+                "value": "contact@ayitidijital.org"
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Nous ne sommes pas tenus de désigner un délégué à la protection des données : les seuils de l'art. 37 RGPD et du § 38 BDSG ne sont pas atteints. Pour toute question relative à vos données, écrivez à l'adresse ci-dessus."
+          }
+        ]
+      },
+      {
+        "id": "definitions",
+        "number": "04",
+        "title": "Définitions",
+        "subtitle": "au sens de l'art. 4 RGPD",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Cette page emploie les termes de la réglementation. Voici ce qu'ils recouvrent, dans le sens que leur donne l'art. 4 RGPD."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Données personnelles",
+                "body": "Toute information se rapportant à une personne physique identifiée ou identifiable, directement ou indirectement : un nom, un numéro, des données de localisation, un identifiant en ligne (art. 4, 1)."
+              },
+              {
+                "title": "Personne concernée",
+                "body": "La personne physique identifiée ou identifiable dont les données sont traitées — en l'occurrence, vous."
+              },
+              {
+                "title": "Traitement",
+                "body": "Toute opération portant sur des données : collecte, enregistrement, organisation, conservation, consultation, communication, effacement, destruction (art. 4, 2)."
+              },
+              {
+                "title": "Limitation du traitement",
+                "body": "Le marquage de données conservées afin d'en limiter le traitement futur (art. 4, 3)."
+              },
+              {
+                "title": "Profilage",
+                "body": "Un traitement automatisé visant à évaluer ou prédire des aspects personnels — comportement, intérêts, situation économique, déplacements (art. 4, 4)."
+              },
+              {
+                "title": "Pseudonymisation",
+                "body": "Un traitement tel que les données ne puissent plus être rattachées à une personne sans information supplémentaire, conservée séparément (art. 4, 5)."
+              },
+              {
+                "title": "Responsable du traitement",
+                "body": "Celui qui décide des finalités et des moyens du traitement (art. 4, 7). Pour ce site, c'est l'association."
+              },
+              {
+                "title": "Sous-traitant",
+                "body": "Un tiers qui traite des données pour le compte du responsable et sur ses instructions (art. 4, 8) — ici, notre hébergeur."
+              },
+              {
+                "title": "Destinataire",
+                "body": "Toute entité à laquelle des données sont communiquées, qu'elle soit tiers ou non ; les autorités agissant dans le cadre d'une enquête ne sont pas des destinataires (art. 4, 9)."
+              },
+              {
+                "title": "Tiers",
+                "body": "Toute entité autre que la personne concernée, le responsable, le sous-traitant et les personnes autorisées à traiter les données sous leur autorité (art. 4, 10)."
+              },
+              {
+                "title": "Consentement",
+                "body": "Une manifestation de volonté libre, spécifique, éclairée et univoque par laquelle vous acceptez un traitement (art. 4, 11)."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Ces définitions sont celles du règlement, reproduites ici pour la clarté ; elles décrivent le vocabulaire, non nos pratiques. Nous ne faisons ni profilage ni pseudonymisation."
+          }
+        ]
+      },
+      {
+        "id": "bases-legales",
+        "number": "05",
+        "title": "Bases légales",
+        "subtitle": "art. 6 RGPD",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Un traitement de données n'est licite que s'il repose sur l'une des bases prévues à l'art. 6 RGPD."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Consentement — art. 6, § 1, a",
+                "body": "Vous acceptez explicitement un traitement déterminé, et pouvez revenir sur cet accord à tout moment."
+              },
+              {
+                "title": "Contrat — art. 6, § 1, b",
+                "body": "Le traitement est nécessaire à l'exécution d'un contrat ou à des démarches précontractuelles."
+              },
+              {
+                "title": "Obligation légale — art. 6, § 1, c",
+                "body": "La loi nous impose de traiter ou de conserver certaines données, par exemple en matière comptable."
+              },
+              {
+                "title": "Intérêt légitime — art. 6, § 1, f",
+                "body": "Le traitement est nécessaire au fonctionnement sûr du site et vos droits et libertés ne prévalent pas."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "À ce jour, seul l'intérêt légitime s'applique à ce site, et uniquement pour les données techniques indispensables à la livraison des pages. Nous ne recueillons aucun consentement, parce que nous ne faisons rien qui en exige un."
+          }
+        ]
+      },
+      {
+        "id": "hebergement",
+        "number": "06",
+        "title": "Hébergement, journaux et transfert hors UE",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Ce site est hébergé par Vercel Inc. (États-Unis), qui agit comme sous-traitant. Pour afficher une page, votre navigateur transmet nécessairement à l'hébergeur des données techniques : votre adresse IP, la date et l'heure de la requête, l'adresse demandée, le site référent et le type de navigateur. Ces données servent à livrer le site, à en assurer la sécurité et à diagnostiquer les incidents. Elles ne sont pas utilisées pour vous identifier et ne sont recoupées avec aucune autre information."
+          },
+          {
+            "kind": "text",
+            "body": "Ce traitement est indispensable à la mise à disposition du site et repose sur notre intérêt légitime (art. 6, § 1, point f, RGPD). Vercel étant une société américaine, un transfert de ces données techniques vers un pays tiers au sens des art. 44 et suivants du RGPD ne peut être exclu."
+          }
+        ]
+      },
+      {
+        "id": "securite",
+        "number": "07",
+        "title": "Sécurité de la transmission",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Ce site est servi exclusivement en HTTPS : l'intégralité des échanges entre votre navigateur et le serveur est chiffrée au moyen du protocole TLS. Vous le reconnaissez à l'adresse, qui commence par « https:// ». Ce chiffrement empêche des tiers de lire ce que vous consultez en chemin, et relève des mesures techniques exigées par les art. 25 et 32 du RGPD."
+          }
+        ]
+      },
+      {
+        "id": "cookies",
+        "number": "08",
+        "title": "Cookies et stockage local",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Ce site ne dépose aucun cookie et n'écrit rien dans le stockage local (localStorage) de votre navigateur. C'est pourquoi vous ne verrez pas de bandeau de consentement : il n'y a rien à accepter ni à refuser."
+          }
+        ]
+      },
+      {
+        "id": "mesure",
+        "number": "09",
+        "title": "Mesure d'audience",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Aucune. Nous n'utilisons ni Google Analytics, ni Plausible, ni aucun autre outil de mesure d'audience, de suivi ou de publicité. Nous ne savons pas combien de personnes visitent ce site."
+          }
+        ]
+      },
+      {
+        "id": "externes",
+        "number": "10",
+        "title": "Polices et contenus externes",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Les polices de caractères sont installées sur notre propre domaine et chargées depuis celui-ci : votre navigateur ne contacte aucun serveur de Google. Les images le sont également. Le site n'intègre aucune vidéo, carte, police, widget ni script provenant d'un service tiers."
+          }
+        ]
+      },
+      {
+        "id": "reseaux-sociaux",
+        "number": "11",
+        "title": "Réseaux sociaux",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Nous sommes présents sur plusieurs réseaux sociaux et le pied de page renvoie vers nos profils. Ces renvois sont de simples liens : aucun bouton « j'aime », aucune vignette et aucun script de ces plateformes n'est intégré à ce site. Votre navigateur ne les contacte pas et elles n'apprennent rien de votre visite tant que vous ne cliquez pas."
+          },
+          {
+            "kind": "text",
+            "body": "Dès que vous suivez un tel lien, vous quittez ce site : ce sont alors les conditions et la politique de confidentialité de la plateforme concernée qui s'appliquent, et nous n'avons aucune influence sur les données qu'elle recueille."
+          }
+        ]
+      },
+      {
+        "id": "formulaires",
+        "number": "12",
+        "title": "Formulaires",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Le formulaire de contact n'envoie rien à nos serveurs : il ouvre un message pré-rempli dans votre propre logiciel de messagerie, que vous envoyez vous-même. Nous traitons ensuite cet e-mail comme toute correspondance (voir « Contact protection des données »). Les formulaires d'infolettre ne sont pas encore raccordés à un service d'envoi : les informations saisies ne sont ni transmises ni conservées. Dès qu'un de ces formulaires transmettra des données à nos serveurs, cette page sera mise à jour avant toute collecte."
+          }
+        ]
+      },
+      {
+        "id": "conservation",
+        "number": "13",
+        "title": "Durée de conservation",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Nous ne conservons aucune donnée personnelle issue de ce site, puisque nous n'en collectons aucune. Les données techniques nécessaires à la livraison des pages sont traitées par notre hébergeur et conservées pour une durée limitée, à des fins de sécurité et de diagnostic."
+          },
+          {
+            "kind": "text",
+            "body": "Si nous venions à collecter des données — par un formulaire actif, par exemple — nous ne les conserverions que le temps nécessaire à la finalité poursuivie, ou aussi longtemps qu'une obligation légale l'imposerait, avant de les effacer."
+          }
+        ]
+      },
+      {
+        "id": "droits",
+        "number": "14",
+        "title": "Vos droits",
+        "subtitle": "au titre du RGPD",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Le RGPD vous reconnaît les droits suivants sur vos données personnelles."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Droit d'accès",
+                "body": "Obtenir la confirmation que des données vous concernant sont traitées, et copie de ces données."
+              },
+              {
+                "title": "Droit de rectification",
+                "body": "Corriger toute donnée inexacte ou incomplète."
+              },
+              {
+                "title": "Droit à l'effacement",
+                "body": "Demander la suppression de vos données, sauf obligation légale contraire."
+              },
+              {
+                "title": "Droit à la limitation",
+                "body": "Restreindre le traitement de vos données dans certains cas."
+              },
+              {
+                "title": "Droit à la portabilité",
+                "body": "Recevoir vos données dans un format structuré et réutilisable."
+              },
+              {
+                "title": "Droit d'opposition",
+                "body": "Vous opposer à tout moment à un traitement fondé sur notre intérêt légitime."
+              },
+              {
+                "title": "Retrait du consentement",
+                "body": "Revenir à tout moment sur un consentement donné, sans que cela remette en cause la licéité du traitement antérieur."
+              },
+              {
+                "title": "Décision automatisée",
+                "body": "Ne pas faire l'objet d'une décision fondée exclusivement sur un traitement automatisé. Nous n'en prenons aucune."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Pour exercer ces droits, écrivez à contact@ayitidijital.org ; nous répondons sous 30 jours. L'exercice de ces droits est gratuit."
+          }
+        ]
+      },
+      {
+        "id": "autorite",
+        "number": "15",
+        "title": "Autorité de contrôle",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Indépendamment de tout recours auprès de nous, vous pouvez introduire une réclamation auprès d'une autorité de contrôle. Celle dont nous relevons est :"
+          },
+          {
+            "kind": "dl",
+            "rows": [
+              {
+                "label": "Autorité",
+                "value": "Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)"
+              },
+              {
+                "label": "Adresse",
+                "value": "Promenade 18, 91522 Ansbach, Deutschland"
+              },
+              {
+                "label": "Téléphone",
+                "value": "+49 981 180093-0"
+              },
+              {
+                "label": "E-mail",
+                "value": "poststelle@lda.bayern.de"
+              },
+              {
+                "label": "Site",
+                "value": "lda.bayern.de"
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "La Bavière distingue deux autorités : le BayLfD contrôle les organismes publics, le BayLDA les organismes privés — dont les associations."
+          }
+        ]
+      },
+      {
+        "id": "contact",
+        "number": "16",
+        "title": "Contact protection des données",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Pour toute question concernant la protection de vos données, l'exercice de vos droits, une réclamation ou une demande, écrivez-nous directement."
+          },
+          {
+            "kind": "email",
+            "value": "contact@ayitidijital.org"
+          }
+        ]
+      }
+    ],
+    "expandAllLabel": "Tout déplier",
+    "collapseAllLabel": "Tout replier",
+    "intro": [
+      "Si vous souhaitez un jour recourir à un service particulier de l'association — nous écrire, adhérer, vous abonner à l'infolettre — un traitement de vos données pourrait devenir nécessaire. Lorsqu'un tel traitement est nécessaire et qu'aucune base légale ne le fonde, nous recueillons votre consentement au préalable.",
+      "Cette déclaration explique quelles données nous traitons en tant que responsable, quelles données traitent les sous-traitants que nous mandatons — notre hébergeur, par exemple — et de quels droits vous disposez. Par « données personnelles », nous entendons les informations au sens de l'art. 4, point 1, du RGPD : un nom, une adresse e-mail, une adresse postale."
+    ]
+  },
+  "consent": {
+    "title": "Mesure d'audience",
+    "body": "Nous aimerions mesurer l'audience de ce site pour comprendre ce qui vous est utile. Cette mesure dépose un cookie sur votre appareil et ne démarre qu'avec votre accord. Refuser ne change rien à votre visite.",
+    "accept": "Accepter",
+    "reject": "Refuser",
+    "policyLabel": "Politique de confidentialité"
+  },
+  "analytics": {
+    "off": {
+      "summaryTitle": "Nous ne vous traçons pas.",
+      "summaryBody": "Aucun cookie, aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience.",
+      "sectionTitle": "Mesure d'audience",
+      "sectionBody": "Aucune. Nous n'utilisons ni Google Analytics, ni Plausible, ni aucun autre outil de mesure d'audience, de suivi ou de publicité. Nous ne savons pas combien de personnes visitent ce site."
+    },
+    "on": {
+      "summaryTitle": "Une mesure d'audience sobre.",
+      "summaryBody": "À compléter lorsqu'un outil de mesure sera choisi.",
+      "sectionTitle": "Mesure d'audience",
+      "sectionBody": "À compléter lorsqu'un outil de mesure sera choisi : qui traite les données, où, et sur quelle base légale."
+    }
+  }
+}

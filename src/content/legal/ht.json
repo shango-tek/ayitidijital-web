@@ -1,0 +1,536 @@
+{
+  "imprint": {
+    "title": "Enfòmasyon legal",
+    "description": "Enfòmasyon legal Ayiti Dijital (Verein in Gründung), dapre § 5 DDG.",
+    "eyebrow": "Enfòmasyon legal",
+    "h1": "Enfòmasyon Legal",
+    "lead": "Enfòmasyon obligatwa sou moun ki pibliye sit sa a, dapre § 5 DDG (Digitale-Dienste-Gesetz, lwa alman sou sèvis dijital yo).",
+    "lastUpdatedLabel": "Dènye mizajou",
+    "lastUpdatedValue": "17 jiyè 2026",
+    "tocTitle": "Tab matyè",
+    "sections": [
+      {
+        "id": "general",
+        "number": "01",
+        "title": "Jeneral",
+        "blocks": [
+          {
+            "kind": "address",
+            "lines": [
+              "Ayiti Dijital",
+              "Verein in Gründung",
+              "Ursberger Str. 15",
+              "81673 München",
+              "Deutschland"
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Asosyasyon an poko enskri nan rejis asosyasyon yo : donk pa gen ni nimewo VR ni nimewo TVA pou nou endike. N ap ajoute yo tou de lè enskripsyon an fèt nan Amtsgericht München."
+          },
+          {
+            "kind": "subheading",
+            "title": "Reprezante pa"
+          },
+          {
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (Vorstandsvorsitzender)",
+              "Berlens Legagneur (stellvertretender Vorsitzender)"
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Chak manm Vorstand gen dwa reprezante asosyasyon an pou kont li (Einzelvertretungsbefugnis), dapre § 26 BGB."
+          },
+          {
+            "kind": "subheading",
+            "title": "Kontak"
+          },
+          {
+            "kind": "address",
+            "lines": [
+              "contact@ayitidijital.org"
+            ]
+          },
+          {
+            "kind": "subheading",
+            "title": "Responsab kontni dapre § 18 al. 2 MStV"
+          },
+          {
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (Vorstandsvorsitzender)",
+              "Adrès menm jan ak anwo a"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "responsabilite",
+        "number": "02",
+        "title": "Responsablite kontni",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Kòm founisè sèvis, nou responsab pou pwòp kontni nou yo sou paj sa yo dapre lwa jeneral la (§ 7 al. 1 DDG). Men nou pa oblije siveye enfòmasyon tyès pati nou transmèt oswa estoke, ni chèche aktivman siy yon aktivite ilegal (§§ 8 rive 10 DDG). Obligasyon pou retire oswa bloke enfòmasyon dapre lwa jeneral la rete an vigè ; men responsablite sa a kòmanse sèlman lè nou konnen gen yon vyolasyon konkrè. Depi nou konnen, n ap retire kontni an san pèdi tan."
+          }
+        ]
+      },
+      {
+        "id": "liens",
+        "number": "03",
+        "title": "Responsablite lyen",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sit sa a gen lyen ki mennen sou sit ekstèn nou pa gen okenn kontwòl sou kontni yo. Se poutèt sa nou pa ka bay okenn garanti pou kontni tyès pati sa yo : se toujou moun k ap egzeplwate oswa pibliye paj sa yo ki sèl responsab. Nou te tcheke sit sa yo lè nou te mete lyen an e nou pa t wè okenn kontni ilegal lè sa a. Nou pa ka rezonableman siveye yo tout tan san yon siy konkrè vyolasyon ; depi nou konnen gen youn, n ap retire lyen an san pèdi tan."
+          }
+        ]
+      },
+      {
+        "id": "droits-auteur",
+        "number": "04",
+        "title": "Dwa otè",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sòf si nou di kontrè, kontni ak zèv asosyasyon an kreye sou sit sa a pibliye anba lisans Creative Commons CC BY-SA 4.0. Donk ou ka repwodui yo, modifye yo epi difize yo, menm pou rezon komèsyal, sou de kondisyon : bay Ayiti Dijital kredi, epi pataje vèsyon derive ou yo anba menm lisans lan."
+          },
+          {
+            "kind": "text",
+            "body": "Kontni asosyasyon an pa kreye rete anba dwa otè yo e nou make yo kòm sa ; sa gen ladan sitou mak, logo ak foto tyès pati, ke lisans ki anwo a pa kouvri. Si malgre sa ou wè yon vyolasyon dwa otè, fè nou konnen : depi nou konnen, n ap retire kontni an san pèdi tan."
+          }
+        ]
+      }
+    ],
+    "expandAllLabel": "Louvri tout",
+    "collapseAllLabel": "Fèmen tout"
+  },
+  "privacy": {
+    "title": "Konfidansyalite",
+    "description": "Politik konfidansyalite Ayiti Dijital. Pa gen cookie, pa gen swivi, pa gen koleksyon done.",
+    "eyebrow": "Konfidansyalite",
+    "h1": "Politik Konfidansyalite",
+    "lead": "Nou di ou mèsi pou enterè ou pote pou Ayiti Dijital. Ou ka li sit sa a san ou pa bay okenn done pèsonèl : nou pa mande okenn e nou pa ranmase okenn.",
+    "lastUpdatedLabel": "Dènye mizajou",
+    "lastUpdatedValue": "17 jiyè 2026",
+    "tocTitle": "Tab matyè",
+    "sections": [
+      {
+        "id": "champ",
+        "title": "Chan aplikasyon",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Sit sa a",
+                "body": "ayitidijital.org, ansanm ak nenpòt lòt sit asosyasyon an ta vin egzeplwate."
+              },
+              {
+                "title": "Pwofil piblik nou yo",
+                "body": "Prezans nou sou rezo sosyal yo, nan limit sa nou kontwole la."
+              },
+              {
+                "title": "Echanj pa imèl",
+                "body": "Nenpòt korespondans ou kòmanse ak nou nan contact@ayitidijital.org."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Asosyasyon an pa gen ni boutik an liy ni aplikasyon mobil : ka sa yo pa kouvri, paske yo pa egziste."
+          }
+        ],
+        "number": "01"
+      },
+      {
+        "id": "en-bref",
+        "number": "02",
+        "title": "An kout",
+        "subtitle": "Esansyèl la, an twa liy",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Nou pa trase ou.",
+                "body": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans."
+              },
+              {
+                "title": "Pa gen kontni tyès pati.",
+                "body": "Imaj ak lèt yo sèvi depi pwòp domèn nou. Lè w ap gade sit sa a, navigatè w pa kontakte okenn lòt sèvè."
+              },
+              {
+                "title": "Pa gen koleksyon.",
+                "body": "Pou kounye a, okenn fòm sou sit sa a pa transmèt ni konsève done."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "responsable",
+        "number": "03",
+        "title": "Responsab tretman",
+        "blocks": [
+          {
+            "kind": "dl",
+            "rows": [
+              {
+                "label": "Responsab",
+                "value": "Ayiti Dijital (Verein in Gründung), Ursberger Str. 15, 81673 München, Deutschland"
+              },
+              {
+                "label": "Kontak",
+                "value": "contact@ayitidijital.org"
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Nou pa oblije nonmen yon delege pwoteksyon done : nou pa rive nan sèy atik 37 RGPD la ni sèy § 38 BDSG la. Pou nenpòt kesyon sou done ou, ekri nan adrès ki anwo a."
+          }
+        ]
+      },
+      {
+        "id": "definitions",
+        "number": "04",
+        "title": "Definisyon",
+        "subtitle": "dapre atik 4 RGPD",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Paj sa a itilize mo regleman an. Men sa yo vle di, dapre atik 4 RGPD."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Done pèsonèl",
+                "body": "Nenpòt enfòmasyon sou yon moun ki idantifye oswa ki ka idantifye, dirèkteman oswa endirèkteman : yon non, yon nimewo, done kote w ye, yon idantifyan sou entènèt (atik 4, 1)."
+              },
+              {
+                "title": "Moun ki konsène",
+                "body": "Moun ki idantifye oswa ki ka idantifye a, done l ap trete a — nan ka sa a, ou menm."
+              },
+              {
+                "title": "Tretman",
+                "body": "Nenpòt operasyon sou done : kolekte, anrejistre, òganize, konsève, konsilte, kominike, efase, detwi (atik 4, 2)."
+              },
+              {
+                "title": "Limitasyon tretman",
+                "body": "Make done ki konsève pou limite tretman yo alavni (atik 4, 3)."
+              },
+              {
+                "title": "Pwofilaj",
+                "body": "Yon tretman otomatik pou evalye oswa prevwa aspè pèsonèl — konpòtman, enterè, sitiyasyon ekonomik, deplasman (atik 4, 4)."
+              },
+              {
+                "title": "Pseudonimizasyon",
+                "body": "Yon tretman kote done yo pa ka rattache ak yon moun san yon enfòmasyon anplis ki konsève apa (atik 4, 5)."
+              },
+              {
+                "title": "Responsab tretman",
+                "body": "Moun ki deside finalite ak mwayen tretman an (atik 4, 7). Pou sit sa a, se asosyasyon an."
+              },
+              {
+                "title": "Sou-tretan",
+                "body": "Yon tyès pati k ap trete done pou kont responsab la e dapre enstriksyon li (atik 4, 8) — isit la, ebèjè nou."
+              },
+              {
+                "title": "Destinatè",
+                "body": "Nenpòt antite yo kominike done bay, kit li se yon tyès pati kit li pa ; otorite k ap fè yon envestigasyon presi pa destinatè (atik 4, 9)."
+              },
+              {
+                "title": "Tyès pati",
+                "body": "Nenpòt antite ki pa moun ki konsène a, responsab la, sou-tretan an, ak moun ki gen dwa trete done yo anba otorite yo (atik 4, 10)."
+              },
+              {
+                "title": "Konsantman",
+                "body": "Yon volonte lib, presi, enfòme e klè kote ou aksepte yon tretman (atik 4, 11)."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Definisyon sa yo se sa regleman an bay, nou repwodui yo isit la pou klète ; yo dekri vokabilè a, se pa pratik nou. Nou pa fè ni pwofilaj ni pseudonimizasyon."
+          }
+        ]
+      },
+      {
+        "id": "bases-legales",
+        "number": "05",
+        "title": "Baz legal",
+        "subtitle": "atik 6 RGPD",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Yon tretman done legal sèlman si li chita sou youn nan baz atik 6 RGPD yo."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Konsantman — atik 6, § 1, a",
+                "body": "Ou aksepte klèman yon tretman presi, e ou ka retire akò sa a nenpòt lè."
+              },
+              {
+                "title": "Kontra — atik 6, § 1, b",
+                "body": "Tretman an nesesè pou egzekite yon kontra oswa pou demach anvan kontra."
+              },
+              {
+                "title": "Obligasyon legal — atik 6, § 1, c",
+                "body": "Lwa a mande nou trete oswa konsève sèten done, pa egzanp pou kontablite."
+              },
+              {
+                "title": "Enterè lejitim — atik 6, § 1, f",
+                "body": "Tretman an nesesè pou sit la mache an sekirite e dwa ou yo pa pi enpòtan."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Jodi a, se sèlman enterè lejitim ki aplike sou sit sa a, e sèlman pou done teknik ki endispansab pou livre paj yo. Nou pa mande okenn konsantman, paske nou pa fè anyen ki mande youn."
+          }
+        ]
+      },
+      {
+        "id": "hebergement",
+        "number": "06",
+        "title": "Ebèjman, jounal ak transfè deyò Inyon Ewopeyen",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Se Vercel Inc. (Etazini) ki ebèje sit sa a, kòm sou-tretan nou. Pou montre yon paj, navigatè w oblije voye kèk done teknik bay ebèjè a : adrès IP ou, dat ak lè demann lan, adrès ou mande a, sit referan an ak tip navigatè a. Done sa yo sèvi pou livre sit la, pou kenbe l an sekirite e pou dyagnostike pwoblèm. Yo pa sèvi pou idantifye ou e yo pa konbine ak okenn lòt enfòmasyon."
+          },
+          {
+            "kind": "text",
+            "body": "Tretman sa a endispansab pou mete sit la disponib e li chita sou enterè lejitim nou (atik 6, § 1, pwen f, RGPD). Kòm Vercel se yon konpayi ameriken, nou pa ka eskli yon transfè done teknik sa yo nan yon peyi tyès dapre atik 44 e swivan RGPD la."
+          }
+        ]
+      },
+      {
+        "id": "securite",
+        "number": "07",
+        "title": "Sekirite transmisyon",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sit sa a sèvi sèlman an HTTPS : tout sa k ap pase ant navigatè w ak sèvè a chifre ak pwotokòl TLS. Ou rekonèt li nan adrès la, ki kòmanse ak « https:// ». Chifreman sa a anpeche tyès pati li sa w ap gade sou wout la, e li fè pati mezi teknik atik 25 ak 32 RGPD yo mande."
+          }
+        ]
+      },
+      {
+        "id": "cookies",
+        "number": "08",
+        "title": "Cookies ak depo lokal",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Sit sa a pa depoze okenn cookie e li pa ekri anyen nan depo lokal (localStorage) navigatè w. Se poutèt sa ou p ap wè okenn bandwòl konsantman : pa gen anyen pou aksepte ni pou refize."
+          }
+        ]
+      },
+      {
+        "id": "mesure",
+        "number": "09",
+        "title": "Mezi odyans",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Pa genyen. Nou pa itilize ni Google Analytics, ni Plausible, ni okenn lòt zouti mezi odyans, swivi oswa reklam. Nou pa konnen konbyen moun ki vizite sit sa a."
+          }
+        ]
+      },
+      {
+        "id": "externes",
+        "number": "10",
+        "title": "Lèt ak kontni ekstèn",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Lèt yo enstale sou pwòp domèn nou e yo chaje depi la : navigatè w pa kontakte okenn sèvè Google. Menm bagay pou imaj yo. Sit la pa entegre okenn videyo, kat, lèt, widget ni script ki soti nan yon sèvis tyès pati."
+          }
+        ]
+      },
+      {
+        "id": "reseaux-sociaux",
+        "number": "11",
+        "title": "Rezo sosyal",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Nou gen pwofil sou plizyè rezo sosyal e pye paj la gen lyen ki mennen sou yo. Se senp lyen : pa gen okenn bouton « mwen renmen », okenn vinyèt ni okenn script rezo sa yo ki entegre nan sit sa a. Navigatè w pa kontakte yo e yo pa aprann anyen sou vizit ou toutotan ou pa klike."
+          },
+          {
+            "kind": "text",
+            "body": "Depi ou swiv yon lyen konsa, ou kite sit sa a : se kondisyon ak politik konfidansyalite platfòm sa a ki aplike, e nou pa gen okenn enfliyans sou done li ranmase."
+          }
+        ]
+      },
+      {
+        "id": "formulaires",
+        "number": "12",
+        "title": "Fòm yo",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Fòm kontak la pa voye anyen bay sèvè nou yo : li louvri yon mesaj deja ranpli nan pwòp pwogram imèl ou, se ou menm ki voye l. Apre sa nou trete imèl sa a tankou nenpòt korespondans (gade « Kontak pwoteksyon done »). Fòm enfolèt yo poko konekte ak yon sèvis voye : enfòmasyon ou antre yo pa transmèt ni konsève. Depi youn nan fòm sa yo ap voye done bay sèvè nou yo, paj sa a ap mete ajou anvan nenpòt koleksyon."
+          }
+        ]
+      },
+      {
+        "id": "conservation",
+        "number": "13",
+        "title": "Dire konsèvasyon",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Nou pa konsève okenn done pèsonèl ki soti sou sit sa a, paske nou pa kolekte okenn. Done teknik ki nesesè pou livre paj yo trete pa ebèjè nou e konsève pou yon ti tan limite, pou sekirite ak dyagnostik."
+          },
+          {
+            "kind": "text",
+            "body": "Si nou ta vin kolekte done — pa yon fòm aktif, pa egzanp — nou ta konsève yo sèlman tan objektif la mande, oswa tan yon obligasyon legal mande, epi n ap efase yo."
+          }
+        ]
+      },
+      {
+        "id": "droits",
+        "number": "14",
+        "title": "Dwa ou yo",
+        "subtitle": "dapre RGPD",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "RGPD la ba ou dwa sa yo sou done pèsonèl ou."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Dwa aksè",
+                "body": "Jwenn konfimasyon nou ap trete done sou ou, ak yon kopi done sa yo."
+              },
+              {
+                "title": "Dwa rektifikasyon",
+                "body": "Korije nenpòt done ki pa egzak oswa enkonplè."
+              },
+              {
+                "title": "Dwa pou efase",
+                "body": "Mande sipresyon done ou yo, sòf si yon obligasyon legal di kontrè."
+              },
+              {
+                "title": "Dwa limitasyon",
+                "body": "Limite tretman done ou yo nan kèk ka."
+              },
+              {
+                "title": "Dwa potabilite",
+                "body": "Resevwa done ou yo nan yon fòma estriktire e reitilizab."
+              },
+              {
+                "title": "Dwa opozisyon",
+                "body": "Opoze nenpòt lè yon tretman ki chita sou enterè lejitim nou."
+              },
+              {
+                "title": "Retire konsantman",
+                "body": "Retire yon konsantman nenpòt lè, san sa pa remèt an kesyon tretman ki te fèt anvan an."
+              },
+              {
+                "title": "Desizyon otomatik",
+                "body": "Pa sibi yon desizyon ki chita sèlman sou yon tretman otomatik. Nou pa pran okenn."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Pou egzèse dwa sa yo, ekri a contact@ayitidijital.org ; n ap reponn nan 30 jou. Egzèse yo gratis."
+          }
+        ]
+      },
+      {
+        "id": "autorite",
+        "number": "15",
+        "title": "Otorite kontwòl",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Endepandamman de nenpòt rekou bò kote nou, ou ka pote yon plent devan yon otorite kontwòl. Sa ki responsab nou an se :"
+          },
+          {
+            "kind": "dl",
+            "rows": [
+              {
+                "label": "Otorite",
+                "value": "Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)"
+              },
+              {
+                "label": "Adrès",
+                "value": "Promenade 18, 91522 Ansbach, Deutschland"
+              },
+              {
+                "label": "Telefòn",
+                "value": "+49 981 180093-0"
+              },
+              {
+                "label": "Imèl",
+                "value": "poststelle@lda.bayern.de"
+              },
+              {
+                "label": "Sit",
+                "value": "lda.bayern.de"
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Baviè separe kontwòl la an de : BayLfD la kontwole òganis piblik, BayLDA a kontwole òganis prive — ki gen ladan asosyasyon yo."
+          }
+        ]
+      },
+      {
+        "id": "contact",
+        "number": "16",
+        "title": "Kontak pwoteksyon done",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Pou nenpòt kesyon sou pwoteksyon done ou, egzèsis dwa ou, yon plent oswa yon demann, ekri nou dirèkteman."
+          },
+          {
+            "kind": "email",
+            "value": "contact@ayitidijital.org"
+          }
+        ]
+      }
+    ],
+    "expandAllLabel": "Louvri tout",
+    "collapseAllLabel": "Fèmen tout",
+    "intro": [
+      "Si yon jou ou ta vle sèvi ak yon sèvis patikilye asosyasyon an — ekri nou, vin manm, abòne w nan enfòlèt la — li ta ka nesesè pou nou trete done ou. Lè yon tretman konsa nesesè e pa gen okenn baz legal ki kouvri l, nou mande konsantman ou anvan.",
+      "Deklarasyon sa a esplike ki done nou trete kòm responsab, ki done sou-tretan nou mande yo trete — ebèjè nou, pa egzanp — ak ki dwa ou genyen. Lè nou di « done pèsonèl », nou vle di enfòmasyon dapre atik 4, pwen 1, RGPD la : yon non, yon adrès imèl, yon adrès postal."
+    ]
+  },
+  "consent": {
+    "title": "Mezi odyans",
+    "body": "Nou ta renmen mezire odyans sit sa a pou nou konprann sa ki itil pou ou. Mezi sa a depoze yon cookie sou aparèy ou e li kòmanse sèlman si ou dakò. Si ou refize, sa p ap chanje anyen nan vizit ou.",
+    "accept": "Aksepte",
+    "reject": "Refize",
+    "policyLabel": "Politik konfidansyalite"
+  },
+  "analytics": {
+    "off": {
+      "summaryTitle": "Nou pa trase ou.",
+      "summaryBody": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans.",
+      "sectionTitle": "Mezi odyans",
+      "sectionBody": "Pa genyen. Nou pa itilize ni Google Analytics, ni Plausible, ni okenn lòt zouti mezi odyans, swivi oswa reklam. Nou pa konnen konbyen moun ki vizite sit sa a."
+    },
+    "on": {
+      "summaryTitle": "Yon mezi odyans ki senp.",
+      "summaryBody": "Pou konplete lè n ap chwazi yon zouti mezi.",
+      "sectionTitle": "Mezi odyans",
+      "sectionBody": "Pou konplete lè n ap chwazi yon zouti mezi : kiyès k ap trete done yo, ki kote, ak sou ki baz legal."
+    }
+  }
+}

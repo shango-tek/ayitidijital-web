@@ -1,0 +1,536 @@
+{
+  "imprint": {
+    "title": "Imprint",
+    "description": "Legal notice for Ayiti Dijital (Verein in Gründung), per § 5 DDG.",
+    "eyebrow": "Imprint",
+    "h1": "Legal Notice",
+    "lead": "Mandatory information about the provider of this site, in accordance with § 5 DDG (Digitale-Dienste-Gesetz, the German digital services act).",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdatedValue": "17 July 2026",
+    "tocTitle": "Contents",
+    "sections": [
+      {
+        "id": "general",
+        "number": "01",
+        "title": "General",
+        "blocks": [
+          {
+            "kind": "address",
+            "lines": [
+              "Ayiti Dijital",
+              "Verein in Gründung",
+              "Ursberger Str. 15",
+              "81673 München",
+              "Deutschland"
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "The association is not yet entered in the register of associations, so there is no VR number and no VAT identification number to state. Both will be added once registration with the Amtsgericht München is complete."
+          },
+          {
+            "kind": "subheading",
+            "title": "Represented by"
+          },
+          {
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (Vorstandsvorsitzender)",
+              "Berlens Legagneur (stellvertretender Vorsitzender)"
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Each board member is authorised to represent the association individually (Einzelvertretungsbefugnis), pursuant to § 26 BGB."
+          },
+          {
+            "kind": "subheading",
+            "title": "Contact"
+          },
+          {
+            "kind": "address",
+            "lines": [
+              "contact@ayitidijital.org"
+            ]
+          },
+          {
+            "kind": "subheading",
+            "title": "Responsible for content within the meaning of § 18 (2) MStV"
+          },
+          {
+            "kind": "lines",
+            "lines": [
+              "Glory Pierrette (Vorstandsvorsitzender)",
+              "Address as above"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "responsabilite",
+        "number": "02",
+        "title": "Liability for content",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "As a service provider, we are responsible for our own content on these pages under general law (§ 7 (1) DDG). We are not, however, obliged to monitor third-party information we transmit or store, nor to actively investigate circumstances indicating unlawful activity (§§ 8 to 10 DDG). Obligations to remove or block the use of information under general law remain unaffected; any such liability arises only from the point at which we become aware of a specific infringement. As soon as we do, we will remove the content concerned without delay."
+          }
+        ]
+      },
+      {
+        "id": "liens",
+        "number": "03",
+        "title": "Liability for links",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "This site contains links to external sites over whose content we have no influence. We therefore cannot accept any warranty for that third-party content: the provider or operator of those pages is always solely responsible for it. Those sites were checked at the time of linking and no unlawful content was discernible then. Permanent monitoring is not reasonable without concrete evidence of an infringement; as soon as we become aware of one, we will remove the link without delay."
+          }
+        ]
+      },
+      {
+        "id": "droits-auteur",
+        "number": "04",
+        "title": "Copyright",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Unless otherwise stated, content and works created by the association on this site are published under a Creative Commons CC BY-SA 4.0 licence. You may therefore reproduce, adapt and distribute them, including commercially, on two conditions: credit Ayiti Dijital, and share any derivative under the same licence."
+          },
+          {
+            "kind": "text",
+            "body": "Content not created by the association remains subject to the rights of its authors and is marked as such; this applies in particular to third-party trademarks, logos and photographs, which the licence above does not cover. Should you nonetheless notice an infringement of copyright, please tell us: as soon as we become aware of one, we will remove the content concerned without delay."
+          }
+        ]
+      }
+    ],
+    "expandAllLabel": "Expand all",
+    "collapseAllLabel": "Collapse all"
+  },
+  "privacy": {
+    "title": "Privacy",
+    "description": "Privacy policy of Ayiti Dijital. No cookies, no tracking, no data collection.",
+    "eyebrow": "Privacy",
+    "h1": "Privacy Policy",
+    "lead": "Thank you for your interest in Ayiti Dijital. You can read this site without disclosing any personal data whatsoever: we ask for none and collect none.",
+    "lastUpdatedLabel": "Last updated",
+    "lastUpdatedValue": "17 July 2026",
+    "tocTitle": "Contents",
+    "sections": [
+      {
+        "id": "champ",
+        "title": "Scope",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "This site",
+                "body": "ayitidijital.org, and any other site the association may come to operate."
+              },
+              {
+                "title": "Our public profiles",
+                "body": "Our presence on social networks, as far as we control it there."
+              },
+              {
+                "title": "Email correspondence",
+                "body": "Any exchange you begin with us at contact@ayitidijital.org."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "The association runs neither an online shop nor a mobile app, so those cases are not covered — they do not exist."
+          }
+        ],
+        "number": "01"
+      },
+      {
+        "id": "en-bref",
+        "number": "02",
+        "title": "In short",
+        "subtitle": "The essentials, in three lines",
+        "blocks": [
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "We don't track you.",
+                "body": "No cookies, no third-party pixels, no fingerprinting, no analytics."
+              },
+              {
+                "title": "No third-party content.",
+                "body": "Images and fonts are served from our own domain. Browsing this site, your browser contacts no other server."
+              },
+              {
+                "title": "No collection.",
+                "body": "No form on this site transmits or stores any data at present."
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "responsable",
+        "number": "03",
+        "title": "Data controller",
+        "blocks": [
+          {
+            "kind": "dl",
+            "rows": [
+              {
+                "label": "Controller",
+                "value": "Ayiti Dijital (Verein in Gründung), Ursberger Str. 15, 81673 München, Deutschland"
+              },
+              {
+                "label": "Contact",
+                "value": "contact@ayitidijital.org"
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "We are not required to appoint a data protection officer: neither the Art. 37 GDPR nor the § 38 BDSG thresholds are met. For any question about your data, write to the address above."
+          }
+        ]
+      },
+      {
+        "id": "definitions",
+        "number": "04",
+        "title": "Definitions",
+        "subtitle": "within the meaning of Art. 4 GDPR",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "This page uses the regulation's vocabulary. Here is what those terms mean, in the sense given by Art. 4 GDPR."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Personal data",
+                "body": "Any information relating to an identified or identifiable natural person, directly or indirectly: a name, a number, location data, an online identifier (Art. 4(1))."
+              },
+              {
+                "title": "Data subject",
+                "body": "The identified or identifiable natural person whose data is processed — in this case, you."
+              },
+              {
+                "title": "Processing",
+                "body": "Any operation performed on data: collection, recording, organisation, storage, consultation, disclosure, erasure, destruction (Art. 4(2))."
+              },
+              {
+                "title": "Restriction of processing",
+                "body": "Marking stored data so as to limit its future processing (Art. 4(3))."
+              },
+              {
+                "title": "Profiling",
+                "body": "Automated processing to evaluate or predict personal aspects — behaviour, interests, economic situation, movements (Art. 4(4))."
+              },
+              {
+                "title": "Pseudonymisation",
+                "body": "Processing such that data can no longer be attributed to a person without additional information, kept separately (Art. 4(5))."
+              },
+              {
+                "title": "Controller",
+                "body": "Whoever determines the purposes and means of processing (Art. 4(7)). For this site, the association."
+              },
+              {
+                "title": "Processor",
+                "body": "A third party processing data on the controller's behalf and on its instructions (Art. 4(8)) — here, our host."
+              },
+              {
+                "title": "Recipient",
+                "body": "Any body to which data is disclosed, whether a third party or not; authorities acting under a specific inquiry are not recipients (Art. 4(9))."
+              },
+              {
+                "title": "Third party",
+                "body": "Any body other than the data subject, the controller, the processor, and persons authorised to process the data under their authority (Art. 4(10))."
+              },
+              {
+                "title": "Consent",
+                "body": "A freely given, specific, informed and unambiguous indication that you agree to a processing operation (Art. 4(11))."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "These are the regulation's own definitions, restated here for clarity; they describe the vocabulary, not our practices. We carry out neither profiling nor pseudonymisation."
+          }
+        ]
+      },
+      {
+        "id": "bases-legales",
+        "number": "05",
+        "title": "Legal bases",
+        "subtitle": "Art. 6 GDPR",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Processing personal data is lawful only where it rests on one of the grounds in Art. 6 GDPR."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Consent — Art. 6(1)(a)",
+                "body": "You explicitly agree to a particular processing operation, and may withdraw that agreement at any time."
+              },
+              {
+                "title": "Contract — Art. 6(1)(b)",
+                "body": "The processing is necessary to perform a contract or to take pre-contractual steps."
+              },
+              {
+                "title": "Legal obligation — Art. 6(1)(c)",
+                "body": "The law requires us to process or retain certain data, for instance for accounting."
+              },
+              {
+                "title": "Legitimate interest — Art. 6(1)(f)",
+                "body": "The processing is necessary to run the site securely and your rights and freedoms do not override it."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Today only legitimate interest applies to this site, and only for the technical data required to deliver the pages. We ask for no consent, because we do nothing that requires one."
+          }
+        ]
+      },
+      {
+        "id": "hebergement",
+        "number": "06",
+        "title": "Hosting, server logs and transfers outside the EU",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "This site is hosted by Vercel Inc. (United States), acting as our processor. To deliver a page, your browser necessarily transmits technical data to the host: your IP address, the date and time of the request, the address requested, the referring site and your browser type. That data serves to deliver the site, keep it secure and diagnose faults. It is not used to identify you and is not combined with any other information."
+          },
+          {
+            "kind": "text",
+            "body": "This processing is essential to making the site available and rests on our legitimate interest (Art. 6(1)(f) GDPR). As Vercel is a US company, a transfer of this technical data to a third country within the meaning of Art. 44 ff. GDPR cannot be excluded."
+          }
+        ]
+      },
+      {
+        "id": "securite",
+        "number": "07",
+        "title": "Transport security",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "This site is served over HTTPS only: everything exchanged between your browser and the server is encrypted using TLS. You can tell by the address, which begins with “https://”. That encryption stops third parties reading what you look at in transit, and forms part of the technical measures required by Art. 25 and Art. 32 GDPR."
+          }
+        ]
+      },
+      {
+        "id": "cookies",
+        "number": "08",
+        "title": "Cookies and local storage",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "This site sets no cookies and writes nothing to your browser's local storage. That is why you will not see a consent banner: there is nothing to accept or decline."
+          }
+        ]
+      },
+      {
+        "id": "mesure",
+        "number": "09",
+        "title": "Analytics",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "None. We use neither Google Analytics, nor Plausible, nor any other analytics, tracking or advertising tool. We do not know how many people visit this site."
+          }
+        ]
+      },
+      {
+        "id": "externes",
+        "number": "10",
+        "title": "Fonts and external content",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Fonts are installed on and loaded from our own domain: your browser contacts no Google server. The same goes for images. The site embeds no video, maps, fonts, widgets or scripts from any third-party service."
+          }
+        ]
+      },
+      {
+        "id": "reseaux-sociaux",
+        "number": "11",
+        "title": "Social media",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "We maintain profiles on several social networks, and the footer links to them. Those are plain links: no “like” button, no thumbnail and no script from those platforms is embedded in this site. Your browser does not contact them, and they learn nothing about your visit unless you click."
+          },
+          {
+            "kind": "text",
+            "body": "The moment you follow such a link you leave this site: the terms and privacy policy of that platform then apply, and we have no influence over the data it collects."
+          }
+        ]
+      },
+      {
+        "id": "formulaires",
+        "number": "12",
+        "title": "Forms",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "The contact form sends nothing to our servers: it opens a pre-filled message in your own mail program, which you send yourself. We then handle that email as ordinary correspondence (see “Data protection contact”). The newsletter forms are not yet connected to a sending service: the information entered is neither transmitted nor stored. As soon as one of these forms transmits data to our servers, this page will be updated before any collection."
+          }
+        ]
+      },
+      {
+        "id": "conservation",
+        "number": "13",
+        "title": "Retention",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "We retain no personal data from this site, because we collect none. The technical data needed to deliver the pages is processed by our host and kept for a limited period, for security and diagnostics."
+          },
+          {
+            "kind": "text",
+            "body": "Were we to collect data — through a working form, say — we would keep it only as long as the purpose requires, or as long as a legal obligation demands, and then erase it."
+          }
+        ]
+      },
+      {
+        "id": "droits",
+        "number": "14",
+        "title": "Your rights",
+        "subtitle": "under the GDPR",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "The GDPR grants you the following rights over your personal data."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "Right of access",
+                "body": "Obtain confirmation that data about you is processed, and a copy of it."
+              },
+              {
+                "title": "Right to rectification",
+                "body": "Correct any inaccurate or incomplete data."
+              },
+              {
+                "title": "Right to erasure",
+                "body": "Request deletion of your data, unless a legal obligation requires otherwise."
+              },
+              {
+                "title": "Right to restriction",
+                "body": "Restrict the processing of your data in certain cases."
+              },
+              {
+                "title": "Right to portability",
+                "body": "Receive your data in a structured, reusable format."
+              },
+              {
+                "title": "Right to object",
+                "body": "Object at any time to processing based on our legitimate interest."
+              },
+              {
+                "title": "Withdrawal of consent",
+                "body": "Withdraw a consent at any time, without affecting the lawfulness of processing before withdrawal."
+              },
+              {
+                "title": "Automated decisions",
+                "body": "Not be subject to a decision based solely on automated processing. We make none."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "To exercise these rights, write to contact@ayitidijital.org; we respond within 30 days. Exercising them is free of charge."
+          }
+        ]
+      },
+      {
+        "id": "autorite",
+        "number": "15",
+        "title": "Supervisory authority",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "Independently of any recourse to us, you may lodge a complaint with a supervisory authority. Ours is:"
+          },
+          {
+            "kind": "dl",
+            "rows": [
+              {
+                "label": "Authority",
+                "value": "Bayerisches Landesamt für Datenschutzaufsicht (BayLDA)"
+              },
+              {
+                "label": "Address",
+                "value": "Promenade 18, 91522 Ansbach, Deutschland"
+              },
+              {
+                "label": "Telephone",
+                "value": "+49 981 180093-0"
+              },
+              {
+                "label": "Email",
+                "value": "poststelle@lda.bayern.de"
+              },
+              {
+                "label": "Website",
+                "value": "lda.bayern.de"
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Bavaria splits supervision between two bodies: the BayLfD oversees public bodies, the BayLDA private ones — associations included."
+          }
+        ]
+      },
+      {
+        "id": "contact",
+        "number": "16",
+        "title": "Privacy contact",
+        "blocks": [
+          {
+            "kind": "text",
+            "body": "For any question about the protection of your data, exercising your rights, a complaint or a request, write to us directly."
+          },
+          {
+            "kind": "email",
+            "value": "contact@ayitidijital.org"
+          }
+        ]
+      }
+    ],
+    "expandAllLabel": "Expand all",
+    "collapseAllLabel": "Collapse all",
+    "intro": [
+      "Should you one day wish to use a particular service of the association — writing to us, joining, subscribing to the newsletter — processing your data could become necessary. Where such processing is necessary and no legal basis covers it, we obtain your consent first.",
+      "This notice explains which data we process as controller, which data the processors we appoint handle — our host, for instance — and what rights you have. By “personal data” we mean information within the meaning of Art. 4(1) GDPR: a name, an email address, a postal address."
+    ]
+  },
+  "consent": {
+    "title": "Audience measurement",
+    "body": "We'd like to measure this site's audience to understand what is useful to you. That measurement stores a cookie on your device and only starts if you agree. Declining changes nothing about your visit.",
+    "accept": "Accept",
+    "reject": "Decline",
+    "policyLabel": "Privacy policy"
+  },
+  "analytics": {
+    "off": {
+      "summaryTitle": "We don't track you.",
+      "summaryBody": "No cookies, no third-party pixels, no fingerprinting, no analytics.",
+      "sectionTitle": "Analytics",
+      "sectionBody": "None. We use neither Google Analytics, nor Plausible, nor any other analytics, tracking or advertising tool. We do not know how many people visit this site."
+    },
+    "on": {
+      "summaryTitle": "Modest audience measurement.",
+      "summaryBody": "To be completed once a measurement tool is chosen.",
+      "sectionTitle": "Analytics",
+      "sectionBody": "To be completed once a measurement tool is chosen: who processes the data, where, and on what legal basis."
+    }
+  }
+}

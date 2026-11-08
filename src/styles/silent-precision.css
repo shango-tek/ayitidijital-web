@@ -1,0 +1,425 @@
+@theme {
+  --color-precision-bg: #0a0a0f;
+  --color-precision-fg: #f5f5f7;
+  --color-precision-muted: #8a8a96;
+  --color-precision-border: #2a2a35;
+  --color-precision-card: #16161d;
+}
+
+.precision-hero {
+  position: relative;
+  overflow: hidden;
+  /* clip the whole hero to the inset card shape (same rect as .precision-hero-bg:
+     .5rem inset top/left/right, flush bottom, 2rem radius) so the full-bleed
+     PlusGrid rules can't poke past the rounded corners — it reads as one card.
+     Dropped to none on mobile, where the hero is full-bleed. */
+  clip-path: inset(0);
+}
+
+.precision-hero-bg {
+  position: absolute;
+  /* rounded card inset from the edges (space top/left/right, flush bottom) — the
+     same treatment as the HeroPanel card below it (.hp-bg), with a light inner
+     hairline instead of a dark one since this panel is dark. */
+  inset: 0;
+  bottom: 0;
+  border-radius: 0;
+  /* per-surface navy top-wash over the near-black base (header only — the shared
+     --color-precision-bg token is left untouched so the footer stays flat). */
+  background: radial-gradient(125% 85% at 50% -12%, color-mix(in srgb, var(--color-primary) 26%, transparent) 0%, transparent 58%), var(--color-precision-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, .1);
+}
+
+.precision-hero-inner {
+  position: relative;
+  z-index: 1;
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  padding: 0 1.5rem;
+}
+
+.precision-hero .rn-header {
+  position: relative;
+  z-index: 50;
+  width: 100%;
+  max-width: 90rem;
+  margin: 0 auto;
+}
+
+/* Lighten PlusGrid rules for better visibility on dark hero background */
+.precision-hero .pg-rule {
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* the bottom double-line draws with border-bottom under a higher-specificity
+   `.pg-row:last-child .pg-rule-b*` rule, so it needs an equally-specific
+   override or it stays the near-invisible black hairline on the dark hero */
+.precision-hero .pg-row:last-child .pg-rule-b1,
+.precision-hero .pg-row:last-child .pg-rule-b2 {
+  border-bottom-color: rgba(255, 255, 255, 0.6);
+}
+
+.precision-hero .pg-ico {
+  fill: rgba(255, 255, 255, 0.7);
+}
+
+/* the lanbi logo mark's dots are hardcoded navy/red — the navy half has almost
+   no contrast on the dark hero, so recolor just those to the lighter brand blue
+   and let the red dots keep their colour (CSS beats the inline fill attributes) */
+.precision-hero .rn-logo-mark .lanbi-dot--navy {
+  fill: var(--lanbi-blue-ondark);
+}
+
+/* Ensure navbar text and icons are visible on dark background */
+.precision-hero .rn-brand-name,
+.precision-hero .rn-link,
+.precision-hero .rn-lang-cur,
+.precision-hero .rn-ico,
+.precision-hero .hm-trigger,
+.precision-hero .hm-chev {
+  color: #fff;
+}
+
+.precision-hero .rn-logo-link {
+  color: #fff;
+}
+
+.precision-hero .rn-link:hover {
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+}
+
+/* the dropdown + language triggers use a near-black hover tint by default,
+   invisible on the dark hero — give them the same white hover glow the plain
+   links get, so every item up to the language switcher reacts on hover */
+.precision-hero .hm-trigger:hover {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.precision-hero .hm[data-open] .hm-trigger {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* the search button's hover ring uses a near-black tint (invisible on the dark
+   hero) — restore the visible hover with the same white glow the links get */
+.precision-hero .rn-search:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* "Sou nou" dropdown — the base panel is a light sand glass with navy links,
+   which reads as low-contrast grey over the dark hero. Turn it into dark glass
+   with white text so it matches the hero and stays legible. */
+.precision-hero .hm-panel-inner {
+  background: rgba(16, 16, 22, 0.72);
+  border-color: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 26px 46px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.precision-hero .hm-panel-inner a {
+  color: #fff;
+}
+
+.precision-hero .hm-panel-inner a:hover {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.precision-hero .hm-panel-inner a[aria-current="true"] {
+  background: rgba(255, 255, 255, 0.06);
+}
+
+
+/* The headline sits centred in the band between the navbar's plus-grid and the
+   scroll-down button. `flex: 1` gives it everything under the navbar; the
+   bottom padding hands the button's band back, since the button is absolutely
+   positioned and would otherwise be centred *over*. Exactly the button's own
+   footprint and not a pixel more — `bottom: 2rem` + a `2rem` tall pill — so the
+   gap above the headline and the gap below it come out equal. Overridden at
+   1024, where the pill grows to 3rem. */
+.precision-hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 4rem;
+}
+
+@media (min-width: 1024px) {
+  .precision-hero-inner {
+    padding-left: 2rem;
+    padding-right: 2rem;
+    /* on laptops/desktops (13"–16"+) the card nearly fills the viewport — a touch
+       under 100vh so its rounded bottom edge stays fully visible above the fold
+       instead of sitting flush against (and cut off by) the viewport bottom */
+    min-height: calc(100vh - 1.5rem);
+  }
+  /* the scroll button's pill is 3rem tall here rather than 2rem, so its band
+     grows by the same rem (see the base rule) */
+  .precision-hero-content { padding-bottom: 5rem; }
+}
+
+/* touch tablets in landscape (e.g. iPad): fill the whole viewport height — the
+   small under-100vh reveal we keep on the desktop card isn't wanted here */
+@media (hover: none) and (pointer: coarse) and (min-width: 1024px) and (orientation: landscape) {
+  .precision-hero-inner {
+    min-height: 100dvh;
+  }
+}
+
+/* Tablets held upright: a third off the hero.
+   80vh was almost entirely empty at this shape — heading, lead and the gaps
+   between them came to a fraction of the 906px the card occupied on a 1133px
+   tablet, the rest being min-height plus a 6.5rem bottom pad sized for a
+   desktop card. 54vh lands on two thirds (906 -> 612) with the content still
+   unhurried.
+
+   Phones are deliberately NOT here: they keep the full-height card, and the
+   emptiness is answered instead by the vertical-headline layout (see
+   `.hero-title` in globals.css), which fills the card with type rather than
+   shrinking the card around it. That layout is phone-only — it was tried here
+   and rolled back.
+
+   No padding here: the button's band is reserved on .precision-hero-content by
+   the base rule, so the headline stays centred between navbar and button at
+   whatever height the card ends up. */
+@media (min-width: 700px) and (orientation: portrait) {
+  .precision-hero-inner {
+    min-height: 54vh;
+  }
+}
+
+
+.precision-grain::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.04;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.tahoe-glass-text {
+  color: transparent;
+  background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.9) 55%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,1) 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-stroke: 1.5px rgba(255,255,255,0.18);
+  filter: drop-shadow(0 15px 35px rgba(0,0,0,0.45)) drop-shadow(0 5px 10px rgba(0,0,0,0.25));
+  animation: precision-shimmer 8s linear infinite;
+  /* `background-clip: text` clips the last line's descenders (the italic "y" in
+     Vizyon/Aksyon) to the text box — a touch of bottom padding gives them room
+     without loosening the tight leading. */
+  padding-bottom: 0.2em;
+}
+
+@keyframes precision-shimmer {
+  0% { background-position: 200% center; }
+  100% { background-position: 0% center; }
+}
+
+@keyframes precision-marquee {
+  0% { transform: translateX(0%); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-precision-marquee {
+  animation: precision-marquee 28s linear infinite;
+}
+
+.precision-reveal {
+  opacity: 0;
+  transform: translateY(2rem);
+  transition: opacity 1000ms cubic-bezier(0.16,1,0.3,1), transform 1000ms cubic-bezier(0.16,1,0.3,1);
+}
+
+.precision-reveal.is-loaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.precision-vignette {
+  background: radial-gradient(circle at center, transparent 0%, var(--color-precision-bg) 100%);
+}
+
+.precision-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(80px);
+  pointer-events: none;
+  mix-blend-mode: screen;
+  opacity: 0.35;
+}
+
+.precision-tag-pill {
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Footer Styles */
+.precision-footer {
+  position: relative;
+  overflow: hidden;
+  clip-path: inset(0.5rem 0.5rem 0.5rem 0.5rem round 2rem);
+  margin-top: 4rem;
+  margin-bottom: 2rem;
+  max-width: 100vw;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.precision-footer-bg {
+  position: absolute;
+  inset: 0.5rem;
+  border-radius: 2rem;
+  background: var(--color-precision-bg);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+
+.precision-footer-inner {
+  position: relative;
+  z-index: 1;
+  padding: 4rem 1.5rem 4rem;
+  width: 90rem;
+  margin: 0 auto;
+}
+
+.precision-footer-grid .pg-rule {
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.precision-footer-grid .pg-ico {
+  fill: rgba(255, 255, 255, 0.2);
+}
+
+.precision-footer-cta {
+  text-align: center;
+  padding: 4rem 1rem;
+}
+
+.precision-footer-cta-title {
+  font-size: clamp(2rem, 8vw, 4.5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-display);
+}
+
+.precision-footer-cta-desc {
+  font-size: 1.25rem;
+  color: var(--color-precision-muted);
+  max-width: 32rem;
+  margin: 0 auto 2.5rem;
+  font-weight: 300;
+}
+
+.precision-footer-cta-btn {
+  display: inline-block;
+  background: var(--color-precision-fg);
+  color: var(--color-precision-bg);
+  padding: 1rem 2.5rem;
+  border-radius: 999px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.precision-footer-cta-btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.precision-footer-nav-container {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+  padding: 3rem 0;
+}
+
+@media (min-width: 768px) {
+  .precision-footer-nav-container {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.precision-footer-nav-title {
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-precision-fg);
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+}
+
+.precision-footer-nav-links {
+  list-style: none;
+  padding: 0;
+}
+
+.precision-footer-nav-link {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--color-precision-muted);
+  text-decoration: none;
+  margin-bottom: 0.75rem;
+  transition: color 0.2s ease;
+}
+
+.precision-footer-nav-link:hover {
+  color: var(--color-precision-fg);
+}
+
+.precision-footer-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+}
+
+.precision-footer-bottom-brand-item,
+.precision-footer-bottom-social-item {
+  flex: 0 1 auto;
+  padding: 2rem 0;
+}
+
+.precision-footer-bottom-brand-item {
+  padding-right: 2rem;
+}
+
+.precision-footer-bottom-social-item {
+  padding-left: 2rem;
+  margin-left: auto;
+}
+
+.precision-footer-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  height: 100%;
+}
+
+.precision-footer-brand-name {
+  font-weight: 700;
+  color: var(--color-precision-fg);
+  font-family: var(--font-display);
+}
+
+.precision-footer-socials {
+  display: flex;
+  gap: 1.25rem;
+  height: 100%;
+  align-items: center;
+}
+
+.precision-footer-social-link {
+  color: var(--color-precision-muted);
+  transition: color 0.2s ease;
+}
+
+.precision-footer-social-link:hover {
+  color: var(--color-precision-fg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-precision-marquee, .tahoe-glass-text { animation: none; }
+}

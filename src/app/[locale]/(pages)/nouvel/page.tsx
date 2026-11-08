@@ -1,0 +1,58 @@
+import { RoutePage } from '@/components/pages/RoutePage'
+import { getSiteContent } from '@/content/site'
+import { toLocale } from '@/i18n'
+import { routeMetadata } from '../_metadata'
+
+/**
+ * "Nouvèl & evènman" — the news page, in the UnternehmerTUM register. Each post
+ * is an anchored card (#post-1 …). Posts have no individual article pages yet,
+ * so the cards are not links.
+ */
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  return routeMetadata('/nouvel', locale)
+}
+
+export default async function NouvelPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params
+  const lang = toLocale(locale)
+  const c = getSiteContent(lang)
+  const j = c.journal
+
+  return (
+    <RoutePage content={c} path="/nouvel" title={c.pageTitles.news} subtitle={j.subtitle} image="/headers/nouvel.webp">
+      <div className="page-wrap">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {j.posts.map((post, i) => (
+            <article
+              key={post.title}
+              id={`post-${i + 1}`}
+              className="flex scroll-mt-28 flex-col overflow-hidden border-4 border-double border-tum-ink bg-tum-paper"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden bg-tum-ink">
+                <img
+                  src={post.image}
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  className="absolute inset-0 h-full w-full object-cover object-top"
+                />
+                <span className="absolute left-4 top-4 inline-flex items-center bg-electric px-3 py-1 font-tum text-[11px] font-bold uppercase tracking-[0.15em] text-white">
+                  {post.category}
+                </span>
+              </div>
+              <div className="flex flex-1 flex-col p-6">
+                <p className="font-tum text-xs font-bold uppercase tracking-[0.15em] text-tum-muted">
+                  {post.date}
+                </p>
+                <h2 className="mt-3 font-tum text-xl font-extrabold leading-snug text-tum-ink">
+                  {post.title}
+                </h2>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </RoutePage>
+  )
+}
