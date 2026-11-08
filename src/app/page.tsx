@@ -1,25 +1,48 @@
 import { redirect } from 'next/navigation'
 import { headers } from 'next/headers'
-import { DEFAULT_LOCALE, LOCALES, type Locale } from '@/i18n'
+import { LOCALES, type Locale } from '@/i18n'
 
 /**
  * `/` → the best locale for this visitor, decided server-side at the edge:
- *   • anyone browsing from Haiti always lands in Kreyòl (`/ht`);
- *   • otherwise the browser's `Accept-Language` chooses fr / en / ht;
- *   • the fallback is the default locale (fr).
+ *   1. anyone browsing from Haiti always lands in Kreyòl (`/ht`);
+ *   2. otherwise the browser's `Accept-Language`, when it is one we ship (fr/en/ht);
+ *   3. otherwise the country — a French-speaking country → French;
+ *   4. everyone else → English.
  *
- * Reading request headers makes this route dynamic — exactly what a
- * per-visitor redirect needs.
+ * This serves both "where they are" and "what their phone reads": a French or
+ * Kreyòl speaker on a German phone still gets their language (step 2), while a
+ * visitor in France whose phone is in another language still gets French (step 3).
+ * Reading request headers makes this route dynamic — what a per-visitor redirect
+ * needs.
  */
+
+/** Countries where French is official or the primary working language. */
+const FRANCOPHONE = new Set([
+  // Europe
+  'FR', 'BE', 'CH', 'LU', 'MC',
+  // Africa
+  'CI', 'SN', 'ML', 'BF', 'NE', 'TD', 'CG', 'CD', 'GA', 'CM', 'BJ', 'TG', 'GN',
+  'MG', 'RW', 'DJ', 'KM', 'CF', 'GQ', 'MR', 'DZ', 'MA', 'TN', 'SC',
+  // Pacific / overseas
+  'PF', 'NC', 'WF', 'VU',
+])
+
 export default async function RootPage() {
   const h = await headers()
-
-  // Vercel stamps the visitor's country on every edge request. Absent locally.
   const country = h.get('x-vercel-ip-country')?.toUpperCase()
+
+  // 1. Anyone in Haiti → Kreyòl.
   if (country === 'HT') redirect('/ht')
 
-  const locale = pickFromAcceptLanguage(h.get('accept-language')) ?? DEFAULT_LOCALE
-  redirect(`/${locale}`)
+  // 2. Honour the browser language when it is one we ship.
+  const fromBrowser = pickFromAcceptLanguage(h.get('accept-language'))
+  if (fromBrowser) redirect(`/${fromBrowser}`)
+
+  // 3. Decide by country: a French-speaking country → French…
+  if (country && FRANCOPHONE.has(country)) redirect('/fr')
+
+  // 4. …everyone else → English.
+  redirect('/en')
 }
 
 /** The highest-priority `Accept-Language` entry whose base language we ship. */
