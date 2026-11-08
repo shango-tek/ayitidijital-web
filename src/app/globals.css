@@ -297,6 +297,19 @@ button[aria-disabled='true'],
    Preloader — the growing brand spiral. The <Preloader> client component
    flips `data-fade` on to dismiss it (see components/layout/Preloader.tsx).
    ------------------------------------------------------------------ */
+/* First-frame boot cover: painted before React hydrates (the flag is set by the
+   inline script in the layout) so a genuine arrival never flashes the hero before
+   the loader. Same wash as the loader panels; the Preloader removes the flag once
+   its own panels have painted over this. Sits just below #preloader (9999). */
+html.ad-booting::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  pointer-events: none;
+  background: linear-gradient(180deg, color-mix(in srgb, var(--color-primary) 16%, var(--color-precision-bg)) 0%, var(--color-precision-bg) 44%);
+}
+
 #preloader {
   position: fixed;
   inset: 0;

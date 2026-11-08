@@ -36,12 +36,20 @@ export function Preloader() {
   const [parting, setParting] = useState(false)
 
   useEffect(() => {
+    // The inline boot script may have painted a first-frame cover (`ad-booting`).
+    const clearBoot = () => document.documentElement.classList.remove('ad-booting')
+
     if (shownThisSession || !isGenuineArrival()) {
       shownThisSession = true
+      clearBoot() // not showing the loader → drop the cover now so the hero shows
       return
     }
     shownThisSession = true
     setVisible(true)
+
+    // Hand the boot cover off to our own (opaque, same-wash) panels once they have
+    // painted over it — two frames — so there is never a one-frame peek of the hero.
+    const bootRaf = requestAnimationFrame(() => requestAnimationFrame(clearBoot))
 
     // Cosmetic bar fill via rAF — purely visual. If rAF is throttled the bar may
     // lag, but the finish below does not depend on it.
@@ -61,8 +69,10 @@ export function Preloader() {
 
     return () => {
       cancelAnimationFrame(raf)
+      cancelAnimationFrame(bootRaf)
       clearTimeout(tPart)
       clearTimeout(tDone)
+      clearBoot()
     }
   }, [])
 

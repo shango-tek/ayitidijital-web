@@ -143,6 +143,16 @@ export default async function LocaleLayout({
       suppressHydrationWarning
     >
       <body id="top" suppressHydrationWarning>
+        {/* Runs before the hero paints: on a genuine arrival it flags <html> so a
+            CSS cover is painted on the very first frame, so the loader is never
+            preceded by a flash of the hero. The React Preloader clears it once its
+            own panels have painted over it. Kept in sync with isGenuineArrival(). */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html:
+              "(function(){try{var n=performance.getEntriesByType('navigation')[0];var reload=n&&n.type==='reload';var bf=n&&n.type==='back_forward';var offsite=true;try{offsite=!document.referrer||new URL(document.referrer).origin!==location.origin}catch(e){}if(!bf&&(reload||offsite))document.documentElement.classList.add('ad-booting')}catch(e){document.documentElement.classList.add('ad-booting')}})();",
+          }}
+        />
         <Preloader />
         <SmoothScroll />
         {children}
