@@ -855,9 +855,9 @@ const fr: SiteContent = {
     banner: { label: 'Ayiti Dijital officiellement fondée - juin 2026, Munich', href: '#sou-nou' },
     title: (
       <>
-        La lambi résonne.
+        Façonner l&apos;Avenir
         <br />
-        Le <em>konbit numérique</em> commence.
+        avec <em>Vision &amp; Action</em>.
       </>
     ),
     sub: 'Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora - lois, archives, compétences et outils open source qui appartiennent à tous.',

@@ -6,6 +6,7 @@ import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
 import { getLegalContent } from '@/content/legal'
 import { SmoothScroll } from '../../components/ui/SmoothScroll'
+import { ScrollFX } from '../../components/ui/ScrollFX'
 import { CookieBanner } from '../../components/ui/CookieBanner'
 import { CookieConsent } from '../../components/ui/CookieConsent'
 
@@ -123,6 +124,7 @@ export default async function LocaleLayout({
           }}
         />
         <SmoothScroll />
+        <ScrollFX />
         {children}
         {/* Dormant until an analytics provider is configured — see
             src/lib/analytics.ts */}
