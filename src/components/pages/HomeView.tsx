@@ -67,7 +67,7 @@ export function HomeView({ content: c, locale }: { content: SiteContent; locale:
             cta={c.about.cta}
             ctaHref={`/${locale}/sou-nou`}
             pillars={c.pillars.items}
-            photo="/pillars/mission.webp"
+            photo="/about/digital-transformation.webp"
             photoAlt={c.about.imageAlt}
           />
 
@@ -138,6 +138,7 @@ export function HomeView({ content: c, locale }: { content: SiteContent; locale:
           <FaqSection
             id="faq"
             label={c.faq.label}
+            strokeLead={c.faq.strokeLead}
             strokeWord={c.faq.strokeWord}
             titleRest={c.faq.titleRest}
             subtitle={c.faq.subtitle}

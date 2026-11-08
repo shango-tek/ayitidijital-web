@@ -5,7 +5,7 @@ import { toLocale } from '@/i18n'
 import { routeMetadata } from '../_metadata'
 
 /**
- * "Travay Nou" (what we do) — the frosted page header followed by the projects +
+ * "Travay Nou" (what we do) - the frosted page header followed by the projects +
  * programs body. Port of the Angular `ce-que-nous-faisons` page onto Next.
  */
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {

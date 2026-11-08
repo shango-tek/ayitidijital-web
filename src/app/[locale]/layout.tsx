@@ -52,11 +52,10 @@ const playfair = Playfair_Display({
   display: 'swap',
 })
 
-/* house body world. Albert Sans stands in for UTUM's proprietary Sharp
-   Sans — the same tight, high-x-height geometric grotesque — and is a Google
-   variable font (100–900), so the landing body's giant 900 display and its 400
-   reading text come from one self-hosted file. Used only by the sections below
-   the hero; the Sui chrome keeps Bricolage / Hanken. */
+/* House body world. Albert Sans — a tight, high-x-height geometric grotesque,
+   a Google variable font (100–900) — gives the landing body its giant 900
+   display and its 400 reading text from one self-hosted file. Used only by the
+   sections below the hero. */
 const albertSans = Albert_Sans({
   subsets: ['latin'],
   variable: '--font-albert',

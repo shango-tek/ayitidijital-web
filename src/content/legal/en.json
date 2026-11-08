@@ -140,7 +140,7 @@
           },
           {
             "kind": "note",
-            "body": "The association runs neither an online shop nor a mobile app, so those cases are not covered — they do not exist."
+            "body": "The association runs neither an online shop nor a mobile app, so those cases are not covered - they do not exist."
           }
         ],
         "number": "01"
@@ -213,7 +213,7 @@
               },
               {
                 "title": "Data subject",
-                "body": "The identified or identifiable natural person whose data is processed — in this case, you."
+                "body": "The identified or identifiable natural person whose data is processed - in this case, you."
               },
               {
                 "title": "Processing",
@@ -225,7 +225,7 @@
               },
               {
                 "title": "Profiling",
-                "body": "Automated processing to evaluate or predict personal aspects — behaviour, interests, economic situation, movements (Art. 4(4))."
+                "body": "Automated processing to evaluate or predict personal aspects - behaviour, interests, economic situation, movements (Art. 4(4))."
               },
               {
                 "title": "Pseudonymisation",
@@ -237,7 +237,7 @@
               },
               {
                 "title": "Processor",
-                "body": "A third party processing data on the controller's behalf and on its instructions (Art. 4(8)) — here, our host."
+                "body": "A third party processing data on the controller's behalf and on its instructions (Art. 4(8)) - here, our host."
               },
               {
                 "title": "Recipient",
@@ -273,19 +273,19 @@
             "kind": "points",
             "items": [
               {
-                "title": "Consent — Art. 6(1)(a)",
+                "title": "Consent - Art. 6(1)(a)",
                 "body": "You explicitly agree to a particular processing operation, and may withdraw that agreement at any time."
               },
               {
-                "title": "Contract — Art. 6(1)(b)",
+                "title": "Contract - Art. 6(1)(b)",
                 "body": "The processing is necessary to perform a contract or to take pre-contractual steps."
               },
               {
-                "title": "Legal obligation — Art. 6(1)(c)",
+                "title": "Legal obligation - Art. 6(1)(c)",
                 "body": "The law requires us to process or retain certain data, for instance for accounting."
               },
               {
-                "title": "Legitimate interest — Art. 6(1)(f)",
+                "title": "Legitimate interest - Art. 6(1)(f)",
                 "body": "The processing is necessary to run the site securely and your rights and freedoms do not override it."
               }
             ]
@@ -392,7 +392,7 @@
           },
           {
             "kind": "text",
-            "body": "Were we to collect data — through a working form, say — we would keep it only as long as the purpose requires, or as long as a legal obligation demands, and then erase it."
+            "body": "Were we to collect data - through a working form, say - we would keep it only as long as the purpose requires, or as long as a legal obligation demands, and then erase it."
           }
         ]
       },
@@ -485,7 +485,7 @@
           },
           {
             "kind": "note",
-            "body": "Bavaria splits supervision between two bodies: the BayLfD oversees public bodies, the BayLDA private ones — associations included."
+            "body": "Bavaria splits supervision between two bodies: the BayLfD oversees public bodies, the BayLDA private ones - associations included."
           }
         ]
       },
@@ -508,8 +508,8 @@
     "expandAllLabel": "Expand all",
     "collapseAllLabel": "Collapse all",
     "intro": [
-      "Should you one day wish to use a particular service of the association — writing to us, joining, subscribing to the newsletter — processing your data could become necessary. Where such processing is necessary and no legal basis covers it, we obtain your consent first.",
-      "This notice explains which data we process as controller, which data the processors we appoint handle — our host, for instance — and what rights you have. By “personal data” we mean information within the meaning of Art. 4(1) GDPR: a name, an email address, a postal address."
+      "Should you one day wish to use a particular service of the association - writing to us, joining, subscribing to the newsletter - processing your data could become necessary. Where such processing is necessary and no legal basis covers it, we obtain your consent first.",
+      "This notice explains which data we process as controller, which data the processors we appoint handle - our host, for instance - and what rights you have. By “personal data” we mean information within the meaning of Art. 4(1) GDPR: a name, an email address, a postal address."
     ]
   },
   "consent": {

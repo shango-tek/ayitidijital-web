@@ -213,7 +213,7 @@
               },
               {
                 "title": "Personne concernée",
-                "body": "La personne physique identifiée ou identifiable dont les données sont traitées — en l'occurrence, vous."
+                "body": "La personne physique identifiée ou identifiable dont les données sont traitées - en l'occurrence, vous."
               },
               {
                 "title": "Traitement",
@@ -225,7 +225,7 @@
               },
               {
                 "title": "Profilage",
-                "body": "Un traitement automatisé visant à évaluer ou prédire des aspects personnels — comportement, intérêts, situation économique, déplacements (art. 4, 4)."
+                "body": "Un traitement automatisé visant à évaluer ou prédire des aspects personnels - comportement, intérêts, situation économique, déplacements (art. 4, 4)."
               },
               {
                 "title": "Pseudonymisation",
@@ -237,7 +237,7 @@
               },
               {
                 "title": "Sous-traitant",
-                "body": "Un tiers qui traite des données pour le compte du responsable et sur ses instructions (art. 4, 8) — ici, notre hébergeur."
+                "body": "Un tiers qui traite des données pour le compte du responsable et sur ses instructions (art. 4, 8) - ici, notre hébergeur."
               },
               {
                 "title": "Destinataire",
@@ -273,19 +273,19 @@
             "kind": "points",
             "items": [
               {
-                "title": "Consentement — art. 6, § 1, a",
+                "title": "Consentement - art. 6, § 1, a",
                 "body": "Vous acceptez explicitement un traitement déterminé, et pouvez revenir sur cet accord à tout moment."
               },
               {
-                "title": "Contrat — art. 6, § 1, b",
+                "title": "Contrat - art. 6, § 1, b",
                 "body": "Le traitement est nécessaire à l'exécution d'un contrat ou à des démarches précontractuelles."
               },
               {
-                "title": "Obligation légale — art. 6, § 1, c",
+                "title": "Obligation légale - art. 6, § 1, c",
                 "body": "La loi nous impose de traiter ou de conserver certaines données, par exemple en matière comptable."
               },
               {
-                "title": "Intérêt légitime — art. 6, § 1, f",
+                "title": "Intérêt légitime - art. 6, § 1, f",
                 "body": "Le traitement est nécessaire au fonctionnement sûr du site et vos droits et libertés ne prévalent pas."
               }
             ]
@@ -392,7 +392,7 @@
           },
           {
             "kind": "text",
-            "body": "Si nous venions à collecter des données — par un formulaire actif, par exemple — nous ne les conserverions que le temps nécessaire à la finalité poursuivie, ou aussi longtemps qu'une obligation légale l'imposerait, avant de les effacer."
+            "body": "Si nous venions à collecter des données - par un formulaire actif, par exemple - nous ne les conserverions que le temps nécessaire à la finalité poursuivie, ou aussi longtemps qu'une obligation légale l'imposerait, avant de les effacer."
           }
         ]
       },
@@ -485,7 +485,7 @@
           },
           {
             "kind": "note",
-            "body": "La Bavière distingue deux autorités : le BayLfD contrôle les organismes publics, le BayLDA les organismes privés — dont les associations."
+            "body": "La Bavière distingue deux autorités : le BayLfD contrôle les organismes publics, le BayLDA les organismes privés - dont les associations."
           }
         ]
       },
@@ -508,8 +508,8 @@
     "expandAllLabel": "Tout déplier",
     "collapseAllLabel": "Tout replier",
     "intro": [
-      "Si vous souhaitez un jour recourir à un service particulier de l'association — nous écrire, adhérer, vous abonner à l'infolettre — un traitement de vos données pourrait devenir nécessaire. Lorsqu'un tel traitement est nécessaire et qu'aucune base légale ne le fonde, nous recueillons votre consentement au préalable.",
-      "Cette déclaration explique quelles données nous traitons en tant que responsable, quelles données traitent les sous-traitants que nous mandatons — notre hébergeur, par exemple — et de quels droits vous disposez. Par « données personnelles », nous entendons les informations au sens de l'art. 4, point 1, du RGPD : un nom, une adresse e-mail, une adresse postale."
+      "Si vous souhaitez un jour recourir à un service particulier de l'association - nous écrire, adhérer, vous abonner à l'infolettre - un traitement de vos données pourrait devenir nécessaire. Lorsqu'un tel traitement est nécessaire et qu'aucune base légale ne le fonde, nous recueillons votre consentement au préalable.",
+      "Cette déclaration explique quelles données nous traitons en tant que responsable, quelles données traitent les sous-traitants que nous mandatons - notre hébergeur, par exemple - et de quels droits vous disposez. Par « données personnelles », nous entendons les informations au sens de l'art. 4, point 1, du RGPD : un nom, une adresse e-mail, une adresse postale."
     ]
   },
   "consent": {

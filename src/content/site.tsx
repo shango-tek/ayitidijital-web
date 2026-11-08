@@ -134,7 +134,7 @@ export interface SiteContent {
   /** Support CTA button label (nav, desktop + mobile). */
   supportLabel: string
   navLinks: NavLink[]
-  /** Page-header titles (two-word, Title Case), per route — decoupled from nav labels. */
+  /** Page-header titles (two-word, Title Case), per route - decoupled from nav labels. */
   pageTitles: {
     work: string
     news: string
@@ -156,9 +156,9 @@ export interface SiteContent {
     and: string
     action: string
     /** How the horizontal block breaks on phones, one array per line. The
-     *  grouping is a typographic call per language, not a layout constant —
+     *  grouping is a typographic call per language, not a layout constant -
      *  French wants "avec" and "Vision" on their own lines, Kreyòl and English
-     *  read better paired — so it lives with the words rather than in the
+     *  read better paired - so it lives with the words rather than in the
      *  component. Desktop ignores it: the first line joins the vertical word's
      *  row, the rest flow together on the second. */
     phoneLines: HeroTitlePart[][]
@@ -185,25 +185,25 @@ export interface SiteContent {
   hubPrograms: HubProgram[]
   diaspora: DiasporaContent
   marqueeWords: string[]
-  /** The three aspirational verbs shown in the spiral's eye — they roll one at a
+  /** The three aspirational verbs shown in the spiral's eye - they roll one at a
    *  time as you scroll, then resolve into all three together at the end. */
   spiralCenterWords: [string, string, string]
   /** "Beyond digital" mission intro under the hero: eyebrow, headline (gold period),
    *  lead, CTA label, and photo alt text. */
   about: { label: string; title: string; strokeWord?: string; lead: string; cta: string; imageAlt: string }
-  /** "Who we are" pillars — Mission / Vision / Devise. */
+  /** "Who we are" pillars - Mission / Vision / Devise. */
   pillars: { label: string; items: { name: string; body: string }[] }
   /** The About page's long-form content. The Mission / Vision / Devise headlines
-   *  are the `pillars` bodies above — this carries the paragraph under each, plus
+   *  are the `pillars` bodies above - this carries the paragraph under each, plus
    *  the origin story and the team framing. Kept separate from `pillars` so the
    *  home page's short cards stay short. */
-  /** /prensip — the convictions page: eyebrow, lead, four numbered principles. */
+  /** /prensip - the convictions page: eyebrow, lead, four numbered principles. */
   principlesPage: {
     label: string
     lead: string
     items: { title: string; body: string }[]
   }
-  /** /ekip — the team page. The board itself is not locale content: it is named
+  /** /ekip - the team page. The board itself is not locale content: it is named
    *  in the imprint, so it lives in the page. */
   teamPage: {
     label: string
@@ -217,7 +217,7 @@ export interface SiteContent {
   }
   /** The 404 page. */
   notFound: { code: string; title: string; lead: string; home: string; explore: string }
-  /** /kontak — every channel we actually have. No phone: none has been supplied,
+  /** /kontak - every channel we actually have. No phone: none has been supplied,
    *  and inventing one on a statutory-adjacent page is not an option. */
   contactPage: {
     label: string
@@ -233,7 +233,7 @@ export interface SiteContent {
     lastName: string
     emailField: string
     /** Optional: the visitor's own number, if they want a call back. There is
-     *  still no number for US — none has been supplied. */
+     *  still no number for US - none has been supplied. */
     phoneField: string
     message: string
     optional: string
@@ -241,7 +241,7 @@ export interface SiteContent {
     sending: string
     /** Shown when an endpoint took the message. */
     sent: string
-    /** Shown when the visitor's own mail client was opened instead — they still
+    /** Shown when the visitor's own mail client was opened instead - they still
      *  have to press send, so this cannot say "we have your message". */
     handoff: string
     error: string
@@ -258,7 +258,7 @@ export interface SiteContent {
     storyLabel: string
     storyTitle: string
     /** Five stages, in order. The numbering is chronological, not decorative.
-     *  `status` is where each stage stands today — inferred from what the rest
+     *  `status` is where each stage stands today - inferred from what the rest
      *  of the site states (LexHaiti is listed Actif; the incubated projects are
      *  in development), so it needs a sanity check whenever that changes. */
     story: { kicker: string; title: string; body: string; status: 'done' | 'current' | 'upcoming' }[]
@@ -268,7 +268,7 @@ export interface SiteContent {
     teamLabel: string
     teamTitle: string
   }
-  /** "What we do" overview — eyebrow, split title (outline word + rest), lead, three
+  /** "What we do" overview - eyebrow, split title (outline word + rest), lead, three
    *  Bati / Enkibe / Konekte pillar cards, and an end-row CTA. */
   whatWeDo: {
     label: string
@@ -279,7 +279,7 @@ export interface SiteContent {
     viewAll: string
     cards: { label: string; title: string; body: string; cta: string }[]
   }
-  /** "Explore our ecosystem" — incubated-projects carousel: eyebrow, split title
+  /** "Explore our ecosystem" - incubated-projects carousel: eyebrow, split title
    *  (outline accent word + rest), subtitle, six project cards, and an end-row CTA. */
   ecosystem: {
     label: string
@@ -297,16 +297,16 @@ export interface SiteContent {
       image: string
     }[]
   }
-  /** "Domaines d'action" — SDG-aligned theme cards (title, desc, SDG number, tag). */
+  /** "Domaines d'action" - SDG-aligned theme cards (title, desc, SDG number, tag). */
   domaines: {
     label: string
     title: string
     subtitle: string
-    /** Locale-appropriate SDG prefix on the tile — "ODD" (fr/ht) / "SDG" (en). */
+    /** Locale-appropriate SDG prefix on the tile - "ODD" (fr/ht) / "SDG" (en). */
     sdgPrefix: string
     items: { name: string; description: string; sdg: string; tags: string[] }[]
   }
-  /** "Le Journal" — blog teaser: split header, three article cards, view-all. */
+  /** "Le Journal" - blog teaser: split header, three article cards, view-all. */
   journal: {
     label: string
     strokeWord: string
@@ -316,15 +316,17 @@ export interface SiteContent {
     viewAll: string
     posts: { category: string; date: string; title: string; image: string }[]
   }
-  /** FAQ — eyebrow + stroke headline + lead (left), accordion (right). */
+  /** FAQ - eyebrow + stroke headline + lead (left), accordion (right). */
   faq: {
     label: string
+    /** Optional non-italic lead before the italic strokeWord (e.g. "Your "). */
+    strokeLead?: string
     strokeWord: string
     titleRest: string
     subtitle: string
     items: { q: string; a: string }[]
   }
-  /** "Passe à l'action" — split header + two audience cards (fund / contribute). */
+  /** "Passe à l'action" - split header + two audience cards (fund / contribute). */
   action: {
     label: string
     title: string
@@ -366,12 +368,12 @@ const footerSocials: SocialLink[] = [
   { label: 'Facebook', href: 'https://facebook.com', icon: 'facebook' },
   { label: 'X', href: 'https://x.com', icon: 'x' },
   { label: 'Instagram', href: 'https://instagram.com', icon: 'instagram' },
-  // Placeholder — swap href for the real WhatsApp channel invite link once live.
+  // Placeholder - swap href for the real WhatsApp channel invite link once live.
   { label: 'Canal WhatsApp', href: '#', icon: 'whatsapp' },
 ]
 
 /* ------------------------------------------------------------------ *
- * Kreyòl (default) — the original copy, verbatim.
+ * Kreyòl (default) - the original copy, verbatim.
  * ------------------------------------------------------------------ */
 
 const ht: SiteContent = {
@@ -380,8 +382,8 @@ const ht: SiteContent = {
   heroTitle: { shaping: 'Fasonnen', tomorrow: 'Demen', with: 'Avèk', vision: 'Vizyon', and: '&', action: 'Aksyon', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']] },
   scrollTopLabel: 'Tounen anlè',
   heroDescription: {
-    full: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv, konpetans ak zouti open source ki pou tout moun.",
-    short: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv ak zouti open source ki pou tout moun.",
+    full: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li - lwa, achiv, konpetans ak zouti open source ki pou tout moun.",
+    short: "Enfrastrikti dijital louvri pou Ayiti ak dyaspora li - lwa, achiv ak zouti open source ki pou tout moun.",
   },
   skipToContent: 'Ale nan kontni an',
   statsKicker: 'An chif',
@@ -413,7 +415,7 @@ const ht: SiteContent = {
     },
   ],
   heroPanel: {
-    banner: { label: 'Ayiti Dijital fonde ofisyèlman — jen 2026, Minik', href: '#sou-nou' },
+    banner: { label: 'Ayiti Dijital fonde ofisyèlman - jen 2026, Minik', href: '#sou-nou' },
     title: (
       <>
         Lanbi a sonnen.
@@ -421,7 +423,7 @@ const ht: SiteContent = {
         <em>Konbit dijital</em> la kòmanse.
       </>
     ),
-    sub: 'Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv, konpetans ak zouti open source ki pou tout moun.',
+    sub: 'Enfrastrikti dijital louvri pou Ayiti ak dyaspora li - lwa, achiv, konpetans ak zouti open source ki pou tout moun.',
     subLang: 'ht',
     ctas: [
       {
@@ -445,7 +447,7 @@ const ht: SiteContent = {
   projectsSection: {
     kicker: 'Pwojè',
     title: 'Sa n ap **bati** kounye a',
-    sub: 'Des plateformes ouvertes, construites au grand jour — sous licence libre, pour toujours.',
+    sub: 'Des plateformes ouvertes, construites au grand jour - sous licence libre, pour toujours.',
     subLang: 'fr',
   },
   projects: [
@@ -453,7 +455,7 @@ const ht: SiteContent = {
       icon: ProjectIcons.lexhaiti,
       chip: 'An liy',
       title: 'LexHaiti',
-      kr: 'Lwa ak jistis aksesib pou tout moun. Tout kò lejislatif ayisyen an — chèche, li, pataje — gratis.',
+      kr: 'Lwa ak jistis aksesib pou tout moun. Tout kò lejislatif ayisyen an - chèche, li, pataje - gratis.',
       tr: 'La loi haïtienne, consultable et citable en ligne.',
       trLang: 'fr',
       link: { label: 'Vizite LexHaiti', href: '#' },
@@ -462,7 +464,7 @@ const ht: SiteContent = {
       icon: ProjectIcons.archive,
       chip: 'An konstriksyon',
       title: 'Achiv Dijital',
-      kr: 'Moniteur ak achiv istorik yo an liy — depi 1804 rive jodi a, paj pa paj, louvri pou rechèch.',
+      kr: 'Moniteur ak achiv istorik yo an liy - depi 1804 rive jodi a, paj pa paj, louvri pou rechèch.',
       tr: 'Le Moniteur et les archives historiques, numérisés et ouverts.',
       trLang: 'fr',
       link: { label: 'Swiv pwogrè a', href: '#' },
@@ -478,24 +480,24 @@ const ht: SiteContent = {
     },
   ],
   projectFilters: { all: 'Tout', active: 'An liy', dev: 'An konstriksyon', coming: 'Ap vini' },
-  homeEcosystemCta: { caption: 'Yon ekosistèm ki ap grandi — louvri, an kreyòl, pou tout moun.', viewAll: 'Wè tout sa n ap fè' },
+  homeEcosystemCta: { caption: 'Yon ekosistèm ki ap grandi - louvri, an kreyòl, pou tout moun.', viewAll: 'Wè tout sa n ap fè' },
   hubSection: {
     kicker: 'Pou kominote a',
     title: 'Hub la pa yon bilding. Se yon konbit.',
-    sub: 'Sant inovasyon nou an vityèl anvan tout bagay — li viv sou sit sa a, nan repo nou yo ak nan apèl kominote a. Louvri pou tout moun, kèlkeswa kote yo ye.',
+    sub: 'Sant inovasyon nou an vityèl anvan tout bagay - li viv sou sit sa a, nan repo nou yo ak nan apèl kominote a. Louvri pou tout moun, kèlkeswa kote yo ye.',
     subLang: 'ht',
   },
   hubDefinition: {
     word: 'konbit',
     pron: '/kon-bit/ · non',
     body: 'Tradisyon ayisyen kote tout yon kominote mete men ansanm pou fè travay youn pa t ap ka fè pou kont li.',
-    tr: 'Tradition haïtienne du travail collectif. Nous faisons pareil — avec du code.',
+    tr: 'Tradition haïtienne du travail collectif. Nous faisons pareil - avec du code.',
     trLang: 'fr',
   },
   hubPrograms: [
     {
       title: 'Konbit open source',
-      kr: 'Chak mwa nou kode ansanm sou pwojè piblik yo — depi premye issue ou jiska premye release ou.',
+      kr: 'Chak mwa nou kode ansanm sou pwojè piblik yo - depi premye issue ou jiska premye release ou.',
       en: 'Monthly build sprints on our open repositories.',
     },
     {
@@ -505,7 +507,7 @@ const ht: SiteContent = {
     },
     {
       title: 'Mentora youn-a-youn',
-      kr: 'Enjenyè dyaspora yo akonpaye jèn talan an Ayiti — sis mwa, yon objektif klè.',
+      kr: 'Enjenyè dyaspora yo akonpaye jèn talan an Ayiti - sis mwa, yon objektif klè.',
       en: 'Diaspora engineers mentor young developers in Haiti.',
     },
     {
@@ -517,7 +519,7 @@ const ht: SiteContent = {
   diaspora: {
     kicker: 'Konbit dijital',
     title: 'Ou pa oblije an Ayiti pou w bati pou Ayiti.',
-    lead: 'Kèlkeswa kote w ye — premye pull request ou se men w nan konbit la. Vin kode, vin fòme, vin dokimante, vin tradwi.',
+    lead: 'Kèlkeswa kote w ye - premye pull request ou se men w nan konbit la. Vin kode, vin fòme, vin dokimante, vin tradwi.',
     leadEn: 'Build with us from anywhere. Your first pull request is your hand in the konbit.',
     cities: ['MINIK', 'MONREYAL', 'MIAMI', 'PARI', 'PÒTOPRENS'],
     ctas: [
@@ -565,9 +567,9 @@ const ht: SiteContent = {
     label: 'Konviksyon nou yo',
     lead: "Pi lwen pase pwojè nou yo, gen prensip. Yo defini kijan nou travay, sa nou refize konpwomèt, ak tras nou vle kite nan ekosistèm nimerik ayisyen an.",
     items: [
-      { title: 'Ouvèti & transparans', body: "Tou sa nou bati ouvè pa default : piblik, oditab epi reitilizab. Kòd la, done yo ak desizyon yo ouvè pa default — paske konfyans bati sou transparans, pa janm sou sekrè." },
+      { title: 'Ouvèti & transparans', body: "Tou sa nou bati ouvè pa default : piblik, oditab epi reitilizab. Kòd la, done yo ak desizyon yo ouvè pa default - paske konfyans bati sou transparans, pa janm sou sekrè." },
       { title: 'Souverènte nimerik', body: "Ayiti dwe metrize enfrastrikti nimerik li ak done li. Nou bati zouti Ayisyen kontwole, ebèje epi fè evolye, pou redui depandans epi mete desizyon an pi pre kominote yo." },
-      { title: 'Aksesiblite & enklizyon', body: "Enfòmasyon piblik la se pou tout moun. Nou konsevwa san baryè fòma, lang oswa koneksyon, epi nou bati ak ekip divès — paske yon zouti sivik gen valè sèlman si li sèvi tout moun toutbon." },
+      { title: 'Aksesiblite & enklizyon', body: "Enfòmasyon piblik la se pou tout moun. Nou konsevwa san baryè fòma, lang oswa koneksyon, epi nou bati ak ekip divès - paske yon zouti sivik gen valè sèlman si li sèvi tout moun toutbon." },
       { title: 'Dirabilite & byen komen', body: "Nou bati pou dire. Chak pwojè dwe siviv fondatè li yo, chita sou estanda ouvè epi nouri yon byen komen nimerik ki pwofite jenerasyon k ap vini yo, pa kèk moun sèlman." },
     ],
   },
@@ -587,7 +589,7 @@ const ht: SiteContent = {
   },
   contactPage: {
     label: 'Kontakte nou',
-    lead: "Yon kesyon, yon pwopozisyon patenarya, oswa yon pwojè ou vle enkibe ? Ekri nou — nou li tout mesaj.",
+    lead: "Kesyon, patenarya oswa pwojè pou enkibe ? Ekri nou.",
     emailLabel: 'Imèl',
     postLabel: 'Adrès postal',
     legalLabel: 'Enfòmasyon legal',
@@ -601,7 +603,7 @@ const ht: SiteContent = {
     optional: 'opsyonèl',
     send: 'Voye',
     sending: 'N ap voye…',
-    sent: 'Mèsi — nou resevwa mesaj ou, n ap reponn.',
+    sent: 'Mèsi - nou resevwa mesaj ou, n ap reponn.',
     handoff: "Pwogram imèl ou dwe louvri ak mesaj la pare. Voye l epi n ap reponn ou.",
     error: "Nou pa rive voye l. Ekri nou dirèkteman nan contact@ayitidijital.org.",
     again: 'Ekri yon lòt mesaj',
@@ -691,7 +693,7 @@ const ht: SiteContent = {
       { name: 'Dwa Moun', description: 'Defann dwa sivil ak politik, konbat diskou rayisman, epi ankouraje yon espas sivik enklizif.', sdg: '16', tags: ['#legaltech', '#jistis'] },
       { name: 'Jèn yo', description: 'Akonpaye jèn talan yo ak mentora epi opòtinite pou fè pwochen jenerasyon batisè yo eklate.', sdg: '8', tags: ['#jènès', '#opòtinite'] },
       { name: 'Devlopman Ekonomik', description: 'Antreprenarya, enkibasyon start-up ak kreyasyon valè dirab pou kominote ayisyen yo.', sdg: '8', tags: ['#antreprenarya', '#ekonomi'] },
-      { name: 'Done Ouvè', description: 'Ouvri done piblik Ayiti yo pou batisè, chèchè ak enstitisyon — transparans demokratik kòmanse ak aksè ak done.', sdg: '16/17', tags: ['#opendata', '#transparans'] },
+      { name: 'Done Ouvè', description: 'Ouvri done piblik Ayiti yo pou batisè, chèchè ak enstitisyon - transparans demokratik kòmanse ak aksè ak done.', sdg: '16/17', tags: ['#opendata', '#transparans'] },
     ],
   },
   journal: {
@@ -715,7 +717,7 @@ const ht: SiteContent = {
     items: [
       { q: 'Ki misyon Ayiti Dijital?', a: 'N ap fè kouve epi lanse byen piblik nimerik ki nan enterè piblik la pou demokratize aksè a enfòmasyon ak opòtinite ann Ayiti.' },
       { q: 'Kijan don yo itilize?', a: 'Chak kontribisyon finanse dirèkteman devlopman pwojè yo, pwogram fòmasyon yo ak enfrastrikti ouvè nou mete disponib pou tout moun.' },
-      { q: 'Èske mwen ka kontribye kòm volontè?', a: 'Wi. Devlopè, jiris, designer oswa sitwayen angaje — gen yon plas pou chak moun, sou GitHub kou nan pwogram nou yo.' },
+      { q: 'Èske mwen ka kontribye kòm volontè?', a: 'Wi. Devlopè, jiris, designer oswa sitwayen angaje - gen yon plas pou chak moun, sou GitHub kou nan pwogram nou yo.' },
       { q: 'Anplis don, kijan mwen ka ede?', a: 'Pataje pwojè nou yo, rejwenn kominote a, pwopoze yon lide, oswa vin yon patnè enstitisyonèl hub la.' },
       { q: 'Kijan pou m vin yon patnè?', a: 'Kontakte nou sou paj Kontak la : nou bati ekosistèm nan ak enstitisyon, inivèsite ak òganizasyon ki aliyen ak valè nou yo.' },
     ],
@@ -723,21 +725,21 @@ const ht: SiteContent = {
   action: {
     label: 'Pase a aksyon',
     title: 'Bati baz dijital Ayiti.',
-    subtitle: 'De fason pou fè misyon an vanse — chwazi pa w la.',
+    subtitle: 'De fason pou fè misyon an vanse - chwazi pa w la.',
     fundKreyol: 'PATNÈ',
     fundTitle: 'Finanse yon pwojè',
     fundDesc: 'Òganizasyon, bayè, dyaspora : sipò w transfòme pwototip civic tech an enfrastrikti piblik dirab.',
     fundButton: 'Vin yon patnè',
     codeKreyol: 'KÒDE',
-    codeTitle: 'Kontribye nan kòd la',
-    codeDesc: 'Devlopè, designer, jiris oswa tradiktè : chak pwojè hub la louvri epi verifyab, epi l ap tann ou.',
+    codeTitle: 'Kontribye nan yon pwojè',
+    codeDesc: 'Chak pwojè nan hub la louvri epi verifyab sou GitHub. Kòd, design, dwa oswa tradiksyon : chwazi yon pwojè epi mete men.',
     codeButton: 'Antre nan kominote a',
   },
-  footerBlurb: 'Enfrastrikti dijital louvri pou Ayiti ak dyaspora li — lwa, achiv, konpetans ak zouti open source.',
+  footerBlurb: 'Enfrastrikti dijital louvri pou Ayiti ak dyaspora li - lwa, achiv, konpetans ak zouti open source.',
   newsletter: {
     kicker: 'Enfòlèt',
     title: 'Mize a jou chak mwa',
-    body: 'Rete konekte ak rezo Ayiti Dijital la — nouvèl, evènman ak startup k ap dechennen. Yon ti gout kilti kreyativite dijital, dirèkteman nan bwat imel ou.',
+    body: 'Rete konekte ak rezo Ayiti Dijital la - nouvèl, evènman ak startup k ap dechennen. Yon ti gout kilti kreyativite dijital, dirèkteman nan bwat imel ou.',
     privacy: { label: 'Deklarasyon konfidansyalite', href: '/konfidansyalite' },
     firstName: { label: 'Prenon', placeholder: 'Ada' },
     lastName: { label: 'Non', placeholder: 'Lovelace' },
@@ -784,7 +786,7 @@ const ht: SiteContent = {
   footerCopyright: '© 2026 Ayiti Dijital · Tout dwa rezève.',
   footerSocials,
   konbitFooter: {
-    tagline: { lead: 'Konbit dijital la,', muted: 'pou tout Ayiti ak dyaspora li.' },
+    tagline: { lead: 'Fasone transfòmasyon', muted: 'dijital Ayiti a.' },
     socialLabel: 'Rete an kontak !',
     navTitle: 'Navigasyon',
     orgTitle: 'Òganizasyon',
@@ -799,9 +801,9 @@ const ht: SiteContent = {
     ctaStrong: 'Ann bati l ansanm.',
     proverb: 'Men anpil chay pa lou.',
   },
-  metaTitle: 'Ayiti Dijital — Lanbi a sonnen, konbit dijital la kòmanse',
+  metaTitle: 'Ayiti Dijital - Fasonnen Demen Avèk Vizyon & Aksyon',
   metaDescription:
-    'Ayiti Dijital ap bati enfrastrikti dijital louvri pou Ayiti ak dyaspora li: lwa, achiv, fòmasyon ak zouti open source.',
+    'Fasonnen demen Ayiti a avèk vizyon ak aksyon : enfrastrikti dijital louvri pou Ayiti ak dyaspora li - lwa, achiv, fòmasyon ak zouti open source.',
 }
 
 /* ------------------------------------------------------------------ *
@@ -814,8 +816,8 @@ const fr: SiteContent = {
   heroTitle: { shaping: 'Façonner', tomorrow: "l'Avenir", with: 'avec', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']] },
   scrollTopLabel: 'Haut de page',
   heroDescription: {
-    full: "Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives, compétences et outils open source qui appartiennent à tous.",
-    short: "Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives et outils open source.",
+    full: "Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora - lois, archives, compétences et outils open source qui appartiennent à tous.",
+    short: "Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora - lois, archives et outils open source.",
   },
   skipToContent: 'Aller au contenu',
   statsKicker: 'En chiffres',
@@ -847,7 +849,7 @@ const fr: SiteContent = {
     },
   ],
   heroPanel: {
-    banner: { label: 'Ayiti Dijital officiellement fondée — juin 2026, Munich', href: '#sou-nou' },
+    banner: { label: 'Ayiti Dijital officiellement fondée - juin 2026, Munich', href: '#sou-nou' },
     title: (
       <>
         La lambi résonne.
@@ -855,7 +857,7 @@ const fr: SiteContent = {
         Le <em>konbit numérique</em> commence.
       </>
     ),
-    sub: 'Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives, compétences et outils open source qui appartiennent à tous.',
+    sub: 'Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora - lois, archives, compétences et outils open source qui appartiennent à tous.',
     subLang: 'fr',
     ctas: [
       {
@@ -879,7 +881,7 @@ const fr: SiteContent = {
   projectsSection: {
     kicker: 'Projets',
     title: 'Ce que nous **construisons**',
-    sub: 'Des plateformes ouvertes, construites au grand jour — sous licence libre, pour toujours.',
+    sub: 'Des plateformes ouvertes, construites au grand jour - sous licence libre, pour toujours.',
     subLang: 'fr',
   },
   projects: [
@@ -887,7 +889,7 @@ const fr: SiteContent = {
       icon: ProjectIcons.lexhaiti,
       chip: 'En ligne',
       title: 'LexHaiti',
-      kr: 'Le droit et la justice accessibles à tous. Tout le corpus législatif haïtien — rechercher, lire, partager — gratuitement.',
+      kr: 'Le droit et la justice accessibles à tous. Tout le corpus législatif haïtien - rechercher, lire, partager - gratuitement.',
       tr: 'La loi haïtienne, consultable et citable en ligne.',
       trLang: 'fr',
       link: { label: 'Visiter LexHaiti', href: '#' },
@@ -896,7 +898,7 @@ const fr: SiteContent = {
       icon: ProjectIcons.archive,
       chip: 'En construction',
       title: 'Archives numériques',
-      kr: 'Le Moniteur et les archives historiques en ligne — de 1804 à aujourd’hui, page par page, ouverts à la recherche.',
+      kr: 'Le Moniteur et les archives historiques en ligne - de 1804 à aujourd’hui, page par page, ouverts à la recherche.',
       tr: 'Le Moniteur et les archives historiques, numérisés et ouverts.',
       trLang: 'fr',
       link: { label: 'Suivre l’avancement', href: '#' },
@@ -916,20 +918,20 @@ const fr: SiteContent = {
   hubSection: {
     kicker: 'Pour la communauté',
     title: 'Le hub n’est pas un bâtiment. C’est un konbit.',
-    sub: 'Notre hub d’innovation est virtuel avant tout — il vit sur ce site, dans nos dépôts et dans nos appels communautaires. Ouvert à tous, depuis partout.',
+    sub: 'Notre hub d’innovation est virtuel avant tout - il vit sur ce site, dans nos dépôts et dans nos appels communautaires. Ouvert à tous, depuis partout.',
     subLang: 'fr',
   },
   hubDefinition: {
     word: 'konbit',
     pron: '/kon-bit/ · nom',
     body: 'Tradition haïtienne où toute une communauté met la main à la pâte pour accomplir un travail que personne ne pourrait faire seul.',
-    tr: 'Nou fè menm bagay la — ak kòd.',
+    tr: 'Nou fè menm bagay la - ak kòd.',
     trLang: 'ht',
   },
   hubPrograms: [
     {
       title: 'Konbit open source',
-      kr: 'Chaque mois, nous codons ensemble sur des projets publics — de ta première issue à ta première release.',
+      kr: 'Chaque mois, nous codons ensemble sur des projets publics - de ta première issue à ta première release.',
       en: 'Monthly build sprints on our open repositories.',
     },
     {
@@ -939,7 +941,7 @@ const fr: SiteContent = {
     },
     {
       title: 'Mentorat individuel',
-      kr: 'Des ingénieurs de la diaspora accompagnent de jeunes talents en Haïti — six mois, un objectif clair.',
+      kr: 'Des ingénieurs de la diaspora accompagnent de jeunes talents en Haïti - six mois, un objectif clair.',
       en: 'Diaspora engineers mentor young developers in Haiti.',
     },
     {
@@ -951,7 +953,7 @@ const fr: SiteContent = {
   diaspora: {
     kicker: 'Konbit numérique',
     title: 'Pas besoin d’être en Haïti pour bâtir pour Haïti.',
-    lead: 'Où que tu sois — ta première pull request, c’est ta main dans le konbit. Viens coder, viens te former, viens documenter, viens traduire.',
+    lead: 'Où que tu sois - ta première pull request, c’est ta main dans le konbit. Viens coder, viens te former, viens documenter, viens traduire.',
     leadEn: 'Build with us from anywhere. Your first pull request is your hand in the konbit.',
     cities: ['MUNICH', 'MONTRÉAL', 'MIAMI', 'PARIS', 'PORT-AU-PRINCE'],
     ctas: [
@@ -999,9 +1001,9 @@ const fr: SiteContent = {
     label: 'Nos convictions',
     lead: "Au-delà de nos projets, des principes. Ils définissent comment nous travaillons, ce que nous refusons de compromettre, et la trace que nous voulons laisser dans l'écosystème numérique haïtien.",
     items: [
-      { title: 'Ouverture & transparence', body: "Tout ce que nous construisons est ouvert par défaut : public, auditable et réutilisable. Le code, les données et les décisions sont ouverts par défaut — parce que la confiance se construit sur la transparence, jamais sur le secret." },
+      { title: 'Ouverture & transparence', body: "Tout ce que nous construisons est ouvert par défaut : public, auditable et réutilisable. Le code, les données et les décisions sont ouverts par défaut - parce que la confiance se construit sur la transparence, jamais sur le secret." },
       { title: 'Souveraineté numérique', body: "Haïti doit maîtriser son infrastructure numérique et ses données. Nous bâtissons des outils que des Haïtiens contrôlent, hébergent et font évoluer, pour réduire la dépendance et ancrer la décision au plus près des communautés." },
-      { title: 'Accessibilité & inclusion', body: "L'information publique appartient à tous. Nous concevons sans barrière de format, de langue ou de connectivité, et nous construisons avec des équipes diverses — car un outil civique n'a de valeur que s'il sert réellement tout le monde." },
+      { title: 'Accessibilité & inclusion', body: "L'information publique appartient à tous. Nous concevons sans barrière de format, de langue ou de connectivité, et nous construisons avec des équipes diverses - car un outil civique n'a de valeur que s'il sert réellement tout le monde." },
       { title: 'Durabilité & bien commun', body: "Nous bâtissons pour durer. Chaque projet doit survivre à ses fondateurs, reposer sur des standards ouverts et nourrir un bien commun numérique qui profite aux générations futures, pas à quelques-uns." },
     ],
   },
@@ -1021,7 +1023,7 @@ const fr: SiteContent = {
   },
   contactPage: {
     label: 'Nous écrire',
-    lead: "Une question, une proposition de partenariat, ou un projet à incuber ? Écrivez-nous — nous lisons chaque message.",
+    lead: "Questions, partenariats ou projets à incuber ? Écrivez-nous.",
     emailLabel: 'E-mail',
     postLabel: 'Adresse postale',
     legalLabel: 'Informations légales',
@@ -1035,7 +1037,7 @@ const fr: SiteContent = {
     optional: 'facultatif',
     send: 'Envoyer',
     sending: 'Envoi…',
-    sent: 'Merci — nous avons votre message, nous vous répondons.',
+    sent: 'Merci - nous avons votre message, nous vous répondons.',
     handoff: "Votre logiciel de messagerie s'est ouvert avec le message prêt. Envoyez-le et nous vous répondrons.",
     error: "L'envoi n'a pas abouti. Écrivez-nous directement à contact@ayitidijital.org.",
     again: 'Écrire un autre message',
@@ -1125,7 +1127,7 @@ const fr: SiteContent = {
       { name: 'Droits Humains', description: "Défense des droits civils et politiques, lutte contre les discours de haine, promotion d'un espace civique inclusif.", sdg: '16', tags: ['#legaltech', '#jistis'] },
       { name: 'Jeunesse', description: 'Accompagnement des jeunes talents, mentorat et opportunités pour faire éclore la prochaine génération de bâtisseurs.', sdg: '8', tags: ['#jènès', '#opòtinite'] },
       { name: 'Développement Économique', description: 'Entrepreneuriat, incubation de start-ups et création de valeur durable pour les communautés haïtiennes.', sdg: '8', tags: ['#antreprenarya', '#ekonomi'] },
-      { name: 'Données ouvertes', description: "Ouvrir les données publiques d'Haïti aux bâtisseurs, chercheurs et institutions — la transparence démocratique commence par l'accès.", sdg: '16/17', tags: ['#opendata', '#transparans'] },
+      { name: 'Données ouvertes', description: "Ouvrir les données publiques d'Haïti aux bâtisseurs, chercheurs et institutions - la transparence démocratique commence par l'accès.", sdg: '16/17', tags: ['#opendata', '#transparans'] },
     ],
   },
   journal: {
@@ -1143,13 +1145,14 @@ const fr: SiteContent = {
   },
   faq: {
     label: 'FAQ',
-    strokeWord: 'Vos questions,',
+    strokeLead: 'Vos ',
+    strokeWord: 'questions,',
     titleRest: 'nos réponses.',
     subtitle: "Tout ce qu'il faut savoir sur le soutien, la contribution et l'engagement au sein du hub.",
     items: [
       { q: "Quelle est la mission d'Ayiti Dijital ?", a: "Nous incubons et lançons des biens publics numériques d'intérêt public pour démocratiser l'accès à l'information et aux opportunités en Haïti." },
       { q: 'Comment sont utilisés les dons ?', a: "Chaque contribution finance directement le développement des projets, les programmes de formation et l'infrastructure ouverte que nous mettons à disposition de tous." },
-      { q: 'Puis-je contribuer bénévolement ?', a: "Oui. Développeurs, juristes, designers ou citoyens engagés — il y a une place pour chacun, sur GitHub comme dans nos programmes." },
+      { q: 'Puis-je contribuer bénévolement ?', a: "Oui. Développeurs, juristes, designers ou citoyens engagés - il y a une place pour chacun, sur GitHub comme dans nos programmes." },
       { q: 'Au-delà du don, comment aider ?', a: 'Partagez nos projets, rejoignez la communauté, proposez une idée, ou devenez partenaire institutionnel du hub.' },
       { q: 'Comment devenir partenaire ?', a: "Écrivez-nous via la page Contact : nous construisons l'écosystème avec des institutions, des universités et des organisations alignées sur nos valeurs." },
     ],
@@ -1157,21 +1160,21 @@ const fr: SiteContent = {
   action: {
     label: "Passe à l'action",
     title: "Bâtir la colonne vertébrale numérique d'Haïti.",
-    subtitle: 'Deux façons de faire avancer le mouvement — choisis la tienne.',
+    subtitle: 'Deux façons de faire avancer le mouvement - choisis la tienne.',
     fundKreyol: 'PATNÈ',
     fundTitle: 'Financer un projet',
     fundDesc: 'Organisations, bailleurs, diaspora : votre soutien transforme des prototypes civic tech en infrastructures publiques durables.',
     fundButton: 'Devenir partenaire',
     codeKreyol: 'KÒDE',
-    codeTitle: 'Contribuer au code',
-    codeDesc: "Développeur·se, designer, juriste ou traducteur·rice : chaque projet du hub est ouvert et auditable, et t'attend.",
+    codeTitle: 'Contribuer à un projet',
+    codeDesc: "Chaque projet du hub est ouvert et auditable sur GitHub. Code, design, droit ou traduction : choisis un projet et contribue.",
     codeButton: 'Rejoindre la communauté',
   },
-  footerBlurb: 'Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora — lois, archives, compétences et outils open source.',
+  footerBlurb: 'Une infrastructure numérique libre et ouverte pour Haïti et sa diaspora - lois, archives, compétences et outils open source.',
   newsletter: {
     kicker: 'Infolettre',
     title: 'Mises à jour mensuelles',
-    body: 'Restez connecté·e au réseau Ayiti Dijital — actualités, événements et startups qui décollent. Une dose de culture créative numérique, directement dans votre boîte mail.',
+    body: 'Restez connecté·e au réseau Ayiti Dijital - actualités, événements et startups qui décollent. Une dose de culture créative numérique, directement dans votre boîte mail.',
     privacy: { label: 'Politique de confidentialité', href: '/konfidansyalite' },
     firstName: { label: 'Prénom', placeholder: 'Ada' },
     lastName: { label: 'Nom', placeholder: 'Lovelace' },
@@ -1218,7 +1221,7 @@ const fr: SiteContent = {
   footerCopyright: '© 2026 Ayiti Dijital · Tous droits réservés.',
   footerSocials,
   konbitFooter: {
-    tagline: { lead: 'Le konbit numérique,', muted: 'pour Haïti et sa diaspora.' },
+    tagline: { lead: 'Façonner la transformation', muted: 'numérique d’Haïti.' },
     socialLabel: 'Restons en contact !',
     navTitle: 'Navigation',
     orgTitle: 'Organisation',
@@ -1233,9 +1236,9 @@ const fr: SiteContent = {
     ctaStrong: 'Bâtissons-le ensemble.',
     proverb: 'Men anpil chay pa lou.',
   },
-  metaTitle: 'Ayiti Dijital — La lambi résonne, le konbit numérique commence',
+  metaTitle: 'Ayiti Dijital - Façonner l’Avenir avec Vision & Action',
   metaDescription:
-    'Ayiti Dijital construit une infrastructure numérique libre et ouverte pour Haïti et sa diaspora : lois, archives, formation et outils open source.',
+    "Façonner l’avenir d’Haïti avec vision et action : une infrastructure numérique libre et ouverte pour Haïti et sa diaspora - lois, archives, formation et outils open source.",
 }
 
 /* ------------------------------------------------------------------ *
@@ -1248,8 +1251,8 @@ const en: SiteContent = {
   heroTitle: { shaping: 'Shaping', tomorrow: 'Tomorrow', with: 'with', vision: 'Vision', and: '&', action: 'Action.', phoneLines: [['tomorrow'], ['with'], ['vision'], ['and', 'action']], phone: { tomorrow: 'Future' } },
   scrollTopLabel: 'Back to top',
   heroDescription: {
-    full: "Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools that belong to everyone.",
-    short: "Free, open digital infrastructure for Haiti and its diaspora — laws, archives and open-source tools.",
+    full: "Free, open digital infrastructure for Haiti and its diaspora - laws, archives, skills and open-source tools that belong to everyone.",
+    short: "Free, open digital infrastructure for Haiti and its diaspora - laws, archives and open-source tools.",
   },
   skipToContent: 'Skip to content',
   statsKicker: 'By the numbers',
@@ -1281,7 +1284,7 @@ const en: SiteContent = {
     },
   ],
   heroPanel: {
-    banner: { label: 'Ayiti Dijital officially founded — June 2026, Munich', href: '#sou-nou' },
+    banner: { label: 'Ayiti Dijital officially founded - June 2026, Munich', href: '#sou-nou' },
     title: (
       <>
         The conch shell sounds.
@@ -1289,7 +1292,7 @@ const en: SiteContent = {
         The <em>digital konbit</em> begins.
       </>
     ),
-    sub: 'Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools that belong to everyone.',
+    sub: 'Free, open digital infrastructure for Haiti and its diaspora - laws, archives, skills and open-source tools that belong to everyone.',
     subLang: 'en',
     ctas: [
       {
@@ -1313,7 +1316,7 @@ const en: SiteContent = {
   projectsSection: {
     kicker: 'Projects',
     title: 'What we’re **building** now',
-    sub: 'Open platforms, built in the open — free-licensed, forever.',
+    sub: 'Open platforms, built in the open - free-licensed, forever.',
     subLang: 'en',
   },
   projects: [
@@ -1321,7 +1324,7 @@ const en: SiteContent = {
       icon: ProjectIcons.lexhaiti,
       chip: 'Online',
       title: 'LexHaiti',
-      kr: 'Law and justice accessible to everyone. The entire Haitian legislative corpus — search, read, share — for free.',
+      kr: 'Law and justice accessible to everyone. The entire Haitian legislative corpus - search, read, share - for free.',
       tr: 'Haitian law, searchable and citable online.',
       trLang: 'en',
       link: { label: 'Visit LexHaiti', href: '#' },
@@ -1330,7 +1333,7 @@ const en: SiteContent = {
       icon: ProjectIcons.archive,
       chip: 'In progress',
       title: 'Digital Archives',
-      kr: 'Le Moniteur and the historical archives online — from 1804 to today, page by page, open for research.',
+      kr: 'Le Moniteur and the historical archives online - from 1804 to today, page by page, open for research.',
       tr: 'Le Moniteur and the historical archives, digitized and open.',
       trLang: 'en',
       link: { label: 'Follow the progress', href: '#' },
@@ -1350,20 +1353,20 @@ const en: SiteContent = {
   hubSection: {
     kicker: 'For the community',
     title: 'The hub isn’t a building. It’s a konbit.',
-    sub: 'Our innovation hub is virtual first — it lives on this site, in our repos and in our community calls. Open to anyone, from anywhere.',
+    sub: 'Our innovation hub is virtual first - it lives on this site, in our repos and in our community calls. Open to anyone, from anywhere.',
     subLang: 'en',
   },
   hubDefinition: {
     word: 'konbit',
     pron: '/kon-bit/ · noun',
     body: 'A Haitian tradition where a whole community joins hands to do work no one could do alone.',
-    tr: 'We do the same thing — with code.',
+    tr: 'We do the same thing - with code.',
     trLang: 'en',
   },
   hubPrograms: [
     {
       title: 'Open-source konbit',
-      kr: 'Every month we code together on public projects — from your first issue to your first release.',
+      kr: 'Every month we code together on public projects - from your first issue to your first release.',
       en: 'Monthly build sprints on our open repositories.',
     },
     {
@@ -1373,7 +1376,7 @@ const en: SiteContent = {
     },
     {
       title: 'One-on-one mentorship',
-      kr: 'Diaspora engineers support young talent in Haiti — six months, one clear goal.',
+      kr: 'Diaspora engineers support young talent in Haiti - six months, one clear goal.',
       en: 'Diaspora engineers mentor young developers in Haiti.',
     },
     {
@@ -1385,7 +1388,7 @@ const en: SiteContent = {
   diaspora: {
     kicker: 'Digital konbit',
     title: 'You don’t have to be in Haiti to build for Haiti.',
-    lead: 'Wherever you are — your first pull request is your hand in the konbit. Come code, come learn, come document, come translate.',
+    lead: 'Wherever you are - your first pull request is your hand in the konbit. Come code, come learn, come document, come translate.',
     leadEn: 'Build with us from anywhere. Your first pull request is your hand in the konbit.',
     cities: ['MUNICH', 'MONTRÉAL', 'MIAMI', 'PARIS', 'PORT-AU-PRINCE'],
     ctas: [
@@ -1433,9 +1436,9 @@ const en: SiteContent = {
     label: 'What we stand for',
     lead: "Beyond our projects, principles. They define how we work, what we refuse to compromise on, and the mark we want to leave on Haiti's digital ecosystem.",
     items: [
-      { title: 'Openness & transparency', body: "Everything we build is open by default: public, auditable and reusable. The code, the data and the decisions are open by default — because trust is built on transparency, never on secrecy." },
+      { title: 'Openness & transparency', body: "Everything we build is open by default: public, auditable and reusable. The code, the data and the decisions are open by default - because trust is built on transparency, never on secrecy." },
       { title: 'Digital sovereignty', body: "Haiti must own its digital infrastructure and its data. We build tools that Haitians control, host and evolve, to reduce dependence and keep decisions close to the communities they affect." },
-      { title: 'Accessibility & inclusion', body: "Public information belongs to everyone. We design without barriers of format, language or connectivity, and we build with diverse teams — because a civic tool is only worth something if it genuinely serves everyone." },
+      { title: 'Accessibility & inclusion', body: "Public information belongs to everyone. We design without barriers of format, language or connectivity, and we build with diverse teams - because a civic tool is only worth something if it genuinely serves everyone." },
       { title: 'Durability & the commons', body: "We build to last. Every project must outlive its founders, rest on open standards, and feed a digital commons that benefits future generations rather than a few." },
     ],
   },
@@ -1455,7 +1458,7 @@ const en: SiteContent = {
   },
   contactPage: {
     label: 'Get in touch',
-    lead: "A question, a partnership proposal, or a project to incubate? Write to us — we read every message.",
+    lead: "Questions, partnerships or projects to incubate? Write to us.",
     emailLabel: 'Email',
     postLabel: 'Postal address',
     legalLabel: 'Legal information',
@@ -1469,7 +1472,7 @@ const en: SiteContent = {
     optional: 'optional',
     send: 'Send',
     sending: 'Sending…',
-    sent: "Thanks — we have your message and we'll get back to you.",
+    sent: "Thanks - we have your message and we'll get back to you.",
     handoff: 'Your mail program should have opened with the message ready. Send it and we will reply.',
     error: "That didn't go through. Write to us directly at contact@ayitidijital.org.",
     again: 'Write another message',
@@ -1493,7 +1496,7 @@ const en: SiteContent = {
       {
         kicker: 'The structure',
         title: 'The Hub is founded',
-        body: "Ayiti Dijital gives itself a public-interest framing, built to carry technological infrastructure transparently — by Haiti and for Haiti.",
+        body: "Ayiti Dijital gives itself a public-interest framing, built to carry technological infrastructure transparently - by Haiti and for Haiti.",
         status: 'done',
       },
       {
@@ -1505,7 +1508,7 @@ const en: SiteContent = {
       {
         kicker: 'The widening',
         title: 'An ecosystem in incubation',
-        body: "The shift to a full hub model. Our programmes open up to host and propel the next generation's projects and start-ups — commercial, social and civic alike.",
+        body: "The shift to a full hub model. Our programmes open up to host and propel the next generation's projects and start-ups - commercial, social and civic alike.",
         status: 'current',
       },
       {
@@ -1559,7 +1562,7 @@ const en: SiteContent = {
       { name: 'Human Rights', description: 'Defending civil and political rights, countering hate speech, and promoting an inclusive civic space.', sdg: '16', tags: ['#legaltech', '#jistis'] },
       { name: 'Youth', description: 'Supporting young talent through mentorship and opportunity to grow the next generation of builders.', sdg: '8', tags: ['#jènès', '#opòtinite'] },
       { name: 'Economic Development', description: 'Entrepreneurship, startup incubation and durable value creation for Haitian communities.', sdg: '8', tags: ['#antreprenarya', '#ekonomi'] },
-      { name: 'Open Data', description: "Opening Haiti's public data to builders, researchers and institutions — democratic transparency starts with access.", sdg: '16/17', tags: ['#opendata', '#transparans'] },
+      { name: 'Open Data', description: "Opening Haiti's public data to builders, researchers and institutions - democratic transparency starts with access.", sdg: '16/17', tags: ['#opendata', '#transparans'] },
     ],
   },
   journal: {
@@ -1577,13 +1580,14 @@ const en: SiteContent = {
   },
   faq: {
     label: 'FAQ',
-    strokeWord: 'Your questions,',
+    strokeLead: 'Your ',
+    strokeWord: 'questions,',
     titleRest: 'answered.',
     subtitle: 'Everything you need to know about supporting, contributing to, and joining the hub.',
     items: [
       { q: "What is Ayiti Dijital's mission?", a: 'We incubate and launch digital public goods that serve the public interest, in order to democratize access to information and opportunity in Haiti.' },
       { q: 'How are donations used?', a: 'Every contribution directly funds project development, training programs, and the open infrastructure we make available to all.' },
-      { q: 'Can I volunteer?', a: "Yes. Developers, lawyers, designers, or engaged citizens — there's a place for everyone, on GitHub and in our programs." },
+      { q: 'Can I volunteer?', a: "Yes. Developers, lawyers, designers, or engaged citizens - there's a place for everyone, on GitHub and in our programs." },
       { q: 'Beyond donating, how can I help?', a: 'Share our projects, join the community, propose an idea, or become an institutional partner of the hub.' },
       { q: 'How do I become a partner?', a: 'Reach out via the Contact page: we build the ecosystem with institutions, universities, and organizations aligned with our values.' },
     ],
@@ -1591,21 +1595,21 @@ const en: SiteContent = {
   action: {
     label: 'Take action',
     title: "Build Haiti's digital backbone.",
-    subtitle: 'Two ways to move the mission forward — pick yours.',
+    subtitle: 'Two ways to move the mission forward - pick yours.',
     fundKreyol: 'PATNÈ',
     fundTitle: 'Fund a project',
     fundDesc: 'Organisations, funders, diaspora: your support turns civic-tech prototypes into lasting public infrastructure.',
     fundButton: 'Become a partner',
     codeKreyol: 'KÒDE',
-    codeTitle: 'Contribute code',
-    codeDesc: "Developer, designer, jurist, or translator: every project in the hub is open and auditable, and it's waiting for you.",
+    codeTitle: 'Contribute to a project',
+    codeDesc: "Every project in the hub is open and auditable on GitHub. Code, design, law or translation: pick a project and jump in.",
     codeButton: 'Join the community',
   },
-  footerBlurb: 'Free, open digital infrastructure for Haiti and its diaspora — laws, archives, skills and open-source tools.',
+  footerBlurb: 'Free, open digital infrastructure for Haiti and its diaspora - laws, archives, skills and open-source tools.',
   newsletter: {
     kicker: 'Newsletter',
     title: 'Monthly updates',
-    body: 'Stay connected to the Ayiti Dijital network — news, events and startups taking off. A dose of creative digital culture, straight to your inbox.',
+    body: 'Stay connected to the Ayiti Dijital network - news, events and startups taking off. A dose of creative digital culture, straight to your inbox.',
     privacy: { label: 'Privacy policy', href: '/konfidansyalite' },
     firstName: { label: 'First name', placeholder: 'Ada' },
     lastName: { label: 'Last name', placeholder: 'Lovelace' },
@@ -1652,7 +1656,7 @@ const en: SiteContent = {
   footerCopyright: '© 2026 Ayiti Dijital · All rights reserved.',
   footerSocials,
   konbitFooter: {
-    tagline: { lead: 'The digital konbit,', muted: 'for Haiti and its diaspora.' },
+    tagline: { lead: 'Shaping the digital', muted: 'transformation of Haiti.' },
     socialLabel: 'Stay in touch!',
     navTitle: 'Navigation',
     orgTitle: 'Organization',
@@ -1667,9 +1671,9 @@ const en: SiteContent = {
     ctaStrong: "Let's build it together.",
     proverb: 'Men anpil chay pa lou.',
   },
-  metaTitle: 'Ayiti Dijital — The conch sounds, the digital konbit begins',
+  metaTitle: 'Ayiti Dijital - Shaping Tomorrow with Vision & Action',
   metaDescription:
-    'Ayiti Dijital is building free, open digital infrastructure for Haiti and its diaspora: laws, archives, training and open-source tools.',
+    'Shaping Haiti’s future with vision and action: free, open digital infrastructure for Haiti and its diaspora - laws, archives, training and open-source tools.',
 }
 
 /* ------------------------------------------------------------------ *

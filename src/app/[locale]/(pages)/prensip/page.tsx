@@ -6,7 +6,7 @@ import { toLocale } from '@/i18n'
 import { routeMetadata } from '../_metadata'
 
 /**
- * "Prensip" — the convictions. Four numbered principles, revealed one at a time
+ * "Prensip" - the convictions. Four numbered principles, revealed one at a time
  * as you scroll, matching the Istwa nou treatment on the About page: same rule
  * that draws in, same lift, same one-beat-per-item restraint.
  *
@@ -26,7 +26,7 @@ export default async function PrensipPage({ params }: { params: Promise<{ locale
   return (
     <RoutePage content={c} path="/prensip" title={c.pageTitles.principles} subtitle={p.lead}>
       {/* The warm panel here for a different reason than elsewhere: not to give
-          cards an edge — there are none — but because this is the flattest
+          cards an edge - there are none - but because this is the flattest
           surface on the site. The four principles are text rows separated by
           hairlines, so the page was 1170px of unbroken white, and a values page
           is the last one that should read as a default document. */}

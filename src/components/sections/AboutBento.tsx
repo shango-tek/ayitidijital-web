@@ -140,7 +140,7 @@ export function AboutBento({
               {pillars.slice(2, 3).map((p) => (
                 <PillarCard key={p.name} icon={ICONS[2]} label={p.name} body={p.body} />
               ))}
-              <div className="min-h-[13rem] flex-1 overflow-hidden border-4 border-double border-tum-ink">
+              <div className="aspect-[4/5] overflow-hidden border-4 border-double border-tum-ink sm:aspect-auto sm:min-h-[13rem] sm:flex-1">
                 <img
                   src={photo}
                   alt={photoAlt}

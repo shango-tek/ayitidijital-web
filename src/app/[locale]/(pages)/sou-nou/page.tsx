@@ -5,7 +5,7 @@ import { toLocale } from '@/i18n'
 import { routeMetadata } from '../_metadata'
 
 /**
- * "Sou nou" — Mission / Vision / Devise (staggered), then the origin-story
+ * "Sou nou" - Mission / Vision / Devise (staggered), then the origin-story
  * timeline, in the house register (Albert Sans, electric, sharp). The
  * principles and the board have their own routes (/prensip, /ekip).
  */
@@ -32,7 +32,7 @@ export default async function SouNouPage({ params }: { params: Promise<{ locale:
       {/* ── Mission · Vision · Devise ─────────────────────────────────── */}
       <section id="vizyon" className="scroll-mt-28 bg-tum-paper px-2 pb-4 pt-16 md:pt-20">
         <div className="mx-auto grid max-w-[90rem] gap-4 px-3 md:px-8 lg:grid-cols-3 lg:items-start">
-          {/* Mission — lavender, the top of the stair */}
+          {/* Mission - lavender, the top of the stair */}
           <article className="border-4 border-double border-tum-ink bg-lavender p-8 md:p-10 lg:min-h-[26rem]">
             <span className="font-tum text-[11px] font-bold uppercase tracking-[0.18em] text-electric">
               {a.missionLabel}
@@ -43,7 +43,7 @@ export default async function SouNouPage({ params }: { params: Promise<{ locale:
             <p className="mt-5 font-tum leading-relaxed text-tum-muted">{a.missionBody}</p>
           </article>
 
-          {/* Vision — electric, one step down (the one bold surface in the row) */}
+          {/* Vision - electric, one step down (the one bold surface in the row) */}
           <article className="border-4 border-double border-white bg-electric p-8 md:p-10 lg:mt-16 lg:min-h-[26rem]">
             <span className="font-tum text-[11px] font-bold uppercase tracking-[0.18em] text-white/80">
               {a.visionLabel}
@@ -54,7 +54,7 @@ export default async function SouNouPage({ params }: { params: Promise<{ locale:
             <p className="mt-5 font-tum leading-relaxed text-white/80">{a.visionBody}</p>
           </article>
 
-          {/* Devise — white, bordered, so the row ends quietly */}
+          {/* Devise - white, bordered, so the row ends quietly */}
           <article
             id="prensip"
             className="scroll-mt-28 border-4 border-double border-tum-ink bg-tum-paper p-8 md:p-10 lg:mt-32 lg:min-h-[26rem]"
@@ -70,7 +70,7 @@ export default async function SouNouPage({ params }: { params: Promise<{ locale:
         </div>
       </section>
 
-      {/* ── Istwa nou — the origin story ──────────────────────────────── */}
+      {/* ── Istwa nou - the origin story ──────────────────────────────── */}
       <section id="istwa" className="scroll-mt-28 bg-tum-paper py-16 md:py-20 lg:py-[100px]">
         <div className="mx-auto max-w-[90rem] px-5 md:px-10">
           <span className="inline-flex items-center gap-2.5 font-tum text-xs font-bold uppercase tracking-[0.2em] text-tum-ink">

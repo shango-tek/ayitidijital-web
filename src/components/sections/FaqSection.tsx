@@ -12,6 +12,8 @@ export interface FaqItem {
 export interface FaqSectionProps {
   id?: string
   label: string
+  /** Optional non-italic lead rendered before the italic strokeWord. */
+  strokeLead?: string
   strokeWord: string
   titleRest: string
   subtitle: string
@@ -23,7 +25,7 @@ export interface FaqSectionProps {
  * register: black-bordered cards, Albert Sans questions, an electric plus/close
  * tile. First item open. Open state and props are unchanged from the Sui version.
  */
-export function FaqSection({ id, label, strokeWord, titleRest, subtitle, items }: FaqSectionProps) {
+export function FaqSection({ id, label, strokeLead, strokeWord, titleRest, subtitle, items }: FaqSectionProps) {
   const [open, setOpen] = useState(0)
 
   return (
@@ -35,7 +37,7 @@ export function FaqSection({ id, label, strokeWord, titleRest, subtitle, items }
             {label}
           </span>
           <h2 className="mt-6 max-w-4xl font-tum text-[clamp(2.4rem,5.2vw,4.4rem)] font-black leading-[0.95] tracking-[-0.02em] text-tum-ink">
-            <span className="font-serif italic font-semibold text-electric">{strokeWord}</span> {titleRest}
+            {strokeLead}<span className="font-serif italic font-semibold text-electric">{strokeWord}</span> {titleRest}
           </h2>
           <p className="mt-6 max-w-2xl font-tum text-lg leading-relaxed text-tum-muted">{subtitle}</p>
         </Reveal>

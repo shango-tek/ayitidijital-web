@@ -15,7 +15,7 @@ import { routeMetadata } from '../_metadata'
  *
  * No portraits: a photo of a real person needs their consent (§ 22 KunstUrhG),
  * and stock images of strangers under these names would misrepresent them. The
- * cards render monograms until real, cleared photographs exist — at which point
+ * cards render monograms until real, cleared photographs exist - at which point
  * `imageSrc` on a member is all that is needed.
  */
 const VORSTAND = [

@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 
 /**
  * Boot loader — a split "curtain". A bottom bar + percentage count up (synced to
@@ -23,80 +23,48 @@ function isGenuineArrival(): boolean {
   }
 }
 
+// Fixed choreography (ms). The whole thing is time-based and guaranteed: the
+// finish NEVER waits on `window.load`, asset decode or rAF, so a slow phone can
+// no longer trap the curtain at 100%. Total ≈ FILL + HOLD + PART.
+const FILL = 1200 // bar fills to 100%
+const HOLD = 140 // beat at 100% before the curtain parts
+const PART = 950 // curtain slide duration (CSS .pl-panel transition is .9s)
+
 export function Preloader() {
   const [visible, setVisible] = useState(false)
   const [progress, setProgress] = useState(0)
   const [parting, setParting] = useState(false)
-  // Progress is driven from a ref so the rAF loop reads/writes a plain value and
-  // terminates cleanly at 100 — never a side-effect inside a state updater (which
-  // React's StrictMode double-invokes, which is what stalled the old loop).
-  const progressRef = useRef(0)
 
   useEffect(() => {
     if (shownThisSession || !isGenuineArrival()) {
       shownThisSession = true
       return
     }
+    shownThisSession = true
     setVisible(true)
 
+    // Cosmetic bar fill via rAF — purely visual. If rAF is throttled the bar may
+    // lag, but the finish below does not depend on it.
     const start = Date.now()
-    const MIN = 900
-    let loaded = document.readyState === 'complete'
-    const onLoad = () => {
-      loaded = true
-    }
-    if (!loaded) window.addEventListener('load', onLoad)
-
     let raf = 0
-    const loop = () => {
-      const elapsed = Date.now() - start
-      // Ready once the document has loaded AND the minimum display has passed —
-      // with a hard safety cap so a stalled asset can never trap the loader.
-      const ready = (loaded && elapsed >= MIN) || elapsed >= 3500
-      const target = ready ? 100 : 92
-      const prev = progressRef.current
-      // Ease toward the target; the +0.6 floor guarantees forward motion, Math.min
-      // stops any overshoot. While loading it rests at 92, then climbs to 100.
-      const next = Math.min(target, prev + (target - prev) * 0.08 + 0.6)
-      progressRef.current = next
-      setProgress(next)
-      if (next < 100) raf = requestAnimationFrame(loop)
+    const tick = () => {
+      const p = Math.min(100, ((Date.now() - start) / FILL) * 100)
+      setProgress(p)
+      if (p < 100) raf = requestAnimationFrame(tick)
     }
-    raf = requestAnimationFrame(loop)
+    raf = requestAnimationFrame(tick)
 
-    // Hard safety: even if rAF is throttled or paused (a backgrounded tab), force
-    // the finish via a plain timer so the curtain can never stay stuck.
-    const safety = setTimeout(() => {
-      progressRef.current = 100
-      setProgress(100)
-    }, 3800)
+    // Guaranteed finish — two absolute timers scheduled once, on mount. Even if
+    // every rAF frame is dropped, these still fire and the loader unmounts.
+    const tPart = setTimeout(() => setParting(true), FILL + HOLD)
+    const tDone = setTimeout(() => setVisible(false), FILL + HOLD + PART)
 
     return () => {
       cancelAnimationFrame(raf)
-      clearTimeout(safety)
-      window.removeEventListener('load', onLoad)
+      clearTimeout(tPart)
+      clearTimeout(tDone)
     }
   }, [])
-
-  // At 100%: hold a beat, part the curtain, then unmount once it has finished.
-  // Guarded by a ref and NOT re-run on `parting`. The old version listed `parting`
-  // as a dependency, so flipping it re-ran this effect — and the cleanup cleared
-  // the pending unmount timer. The curtain parted but `setVisible(false)` never
-  // fired, leaving the fixed #preloader over the page forever (the seam you saw).
-  const finished = useRef(false)
-  useEffect(() => {
-    if (progress < 99.9 || finished.current) return
-    finished.current = true
-    const t1 = setTimeout(() => setParting(true), 200)
-    const t2 = setTimeout(() => {
-      shownThisSession = true
-      setVisible(false)
-    }, 200 + 950)
-    return () => {
-      clearTimeout(t1)
-      clearTimeout(t2)
-    }
-  }, [progress])
 
   if (!visible) return null
   const pct = Math.min(100, Math.round(progress))

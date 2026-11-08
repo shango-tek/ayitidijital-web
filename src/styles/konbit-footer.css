@@ -346,10 +346,10 @@
     position:fixed; top:auto; bottom:1.1rem; right:1rem; z-index:50;
     opacity:0; transform:translateY(.75rem); pointer-events:none;
   }
-  /* at the footer: stays pinned bottom-right (fixed), NOT docked mid-footer —
-     on phones a floating bottom-right affordance is what's expected. */
-  .kf-scrolltop[data-mode="dock"]{ position:fixed; top:auto; bottom:1.1rem; right:1rem; z-index:50; opacity:1; }
-  .kf-scrolltop[data-mode="dock"] .kf-scrolltop-arrow{ background:var(--color-tum-ink); color:#fff; box-shadow:0 6px 18px rgba(0,0,0,.55); }
+  /* at the footer: the button leaves the floating layer and docks INTO the
+     footer (top-right), so it scrolls away with the footer instead of hovering
+     over its content. White square reads on the dark footer ground. */
+  .kf-scrolltop[data-mode="dock"]{ position:absolute; top:1.25rem; right:1rem; bottom:auto; z-index:20; opacity:1; }
 }
 @media (prefers-reduced-motion:reduce){ .kf-scrolltop{ transition:none; } }
 
@@ -363,8 +363,10 @@
 .kf-flat .kf-tagline span{font-weight:500}
 .kf-flat .kf-col-title{font-family:var(--font-tum);font-weight:700;letter-spacing:.16em}
 .kf-flat .kf-social-label{font-family:var(--font-tum);font-weight:700;letter-spacing:.16em}
-.kf-flat .kf-col a{font-family:var(--font-tum);font-weight:600}
-.kf-flat .kf-col a:hover{color:var(--color-electric-ondark)}
+/* Sui-style link: an electric underline that draws in from the left on hover. */
+.kf-flat .kf-col a{font-family:var(--font-tum);font-weight:600;background-image:linear-gradient(var(--color-electric-ondark),var(--color-electric-ondark));background-position:0 100%;background-repeat:no-repeat;background-size:0% 1.5px;transition:background-size .3s cubic-bezier(.4,0,.2,1),color .2s ease}
+.kf-flat .kf-col a:hover{color:var(--color-electric-ondark);background-size:100% 1.5px}
+@media (prefers-reduced-motion:reduce){.kf-flat .kf-col a{transition:color .2s ease}}
 .kf-flat .kf-cta h4{font-family:var(--font-tum)}
 .kf-flat .kf-cta h4 strong{font-family:var(--font-tum);font-weight:800;font-size:clamp(1.3rem,1.8vw,1.55rem)}
 .kf-flat .kf-copyright,.kf-flat .kf-proverb{font-family:var(--font-tum)}

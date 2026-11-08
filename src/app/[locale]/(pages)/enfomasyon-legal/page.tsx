@@ -4,12 +4,12 @@ import { toLocale } from '@/i18n'
 import { routeMetadata } from '../_metadata'
 
 /**
- * Impressum / mentions légales — the provider disclosure required of Ayiti
+ * Impressum / mentions légales - the provider disclosure required of Ayiti
  * Dijital by § 5 DDG. Wording lives in `src/content/legal`; read the rules at
  * the top of that file before changing anything here.
  *
  * Reachable at /fr|/en|/ht/enfomasyon-legal. The previous Astro site's URLs
- * (/mentions-legales, /en/imprint) redirect here — see `next.config.ts`.
+ * (/mentions-legales, /en/imprint) redirect here - see `next.config.ts`.
  */
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params

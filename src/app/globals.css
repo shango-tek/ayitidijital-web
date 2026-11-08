@@ -110,6 +110,10 @@ body {
    section headings balance across their lines. Progressive — ignored where the
    browser does not support it, never harmful. */
 p { text-wrap: pretty; }
+
+/* Browser surfaces carry the brand too: text selection in electric, not the OS
+   default blue. */
+::selection { background: color-mix(in srgb, var(--color-electric) 22%, transparent); color: inherit; }
 h2, h3 { text-wrap: balance; }
 
 /* ------------------------------------------------------------------

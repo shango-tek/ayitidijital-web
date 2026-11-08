@@ -213,7 +213,7 @@
               },
               {
                 "title": "Moun ki konsène",
-                "body": "Moun ki idantifye oswa ki ka idantifye a, done l ap trete a — nan ka sa a, ou menm."
+                "body": "Moun ki idantifye oswa ki ka idantifye a, done l ap trete a - nan ka sa a, ou menm."
               },
               {
                 "title": "Tretman",
@@ -225,7 +225,7 @@
               },
               {
                 "title": "Pwofilaj",
-                "body": "Yon tretman otomatik pou evalye oswa prevwa aspè pèsonèl — konpòtman, enterè, sitiyasyon ekonomik, deplasman (atik 4, 4)."
+                "body": "Yon tretman otomatik pou evalye oswa prevwa aspè pèsonèl - konpòtman, enterè, sitiyasyon ekonomik, deplasman (atik 4, 4)."
               },
               {
                 "title": "Pseudonimizasyon",
@@ -237,7 +237,7 @@
               },
               {
                 "title": "Sou-tretan",
-                "body": "Yon tyès pati k ap trete done pou kont responsab la e dapre enstriksyon li (atik 4, 8) — isit la, ebèjè nou."
+                "body": "Yon tyès pati k ap trete done pou kont responsab la e dapre enstriksyon li (atik 4, 8) - isit la, ebèjè nou."
               },
               {
                 "title": "Destinatè",
@@ -273,19 +273,19 @@
             "kind": "points",
             "items": [
               {
-                "title": "Konsantman — atik 6, § 1, a",
+                "title": "Konsantman - atik 6, § 1, a",
                 "body": "Ou aksepte klèman yon tretman presi, e ou ka retire akò sa a nenpòt lè."
               },
               {
-                "title": "Kontra — atik 6, § 1, b",
+                "title": "Kontra - atik 6, § 1, b",
                 "body": "Tretman an nesesè pou egzekite yon kontra oswa pou demach anvan kontra."
               },
               {
-                "title": "Obligasyon legal — atik 6, § 1, c",
+                "title": "Obligasyon legal - atik 6, § 1, c",
                 "body": "Lwa a mande nou trete oswa konsève sèten done, pa egzanp pou kontablite."
               },
               {
-                "title": "Enterè lejitim — atik 6, § 1, f",
+                "title": "Enterè lejitim - atik 6, § 1, f",
                 "body": "Tretman an nesesè pou sit la mache an sekirite e dwa ou yo pa pi enpòtan."
               }
             ]
@@ -392,7 +392,7 @@
           },
           {
             "kind": "text",
-            "body": "Si nou ta vin kolekte done — pa yon fòm aktif, pa egzanp — nou ta konsève yo sèlman tan objektif la mande, oswa tan yon obligasyon legal mande, epi n ap efase yo."
+            "body": "Si nou ta vin kolekte done - pa yon fòm aktif, pa egzanp - nou ta konsève yo sèlman tan objektif la mande, oswa tan yon obligasyon legal mande, epi n ap efase yo."
           }
         ]
       },
@@ -485,7 +485,7 @@
           },
           {
             "kind": "note",
-            "body": "Baviè separe kontwòl la an de : BayLfD la kontwole òganis piblik, BayLDA a kontwole òganis prive — ki gen ladan asosyasyon yo."
+            "body": "Baviè separe kontwòl la an de : BayLfD la kontwole òganis piblik, BayLDA a kontwole òganis prive - ki gen ladan asosyasyon yo."
           }
         ]
       },
@@ -508,8 +508,8 @@
     "expandAllLabel": "Louvri tout",
     "collapseAllLabel": "Fèmen tout",
     "intro": [
-      "Si yon jou ou ta vle sèvi ak yon sèvis patikilye asosyasyon an — ekri nou, vin manm, abòne w nan enfòlèt la — li ta ka nesesè pou nou trete done ou. Lè yon tretman konsa nesesè e pa gen okenn baz legal ki kouvri l, nou mande konsantman ou anvan.",
-      "Deklarasyon sa a esplike ki done nou trete kòm responsab, ki done sou-tretan nou mande yo trete — ebèjè nou, pa egzanp — ak ki dwa ou genyen. Lè nou di « done pèsonèl », nou vle di enfòmasyon dapre atik 4, pwen 1, RGPD la : yon non, yon adrès imèl, yon adrès postal."
+      "Si yon jou ou ta vle sèvi ak yon sèvis patikilye asosyasyon an - ekri nou, vin manm, abòne w nan enfòlèt la - li ta ka nesesè pou nou trete done ou. Lè yon tretman konsa nesesè e pa gen okenn baz legal ki kouvri l, nou mande konsantman ou anvan.",
+      "Deklarasyon sa a esplike ki done nou trete kòm responsab, ki done sou-tretan nou mande yo trete - ebèjè nou, pa egzanp - ak ki dwa ou genyen. Lè nou di « done pèsonèl », nou vle di enfòmasyon dapre atik 4, pwen 1, RGPD la : yon non, yon adrès imèl, yon adrès postal."
     ]
   },
   "consent": {
