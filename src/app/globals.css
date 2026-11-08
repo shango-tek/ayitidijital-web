@@ -114,6 +114,27 @@ p { text-wrap: pretty; }
 /* Browser surfaces carry the brand too: text selection in electric, not the OS
    default blue. */
 ::selection { background: color-mix(in srgb, var(--color-electric) 22%, transparent); color: inherit; }
+
+/* Keyboard focus: a clear, on-brand ring on every interactive element when it is
+   reached by Tab (focus-visible only, so a mouse click never shows it). Electric
+   on light surfaces; a white ring on the dark hero/footer/nav where electric
+   would sink into the near-black ground. */
+a:focus-visible,
+button:focus-visible,
+summary:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-electric);
+  outline-offset: 2px;
+}
+.precision-hero :focus-visible,
+#flickering-footer :focus-visible,
+.floatnav :focus-visible,
+.mnav-bar :focus-visible {
+  outline-color: #fff;
+}
 h2, h3 { text-wrap: balance; }
 
 /* ------------------------------------------------------------------
