@@ -22,17 +22,20 @@ import type { NextRequest } from 'next/server'
  *     sees the holding page. No token is baked into the source, so it cannot be
  *     guessed from the repo; if the env var is unset the bypass is simply off
  *     (fail closed).
- *   • Go live — set `COMING_SOON=off` in the production environment (Vercel →
- *     redeploy) or delete this file. Either reveals the whole site.
+ *   • Re-gate — the site is now LIVE: the gate is OFF by default and only turns
+ *     on when `COMING_SOON=on` is set in the production environment (Vercel →
+ *     redeploy). This flipped from on-by-default once the real site launched, so
+ *     a forgotten env var can never silently hide the live site again.
  */
 
 // Only ever set in the environment — never a committed default, so the preview
 // bypass stays private. Unset → no bypass.
 const TOKEN = process.env.COMING_SOON_TOKEN
 
-/* Active only on Vercel's production deployment, and only until switched off.
+/* The site has launched: the gate is opt-in. Active only on Vercel's production
+   deployment, and only when explicitly switched on with COMING_SOON=on.
    Undefined VERCEL_ENV (local dev / local build) → never gated. */
-const GATED = process.env.VERCEL_ENV === 'production' && process.env.COMING_SOON !== 'off'
+const GATED = process.env.VERCEL_ENV === 'production' && process.env.COMING_SOON === 'on'
 
 /* Reachable even while gated: the holding page itself, and the two statutory
    documents (§ 5 DDG imprint, GDPR privacy) plus the legacy URLs that 308 to
