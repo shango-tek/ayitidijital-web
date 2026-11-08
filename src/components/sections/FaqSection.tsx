@@ -47,7 +47,7 @@ export function FaqSection({ id, label, strokeLead, strokeWord, titleRest, subti
             const isOpen = open === i
             return (
               <RevealItem key={item.q}>
-                <div className={cn('overflow-hidden border-4 border-double transition-colors', isOpen ? 'border-electric' : 'border-tum-ink')}>
+                <div className={cn('faq-card overflow-hidden border-4 border-double transition-colors', isOpen ? 'border-electric' : 'border-tum-ink')}>
                   <h3>
                     <button
                       type="button"

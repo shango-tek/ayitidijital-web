@@ -135,6 +135,26 @@ textarea:focus-visible,
 .mnav-bar :focus-visible {
   outline-color: #fff;
 }
+
+/* FAQ: the ring wraps the WHOLE card. The card's own outline is not clipped by
+   its overflow-hidden (that only clips children), so put the ring there on
+   keyboard focus and drop the inner question button's own (clipped) ring. */
+.faq-card:has(:focus-visible) {
+  outline: 3px solid var(--color-electric);
+  outline-offset: 3px;
+}
+.faq-card button:focus-visible {
+  outline: none;
+}
+
+/* "Passe à l'action" sits on an electric ground: a white ring reads there,
+   except on the white "fund" card inside it, where electric reads. */
+#aksyon :focus-visible {
+  outline-color: #fff;
+}
+#aksyon .bg-tum-paper :focus-visible {
+  outline-color: var(--color-electric);
+}
 h2, h3 { text-wrap: balance; }
 
 /* ------------------------------------------------------------------
