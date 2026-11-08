@@ -186,9 +186,7 @@ export interface SiteContent {
   diaspora: DiasporaContent
   marqueeWords: string[]
   /** The three aspirational verbs shown in the spiral's eye - they roll one at a
-   *  time as you scroll, then resolve into all three together at the end. */
-  spiralCenterWords: [string, string, string]
-  /** "Beyond digital" mission intro under the hero: eyebrow, headline (gold period),
+   *  time as you scroll, then resolve into all three together at the end. */  /** "Beyond digital" mission intro under the hero: eyebrow, headline (gold period),
    *  lead, CTA label, and photo alt text. */
   about: { label: string; title: string; strokeWord?: string; lead: string; cta: string; imageAlt: string }
   /** "Who we are" pillars - Mission / Vision / Devise. */
@@ -549,9 +547,7 @@ const ht: SiteContent = {
     'INOVASYON',
     'TALAN',
     'ENPAK',
-  ],
-  spiralCenterWords: ['Imajine', 'Bati', 'Transfòme'],
-  about: {
+  ],  about: {
     label: 'Pi lwen pase dijital',
     title: 'Kreye yon enpak dirab.',
     strokeWord: 'enpak',
@@ -983,9 +979,7 @@ const fr: SiteContent = {
     'INNOVATION',
     'TALENT',
     'IMPACT',
-  ],
-  spiralCenterWords: ['Imaginer', 'Bâtir', 'Transformer'],
-  about: {
+  ],  about: {
     label: 'Au-delà du numérique',
     title: 'Créer un impact durable.',
     strokeWord: 'impact',
@@ -1418,9 +1412,7 @@ const en: SiteContent = {
     'INNOVATION',
     'TALENT',
     'IMPACT',
-  ],
-  spiralCenterWords: ['Imagine', 'Build', 'Transform'],
-  about: {
+  ],  about: {
     label: 'Beyond digitalization',
     title: 'Create lasting impact.',
     strokeWord: 'impact',
