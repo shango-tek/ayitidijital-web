@@ -34,6 +34,14 @@ const Chevron = () => (
  * and the open panel header. Each instance owns its open-state + outside-click
  * handling; the glass panel matches the desktop switcher.
  */
+/* Localized aria-labels — so a screen reader announces the mobile nav in the
+   page's own language, not Kreyòl on every locale. */
+const A11Y: Record<Locale, { chooseLang: string; langList: string; openMenu: string; closeMenu: string; nav: string }> = {
+  ht: { chooseLang: 'Chwazi lang', langList: 'Lang', openMenu: 'Ouvri meni', closeMenu: 'Fèmen meni', nav: 'Navigasyon' },
+  fr: { chooseLang: 'Choisir la langue', langList: 'Langue', openMenu: 'Ouvrir le menu', closeMenu: 'Fermer le menu', nav: 'Navigation' },
+  en: { chooseLang: 'Choose language', langList: 'Language', openMenu: 'Open menu', closeMenu: 'Close menu', nav: 'Navigation' },
+}
+
 function LangDropdown({ locale, langs }: { locale: Locale; langs: LangOption[] }) {
   const pathname = usePathname()
   const [open, setOpen] = useState(false)
@@ -61,14 +69,14 @@ function LangDropdown({ locale, langs }: { locale: Locale; langs: LangOption[] }
         className="mnav-langtrigger"
         aria-haspopup="listbox"
         aria-expanded={open}
-        aria-label="Chwazi lang"
+        aria-label={A11Y[locale].chooseLang}
         onClick={() => setOpen((o) => !o)}
       >
         <span>{cur.label}</span>
         <Chevron />
       </button>
       {open && (
-        <ul className="mnav-langmenu" role="listbox" aria-label="Lang">
+        <ul className="mnav-langmenu" role="listbox" aria-label={A11Y[locale].langList}>
           {langs.map((o) => (
             <li key={o.code} role="option" aria-selected={o.code === locale}>
               <Link
@@ -151,7 +159,7 @@ export function MobileNav({
                       <button
                         type="button"
                         className="mnav-toggle"
-                        aria-label="Ouvri meni"
+                        aria-label={A11Y[locale].openMenu}
                         aria-expanded={open}
                         onClick={() => setOpen(true)}
                       >
@@ -189,7 +197,7 @@ export function MobileNav({
                 <button
                   type="button"
                   className="mnav-toggle"
-                  aria-label="Fèmen meni"
+                  aria-label={A11Y[locale].closeMenu}
                   aria-expanded={open}
                   onClick={() => setOpen(false)}
                 >
@@ -205,7 +213,7 @@ export function MobileNav({
 
             {/* Line-separated menu cells — 1 column on phone, 2 on tablet
                 (Studio-style). "Sou nou" carries its sub-links. */}
-            <nav className="mnav-menu" aria-label="Navigasyon">
+            <nav className="mnav-menu" aria-label={A11Y[locale].nav}>
               <ul className="mnav-list">
                 {links.map((l) => {
                   const kids = l.children && l.children.length > 0 ? l.children : null

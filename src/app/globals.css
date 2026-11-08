@@ -920,6 +920,13 @@ button[aria-disabled='true'],
 
 /* cache-bust 29866 */
 
+/* Comfortable footer tap targets on touch devices (WCAG 2.5.5) — coarse pointer
+   only, so the desktop footer keeps its tighter designed rhythm. */
+@media (pointer: coarse) {
+  .kf-social-icon { width: 44px; height: 44px; }
+  .kf-col a { padding-block: 8px; margin-bottom: 4px; }
+}
+
 /* --- Scroll-reveal + hover micro-animations (see ScrollFX.tsx) ------------
    Gated on BOTH prefers-reduced-motion AND the `js-fx` flag ScrollFX adds once
    it is driving things — so with no JS, on the server, or under reduced motion,
