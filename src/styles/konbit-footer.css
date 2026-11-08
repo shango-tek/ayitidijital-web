@@ -347,9 +347,11 @@
     opacity:0; transform:translateY(.75rem); pointer-events:none;
   }
   /* at the footer: the button leaves the floating layer and docks INTO the
-     footer (top-right), so it scrolls away with the footer instead of hovering
-     over its content. White square reads on the dark footer ground. */
-  .kf-scrolltop[data-mode="dock"]{ position:absolute; top:1.25rem; right:1rem; bottom:auto; z-index:20; opacity:1; }
+     footer on the right, level with the last nav row (the "Entrepreneuriat"
+     line), in the clear space to the right of the Écosystème/Légal columns.
+     Bottom-anchored so it tracks that row across locales. White square reads on
+     the dark footer ground. */
+  .kf-scrolltop[data-mode="dock"]{ position:absolute; top:auto; bottom:15.3rem; right:1rem; z-index:20; opacity:1; }
 }
 @media (prefers-reduced-motion:reduce){ .kf-scrolltop{ transition:none; } }
 
