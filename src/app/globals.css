@@ -298,6 +298,14 @@ button[aria-disabled='true'],
    flips `data-fade` on to dismiss it (see components/layout/Preloader.tsx).
    ------------------------------------------------------------------ */
 #preloader {
+  /* Hidden by default; the inline boot script reveals it (display:block) ONLY on a
+     genuine full-page arrival. This is what makes it safe across client-side
+     navigations: switching language re-renders this layout and re-inserts the
+     preloader markup, but the boot script runs only on a real page load — never on
+     a soft nav — so a re-inserted preloader stays hidden instead of re-appearing
+     frozen at 0%. The script runs synchronously before first paint, so genuine
+     loads still show the loader with no flash of the hero. */
+  display: none;
   position: fixed;
   inset: 0;
   z-index: 9999;

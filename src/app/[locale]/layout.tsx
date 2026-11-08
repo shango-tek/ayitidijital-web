@@ -7,7 +7,7 @@ import { getSiteContent } from '@/content/site'
 import { getLegalContent } from '@/content/legal'
 import { SmoothScroll } from '../../components/ui/SmoothScroll'
 import { CookieBanner } from '../../components/ui/CookieBanner'
-import { CookieNotice } from '../../components/ui/CookieNotice'
+import { CookieConsent } from '../../components/ui/CookieConsent'
 
 /* Google fonts the design CSS expects, exposed as CSS variables that
    src/styles/*.css re-map onto --font-display / --font-body / --font-mono. */
@@ -119,7 +119,7 @@ export default async function LocaleLayout({
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "(function(){var p=document.getElementById('preloader');if(!p)return;var g;try{var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='reload')g=true;else if(n&&n.type==='back_forward')g=false;else{try{g=!document.referrer||new URL(document.referrer).origin!==location.origin}catch(e){g=true}}}catch(e){g=true}if(!g){p.style.display='none';return}var F=1200,H=140,T=950,s=Date.now(),b=p.querySelector('.pl-bar'),c=p.querySelector('.pl-pct');(function k(){var x=Math.min(100,(Date.now()-s)/F*100);if(b)b.style.transform='scaleX('+(x/100)+')';if(c)c.textContent=Math.round(x)+'%';if(x<100)requestAnimationFrame(k)})();setTimeout(function(){p.setAttribute('data-parting','')},F+H);setTimeout(function(){p.style.display='none'},F+H+T)})();",
+              "(function(){var p=document.getElementById('preloader');if(!p)return;var g;try{var n=performance.getEntriesByType('navigation')[0];if(n&&n.type==='reload')g=true;else if(n&&n.type==='back_forward')g=false;else{try{g=!document.referrer||new URL(document.referrer).origin!==location.origin}catch(e){g=true}}}catch(e){g=true}if(!g){p.style.display='none';return}p.style.display='block';var F=1200,H=140,T=950,s=Date.now(),b=p.querySelector('.pl-bar'),c=p.querySelector('.pl-pct');(function k(){var x=Math.min(100,(Date.now()-s)/F*100);if(b)b.style.transform='scaleX('+(x/100)+')';if(c)c.textContent=Math.round(x)+'%';if(x<100)requestAnimationFrame(k)})();setTimeout(function(){p.setAttribute('data-parting','')},F+H);setTimeout(function(){p.style.display='none'},F+H+T)})();",
           }}
         />
         <SmoothScroll />
@@ -127,8 +127,10 @@ export default async function LocaleLayout({
         {/* Dormant until an analytics provider is configured — see
             src/lib/analytics.ts */}
         <CookieBanner locale={lang} copy={getLegalContent(lang).consent} />
-        {/* Functional language cookie + a one-time informational cookie notice. */}
-        <CookieNotice locale={lang} />
+        {/* Functional language cookie + a one-time, on-brand cookie card with an
+            honest preferences panel (strictly-necessary inventory + dormant
+            analytics toggle). */}
+        <CookieConsent locale={lang} copy={getLegalContent(lang).cookieConsent} />
       </body>
     </html>
   )

@@ -109,12 +109,12 @@
   },
   "privacy": {
     "title": "Konfidansyalite",
-    "description": "Politik konfidansyalite Ayiti Dijital. Pa gen cookie, pa gen swivi, pa gen koleksyon done.",
+    "description": "Politik konfidansyalite Ayiti Dijital. Pa gen swivi, pa gen mezi odyans — sèlman yon cookie fonksyonèl pou sonje lang ou.",
     "eyebrow": "Konfidansyalite",
     "h1": "Politik Konfidansyalite",
     "lead": "Nou di ou mèsi pou enterè ou pote pou Ayiti Dijital. Ou ka li sit sa a san ou pa bay okenn done pèsonèl : nou pa mande okenn e nou pa ranmase okenn.",
     "lastUpdatedLabel": "Dènye mizajou",
-    "lastUpdatedValue": "17 jiyè 2026",
+    "lastUpdatedValue": "8 novanm 2026",
     "tocTitle": "Tab matyè",
     "sections": [
       {
@@ -156,7 +156,7 @@
             "items": [
               {
                 "title": "Nou pa trase ou.",
-                "body": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans."
+                "body": "Sèlman yon cookie fonksyonèl pou sonje lang ou. Pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans."
               },
               {
                 "title": "Pa gen kontni tyès pati.",
@@ -329,7 +329,28 @@
         "blocks": [
           {
             "kind": "text",
-            "body": "Sit sa a pa depoze okenn cookie e li pa ekri anyen nan depo lokal (localStorage) navigatè w. Se poutèt sa ou p ap wè okenn bandwòl konsantman : pa gen anyen pou aksepte ni pou refize."
+            "body": "Sit sa a sèvi sèlman ak cookies ak depo lokal ki striktèman nesesè — ti sa ki nesesè pou sit la mache epi pou sonje chwa ou. Pa gen okenn cookie mezi odyans, piblisite oswa swivi tyès pati."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "ad-lang — lang",
+                "body": "Yon cookie ki sonje lang w ap li a, pou sit la louvri nan lang sa a pwochèn fwa. Kenbe pou yon ane."
+              },
+              {
+                "title": "ad-cookie-ack — avi fèmen",
+                "body": "Yon antre depo lokal ki sonje ou te fèmen kat cookies la, pou l pa reparèt. Kenbe jiskaske ou efase depo navigatè w."
+              },
+              {
+                "title": "ad-consent — chwa ou",
+                "body": "Yon antre depo lokal ki sonje si ou te aksepte mezi odyans, si yo ta janm ofri l. Kenbe jiskaske ou efase depo navigatè w."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Yo egzante de konsantman alavans dapre § 25(2) TDDDG paske yo striktèman nesesè pou bay sèvis ou mande a. Ou ka efase yo nenpòt kilè nan paramèt navigatè w."
           }
         ]
       },
@@ -512,6 +533,26 @@
       "Deklarasyon sa a esplike ki done nou trete kòm responsab, ki done sou-tretan nou mande yo trete - ebèjè nou, pa egzanp - ak ki dwa ou genyen. Lè nou di « done pèsonèl », nou vle di enfòmasyon dapre atik 4, pwen 1, RGPD la : yon non, yon adrès imèl, yon adrès postal."
     ]
   },
+  "cookieConsent": {
+    "title": "Cookies",
+    "body": "Sit sa a kenbe yon ti cookie pou sonje lang ou, se tout. Pa gen swivi, pa gen piblisite.",
+    "prefs": "Preferans",
+    "ok": "Mwen konprann",
+    "save": "Anrejistre epi fèmen",
+    "policyLabel": "Politik konfidansyalite",
+    "panelTitle": "Preferans cookies",
+    "necessaryTitle": "Striktèman nesesè",
+    "necessaryStatus": "Toujou aktif",
+    "analyticsTitle": "Mezi odyans",
+    "analyticsBody": "Mezi odyans anonim, si li janm aktive.",
+    "analyticsDormant": "Poko aktif — pa gen okenn zouti mezi k ap mache sou sit la.",
+    "lifetimeLabel": "Kenbe",
+    "cookies": [
+      { "name": "ad-lang", "purpose": "Sonje lang w ap li a.", "lifetime": "1 ane" },
+      { "name": "ad-cookie-ack", "purpose": "Sonje ou te fèmen kat sa a.", "lifetime": "jiska efase" },
+      { "name": "ad-consent", "purpose": "Sonje chwa mezi odyans ou, si yo ofri l.", "lifetime": "jiska efase" }
+    ]
+  },
   "consent": {
     "title": "Mezi odyans",
     "body": "Nou ta renmen mezire odyans sit sa a pou nou konprann sa ki itil pou ou. Mezi sa a depoze yon cookie sou aparèy ou e li kòmanse sèlman si ou dakò. Si ou refize, sa p ap chanje anyen nan vizit ou.",
@@ -522,7 +563,7 @@
   "analytics": {
     "off": {
       "summaryTitle": "Nou pa trase ou.",
-      "summaryBody": "Pa gen cookie, pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans.",
+      "summaryBody": "Sèlman yon cookie fonksyonèl pou sonje lang ou. Pa gen piksèl tyès pati, pa gen fingerprinting, pa gen mezi odyans.",
       "sectionTitle": "Mezi odyans",
       "sectionBody": "Pa genyen. Nou pa itilize ni Google Analytics, ni Plausible, ni okenn lòt zouti mezi odyans, swivi oswa reklam. Nou pa konnen konbyen moun ki vizite sit sa a."
     },

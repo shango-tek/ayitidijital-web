@@ -89,6 +89,35 @@ export interface ConsentContent {
   policyLabel: string
 }
 
+/** A single declared cookie / storage key, shown in the preferences panel. */
+export interface CookieEntry {
+  name: string
+  purpose: string
+  lifetime: string
+}
+
+/**
+ * Copy for the always-present cookie card + preferences panel
+ * (src/components/ui/CookieConsent.tsx). `cookies` lists the real
+ * strictly-necessary keys and must stay in step with section 08 of the policy.
+ */
+export interface CookieConsentContent {
+  title: string
+  body: string
+  prefs: string
+  ok: string
+  save: string
+  policyLabel: string
+  panelTitle: string
+  necessaryTitle: string
+  necessaryStatus: string
+  analyticsTitle: string
+  analyticsBody: string
+  analyticsDormant: string
+  lifetimeLabel: string
+  cookies: CookieEntry[]
+}
+
 /** The two truthful wordings for "do you measure anything?". */
 export interface AnalyticsWording {
   summaryTitle: string
@@ -101,6 +130,7 @@ export interface LegalContent {
   imprint: LegalDoc
   privacy: LegalDoc
   consent: ConsentContent
+  cookieConsent: CookieConsentContent
   analytics: { off: AnalyticsWording; on: AnalyticsWording }
 }
 

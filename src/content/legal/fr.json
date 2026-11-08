@@ -109,12 +109,12 @@
   },
   "privacy": {
     "title": "Confidentialité",
-    "description": "Politique de confidentialité d'Ayiti Dijital. Aucun cookie, aucun traçage, aucune collecte.",
+    "description": "Politique de confidentialité d'Ayiti Dijital. Aucun traçage, aucune mesure d'audience — seulement un cookie fonctionnel pour mémoriser votre langue.",
     "eyebrow": "Confidentialité",
     "h1": "Politique de Confidentialité",
     "lead": "Nous vous remercions de l'intérêt que vous portez à Ayiti Dijital. La consultation de ce site est possible sans communiquer la moindre donnée personnelle : nous n'en demandons aucune et n'en recueillons aucune.",
     "lastUpdatedLabel": "Dernière mise à jour",
-    "lastUpdatedValue": "17 juillet 2026",
+    "lastUpdatedValue": "8 novembre 2026",
     "tocTitle": "Sommaire",
     "sections": [
       {
@@ -156,7 +156,7 @@
             "items": [
               {
                 "title": "Nous ne vous traçons pas.",
-                "body": "Aucun cookie, aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience."
+                "body": "Seulement un cookie fonctionnel pour mémoriser votre langue. Aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience."
               },
               {
                 "title": "Aucun contenu tiers.",
@@ -329,7 +329,28 @@
         "blocks": [
           {
             "kind": "text",
-            "body": "Ce site ne dépose aucun cookie et n'écrit rien dans le stockage local (localStorage) de votre navigateur. C'est pourquoi vous ne verrez pas de bandeau de consentement : il n'y a rien à accepter ni à refuser."
+            "body": "Ce site n'utilise que des cookies et un stockage local strictement nécessaires — le minimum requis pour faire fonctionner le site et mémoriser vos choix. Aucun cookie de mesure d'audience, de publicité ni de traçage tiers."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "ad-lang — langue",
+                "body": "Un cookie qui mémorise la langue que vous lisez, afin que le site s'ouvre dans cette langue la prochaine fois. Conservé un an."
+              },
+              {
+                "title": "ad-cookie-ack — avis fermé",
+                "body": "Une entrée de stockage local qui mémorise que vous avez fermé la carte cookies, pour qu'elle ne réapparaisse pas. Conservée jusqu'à l'effacement du stockage de votre navigateur."
+              },
+              {
+                "title": "ad-consent — votre choix",
+                "body": "Une entrée de stockage local qui mémorise si vous avez accepté la mesure d'audience, au cas où elle serait un jour proposée. Conservée jusqu'à l'effacement du stockage de votre navigateur."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "Ils sont exemptés de consentement préalable au titre du § 25(2) TDDDG car strictement nécessaires à la fourniture du service que vous demandez. Vous pouvez les supprimer à tout moment dans les réglages de votre navigateur."
           }
         ]
       },
@@ -512,6 +533,26 @@
       "Cette déclaration explique quelles données nous traitons en tant que responsable, quelles données traitent les sous-traitants que nous mandatons - notre hébergeur, par exemple - et de quels droits vous disposez. Par « données personnelles », nous entendons les informations au sens de l'art. 4, point 1, du RGPD : un nom, une adresse e-mail, une adresse postale."
     ]
   },
+  "cookieConsent": {
+    "title": "Cookies",
+    "body": "Ce site conserve un petit cookie pour mémoriser votre langue, rien de plus. Aucun traçage, aucune publicité.",
+    "prefs": "Préférences",
+    "ok": "J'ai compris",
+    "save": "Enregistrer et fermer",
+    "policyLabel": "Politique de confidentialité",
+    "panelTitle": "Préférences cookies",
+    "necessaryTitle": "Strictement nécessaires",
+    "necessaryStatus": "Toujours actifs",
+    "analyticsTitle": "Mesure d'audience",
+    "analyticsBody": "Mesure d'audience anonyme, si elle est un jour activée.",
+    "analyticsDormant": "Pas encore active — aucun outil de mesure ne fonctionne sur ce site.",
+    "lifetimeLabel": "Conservé",
+    "cookies": [
+      { "name": "ad-lang", "purpose": "Mémorise la langue que vous lisez.", "lifetime": "1 an" },
+      { "name": "ad-cookie-ack", "purpose": "Mémorise que vous avez fermé cette carte.", "lifetime": "jusqu'à effacement" },
+      { "name": "ad-consent", "purpose": "Mémorise votre choix de mesure d'audience, le cas échéant.", "lifetime": "jusqu'à effacement" }
+    ]
+  },
   "consent": {
     "title": "Mesure d'audience",
     "body": "Nous aimerions mesurer l'audience de ce site pour comprendre ce qui vous est utile. Cette mesure dépose un cookie sur votre appareil et ne démarre qu'avec votre accord. Refuser ne change rien à votre visite.",
@@ -522,7 +563,7 @@
   "analytics": {
     "off": {
       "summaryTitle": "Nous ne vous traçons pas.",
-      "summaryBody": "Aucun cookie, aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience.",
+      "summaryBody": "Seulement un cookie fonctionnel pour mémoriser votre langue. Aucun pixel tiers, aucune empreinte numérique, aucune mesure d'audience.",
       "sectionTitle": "Mesure d'audience",
       "sectionBody": "Aucune. Nous n'utilisons ni Google Analytics, ni Plausible, ni aucun autre outil de mesure d'audience, de suivi ou de publicité. Nous ne savons pas combien de personnes visitent ce site."
     },

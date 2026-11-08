@@ -1,4 +1,6 @@
 import type { CSSProperties } from 'react'
+import { negotiateLocale } from '@/lib/negotiate-locale'
+import type { Locale } from '@/i18n'
 
 /**
  * The public face of ayitidijital.org while the site is finished — served at
@@ -48,7 +50,17 @@ const STYLE = `
 }
 `
 
-export default function ComingSoonPage() {
+/* The tagline + status, in the visitor's language — matched to the site's hero
+   wordmark (heroTitle) in each locale. The gate itself is served at every URL,
+   so the language comes from the same negotiation the `/` redirect uses. */
+const COPY: Record<Locale, { lead: string; accent: string; status: string }> = {
+  ht: { lead: 'Fasonnen Demen Avèk', accent: 'Vizyon & Aksyon', status: 'N ap konstwi · Byento' },
+  fr: { lead: "Façonner l'Avenir avec", accent: 'Vision & Action', status: 'En construction · Bientôt' },
+  en: { lead: 'Shaping Tomorrow with', accent: 'Vision & Action', status: 'Under construction · Coming soon' },
+}
+
+export default async function ComingSoonPage() {
+  const c = COPY[await negotiateLocale()]
   return (
     <main
       className="relative flex min-h-[100dvh] flex-col items-center justify-center overflow-hidden px-6 text-center"
@@ -77,10 +89,17 @@ export default function ComingSoonPage() {
         </h1>
 
         <p
-          className="cs-rise mt-8 font-mono text-xs uppercase tracking-[0.32em] text-[color:var(--color-gold)] sm:text-sm"
-          style={{ '--d': '220ms' } as CSSProperties}
+          className="cs-rise mt-5 max-w-xl text-balance font-display text-lg font-medium text-white/85 sm:text-xl"
+          style={{ '--d': '180ms' } as CSSProperties}
         >
-          En construction · Coming soon
+          {c.lead} <em className="font-playfair italic">{c.accent}</em>
+        </p>
+
+        <p
+          className="cs-rise mt-8 font-mono text-xs uppercase tracking-[0.32em] text-[color:var(--color-gold)] sm:text-sm"
+          style={{ '--d': '280ms' } as CSSProperties}
+        >
+          {c.status}
         </p>
       </div>
 

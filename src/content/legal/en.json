@@ -109,12 +109,12 @@
   },
   "privacy": {
     "title": "Privacy",
-    "description": "Privacy policy of Ayiti Dijital. No cookies, no tracking, no data collection.",
+    "description": "Privacy policy of Ayiti Dijital. No tracking, no analytics — only a functional cookie to remember your language.",
     "eyebrow": "Privacy",
     "h1": "Privacy Policy",
     "lead": "Thank you for your interest in Ayiti Dijital. You can read this site without disclosing any personal data whatsoever: we ask for none and collect none.",
     "lastUpdatedLabel": "Last updated",
-    "lastUpdatedValue": "17 July 2026",
+    "lastUpdatedValue": "8 November 2026",
     "tocTitle": "Contents",
     "sections": [
       {
@@ -156,7 +156,7 @@
             "items": [
               {
                 "title": "We don't track you.",
-                "body": "No cookies, no third-party pixels, no fingerprinting, no analytics."
+                "body": "Only a functional cookie to remember your language. No third-party pixels, no fingerprinting, no analytics."
               },
               {
                 "title": "No third-party content.",
@@ -329,7 +329,28 @@
         "blocks": [
           {
             "kind": "text",
-            "body": "This site sets no cookies and writes nothing to your browser's local storage. That is why you will not see a consent banner: there is nothing to accept or decline."
+            "body": "This site uses only strictly-necessary cookies and local storage — the little that is needed to make the site work and to remember your choices. There are no analytics, advertising or third-party tracking cookies."
+          },
+          {
+            "kind": "points",
+            "items": [
+              {
+                "title": "ad-lang — language",
+                "body": "A cookie that remembers the language you are reading, so the site opens in it next time. Kept for one year."
+              },
+              {
+                "title": "ad-cookie-ack — notice dismissed",
+                "body": "A local-storage entry that remembers you have closed the cookie card, so it does not reappear. Kept until you clear your browser's storage."
+              },
+              {
+                "title": "ad-consent — your choice",
+                "body": "A local-storage entry that remembers whether you allowed audience measurement, should it ever be offered. Kept until you clear your browser's storage."
+              }
+            ]
+          },
+          {
+            "kind": "note",
+            "body": "These are exempt from prior consent under § 25(2) TDDDG because they are strictly necessary to provide the service you asked for. You can delete them at any time in your browser settings."
           }
         ]
       },
@@ -512,6 +533,26 @@
       "This notice explains which data we process as controller, which data the processors we appoint handle - our host, for instance - and what rights you have. By “personal data” we mean information within the meaning of Art. 4(1) GDPR: a name, an email address, a postal address."
     ]
   },
+  "cookieConsent": {
+    "title": "Cookies",
+    "body": "This site keeps one small cookie to remember your language, and nothing more. No tracking, no advertising.",
+    "prefs": "Preferences",
+    "ok": "Got it",
+    "save": "Save & close",
+    "policyLabel": "Privacy policy",
+    "panelTitle": "Cookie preferences",
+    "necessaryTitle": "Strictly necessary",
+    "necessaryStatus": "Always on",
+    "analyticsTitle": "Analytics",
+    "analyticsBody": "Anonymous audience measurement, if it is ever switched on.",
+    "analyticsDormant": "Not active yet — no analytics tool is running on this site.",
+    "lifetimeLabel": "Kept",
+    "cookies": [
+      { "name": "ad-lang", "purpose": "Remembers the language you are reading.", "lifetime": "1 year" },
+      { "name": "ad-cookie-ack", "purpose": "Remembers you have closed this card.", "lifetime": "until cleared" },
+      { "name": "ad-consent", "purpose": "Remembers your analytics choice, should it ever be offered.", "lifetime": "until cleared" }
+    ]
+  },
   "consent": {
     "title": "Audience measurement",
     "body": "We'd like to measure this site's audience to understand what is useful to you. That measurement stores a cookie on your device and only starts if you agree. Declining changes nothing about your visit.",
@@ -522,7 +563,7 @@
   "analytics": {
     "off": {
       "summaryTitle": "We don't track you.",
-      "summaryBody": "No cookies, no third-party pixels, no fingerprinting, no analytics.",
+      "summaryBody": "Only a functional cookie to remember your language. No third-party pixels, no fingerprinting, no analytics.",
       "sectionTitle": "Analytics",
       "sectionBody": "None. We use neither Google Analytics, nor Plausible, nor any other analytics, tracking or advertising tool. We do not know how many people visit this site."
     },
