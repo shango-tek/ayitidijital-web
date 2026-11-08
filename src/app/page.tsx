@@ -1,9 +1,11 @@
 import { redirect } from 'next/navigation'
-import { headers } from 'next/headers'
+import { cookies, headers } from 'next/headers'
 import { LOCALES, type Locale } from '@/i18n'
 
 /**
  * `/` → the best locale for this visitor, decided server-side at the edge:
+ *   0. a remembered choice (the `ad-lang` cookie, set when they switch language)
+ *      wins over everything — an explicit pick beats any guess;
  *   1. anyone browsing from Haiti always lands in Kreyòl (`/ht`);
  *   2. otherwise the browser's `Accept-Language`, when it is one we ship (fr/en/ht);
  *   3. otherwise the country — a French-speaking country → French;
@@ -28,7 +30,12 @@ const FRANCOPHONE = new Set([
 ])
 
 export default async function RootPage() {
-  const h = await headers()
+  const [cookieStore, h] = await Promise.all([cookies(), headers()])
+
+  // 0. A remembered language choice wins over every guess below.
+  const saved = cookieStore.get('ad-lang')?.value
+  if (saved && (LOCALES as readonly string[]).includes(saved)) redirect(`/${saved}`)
+
   const country = h.get('x-vercel-ip-country')?.toUpperCase()
 
   // 1. Anyone in Haiti → Kreyòl.

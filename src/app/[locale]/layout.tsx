@@ -7,6 +7,7 @@ import { getSiteContent } from '@/content/site'
 import { getLegalContent } from '@/content/legal'
 import { SmoothScroll } from '../../components/ui/SmoothScroll'
 import { CookieBanner } from '../../components/ui/CookieBanner'
+import { CookieNotice } from '../../components/ui/CookieNotice'
 
 /* Google fonts the design CSS expects, exposed as CSS variables that
    src/styles/*.css re-map onto --font-display / --font-body / --font-mono. */
@@ -126,6 +127,8 @@ export default async function LocaleLayout({
         {/* Dormant until an analytics provider is configured — see
             src/lib/analytics.ts */}
         <CookieBanner locale={lang} copy={getLegalContent(lang).consent} />
+        {/* Functional language cookie + a one-time informational cookie notice. */}
+        <CookieNotice locale={lang} />
       </body>
     </html>
   )
