@@ -1,15 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Bricolage_Grotesque, Hanken_Grotesk, IBM_Plex_Mono, Playfair_Display } from 'next/font/google'
+import { bricolage, hankenGrotesk, ibmPlexMono, playfair } from '../fonts'
 import '../globals.css'
 
-/* The holding page carries its own document, like `not-found.tsx`: the root
-   layout is a pass-through and the real <html> normally lives in
-   `[locale]/layout.tsx`, which this route sits outside of. Fonts are loaded
-   here so the placeholder wears the brand's type, not a system fallback. */
-const bricolage = Bricolage_Grotesque({ subsets: ['latin'], weight: ['500', '700', '800'], variable: '--font-bricolage', display: 'swap' })
-const hanken = Hanken_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600'], variable: '--font-hanken', display: 'swap' })
-const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['500'], variable: '--font-ibm-plex-mono', display: 'swap' })
-const playfair = Playfair_Display({ subsets: ['latin'], style: ['italic'], weight: ['500'], variable: '--font-playfair', display: 'swap' })
+/* The holding page carries its own document, like `not-found.tsx`: the real
+   <html> normally lives in `[locale]/layout.tsx`, which this route sits outside
+   of. The faces come from ../fonts so each is instantiated once — declaring them
+   here as well as there made Turbopack's build flake on the duplicate modules. */
 
 export const viewport: Viewport = {
   themeColor: '#0E1B4D',
@@ -31,7 +27,7 @@ export default function ComingSoonLayout({ children }: { children: React.ReactNo
   return (
     <html
       lang="fr"
-      className={`${bricolage.variable} ${hanken.variable} ${mono.variable} ${playfair.variable}`}
+      className={`${bricolage.variable} ${hankenGrotesk.variable} ${ibmPlexMono.variable} ${playfair.variable}`}
     >
       <body>{children}</body>
     </html>

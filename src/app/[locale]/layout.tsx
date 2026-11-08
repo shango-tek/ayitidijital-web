@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next'
 import { notFound } from 'next/navigation'
-import { Albert_Sans, Bricolage_Grotesque, Hanken_Grotesk, IBM_Plex_Mono, Caveat, Playfair_Display } from 'next/font/google'
+import { albertSans, bricolage, hankenGrotesk, ibmPlexMono, caveat, playfair } from '../fonts'
 import '../globals.css'
 import { LOCALES, isLocale, type Locale } from '../../i18n'
 import { getSiteContent } from '@/content/site'
@@ -10,57 +10,8 @@ import { CookieBanner } from '../../components/ui/CookieBanner'
 
 /* Google fonts the design CSS expects, exposed as CSS variables that
    src/styles/*.css re-map onto --font-display / --font-body / --font-mono. */
-/* Display face. Bricolage Grotesque — a contemporary humanist grotesque with
-   real character (slightly condensed, quirky terminals), so headings read as
-   deliberately set rather than defaulting to the ubiquitous Space Grotesk. */
-const bricolage = Bricolage_Grotesque({
-  subsets: ['latin'],
-  weight: ['500', '600', '700', '800'],
-  variable: '--font-bricolage',
-  display: 'swap',
-})
-
-const hankenGrotesk = Hanken_Grotesk({
-  subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
-  variable: '--font-hanken',
-  display: 'swap',
-})
-
-const ibmPlexMono = IBM_Plex_Mono({
-  subsets: ['latin'],
-  weight: ['500', '600'],
-  variable: '--font-ibm-plex-mono',
-  display: 'swap',
-})
-
-/* Handwritten accents in the Konbit footer (column titles, "Rete an kontak !"). */
-const caveat = Caveat({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--font-caveat',
-  display: 'swap',
-})
-
-/* Serif italic accent for the hero title (a real webfont — replaces the fragile
-   system `serif` fallback so it renders identically on every device). */
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  style: ['normal', 'italic'],
-  weight: ['500', '600'],
-  variable: '--font-playfair',
-  display: 'swap',
-})
-
-/* House body world. Albert Sans — a tight, high-x-height geometric grotesque,
-   a Google variable font (100–900) — gives the landing body its giant 900
-   display and its 400 reading text from one self-hosted file. Used only by the
-   sections below the hero. */
-const albertSans = Albert_Sans({
-  subsets: ['latin'],
-  variable: '--font-albert',
-  display: 'swap',
-})
+/* Typefaces live in ../fonts so each Google face is instantiated once (see the
+   note there) — importing the same face in two layouts broke the Turbopack build. */
 
 /* Absolute base for canonical/hreflang/OG URLs. Vercel exposes the deployment
    host but not the production domain, so the canonical origin is explicit. */
