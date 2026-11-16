@@ -293,6 +293,20 @@ button[aria-disabled='true'],
   cursor: not-allowed;
 }
 
+/* Floating header: make the hand cursor explicit on every clickable element in
+   the glass bar (links, the menu/language triggers, the Support button) and on
+   links generally, so nothing in the nav ever points an arrow at the reader. */
+.floatnav a,
+.floatnav button,
+.floatnav [role='button'],
+.floatnav .rn-link,
+.floatnav .rn-link-item,
+.floatnav .rn-support,
+.floatnav .rn-lang-cur,
+a[href] {
+  cursor: pointer;
+}
+
 /* ------------------------------------------------------------------
    Preloader — the growing brand spiral. The <Preloader> client component
    flips `data-fade` on to dismiss it (see components/layout/Preloader.tsx).
