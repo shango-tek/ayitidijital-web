@@ -224,7 +224,7 @@
 .kf-flat .kf-subscribe button:hover{background:#4DA2FF;box-shadow:none;transform:none}
 /* footer brand: big bare lanbi mark (no wordmark) — fills the left column */
 .kf-flat .kf-flogo{display:inline-block;margin-bottom:auto}
-.kf-flat .kf-flogo .lanbi{display:block;width:clamp(150px,15vw,210px);height:auto;margin-left:-4px}
+.kf-flat .kf-flogo .lanbi,.kf-flat .kf-flogo .ad-mark{display:block;width:clamp(150px,15vw,210px);height:auto;margin-left:-4px}
 
 /* recompile nudge */
 /* flickering footer marquee: smaller stroke words than the (big) Konbit marquee */
@@ -264,7 +264,7 @@
    logo · tagline · "rete an kontak" socials, all vertically centered. Bigger
    logo, all four link columns, Legal out of the bottom bar (it's a column now). */
 @media (min-width:641px) and (max-width:1023px){
-  .kf-flat .kf-flogo .lanbi{width:150px}
+  .kf-flat .kf-flogo .lanbi,.kf-flat .kf-flogo .ad-mark{width:150px}
   .kf-flat .kf-left{grid-template-columns:auto minmax(0,1fr) auto;column-gap:40px}
   .kf-flat .kf-flogo{grid-column:1;grid-row:1;align-self:center}
   .kf-flat .kf-tagline{grid-column:2;grid-row:1}
@@ -276,7 +276,7 @@
 
 /* Mobile (≤640px): a bit larger logo; tagline sized to sit cleanly beside it. */
 @media (max-width:640px){
-  .kf-flat .kf-flogo .lanbi{width:120px}
+  .kf-flat .kf-flogo .lanbi,.kf-flat .kf-flogo .ad-mark{width:120px}
   .kf-flat .kf-tagline{font-size:16px;line-height:1.4}
 }
 

@@ -4,7 +4,7 @@ import { ClassValue, clsx } from "clsx";
 import * as Color from "color-bits";
 import React, { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { twMerge } from "tailwind-merge";
-import { LanbiMark } from "@/components/brand/LanbiMark";
+import { AyitiMark } from "@/components/brand/AyitiMark";
 import { SocialIcon } from "@/components/brand/SocialIcon";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { PlusGrid, PlusGridItem, PlusGridRow } from "@/components/ui/PlusGrid";
@@ -1169,8 +1169,8 @@ export const FlickeringFooter = ({
                 {/* Left: brand + tagline + socials */}
                 <div className="kf-left">
                   <a href="#top" className="kf-flogo" aria-label={brandName}>
-                    {/* colored dark-surface mark (navy dots → light blue via CSS) */}
-                    <LanbiMark size={210} />
+                    {/* dark-surface mark: white A, light-navy lines (src/styles/ayiti-logo.css) */}
+                    <AyitiMark size={210} />
                   </a>
                   <p className="kf-tagline">
                     {content.tagline.lead}

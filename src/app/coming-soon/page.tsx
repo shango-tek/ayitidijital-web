@@ -1,6 +1,7 @@
 import type { CSSProperties } from 'react'
 import { negotiateLocale } from '@/lib/negotiate-locale'
 import type { Locale } from '@/i18n'
+import { AyitiMark } from '@/components/brand/AyitiMark'
 
 /**
  * The public face of ayitidijital.org while the site is finished — served at
@@ -77,8 +78,7 @@ export default async function ComingSoonPage() {
 
       <div className="relative z-10 flex flex-col items-center">
         <div className="cs-mark cs-rise" style={{ '--d': '0ms' } as CSSProperties}>
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img src="/favicon.svg" alt="" width={80} height={80} className="h-20 w-20" />
+          <AyitiMark size={96} motion="intro" speed={0.8} hover={false} className="ad-ondark" />
         </div>
 
         <h1

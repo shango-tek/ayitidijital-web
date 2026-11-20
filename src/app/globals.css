@@ -9,6 +9,7 @@
 @import "../styles/radiant-parts.css" layer(base);
 @import "../styles/konbit-footer.css" layer(base); /* two-card Konbit footer */
 @import "../styles/silent-precision.css" layer(base);
+@import "../styles/ayiti-logo.css" layer(base); /* Ayiti Dijital mark: colours, dark surfaces, motion */
 
 /* ==================================================================
    Corporate design → Tailwind v4 theme. Makes brand colours + fonts
@@ -268,6 +269,19 @@ h2, h3 { text-wrap: balance; }
      accent; the stacked words drop to the plain display face so nothing competes
      with it. Desktop keeps every word's own face (set via HERO_PART_CLASS). */
   .hero-shape { font-family: var(--font-serif); font-weight: 600; }
+  /* The glass fill (.tahoe-glass-text) is painted by the whole headline and does not turn
+     with the rotated word, which left a solid ghost beside its outline. On phones the fill
+     moves to the stacked lines only, so the vertical word keeps just its outline. */
+  .hero-title.tahoe-glass-text { background: none; }
+  .hero-rest {
+    background: linear-gradient(135deg, rgba(255,255,255,1) 0%, rgba(255,255,255,0.4) 25%, rgba(255,255,255,0.1) 45%, rgba(255,255,255,0.9) 55%, rgba(255,255,255,0.2) 75%, rgba(255,255,255,1) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    animation: precision-shimmer 8s linear infinite;
+    padding-bottom: 0.2em;
+  }
+  @media (prefers-reduced-motion: reduce) { .hero-rest { animation: none; } }
   .hero-title [data-part="vision"],
   .hero-title [data-part="action"] {
     font-family: var(--font-display);
@@ -349,6 +363,13 @@ a[href] {
 }
 #preloader .pl-panel-left { left: 0; justify-content: flex-end; }
 #preloader .pl-panel-right { right: 0; justify-content: flex-start; }
+/* the Ayiti Dijital mark, centred over both halves; it draws itself (src/styles/ayiti-logo.css) */
+#preloader .pl-mark { position: absolute; inset: 0; z-index: 4; display: grid; place-items: center; pointer-events: none; }
+#preloader .pl-mark .ad-mark { width: clamp(200px, 36vw, 380px); height: auto; transform-origin: 50% 50%; will-change: transform; }
+/* leaving: the mark flies into the header logo (inline script); if it cannot fly, it fades */
+#preloader[data-leaving]:not([data-flying]) .pl-mark { opacity: 0; transition: opacity .4s ease; }
+/* while the loader mark flies in, the header logo waits hidden (set on <html>, so hydration is untouched) */
+html[data-logo-landing] .rn-logo-link .ad-mark, html[data-logo-landing] .mnav-logo .ad-mark { opacity: 0; }
 /* each half carries one word, in the hero's glass-shimmer face (.tahoe-glass-text) */
 .pl-word {
   font: 900 clamp(2.4rem, 11vw, 9rem)/1 var(--font-display);
@@ -357,8 +378,7 @@ a[href] {
 }
 .pl-panel-left .pl-word { padding-right: .16em; }
 .pl-panel-right .pl-word { padding-left: .16em; }
-#preloader[data-parting] .pl-panel-left { transform: translateX(-101%); }
-#preloader[data-parting] .pl-panel-right { transform: translateX(101%); }
+#preloader[data-leaving] .pl-panel { opacity: 0; transition: opacity .6s ease; }
 /* bottom progress bar (grows left→right) + percentage, bottom-left */
 .pl-progress { position: absolute; inset: auto 0 0 0; z-index: 5; pointer-events: none; }
 .pl-bar {
@@ -381,10 +401,10 @@ a[href] {
   letter-spacing: .14em;
   color: rgba(255, 255, 255, .72);
 }
-#preloader[data-parting] .pl-progress { opacity: 0; transition: opacity .3s ease; }
+#preloader[data-leaving] .pl-progress { opacity: 0; transition: opacity .3s ease; }
 @media (prefers-reduced-motion: reduce) {
   #preloader .pl-panel { transition: opacity .45s ease; }
-  #preloader[data-parting] .pl-panel { opacity: 0; transform: none; }
+  #preloader[data-leaving] .pl-panel { opacity: 0; transform: none; }
 }
 
 /* ------------------------------------------------------------------

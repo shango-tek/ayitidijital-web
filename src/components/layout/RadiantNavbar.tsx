@@ -4,7 +4,7 @@ import type { ReactNode } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { PlusGrid, PlusGridItem, PlusGridRow } from '../ui/PlusGrid'
-import { LanbiMark } from '../brand/LanbiMark'
+import { AyitiMark } from '../brand/AyitiMark'
 import { HoverMenu } from '../ui/HoverMenu'
 import { Button } from '../ui/Button'
 import type { LangOption, NavLink } from '@/content/types'
@@ -71,7 +71,7 @@ export function RadiantNavbar({
                   }
                 }}
               >
-                <LanbiMark size={58} className="rn-logo-mark" />
+                <AyitiMark size={58} className="rn-logo-mark" />
                 <span className="rn-brand-name">{brandName}</span>
               </Link>
             </PlusGridItem>

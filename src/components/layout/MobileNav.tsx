@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { LanbiMark } from '../brand/LanbiMark'
+import { AyitiMark } from '../brand/AyitiMark'
 import { SocialIcon } from '../brand/SocialIcon'
 import { Button } from '../ui/Button'
 import { PlusGrid, PlusGridRow, PlusGridItem } from '../ui/PlusGrid'
@@ -151,7 +151,7 @@ export function MobileNav({
                 <PlusGridItem className="mnav-pgitem">
                   <div className="mnav-row">
                     <a href={`/${locale}`} className="mnav-logo" aria-label={brandName} onClick={close}>
-                      <LanbiMark size={44} />
+                      <AyitiMark size={44} />
                       <span className="mnav-brand">{brandName}</span>
                     </a>
                     <div className="mnav-actions">
@@ -189,7 +189,7 @@ export function MobileNav({
                     <PlusGridItem className="mnav-pgitem">
                       <div className="mnav-row">
               <a href={`/${locale}`} className="mnav-logo" aria-label={brandName} onClick={close}>
-                <LanbiMark size={44} />
+                <AyitiMark size={44} />
                 <span className="mnav-brand">{brandName}</span>
               </a>
               <div className="mnav-actions">
