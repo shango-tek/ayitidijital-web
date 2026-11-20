@@ -3,7 +3,6 @@ import { getSiteContent } from '@/content/site'
 import { toLocale } from '@/i18n'
 import { routeMetadata } from '../_metadata'
 
-const GITHUB = 'https://github.com/shango-tek/ayitidijital-web'
 const MAIL = 'contact@ayitidijital.org'
 
 const T = {
@@ -16,7 +15,6 @@ const T = {
     ways: [
       ['Vin patnè', 'Òganizasyon, enstitisyon oswa antrepriz : ann bati ansanm epi finanse pwojè yo.', 'Ekri nou', `mailto:${MAIL}`, false],
       ['Kontribye nan kòd la', 'Ann bati zouti open source yo ansanm - chak kontribisyon konte.', 'Ale nan kominote a', '/kominote', false],
-      ['Gaye mesaj la', 'Pale sou travay nou an, pataje pwojè yo, konekte nou ak moun ki ka ede.', 'Wè kòd la sou GitHub', GITHUB, true],
     ],
   },
   fr: {
@@ -28,7 +26,6 @@ const T = {
     ways: [
       ['Devenir partenaire', 'Organisation, institution ou entreprise : bâtissons ensemble et finançons les projets.', 'Écrivez-nous', `mailto:${MAIL}`, false],
       ['Contribuer au code', 'Construisons les outils open source ensemble - chaque contribution compte.', 'Rejoindre la communauté', '/kominote', false],
-      ['Faire connaître', 'Parlez de notre travail, partagez les projets, connectez-nous à qui peut aider.', 'Voir le code sur GitHub', GITHUB, true],
     ],
   },
   en: {
@@ -40,7 +37,6 @@ const T = {
     ways: [
       ['Become a partner', 'Organisation, institution or company: let’s build together and fund the projects.', 'Write to us', `mailto:${MAIL}`, false],
       ['Contribute code', 'Let’s build the open-source tools together - every contribution counts.', 'Join the community', '/kominote', false],
-      ['Spread the word', 'Talk about our work, share the projects, connect us to those who can help.', 'See the code on GitHub', GITHUB, true],
     ],
   },
 } as const
@@ -48,7 +44,7 @@ const T = {
 /**
  * "Soutni" - the Support / donate destination, in the house register.
  * There is no online payment set up, so this page is honest about it: real ways
- * to help (partner, contribute code, spread the word) with working links, and a
+ * to help (partner, contribute code) with working links, and a
  * note that financial support currently goes through direct contact.
  */
 export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
@@ -78,7 +74,7 @@ export default async function SoutniPage({ params }: { params: Promise<{ locale:
         <h2 className="mt-14 font-tum text-sm font-bold uppercase tracking-[0.14em] text-tum-muted">
           {t.waysTitle}
         </h2>
-        <div className="mt-6 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-6 grid gap-5 sm:grid-cols-2">
           {t.ways.map(([title, body, cta, href, external]) => (
             <article
               key={title}
