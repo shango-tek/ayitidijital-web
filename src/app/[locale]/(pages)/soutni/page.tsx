@@ -14,7 +14,7 @@ const T = {
     waysTitle: 'Fason pou w sipòte',
     ways: [
       ['Vin patnè', 'Òganizasyon, enstitisyon oswa antrepriz : ann bati ansanm epi finanse pwojè yo.', 'Ekri nou', `mailto:${MAIL}`, false],
-      ['Kontribye nan kòd la', 'Ann bati zouti open source yo ansanm - chak kontribisyon konte.', 'Ale nan kominote a', '/kominote', false],
+      ['Rejwenn kominote a', 'Ann bati zouti open source yo ansanm - chak kontribisyon konte.', 'Ale nan kominote a', '/kominote', false],
     ],
   },
   fr: {
@@ -25,7 +25,7 @@ const T = {
     waysTitle: 'Comment soutenir',
     ways: [
       ['Devenir partenaire', 'Organisation, institution ou entreprise : bâtissons ensemble et finançons les projets.', 'Écrivez-nous', `mailto:${MAIL}`, false],
-      ['Contribuer au code', 'Construisons les outils open source ensemble - chaque contribution compte.', 'Rejoindre la communauté', '/kominote', false],
+      ['Rejoindre la communauté', 'Construisons les outils open source ensemble - chaque contribution compte.', 'Rejoindre la communauté', '/kominote', false],
     ],
   },
   en: {
@@ -36,7 +36,7 @@ const T = {
     waysTitle: 'Ways to support',
     ways: [
       ['Become a partner', 'Organisation, institution or company: let’s build together and fund the projects.', 'Write to us', `mailto:${MAIL}`, false],
-      ['Contribute code', 'Let’s build the open-source tools together - every contribution counts.', 'Join the community', '/kominote', false],
+      ['Join the community', 'Let’s build the open-source tools together - every contribution counts.', 'Join the community', '/kominote', false],
     ],
   },
 } as const
